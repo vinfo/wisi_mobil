@@ -1,24 +1,4 @@
 // Initialize app
-function videoInit() {
-    var videoBg = findElement(".play-bg-video");
-    videoBg.length > 0 && videoBg.vide("assets/video/video");
-}
-
-function teamSlider() {
-    var owl = findElement(".team");
-    owl.owlCarousel({
-        singleItem: !0,
-        navigation: !1,
-        navigationText: [],
-        pagination: !1,
-        uniqueHistory: !0
-    }), findElement(".team-nav-right").click(function() {
-        owl.trigger("owl.next");
-    }), findElement(".team-nav-left").click(function() {
-        owl.trigger("owl.prev");
-    });
-}
-
 function findElement(selector) {
     var box = null;
     return $(".page-on-center").length > 0 ? (box = $(".view-main").find(".page-on-center " + selector), 
@@ -312,7 +292,7 @@ $$(".popup-splash").on("opened", function() {
         var ctx = document.querySelector(".page-on-center .polar-chart-content").getContext("2d");
         showPolarChartPage(ctx);
     }
-    naxvarBg(), teamSlider();
+    naxvarBg();
 }), $$(document).on("pageInit", function(e) {
     var page = e.detail.page;
     myApp.calendar({
@@ -430,7 +410,7 @@ $$(".popup-splash").on("opened", function() {
             }), // Update conversation flag
             conversationStarted = !0;
         }
-    }), videoInit();
+    });
 }), $(document).ready(function() {
     if ((null === localStorage.getItem("newOptions") || localStorage.getItem("newOptions") === !0) && (myApp.popup(".popup-splash"), 
     localStorage.setItem("newOptions", !0)), $(".chart-content").length > 0) {
@@ -468,9 +448,7 @@ $$(".popup-splash").on("opened", function() {
         $(".gallery-list").attr({
             "data-cols": cols
         }), $(".js-gallery-col").removeClass("active"), $(this).addClass("active");
-    }), setTimeout(function() {
-        videoInit(), teamSlider();
-    }, 100);
+    });
 }), $.fn.serializeObject = function() {
     var o = {}, a = this.serializeArray();
     return $.each(a, function() {
