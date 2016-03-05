@@ -1,0 +1,14 @@
+{
+  "name": "scrollAnimate",
+  "homepage": "https://github.com/cardume/scrollAnimate",
+  "_release": "d55f49e495",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "d55f49e495ad4787e41dfa5c3d7bddd8960c5f37"
+  },
+  "_source": "https://github.com/cardume/scrollAnimate.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/cardume/scrollAnimate.git",
+  "_direct": true
+}
