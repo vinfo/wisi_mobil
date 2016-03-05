@@ -3,209 +3,975 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/favicons/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="assets/img/favicons/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="assets/img/favicons/manifest.json">
     <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <title>WISI</title>
+    <title>Indra</title>
 
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="bower_components/framework7/dist/css/framework7.ios.min.css">
     <link rel="stylesheet" href="bower_components/swipebox/src/css/swipebox.css">
+    <link rel="stylesheet" href="bower_components/owl-carousel/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="bower_components/owl-carousel/owl-carousel/owl.theme.css">
 
     <link rel="stylesheet" href="assets/css/app.css">
     <link rel="stylesheet" href="assets/themes//style.css" id="theme-style">
 </head>
 <body onload="hidePreloader()">
 
-    <div class="statusbar-overlay"></div>
-    <div class="panel-overlay"></div>
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
 
-    <!-- Left panel -->
-    <div class="panel panel-left panel-reveal">
-        <div class="logo-box">
-            <div class="row">
-                <div class="col-75">
-                    <strong>Paula Lu</strong>
-                    <div>WISI - Conexión WIFI</div>
-                </div>
+<!-- Left panel -->
+<div class="panel panel-left panel-reveal">
+    <div class="logo-box">
+        <div class="row">
+            <div class="col-25">
+                <img src="assets/img/tmp/ava-demo.jpg" alt="" class="ava">
+            </div>
+            <div class="col-75">
+                <strong>Paula Lu</strong>
+                <div>HTML Mobile Template</div>
             </div>
         </div>
-
-        <div class="list-block mt-15">
-            <div class="list-group">
-                <nav>
-                    <ul>
-                        <li class="divider">
-                            Menu
-                        </li>
-                        <li>
-                            <a href="index.html" class="item-link close-panel item-content">
-                                <div class="item-media">
-                                    <i class="fa fa-home"></i>
-                                </div>
-                                <div class="item-inner">
-                                    <div class="item-title">Home</div>
-                                </div>
-                            </a>
-
-                        </li>
-                        <li>
-                            <a href="news-list-1.html" class="item-link close-panel item-content">
-                                <div class="item-media">
-                                    <i class="fa fa-newspaper-o"></i>
-                                </div>
-                                <div class="item-inner">
-                                    <div class="item-title">Registrese</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="features.html" class="item-link close-panel item-content">
-                                <div class="item-media">
-                                    <i class="fa fa-magic"></i>
-                                </div>
-                                <div class="item-inner">
-                                    <div class="item-title">Términos y Condiciones</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="features.html" class="item-link close-panel item-content">
-                                <div class="item-media">
-                                    <i class="fa fa-weixin"></i>
-                                </div>
-                                <div class="item-inner">
-                                    <div class="item-title">Ayuda</div>
-                                </div>
-                            </a>
-                        </li>                    
-                        <li class="divider">
-                            Mís datos
-                        </li>
-                        <li>
-                            <a href="twitter.html" class="item-link close-panel item-content">
-                                <div class="item-media">
-                                <i class="fa fa-user"></i>
-                                </div>
-                                <div class="item-inner">
-                                    <div class="item-title">Datos</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="flickr.html" class="item-link close-panel item-content">
-                                <div class="item-media">
-                                    <i class="fa fa fa-gift"></i>
-                                </div>
-                                <div class="item-inner">
-                                    <div class="item-title">Bolsa de Recompensas</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="flickr.html" class="item-link close-panel item-content">
-                                <div class="item-media">
-                                    <i class="fa fa-dollar"></i>
-                                </div>
-                                <div class="item-inner">
-                                    <div class="item-title">Bolsa de Recargas</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="flickr.html" class="item-link close-panel item-content">
-                                <div class="item-media">
-                                    <i class="fa fa-users"></i>
-                                </div>
-                                <div class="item-inner">
-                                    <div class="item-title">Referidos</div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-
     </div>
 
-
-    <!-- Views -->
-    <div class="views">
-        <div class="view view-main">
-
-            <div class="navbar navbar-clear anim-navbar">
-                <div class="navbar-inner">
-                    <div class="left">
-                        <a href="#" class="link icon-only open-panel">
-                            <span class="kkicon icon-menu"></span>
+    <div class="list-block mt-15">
+        <div class="list-group">
+            <nav>
+                <ul>
+                    <li class="divider">
+                        Menu
+                    </li>
+                    <li>
+                        <a href="index.html" class="item-link close-panel item-content">
+                            <div class="item-media">
+                                <i class="fa fa-home"></i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">Home</div>
+                                <div class="item-after">
+                                    <span class="badge badge-primary">32</span>
+                                </div>
+                            </div>
                         </a>
-                    </div>
-                    <div class="center sliding">
-                        <span class="anim-logo-small" style="opacity: 0">WISI</span>
-                    </div>
+
+                        <a href="#" class="js-toggle-menu"><span class="icon-chevron-down"></span></a>
+                        <ul>
+                            <li>
+                                <a href="splash.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-lock"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Splash</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="login.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-lock"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Login</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="registration.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-lock"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Sign Up</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Home</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="dashboard-1.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Dashboard</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="menu.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-th"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Menu</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="shop-home-1.html" class="item-link close-panel item-content">
+                            <div class="item-media">
+                                <i class="fa fa-home"></i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">Shop Home</div>
+                                <div class="item-after">
+                                    <span class="badge badge-secondary">new</span>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="#" class="js-toggle-menu"><span class="icon-chevron-down"></span></a>
+                        <ul>
+                            <li>
+                                <a href="shop-home-1.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-home"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Shop Home</div>
+                                        <div class="item-after">
+                                            <span class="badge badge-secondary">new</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="shop-product-1.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-home"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Product</div>
+                                        <div class="item-after">
+                                            <span class="badge badge-secondary">new</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="shop-cart-1.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Cart</div>
+                                        <div class="item-after">
+                                            <span class="badge badge-secondary">new</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="shop-delivery.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-truck"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Delivery</div>
+                                        <div class="item-after">
+                                            <span class="badge badge-secondary">new</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="shop-payment.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-credit-card"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Payment Method</div>
+                                        <div class="item-after">
+                                            <span class="badge badge-secondary">new</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="shop-summary.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-file-text-o"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Summary</div>
+                                        <div class="item-after">
+                                            <span class="badge badge-secondary">new</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="misc.html" class="item-link close-panel item-content">
+                            <div class="item-media">
+                                <i class="fa fa-cubes"></i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">UI Elements</div>
+                            </div>
+                        </a>
+
+                        <a href="#" class="js-toggle-menu"><span class="icon-chevron-down"></span></a>
+                        <ul>
+                            <li>
+                                <a href="datepickers.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-calendar-o"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Calendar</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="notifications.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-comment-o"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Notifications</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="misc.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-bullseye"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">MISC</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="buttons.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-square"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Buttons</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="charts.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-area-chart"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Charts</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tabs.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-folder-o"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Tabs</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="accordion.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-bars"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Accordion</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="charts.html" class="item-link close-panel item-content">
+                            <div class="item-media">
+                                <i class="fa fa-area-chart"></i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">Charts</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="news-list-1.html" class="item-link close-panel item-content">
+                            <div class="item-media">
+                                <i class="fa fa-newspaper-o"></i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">News</div>
+                            </div>
+                        </a>
+
+                        <a href="#" class="js-toggle-menu"><span class="icon-chevron-down"></span></a>
+                        <ul>
+                            <li>
+                                <a href="news-list-1.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-newspaper-o"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">List Of Articles</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="news-list-2.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-newspaper-o"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">List Of Articles 2</div>
+                                        <div class="item-after">
+                                            <span class="badge badge-secondary">new</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="article-1.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-file-text-o"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Article 1</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="article-2.html" class="item-link close-panel item-content">
+                                    <div class="item-media">
+                                        <i class="fa fa-file-text-o"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="item-title">Article 2</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="features.html" class="item-link close-panel item-content">
+                            <div class="item-media">
+                                <i class="fa fa-magic"></i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">Features</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="gallery.html" class="item-link close-panel item-content">
+                            <div class="item-media">
+                                <i class="fa fa-picture-o"></i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">Gallery</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="videos.html" class="item-link close-panel item-content">
+                            <div class="item-media">
+                                <i class="fa fa-video-camera"></i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">Videos</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html" class="item-link close-panel item-content">
+                            <div class="item-media">
+                                <i class="fa fa-envelope-o"></i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">Contact</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider">
+                        Social
+                    </li>
+                    <li>
+                        <a href="twitter.html" class="item-link close-panel item-content">
+                            <div class="item-media">
+                                <i class="fa fa-twitter"></i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">Twitter</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="flickr.html" class="item-link close-panel item-content">
+                            <div class="item-media">
+                                <i class="fa fa-flickr"></i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">Flickr</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="chat.html" class="item-link close-panel item-content">
+                            <div class="item-media">
+                                <i class="fa fa-weixin"></i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">Chat</div>
+                                <div class="item-after">
+                                    <span class="badge badge-secondary">5</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</div>
+
+<!-- Right panel -->
+<div class="panel panel-right panel-reveal">
+
+    <div class="welcome-msg">
+        <div class="avatars">
+            <span><img src="assets/img/tmp/ava1.jpg" alt="ava1"></span>
+            <span><img src="assets/img/tmp/ava2.jpg" alt="ava1"></span>
+            <span><img src="assets/img/tmp/ava3.jpg" alt="ava1"></span>
+            <span><img src="assets/img/tmp/ava4.jpg" alt="ava1"></span>
+            <span><img src="assets/img/tmp/ava5.jpg" alt="ava1"></span>
+        </div>
+        <p class="text-center">
+            Say hello to your friends!
+        </p>
+    </div>
+
+    <div class="buttons-row">
+        <a href="#" class="button button-small button-light button-clear">
+            <span class="icon-bubble-pencil fs-24"></span>
+        </a>
+        <a href="#" class="button button-small button-light button-clear">
+            <span class="icon-users-plus fs-24"></span>
+        </a>
+    </div>
+
+    <div class="list-block media-list mt-15">
+        <div class="list-group">
+            <nav class="contacts">
+                <ul>
+                    <li>
+                        <a href="" class="item-link close-panel item-content">
+                            <div class="item-media">
+                                <span>
+                                    <img src="assets/img/tmp/ava-demo.jpg" alt="">
+                                </span>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title">Lu Mayer</div>
+                                </div>
+                                <div class="item-subtitle">1h ago</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="item-link close-panel item-content online">
+                            <div class="item-media">
+                                <span>
+                                    <img src="assets/img/tmp/ava1.jpg" alt="">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title">Adam Z.</div>
+                                </div>
+                                <div class="item-subtitle">ONLINE</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="item-link close-panel item-content">
+                            <div class="item-media">
+                                <span>
+                                    <img src="assets/img/tmp/ava2.jpg" alt="">
+                                </span>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title">Ala C.</div>
+                                </div>
+                                <div class="item-subtitle">1min ago</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="item-link close-panel item-content">
+                            <div class="item-media">
+                                <span>
+                                    <img src="assets/img/tmp/ava5.jpg" alt="">
+                                    <i class="fa fa-envelope"></i>
+                                </span>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title">Su K.</div>
+                                </div>
+                                <div class="item-subtitle">12.12.2012</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="item-link close-panel item-content online">
+                            <div class="item-media">
+                                <span>
+                                    <img src="assets/img/tmp/ava3.jpg" alt="">
+                                </span>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title-row">
+                                    <div class="item-title">Mike F.</div>
+                                </div>
+                                <div class="item-subtitle">ONLINE</div>
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+
+        <div class="list-group mt-20" style="display: none">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#" class="item-link item-primary close-panel item-content">
+                            <div class="item-media">
+                                <i class="fa fa-info-circle"></i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">About APP/Website</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- Views -->
+<div class="views">
+    <div class="view view-main">
+
+        <div class="navbar navbar-clear anim-navbar">
+            <div class="navbar-inner">
+                <div class="left">
+                    <a href="#" class="link icon-only open-panel">
+                        <span class="kkicon icon-menu"></span>
+                    </a>
+                </div>
+                <div class="center sliding">
+                    <span class="anim-logo-small" style="opacity: 0">INDRA</span>
+                </div>
+                <div class="right">
+                    <a href="#" class="link icon-only open-panel" data-panel="right">
+                        <span class="badge badge-secondary">2</span>
+                        <span class="kkicon icon-alarm"></span>
+                    </a>
                 </div>
             </div>
+        </div>
 
-            <div class="pages navbar-fixed toolbar-fixed ">
-                <div data-page="index" class="page">
-                    <div class="page-content navbar-fix">
-                        <div class="full-page-image full-page-video play-bg-video">
-                            <div class="logo">
-                                <img src="assets/img/logo-login.png" alt="">
+        <div class="pages navbar-fixed toolbar-fixed ">
+            <div data-page="index" class="page">
+                <div class="page-content navbar-fix">
+                    <div class="full-page-image full-page-video play-bg-video">
+                        <div class="logo">
+                            <img src="assets/img/logo-login.png" alt="">
+                        </div>
+                        <div class="desc content-padding">
+                            <strong class="text-bg text-bg-green">Your HTML Mobile Template!</strong>
+                            <div class="mt-5 text-bg">
+                                Lorem ipsum dolor sit amet. Dolor lorem ipsum amet.
                             </div>
-                            <div class="desc content-padding">
-                                <strong class="text-bg text-bg-green">WIFI Connections</strong>
-                                <div class="mt-5 text-bg">
-                                    Navega en Internet.
-                                </div>
+                        </div>
+                        <div class="row content-padding">
+                            <div class="col-50">
+                                <a href="dashboard-1.html" class="button button-fill button-primary">Great!</a>
                             </div>
-                            <div class="row content-padding">
-                                <div class="col-50">
-                                    <a href="dashboard-1.html" class="button button-fill button-primary">FACEBOOK</a>
-                                </div>
-                                <div class="col-50">
-                                    <a href="article-1.html" class="button button-fill button-secondary">ACCEDER</a>
-                                </div>
+                            <div class="col-50">
+                                <a href="article-1.html" class="button button-fill button-secondary">About</a>
                             </div>
                         </div>
 
+                        <span class="kkicon icon-chevron-down scroll-down"></span>
+                    </div>
+
+                    <div class="content-block mb-15">
+                        <div class="content-wew">
+                            <h2 class="header-1 mb-0"><span>Hello!</span></h2>
+                            <h3 class="sub-header mt-0">Indra is HTML mobile template.</h3>
+
+                            <span class="hr-1"></span>
+
+                            <div class="tweet"></div>
+                        </div>
+                    </div>
+
+                    <div class="owl-carousel">
+                        <div>
+                            <strong class="carousel-text text-bg text-bg-green">Some slide text 1</strong>
+                            <img src="assets/img/tmp/temp_1.png" alt="">
+                        </div>
+                        <div>
+                            <strong class="carousel-text text-bg text-bg-green">Some slide text 2</strong>
+                            <img src="assets/img/tmp/temp_2.png" alt="">
+                        </div>
+                        <div>
+                            <strong class="carousel-text text-bg text-bg-green">Some slide text 3</strong>
+                            <img src="assets/img/tmp/temp_3.png" alt="">
+                        </div>
+                    </div>
+                    <div class="content-block">
+                        <div class="content-wew">
+                            <p>
+                                Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats vitaes nemo minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="content-block content-light">
+                        <div class="content-wew">
+                            <h3 class="header-2"><span>Our Skills</span></h3>
+
+                            <div class="progress-box progress-green indicating" data-percent="75">
+                                <div class="bar" style="transition-duration: 300ms; width: 95%;">
+                                    <div class="progress">95%</div>
+                                </div>
+                                <div class="label">HTML</div>
+                            </div>
+                            <div class="progress-box progress-green indicating" data-percent="75">
+                                <div class="bar" style="transition-duration: 300ms; width: 90%;">
+                                    <div class="progress">90%</div>
+                                </div>
+                                <div class="label">CSS</div>
+                            </div>
+                            <div class="progress-box progress-green indicating" data-percent="75">
+                                <div class="bar" style="transition-duration: 300ms; width: 88%;">
+                                    <div class="progress">88%</div>
+                                </div>
+                                <div class="label">JavaScript</div>
+                            </div>
+
+                            <p>
+                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beataes dicta sunt explicabo.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="content-block">
+                        <div class="content-wew">
+
+                            <h3 class="header-2"><span>Meet The Team!</span></h3>
+
+                            <div class="the-team-slider">
+                                <a href="#" class="team-nav-left arrow-left">
+                                    <span class="kkicon icon-chevron-left"></span>
+                                </a>
+                                <a href="#" class="team-nav-right arrow-right">
+                                    <span class="kkicon icon-chevron-right"></span>
+                                </a>
+                                <div class="team">
+                                    <div class="text-center">
+                                        <img src="assets/img/tmp/ava1.jpg" alt="Ava1" class="round-ava">
+                                        <h3>Alan Blue</h3>
+                                        <p>Livesey, and the rest of these.</p>
+                                        <div class="mt-10">
+                                            <span class="badge badge-third badge-square text-uppercase">
+                                                Manager
+                                            </span>
+                                        </div>
+                                        <div class="mt-15">
+                                            <a href="#" class="button-team-twitter">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                            <a href="#" class="button-team-facebook">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                            <a href="#" class="button-team-gplus">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="assets/img/tmp/ava2.jpg" alt="Ava1" class="round-ava">
+                                        <h3>Julia Alan</h3>
+                                        <p>Livesey, and the rest of these.</p>
+                                        <div class="mt-10">
+                                            <span class="badge badge-third badge-square text-uppercase">
+                                                Developer
+                                            </span>
+                                        </div>
+                                        <div class="mt-15">
+                                            <a href="#" class="button-team-twitter">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                            <a href="#" class="button-team-facebook">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                            <a href="#" class="button-team-gplus">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="assets/img/tmp/ava5.jpg" alt="Ava1" class="round-ava">
+                                        <h3>Kaya Max</h3>
+                                        <p>Livesey, and the rest of these.</p>
+                                        <div class="mt-10">
+                                            <span class="badge badge-third badge-square text-uppercase">
+                                                Developer
+                                            </span>
+                                        </div>
+                                        <div class="mt-15">
+                                            <a href="#" class="button-team-twitter">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                            <a href="#" class="button-team-facebook">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                            <a href="#" class="button-team-gplus">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="hr-2 mt-20"></span>
+
+                            <p>
+                                Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beataes dicta sunt explicabo.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="content-block">
+                        <div class="content-wew">
+                            <h3 class="header-2"><span>Contact us</span></h3>
+                            Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula. Ut molestie a, ultricies porta urna. Vestibulum commodo volutpat a, convallis ac, laoreet enim. Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi.
+                        </div>
+                    </div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d81967.94610007465!2d19.961614383007806!3d50.05822866231894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471644c0354e18d1%3A0xb46bb6b576478abf!2zS3Jha8Ozdw!5e0!3m2!1spl!2spl!4v1427800639573" width="100%" height="250" frameborder="0" style="border:0"></iframe>
+                    <div class="content-block">
+                        <div class="content-wew">
+                            <p>
+                                Quisque lorem tortor fringilla sed, vestibulum id, eleifend justo vel bibendum sapien massa ac turpis faucibus orci luctus non, consectetuer lobortis quis, varius in, purus. Integer ultrices posuere cubilia Curae.
+                            </p>
+                            <a href="contact.html" class="button button-primary button-fill">Contact us!</a>
+                        </div>
+                    </div>
+
+                    <div class="content-block content-light">
+                        <div class="content-wew">
+                            <h3 class="header-2"><span>Follow us</span></h3>
+                            <p>Phasellus fermentum in, dolor. Pellentesque facilisis. Nulla imperdiet sit amet magna. Vestibulum dapibus, mauris nec malesuada fames ac turpis velit, rhoncus eu, luctus et interdum adipiscing wisi.</p>
+
+                            <div class="social-buttons mb-15">
+                                <a href="#" class="kkicon-twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="#" class="kkicon-facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="#" class="kkicon-pinterest"><i class="fa fa-pinterest"></i></a>
+                                <a href="#" class="kkicon-linkedin"><i class="fa fa-linkedin"></i></a>
+                                <a href="#" class="kkicon-gplus"><i class="fa fa-google-plus"></i></a>
+                                <a href="#" class="kkicon-flickr"><i class="fa fa-flickr"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="popup popup-splash">
+    <div class="content-block">
+        <a href="#" class="close-popup">
+            skip
+        </a>
+
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide text-center">
+                    <div class="slide-content">
+                        <h2>Responsive</h2>
+
+                        <h3>flexible layout</h3>
+                        <img src="assets/img/tmp/slide1.png" alt=""/>
+                    </div>
+                </div>
+                <div class="swiper-slide text-center">
+                    <div class="slide-content">
+                        <h2>Very Detailed</h2>
+
+                        <h3>20+ page templates</h3>
+                        <img src="assets/img/tmp/slide2.png" alt=""/>
+                    </div>
+                </div>
+                <div class="swiper-slide text-center">
+                    <div class="slide-content clearfix">
+                        <h2>Call<br>Us Now</h2>
+
+                        <h3>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis.
+                            Maecenas malesuada elit lectus felis, malesuada ultricies.</h3>
+                        <a href="#" class="button mt-50 mb-20">Click to call!</a>
                     </div>
                 </div>
             </div>
+            <div class="bottom-color"></div>
+            <div class="swiper-pagination"></div>
+        </div>
 
+    </div>
+</div>
+
+<div class="popup popup-login">
+    <div class="content-block">
+        <a href="#" class="close-popup">
+            skip
+        </a>
+
+        <div class="text-center mt-70">
+            <h2>Hello!</h2>
+
+            <h3>You wont to login?!</h3>
+        </div>
+
+        <div class="forms mt-50">
+            <form method="post"
+                  class="js-validate"
+                  novalidate="novalidate">
+
+                <div class="form-row">
+                    <div class="input-text">
+                        <input type="text" name="login" placeholder="Login" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-text">
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-submit">
+                        <a href="#" class="button button-big js-form-submit button-fill button-primary">Login</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <a href="#" class="more-info">I don't have a APP account.</a>
+    </div>
+</div>
+
+<!-- Picker -->
+<div class="picker-modal picker-social">
+    <div class="toolbar">
+        <div class="toolbar-inner">
+            <div class="left"></div>
+            <div class="right"><a href="#" class="close-picker">done</a></div>
         </div>
     </div>
+    <div class="picker-modal-inner">
+        <div class="content-block mt-15 mb-10">
+            <h3>Sharing is sexy!</h3>
 
-    <div class="page page-bg full-page-video page-preloader full-page-image">
-        <div class="logo">
-            <img src="assets/img/logo-login.png" alt="">
-        </div>
+            <p>Duis ac nibh ac quam quam sagittis tortor. Cum sociis natoque penatibus et neque.</p>
 
-        <div class="text-center splash">
-            <div class="splash-welcome text-center">
-                <h4>Welcome!</h4>
-                <p>Start building your app or website<br> with Indra template.</p>
-            </div>
-
-            <div class="la-ball-rotate mt-30">
-                <div></div>
+            <div class="social-buttons">
+                <a href="#" class="kkicon-twitter"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="kkicon-facebook"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="kkicon-pinterest"><i class="fa fa-pinterest"></i></a>
+                <a href="#" class="kkicon-linkedin"><i class="fa fa-linkedin"></i></a>
+                <a href="#" class="kkicon-gplus"><i class="fa fa-google-plus"></i></a>
+                <a href="#" class="kkicon-flickr"><i class="fa fa-flickr"></i></a>
             </div>
         </div>
     </div>
+</div>
 
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="bower_components/swipebox/src/js/jquery.swipebox.min.js"></script>
-    <script type="text/javascript" src="bower_components/framework7/dist/js/framework7.min.js"></script>
-    <script type="text/javascript" src="bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="bower_components/scrollAnimate/jquery.scrollAnimate.js"></script>
-    <script type="text/javascript" src="bower_components/vide/dist/jquery.vide.min.js"></script>
-    
-    <script type="text/javascript" src="assets/js/animations.js"></script>
+
+<div class="page page-bg full-page-video page-preloader full-page-image">
+    <div class="logo">
+        <img src="assets/img/logo-login.png" alt="">
+    </div>
+
+    <div class="text-center splash">
+        <div class="splash-welcome text-center">
+            <h4>Welcome!</h4>
+            <p>Start building your app or website<br> with Indra template.</p>
+        </div>
+
+        <div class="la-ball-rotate mt-30">
+            <div></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="bower_components/swipebox/src/js/jquery.swipebox.min.js"></script>
+<script type="text/javascript" src="bower_components/framework7/dist/js/framework7.min.js"></script>
+<script type="text/javascript" src="bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
+<script type="text/javascript" src="bower_components/Tweetie/tweetie.min.js"></script>
+<script type="text/javascript" src="bower_components/chartjs/Chart.js"></script>
+<script type="text/javascript" src="bower_components/scrollAnimate/jquery.scrollAnimate.js"></script>
+<script type="text/javascript" src="bower_components/owl-carousel/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="bower_components/vide/dist/jquery.vide.min.js"></script>
+
+<script type="text/javascript" src="assets/js/jflickrfeed.min.js"></script>
+<script type="text/javascript" src="assets/js/min/app.js"></script>
+<script type="text/javascript" src="assets/js/animations.js"></script>
 
 </body>
 </html>
