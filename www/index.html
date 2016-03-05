@@ -1,316 +1,46 @@
 <!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-
-    <title>WISI</title>
-
-    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="bower_components/framework7/dist/css/framework7.ios.min.css">
-    <link rel="stylesheet" href="bower_components/swipebox/src/css/swipebox.css">
-
-    <link rel="stylesheet" href="assets/css/app.css">
-    <link rel="stylesheet" href="assets/themes//style.css" id="theme-style">
-</head>
-<body onload="hidePreloader()">
-
-    <div class="statusbar-overlay"></div>
-    <div class="panel-overlay"></div>
-
-    <!-- Left panel -->
-    <div class="panel panel-left panel-reveal">
-        <div class="logo-box">
-            <div class="row">
-                <div class="col-75">
-                    <strong>Paula Lu</strong>
-                    <div>WISI - Conexión WIFI</div>
-                </div>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>PhoneGap</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
             </div>
         </div>
-
-        <div class="list-block mt-15">
-            <div class="list-group">
-                <nav>
-                    <ul>
-                        <li class="divider">
-                            Menu
-                        </li>
-                        <li>
-                            <a href="index.html" class="item-link close-panel item-content">
-                                <div class="item-media">
-                                    <i class="fa fa-home"></i>
-                                </div>
-                                <div class="item-inner">
-                                    <div class="item-title">Home</div>
-                                </div>
-                            </a>
-
-                        </li>
-                        <li>
-                            <a href="news-list-1.html" class="item-link close-panel item-content">
-                                <div class="item-media">
-                                    <i class="fa fa-newspaper-o"></i>
-                                </div>
-                                <div class="item-inner">
-                                    <div class="item-title">Registrese</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="features.html" class="item-link close-panel item-content">
-                                <div class="item-media">
-                                    <i class="fa fa-magic"></i>
-                                </div>
-                                <div class="item-inner">
-                                    <div class="item-title">Términos y Condiciones</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="features.html" class="item-link close-panel item-content">
-                                <div class="item-media">
-                                    <i class="fa fa-weixin"></i>
-                                </div>
-                                <div class="item-inner">
-                                    <div class="item-title">Ayuda</div>
-                                </div>
-                            </a>
-                        </li>                    
-                        <li class="divider">
-                            Mís datos
-                        </li>
-                        <li>
-                            <a href="twitter.html" class="item-link close-panel item-content">
-                                <div class="item-media">
-                                <i class="fa fa-user"></i>
-                                </div>
-                                <div class="item-inner">
-                                    <div class="item-title">Datos</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="flickr.html" class="item-link close-panel item-content">
-                                <div class="item-media">
-                                    <i class="fa fa fa-gift"></i>
-                                </div>
-                                <div class="item-inner">
-                                    <div class="item-title">Bolsa de Recompensas</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="flickr.html" class="item-link close-panel item-content">
-                                <div class="item-media">
-                                    <i class="fa fa-dollar"></i>
-                                </div>
-                                <div class="item-inner">
-                                    <div class="item-title">Bolsa de Recargas</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="flickr.html" class="item-link close-panel item-content">
-                                <div class="item-media">
-                                    <i class="fa fa-users"></i>
-                                </div>
-                                <div class="item-inner">
-                                    <div class="item-title">Referidos</div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Right panel -->
-    <div class="panel panel-right panel-reveal">
-
-        <div class="welcome-msg">
-            <div class="avatars">
-                <span><img src="assets/img/tmp/ava1.jpg" alt="ava1"></span>
-                <span><img src="assets/img/tmp/ava2.jpg" alt="ava1"></span>
-                <span><img src="assets/img/tmp/ava3.jpg" alt="ava1"></span>
-                <span><img src="assets/img/tmp/ava4.jpg" alt="ava1"></span>
-                <span><img src="assets/img/tmp/ava5.jpg" alt="ava1"></span>
-            </div>
-            <p class="text-center">
-                Say hello to your friends!
-            </p>
-        </div>
-
-        <div class="buttons-row">
-            <a href="#" class="button button-small button-light button-clear">
-                <span class="icon-bubble-pencil fs-24"></span>
-            </a>
-            <a href="#" class="button button-small button-light button-clear">
-                <span class="icon-users-plus fs-24"></span>
-            </a>
-        </div>
-    </div>
-
-    <!-- Views -->
-    <div class="views">
-        <div class="view view-main">
-
-            <div class="navbar navbar-clear anim-navbar">
-                <div class="navbar-inner">
-                    <div class="left">
-                        <a href="#" class="link icon-only open-panel">
-                            <span class="kkicon icon-menu"></span>
-                        </a>
-                    </div>
-                    <div class="center sliding">
-                        <span class="anim-logo-small" style="opacity: 0">INDRA</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pages navbar-fixed toolbar-fixed ">
-                <div data-page="index" class="page">
-                    <div class="page-content navbar-fix">
-                        <div class="full-page-image full-page-video play-bg-video">
-                            <div class="logo">
-                                <img src="assets/img/logo-login.png" alt="">
-                            </div>
-                            <div class="desc content-padding">
-                                <strong class="text-bg text-bg-green">Your HTML Mobile Template!</strong>
-                                <div class="mt-5 text-bg">
-                                    Lorem ipsum dolor sit amet. Dolor lorem ipsum amet.
-                                </div>
-                            </div>
-                            <div class="row content-padding">
-                                <div class="col-50">
-                                    <a href="dashboard-1.html" class="button button-fill button-primary">Great!</a>
-                                </div>
-                                <div class="col-50">
-                                    <a href="article-1.html" class="button button-fill button-secondary">About</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="popup popup-splash">
-        <div class="content-block">
-            <a href="#" class="close-popup">
-                skip
-            </a>
-
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide text-center">
-                        <div class="slide-content">
-                            <h2>Responsive</h2>
-
-                            <h3>flexible layout</h3>
-                            <img src="assets/img/tmp/slide1.png" alt=""/>
-                        </div>
-                    </div>
-                    <div class="swiper-slide text-center">
-                        <div class="slide-content">
-                            <h2>Very Detailed</h2>
-
-                            <h3>20+ page templates</h3>
-                            <img src="assets/img/tmp/slide2.png" alt=""/>
-                        </div>
-                    </div>
-                    <div class="swiper-slide text-center">
-                        <div class="slide-content clearfix">
-                            <h2>Call<br>Us Now</h2>
-
-                            <h3>Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis.
-                                Maecenas malesuada elit lectus felis, malesuada ultricies.</h3>
-                                <a href="#" class="button mt-50 mb-20">Click to call!</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bottom-color"></div>
-                    <div class="swiper-pagination"></div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="popup popup-login">
-            <div class="content-block">
-                <a href="#" class="close-popup">
-                    skip
-                </a>
-
-                <div class="text-center mt-70">
-                    <h2>Hello!</h2>
-
-                    <h3>You wont to login?!</h3>
-                </div>
-
-                <div class="forms mt-50">
-                    <form method="post"
-                    class="js-validate"
-                    novalidate="novalidate">
-
-                    <div class="form-row">
-                        <div class="input-text">
-                            <input type="text" name="login" placeholder="Login" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="input-text">
-                            <input type="password" name="password" placeholder="Password" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="input-submit">
-                            <a href="#" class="button button-big js-form-submit button-fill button-primary">Login</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-            <a href="#" class="more-info">I don't have a APP account.</a>
-        </div>
-    </div>
-
-    <div class="page page-bg full-page-video page-preloader full-page-image">
-        <div class="logo">
-            <img src="assets/img/logo-login.png" alt="">
-        </div>
-
-        <div class="text-center splash">
-            <div class="splash-welcome text-center">
-                <h4>Welcome!</h4>
-                <p>Start building your app or website<br> with Indra template.</p>
-            </div>
-
-            <div class="la-ball-rotate mt-30">
-                <div></div>
-            </div>
-        </div>
-    </div>
-
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="bower_components/swipebox/src/js/jquery.swipebox.min.js"></script>
-    <script type="text/javascript" src="bower_components/framework7/dist/js/framework7.min.js"></script>
-    <script type="text/javascript" src="bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="bower_components/scrollAnimate/jquery.scrollAnimate.js"></script>
-    <script type="text/javascript" src="bower_components/vide/dist/jquery.vide.min.js"></script>
-    <script type="text/javascript" src="assets/js/min/app.js"></script>
-    <script type="text/javascript" src="assets/js/animations.js"></script>
-
-</body>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
 </html>
