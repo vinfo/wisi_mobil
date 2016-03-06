@@ -38,6 +38,10 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         alert(2);
+        if (window.cordova.platformId == "browser") {
+            facebookConnectPlugin.browserInit('1691694321105222');
+            alert("Registra");
+        }        
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
