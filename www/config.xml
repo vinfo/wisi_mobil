@@ -76,6 +76,11 @@
     <false/>
   </gap:config-file>
 
+  <plugin name="com.phonegap.plugins.facebookconnect" spec="0.9.0"> source="pgb">
+      <param name="APP_ID" value="443663762486052" />
+      <param name="APP_NAME" value="wisi" />
+  </gap:plugin>  
+
   <!-- Define app icon for each platform. -->
   <icon src="icon.png" />
   <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:qualifier="ldpi" />
