@@ -71,15 +71,15 @@
   <gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />
   <gap:plugin name="com.phonegap.plugin.statusbar" />
   <gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" />
+  <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
+      <param name="APP_ID" value="443663762486052" />
+      <param name="APP_NAME" value="wisi" />
+  </gap:plugin>  
 
   <gap:config-file platform="ios" parent="UIStatusBarHidden">
     <false/>
   </gap:config-file>
 
-  <plugin name="com.phonegap.plugins.facebookconnect" spec="0.9.0"> source="pgb">
-      <param name="APP_ID" value="443663762486052" />
-      <param name="APP_NAME" value="wisi" />
-  </gap:plugin>  
 
   <!-- Define app icon for each platform. -->
   <icon src="icon.png" />
