@@ -36,7 +36,7 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         alert("Device");
-        facebookConnectPlugin.browserInit('443663762486052');
+        facebookConnectPlugin.browserInit('190992121269957');
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
