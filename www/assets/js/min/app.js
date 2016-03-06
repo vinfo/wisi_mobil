@@ -1,4 +1,8 @@
 // Initialize app
+function randSlider() {
+    var num= Math.floor((Math.random() * 5) + 1);
+    $(".full-page-video").css('background-image','url("http://wisi.com.co/assets/img/sliders/slider'+num+'.jpg")');
+}
 function findElement(selector) {
     var box = null;
     return $(".page-on-center").length > 0 ? (box = $(".view-main").find(".page-on-center " + selector), 
@@ -412,6 +416,7 @@ $$(".popup-splash").on("opened", function() {
         }
     });
 }), $(document).ready(function() {
+    randSlider();
     if ((null === localStorage.getItem("newOptions") || localStorage.getItem("newOptions") === !0) && (myApp.popup(".popup-splash"), 
     localStorage.setItem("newOptions", !0)), $(".chart-content").length > 0) {
         var obj = document.querySelector(".chart-content"), ctx = obj.getContext("2d");
