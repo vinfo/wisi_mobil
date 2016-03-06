@@ -74,6 +74,12 @@
   <gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" />
   <gap:plugin name="com.cordova.plugin.inappbrowser.with.loading.spinner" version="1.0.13" />
 
+  <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
+      <param name="APP_ID" value="1691694321105222" />
+      <param name="APP_NAME" value="wisi_movil" />
+  </gap:plugin>
+
+
   <gap:config-file platform="ios" parent="UIStatusBarHidden">
     <false/>
   </gap:config-file>
