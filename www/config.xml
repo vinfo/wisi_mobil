@@ -43,6 +43,7 @@
 
 <access origin="*"/>
 <access origin="http://wisi.com.co" subdomains="true" />
+<access origin="https://connect.facebook.net/" subdomains="true" />
 
 <gap:config-file platform="android" parent="/manifest">
   <supports-screens
