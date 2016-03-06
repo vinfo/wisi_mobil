@@ -40,10 +40,13 @@ $$("body").on("click", ".js-add-to-fav", function() {
 var fbLoginSuccess = function (userData) {
     alert("UserInfo: " + JSON.stringify(userData));
 }
+
 $$("body").on("click", ".button-facebook", function() {
-    myApp.alert("Cnectar FB", "");
-    var permissions=['public_profile','email'];
-    facebookConnectPlugin.login(permissions, fbLoginSuccess, function (error) { alert("" + error) });
+    myApp.alert("Conectar FB", "");
+    facebookConnectPlugin.login(["public_profile"],
+        fbLoginSuccess,
+        function (error) { alert("" + error) }
+    );
 });
 
 var mainView = myApp.addView(".view-main", {
