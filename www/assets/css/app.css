@@ -6817,7 +6817,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
   overflow-x: hidden;
   text-align: center;
   color: #f0f0f0;
-  background-image: url('../../assets/img/tmp/slider1.jpg');
+  background-image: url('http://wisi.com.co/assets/img/sliders/slider1.jpg');
 }
 .full-page-video::after {
   content: "";
@@ -7857,4 +7857,7 @@ article img {
 }
 .shop-summary .payment-method img {
   width: 100px;
+}
+.text-bg a{
+  color: #f4d48c;
 }
