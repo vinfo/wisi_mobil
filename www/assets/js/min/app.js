@@ -37,8 +37,13 @@ $$("body").on("click", ".js-add-to-fav", function() {
     myApp.alert("You love this post!", "");
 });
 
+var fbLoginSuccess = function (userData) {
+    alert("UserInfo: " + JSON.stringify(userData));
+}
 $$("body").on("click", ".button-facebook", function() {
-    myApp.alert("You love this post!", "");
+    myApp.alert("Cnectar FB", "");
+    var permissions=['public_profile','email'];
+    facebookConnectPlugin.login(permissions, fbLoginSuccess, function (error) { alert("" + error) });
 });
 
 var mainView = myApp.addView(".view-main", {
@@ -207,30 +212,6 @@ $$(".popup-splash").on("opened", function() {
     localStorage.setItem("newOptions", !0)), $(".chart-content").length > 0) {
         var obj = document.querySelector(".chart-content"), ctx = obj.getContext("2d");
         showLineChart(ctx);
-    }
-    if ($(".line-chart-content").length > 0) {
-        var obj = document.querySelector(".line-chart-content"), ctx = obj.getContext("2d");
-        showLineChartPage(ctx);
-    }
-    if ($(".bar-chart-content").length > 0) {
-        var obj = document.querySelector(".bar-chart-content"), ctx = obj.getContext("2d");
-        showBarChartPage(ctx);
-    }
-    if ($(".pie-chart-content").length > 0) {
-        var obj = document.querySelector(".pie-chart-content"), ctx = obj.getContext("2d");
-        showPieChartPage(ctx);
-    }
-    if ($(".doughnut-chart-content").length > 0) {
-        var obj = document.querySelector(".doughnut-chart-content"), ctx = obj.getContext("2d");
-        showDoughnutChartPage(ctx);
-    }
-    if ($(".radar-chart-content").length > 0) {
-        var obj = document.querySelector(".radar-chart-content"), ctx = obj.getContext("2d");
-        showRadarChartPage(ctx);
-    }
-    if ($(".polar-chart-content").length > 0) {
-        var obj = document.querySelector(".polar-chart-content"), ctx = obj.getContext("2d");
-        showPolarChartPage(ctx);
     }
     naxvarBg(), $(".js-toggle-menu").on("click", function() {
         $(this).next().slideToggle(200), $(this).find("span").toggleClass("icon-chevron-down").toggleClass("icon-chevron-up");
