@@ -42,6 +42,7 @@
 </feature>
 
 <access origin="*"/>
+<access origin="http://wisi.com.co" subdomains="true" />
 
 <gap:config-file platform="android" parent="/manifest">
   <supports-screens
@@ -69,6 +70,7 @@
   <gap:plugin name="org.apache.cordova.vibration" version="0.3.11" />
   <gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />
   <gap:plugin name="com.phonegap.plugin.statusbar" />
+  <gap:plugin name="cordova-plugin-whitelist" />
 
   <gap:config-file platform="ios" parent="UIStatusBarHidden">
     <false/>
