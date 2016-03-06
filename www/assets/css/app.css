@@ -6093,6 +6093,10 @@ html:not(.watch-active-state) .list-block .item-link:active {
   font-size: 14px;
   font-family: 'robotolight', sans-serif;
 }
+.navbar a.blue-lnk{
+  color: #3B84AA;
+  font-weight: bold;
+}
 .navbar a.link .badge {
   bottom: 17px;
   font-family: robotobold, Arial, Tahoma, sans-serif;
@@ -6132,9 +6136,6 @@ html:not(.watch-active-state) .list-block .item-link:active {
 .navbar-anim-on-scroll a.link,
 .navbar.navbar-clear a.link {
   color: #fffff;
-}
-.blue-lnk{
-  color: #3B84AA;
 }
 .navbar-anim-on-scroll.active,
 .navbar.navbar-clear.active {
