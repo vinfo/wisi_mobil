@@ -43,7 +43,7 @@ var fbLoginSuccess = function (userData) {
 
 $$("body").on("click", ".button-facebook", function() {
     myApp.alert("Conectar FB", "");
-    facebookConnectPlugin.login(["public_profile"],
+    facebookConnectPlugin.login(["public_profile","email"],
         fbLoginSuccess,
         function (error) { alert("" + error) }
     );
