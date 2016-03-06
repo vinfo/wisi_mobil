@@ -6131,7 +6131,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
 }
 .navbar-anim-on-scroll a.link,
 .navbar.navbar-clear a.link {
-  color: #ffffff;
+  color: #3B84AA;
 }
 .navbar-anim-on-scroll.active,
 .navbar.navbar-clear.active {
