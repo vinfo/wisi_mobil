@@ -70,7 +70,7 @@
   <gap:plugin name="org.apache.cordova.vibration" version="0.3.11" />
   <gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />
   <gap:plugin name="com.phonegap.plugin.statusbar" />
-  <gap:plugin name="cordova-plugin-whitelist" />
+  <gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" />
 
   <gap:config-file platform="ios" parent="UIStatusBarHidden">
     <false/>
