@@ -72,7 +72,7 @@
   <gap:plugin name="com.phonegap.plugin.statusbar" />
   <gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" />
   <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
-      <param name="APP_ID" value="190992121269957" />
+      <param name="APP_ID" value="1691694321105222" />
       <param name="APP_NAME" value="wisi" />
   </gap:plugin>  
 
