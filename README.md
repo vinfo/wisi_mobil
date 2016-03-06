@@ -1,3 +1,3 @@
-# WISI Application [![bitHound Score][bithound-img]][bithound-url]
+# WISI Application
 
 > Aplicación para conectividad privada a redes WIFI
