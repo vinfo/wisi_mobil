@@ -39,21 +39,14 @@ $$("body").on("click", ".js-add-to-fav", function() {
 
 var fbLoginSuccess = function (userData) {
     alert("UserInfo: " + JSON.stringify(userData));
-    facebookConnectPlugin.api("<user-id>/?fields=id,email", ["user_birthday"],
-    function (result) {
-        alert("Result: " + JSON.stringify(result));
-    },
-    function (error) {
-        alert("Failed: " + error);
-    });    
+    localStorage.setItem("fbsession",true);   
 }
-
 
 $$("body").on("click", ".button-facebook", function() {
     //myApp.alert("Conectar FB", "");
     facebookConnectPlugin.login(["public_profile","email"],
         fbLoginSuccess,
-        function (error) { alert("" + error) }
+        function (error) { myApp.alert("Problemas conectando con Facebook!", ""); }
     );
 });
 
@@ -219,6 +212,13 @@ $$(".popup-splash").on("opened", function() {
     });
 }), $(document).ready(function() {
     randSlider();
+    if(localStorage.localStorage){
+        $(".login").show();
+        $(".logout").hide();
+    }else{
+        $(".login").hide();
+        $(".logout").show();
+    }
     if ((null === localStorage.getItem("newOptions") || localStorage.getItem("newOptions") === !0) && (myApp.popup(".popup-splash"), 
     localStorage.setItem("newOptions", !0)), $(".chart-content").length > 0) {
         var obj = document.querySelector(".chart-content"), ctx = obj.getContext("2d");
