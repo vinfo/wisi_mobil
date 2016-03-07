@@ -213,12 +213,12 @@ $$(".popup-splash").on("opened", function() {
     });
 }), $(document).ready(function() {
     randSlider();
-    if(localStorage.localStorage){
-        $(".login").show();
-        $(".logout").hide();
-    }else{
+    if(localStorage.localStorage){        
         $(".login").hide();
         $(".logout").show();
+    }else{
+        $(".login").show();
+        $(".logout").hide();
     }
     if ((null === localStorage.getItem("newOptions") || localStorage.getItem("newOptions") === !0) && (myApp.popup(".popup-splash"), 
     localStorage.setItem("newOptions", !0)), $(".chart-content").length > 0) {
