@@ -39,7 +39,15 @@ $$("body").on("click", ".js-add-to-fav", function() {
 
 var fbLoginSuccess = function (userData) {
     alert("UserInfo: " + JSON.stringify(userData));
+    facebookConnectPlugin.api("<user-id>/?fields=id,email", ["user_birthday"],
+    function (result) {
+        alert("Result: " + JSON.stringify(result));
+    },
+    function (error) {
+        alert("Failed: " + error);
+    });    
 }
+
 
 $$("body").on("click", ".button-facebook", function() {
     myApp.alert("Conectar FB", "");

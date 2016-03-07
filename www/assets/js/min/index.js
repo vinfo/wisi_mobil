@@ -37,10 +37,6 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        alert("Device "+window.cordova.platformId);
-        if (window.cordova.platformId == "browser") {
-            facebookConnectPlugin.browserInit("184900971887326");
-        }
         getDeviceProperty();
     }
 };
