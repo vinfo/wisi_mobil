@@ -223,7 +223,7 @@ $$(".popup-splash").on("opened", function() {
 }), $(document).ready(function() {
     randSlider();
     checkConnectionFB();    
-    if(localStorage.fbsession){
+    if(localStorage.fbsession==true){
         $(".login").show();
         $(".logout").hide();
     }else{         
