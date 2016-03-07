@@ -51,12 +51,8 @@ var myApp = new Framework7({
     modalTitle: "Title"
 }), $$ = Dom7;
 
-$$("body").on("click", ".js-add-to-fav", function() {
-    myApp.alert("You love this post!", "");
-});
-
 var fbLoginSuccess = function (userData) {
-    localStorage.setItem("fbsession",false);
+    localStorage.setItem("fbsession",true);
     showDivsConnect();
     window.open('http://wisi.com.co/public/#/ad', '_system'); 
 }
