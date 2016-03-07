@@ -1,11 +1,20 @@
 // Initialize app
+function showDivsConnect(){
+    if(localStorage.fbsession==true){
+        $(".login").show();
+        $(".logout").hide();
+    }else{         
+        $(".login").hide();
+        $(".logout").show();
+    }
+}
 function checkConnectionFB(){
     var fbStatusSuccess = function (userData) {
-        alert("UserInfo: " + JSON.stringify(userData));
+        showDivsConnect();
     }    
     facebookConnectPlugin.getLoginStatus(
         fbStatusSuccess,
-        function (error) { localStorage.setItem("fbsession",false) }
+        function (error) {localStorage.setItem("fbsession",false);showDivsConnect();}
     )
 }
 function randSlider() {
@@ -47,8 +56,8 @@ $$("body").on("click", ".js-add-to-fav", function() {
 });
 
 var fbLoginSuccess = function (userData) {
-    //alert("UserInfo: " + JSON.stringify(userData));
-    localStorage.setItem("fbsession",true);
+    localStorage.setItem("fbsession",false);
+    showDivsConnect();
     window.open('http://wisi.com.co/public/#/ad', '_system'); 
 }
 
@@ -223,13 +232,7 @@ $$(".popup-splash").on("opened", function() {
 }), $(document).ready(function() {
     randSlider();
     checkConnectionFB();    
-    if(localStorage.fbsession==true){
-        $(".login").show();
-        $(".logout").hide();
-    }else{         
-        $(".login").hide();
-        $(".logout").show();
-    }
+
     if ((null === localStorage.getItem("newOptions") || localStorage.getItem("newOptions") === !0) && (myApp.popup(".popup-splash"), 
     localStorage.setItem("newOptions", !0)), $(".chart-content").length > 0) {
         var obj = document.querySelector(".chart-content"), ctx = obj.getContext("2d");
