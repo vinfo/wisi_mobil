@@ -220,7 +220,7 @@ $$(".popup-splash").on("opened", function() {
         $(".login").show();
         $(".logout").hide();
     }
-    if ((null === localStorage.getItem("newOptions") || localStorage.getItem("newOptions") === !0), 
+    if ((null === localStorage.getItem("newOptions") || localStorage.getItem("newOptions") === !0) && (myApp.popup(".popup-splash"), 
     localStorage.setItem("newOptions", !0)), $(".chart-content").length > 0) {
         var obj = document.querySelector(".chart-content"), ctx = obj.getContext("2d");
         showLineChart(ctx);
