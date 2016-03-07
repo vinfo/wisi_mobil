@@ -213,7 +213,7 @@ $$(".popup-splash").on("opened", function() {
     });
 }), $(document).ready(function() {
     randSlider();
-    if(localStorage.localStorage){        
+    if(localStorage.fbsession){        
         $(".login").hide();
         $(".logout").show();
     }else{
