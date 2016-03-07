@@ -37,6 +37,8 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+        alert("Device");
+        facebookConnectPlugin.browserInit("184900971887326");
         getDeviceProperty();
     }
 };
