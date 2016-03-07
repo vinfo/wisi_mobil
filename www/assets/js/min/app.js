@@ -15,7 +15,7 @@ function checkConnectionFB(){
     facebookConnectPlugin.getLoginStatus(
         fbStatusSuccess,
         function (error) {showDivsConnect();}
-    )
+        )
 }
 function randSlider() {
     var num= Math.floor((Math.random() * 5) + 1);
@@ -24,16 +24,16 @@ function randSlider() {
 function findElement(selector) {
     var box = null;
     return $(".page-on-center").length > 0 ? (box = $(".view-main").find(".page-on-center " + selector), 
-    0 === box.length && (box = $(".view-main").find(".page-on-center" + selector))) : box = $(".view-main").find(".page").find(selector), 
+        0 === box.length && (box = $(".view-main").find(".page-on-center" + selector))) : box = $(".view-main").find(".page").find(selector), 
     box;
 }
 
 function naxvarBg() {
     var navbar = $(".navbar-anim-on-scroll"), box = null, cls = "active";
     return 0 === navbar.length ? !1 : (box = navbar.next().find($(".page-on-center").length > 0 ? ".page-on-center .page-content" : ".page .page-content"), 
-    box.scrollTop() > 10 ? navbar.addClass(cls) : navbar.removeClass(cls), void box.scroll(function() {
-        $(this).scrollTop() > 40 ? navbar.addClass(cls) : navbar.removeClass(cls);
-    }));
+        box.scrollTop() > 10 ? navbar.addClass(cls) : navbar.removeClass(cls), void box.scroll(function() {
+            $(this).scrollTop() > 40 ? navbar.addClass(cls) : navbar.removeClass(cls);
+        }));
 }
 
 function hidePreloader() {
@@ -62,52 +62,13 @@ $$("body").on("click", ".button-facebook", function() {
     facebookConnectPlugin.login(["public_profile","email"],
         fbLoginSuccess,
         function (error) { myApp.alert("Problemas conectando con Facebook!", ""); }
-    );
+        );
 });
 
 var mainView = myApp.addView(".view-main", {
     dynamicNavbar: !0
 });
-
-$$(".popup-splash").on("opened", function() {
-    myApp.swiper(".swiper-container", {
-        speed: 400,
-        pagination: ".swiper-pagination",
-        paginationBulletRender: function(index, className) {
-            return '<span class="' + className + '">' + (index + 1) + "</span>";
-        }
-    });
-}), $$(document).on("pageAfterAnimation", function(e) {
-    if ($(".page-on-center .chart-content").length > 0) {
-        var ctx = document.querySelector(".page-on-center .chart-content").getContext("2d");
-        showLineChart(ctx);
-    }
-    if ($(".page-on-center .line-chart-content").length > 0) {
-        var ctx = document.querySelector(".page-on-center .line-chart-content").getContext("2d");
-        showLineChartPage(ctx);
-    }
-    if ($(".page-on-center .bar-chart-content").length > 0) {
-        var ctx = document.querySelector(".page-on-center .bar-chart-content").getContext("2d");
-        showBarChartPage(ctx);
-    }
-    if ($(".page-on-center .pie-chart-content").length > 0) {
-        var ctx = document.querySelector(".page-on-center .pie-chart-content").getContext("2d");
-        showPieChartPage(ctx);
-    }
-    if ($(".page-on-center .doughnut-chart-content").length > 0) {
-        var ctx = document.querySelector(".page-on-center .doughnut-chart-content").getContext("2d");
-        showDoughnutChartPage(ctx);
-    }
-    if ($(".page-on-center .radar-chart-content").length > 0) {
-        var ctx = document.querySelector(".page-on-center .radar-chart-content").getContext("2d");
-        showRadarChartPage(ctx);
-    }
-    if ($(".page-on-center .polar-chart-content").length > 0) {
-        var ctx = document.querySelector(".page-on-center .polar-chart-content").getContext("2d");
-        showPolarChartPage(ctx);
-    }
-    naxvarBg();
-}), $$(document).on("pageInit", function(e) {
+$$(document).on("pageInit", function(e) {
     var page = e.detail.page;
     myApp.calendar({
         input: "#ks-calendar-default"
@@ -190,7 +151,7 @@ $$(".popup-splash").on("opened", function() {
                 myApp.hidePreloader();
                 var response = JSON.parse(data);
                 response.error ? myApp.alert(response.msg, "") : (myApp.alert(response.msg, ""), 
-                form.find("input[type=text], input[type=email], textarea").val(""));
+                    form.find("input[type=text], input[type=email], textarea").val(""));
             });
         }
     });
@@ -230,22 +191,22 @@ $$(".popup-splash").on("opened", function() {
     checkConnectionFB();    
 
     if ((null === localStorage.getItem("newOptions") || localStorage.getItem("newOptions") === !0) && (myApp.popup(".popup-splash"), 
-    localStorage.setItem("newOptions", !0)), $(".chart-content").length > 0) {
+        localStorage.setItem("newOptions", !0)), $(".chart-content").length > 0) {
         var obj = document.querySelector(".chart-content"), ctx = obj.getContext("2d");
-        showLineChart(ctx);
-    }
-    naxvarBg(), $(".js-toggle-menu").on("click", function() {
-        $(this).next().slideToggle(200), $(this).find("span").toggleClass("icon-chevron-down").toggleClass("icon-chevron-up");
-    }), $("body").on("click", ".js-gallery-col", function() {
-        var cols = $(this).data("cols");
-        $(".gallery-list").attr({
-            "data-cols": cols
-        }), $(".js-gallery-col").removeClass("active"), $(this).addClass("active");
-    });
+    showLineChart(ctx);
+}
+naxvarBg(), $(".js-toggle-menu").on("click", function() {
+    $(this).next().slideToggle(200), $(this).find("span").toggleClass("icon-chevron-down").toggleClass("icon-chevron-up");
+}), $("body").on("click", ".js-gallery-col", function() {
+    var cols = $(this).data("cols");
+    $(".gallery-list").attr({
+        "data-cols": cols
+    }), $(".js-gallery-col").removeClass("active"), $(this).addClass("active");
+});
 }), $.fn.serializeObject = function() {
     var o = {}, a = this.serializeArray();
     return $.each(a, function() {
         void 0 !== o[this.name] ? (o[this.name].push || (o[this.name] = [ o[this.name] ]), 
-        o[this.name].push(this.value || "")) : o[this.name] = this.value || "";
+            o[this.name].push(this.value || "")) : o[this.name] = this.value || "";
     }), o;
 };
