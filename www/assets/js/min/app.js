@@ -1,4 +1,13 @@
 // Initialize app
+function checkConnectionFB(){
+    var fbStatusSuccess = function (userData) {
+        alert("UserInfo: " + JSON.stringify(userData));
+    }    
+    facebookConnectPlugin.getLoginStatus(
+        fbStatusSuccess,
+        function (error) { localStorage.setItem("fbsession",false) }
+    )
+}
 function randSlider() {
     var num= Math.floor((Math.random() * 5) + 1);
     $(".full-page-video").css('background-image','url("http://wisi.com.co/assets/img/sliders/slider'+num+'.jpg")');
@@ -213,7 +222,7 @@ $$(".popup-splash").on("opened", function() {
     });
 }), $(document).ready(function() {
     randSlider();
-    facebookConnectPlugin.getLoginStatus(funtion(data){alert(data.status);}, function(){localStorage.setItem("fbsession",false);})
+    checkConnectionFB();    
     if(localStorage.fbsession){
         $(".login").show();
         $(".logout").hide();
