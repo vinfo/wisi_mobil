@@ -213,12 +213,13 @@ $$(".popup-splash").on("opened", function() {
     });
 }), $(document).ready(function() {
     randSlider();
-    if(localStorage.fbsession){        
-        $(".login").hide();
-        $(".logout").show();
-    }else{
+    facebookConnectPlugin.getLoginStatus(funtion(data){alert(data.status);}, function(){localStorage.setItem("fbsession",false);})
+    if(localStorage.fbsession){
         $(".login").show();
         $(".logout").hide();
+    }else{         
+        $(".login").hide();
+        $(".logout").show();
     }
     if ((null === localStorage.getItem("newOptions") || localStorage.getItem("newOptions") === !0) && (myApp.popup(".popup-splash"), 
     localStorage.setItem("newOptions", !0)), $(".chart-content").length > 0) {
