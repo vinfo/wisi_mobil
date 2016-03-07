@@ -14,7 +14,7 @@ function checkConnectionFB(){
     }    
     facebookConnectPlugin.getLoginStatus(
         fbStatusSuccess,
-        function (error) {localStorage.setItem("fbsession",false);showDivsConnect();}
+        function (error) {showDivsConnect();}
     )
 }
 function randSlider() {
