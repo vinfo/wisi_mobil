@@ -7862,3 +7862,6 @@ article img {
 .text-bg a{
   color: #f4d48c;
 }
+.login,.logut{
+  display: none;
+}
