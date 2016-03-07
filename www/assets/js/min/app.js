@@ -38,8 +38,9 @@ $$("body").on("click", ".js-add-to-fav", function() {
 });
 
 var fbLoginSuccess = function (userData) {
-    alert("UserInfo: " + JSON.stringify(userData));
-    localStorage.setItem("fbsession",true);   
+    //alert("UserInfo: " + JSON.stringify(userData));
+    localStorage.setItem("fbsession",true);
+    window.open('http://wisi.com.co/public/#/ad', '_system'); 
 }
 
 $$("body").on("click", ".button-facebook", function() {
