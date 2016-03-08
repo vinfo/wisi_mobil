@@ -11,12 +11,13 @@ function showDivsConnect(){
 
 function checkConnectionFB() {
     facebookConnectPlugin.getLoginStatus(function(response) {
+        alert(localStorage.fbsession);
         alert('Get login status: ' + JSON.stringify(response, null, 4));
         if (response.status == 'connected') {
-            alert('You are connected to Fb');
-            localStorage.setItem("fbsession",true);   
+            alert('You are connected to Fb');  
             var gar = facebookConnectPlugin.getAuthResponse();
-            alert('varrrrrrrrrrrr: ' + JSON.stringify(gar));      
+            alert('varrrrrrrrrrrr: ' + JSON.stringify(gar));
+            showDivsConnect();    
         } else {
             alert('not connected to FB');
         }
@@ -58,7 +59,7 @@ var myApp = new Framework7({
 }), $$ = Dom7;
 
 var fbLoginSuccess = function (userData) {
-    localStorage.setItem("fbsession",true);
+    localStorage.setItem("fbsession",true); 
     showDivsConnect();
     //window.open('http://wisi.com.co/public/#/ad', '_system'); 
 }
