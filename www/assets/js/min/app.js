@@ -57,20 +57,20 @@ var myApp = new Framework7({
 }), $$ = Dom7;
 
 var fbLoginSuccess = function (res) {
-   if (res.authResponse) {
-       facebookConnectPlugin.api('/me?fields=id,email,first_name,last_name,gender,birthday', null,
-           function(res) {            
-            var genre=38;
-            if(res.gender=="male")genre=39;
-            localStorage.setItem("id",res.id);
-            localStorage.setItem("name",  res.first_name);
-            localStorage.setItem("lastname",  res.last_name);
-            localStorage.setItem("email",  res.email);
-            localStorage.setItem("logged_in", true);
-            localStorage.setItem("token", res.token.token);
-            showDivsConnect();
-            alert(JSON.stringify(res));
-            window.open('http://wisi.com.co/public/#/ad', '_system'); 
+ if (res.authResponse) {
+    facebookConnectPlugin.api('/me?fields=id,email,first_name,last_name,gender,birthday', null,
+     function(res) {            
+        var genre=38;
+        if(res.gender=="male")genre=39;
+        localStorage.setItem("id",res.id);
+        localStorage.setItem("name",  res.first_name);
+        localStorage.setItem("lastname",  res.last_name);
+        localStorage.setItem("email",  res.email);
+        localStorage.setItem("logged_in", true);
+        localStorage.setItem("token", res.token.token);
+        showDivsConnect();
+        alert(JSON.stringify(res));
+        window.open('http://wisi.com.co/public/#/ad', '_system'); 
 /*            var data = {network:res.id,name:res.first_name,lastname:res.last_name,genre:genre,birthday:res.birthday}      
             $.ajax({
               method: "POST",
@@ -80,9 +80,10 @@ var fbLoginSuccess = function (res) {
             .done(function( msg ) {
                 alert( "Data Saved: " + msg );
                 });
-           });*/
+});*/
 
-   }    
+}   
+}
 }
 
 $$("body").on("click", ".button-facebook", function() {
