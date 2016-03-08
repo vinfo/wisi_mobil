@@ -1,6 +1,6 @@
 // Initialize app
 function showDivsConnect(){
-    if(localStorage.fbsession==true){
+    if(localStorage.login!=""){
         $(".login").show();
         $(".logout").hide();
     }else{         
@@ -11,15 +11,17 @@ function showDivsConnect(){
 
 function checkConnectionFB() {
     facebookConnectPlugin.getLoginStatus(function(response) {
-        alert(localStorage.fbsession);
+        alert(localStorage.login);
         alert('Get login status: ' + JSON.stringify(response, null, 4));
         if (response.status == 'connected') {
             alert('You are connected to Fb');  
             var gar = facebookConnectPlugin.getAuthResponse();
             alert('varrrrrrrrrrrr: ' + JSON.stringify(gar));
+            localStorage.setItem("login","FB");
             showDivsConnect();    
         } else {
             alert('not connected to FB');
+            localStorage.setItem("login","FB");
         }
     });
 }
@@ -59,7 +61,7 @@ var myApp = new Framework7({
 }), $$ = Dom7;
 
 var fbLoginSuccess = function (userData) {
-    localStorage.setItem("fbsession",true); 
+    localStorage.setItem("login","FB"); 
     showDivsConnect();
     //window.open('http://wisi.com.co/public/#/ad', '_system'); 
 }
@@ -195,8 +197,9 @@ $$(document).on("pageInit", function(e) {
         }
     });
 }), $(document).ready(function() {
-    randSlider();
-    alert(localStorage.fbsession);
+    randSlider();    
+    localStorage.setItem("login","");
+    alert(localStorage.login);
     checkConnectionFB();    
 
     if ((null === localStorage.getItem("newOptions") || localStorage.getItem("newOptions") === !0) && (myApp.popup(".popup-splash"), 
