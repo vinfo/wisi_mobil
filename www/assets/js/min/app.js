@@ -62,18 +62,10 @@ var myApp = new Framework7({
 var fbLoginSuccess = function (userData) {
     //localStorage.setItem("logged_in",true);
     alert("Datos "+JSON.stringify(userData));
-    facebookConnectPlugin.api("<user-id>/?fields=id,email", ["user_birthday"],
-    function (result) {
-        alert("Result: " + JSON.stringify(result));
-        /* alerts:
-            {
-                "id": "000000123456789",
-                "email": "myemail@example.com"
-            }
-        */
-    },
-    function (error) {
-        alert("Failed: " + error);
+    facebookConnectPlugin.getAccessToken(function(token) {
+        alert("Token: " + token);
+    }, function(err) {
+        alert("Could not get access token: " + err);
     });
    
 /*    $.ajax({
