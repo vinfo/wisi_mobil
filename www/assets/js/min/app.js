@@ -58,11 +58,11 @@ var myApp = new Framework7({
 
 var fbLoginSuccess = function (response) {
    if (response.authResponse) {
-       facebookConnectPlugin.api('/me?fields=id,email', null,
+       facebookConnectPlugin.api('/me?fields=id,email,first_name,last_name,gender,birthday', null,
            function(response) {
             alert(JSON.stringify(response));
                alert('Good to see you, ' +
-                   response.email + response.name + '.');
+                   response.email + response.first_name + '.');
            });
 
    }  
@@ -209,7 +209,7 @@ $$(document).on("pageInit", function(e) {
         }
     });
 }), $(document).ready(function() {
-    randSlider();    
+    //randSlider();    
     localStorage.setItem("logged_in",false);
     alert(localStorage.getItem("logged_in"));
     checkConnectionFB();    
