@@ -11,8 +11,7 @@ function showDivsConnect(){
 
 function checkConnectionFB() {
     facebookConnectPlugin.getLoginStatus(function(response) {
-        if (response.status == 'connected') {
-            alert('You are connected to Fb');  
+        if (response.status == 'connected') { 
             var gar = facebookConnectPlugin.getAuthResponse();
             //localStorage.setItem("logged_in",true);
             showDivsConnect();    
