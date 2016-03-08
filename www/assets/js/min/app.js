@@ -58,7 +58,7 @@ var myApp = new Framework7({
 
 var fbLoginSuccess = function (response) {
    if (response.authResponse) {
-       facebookConnectPlugin.api('/me', ["public_profile"],
+       facebookConnectPlugin.api('/me?fields=id,email', null,
            function(response) {
             alert(JSON.stringify(response));
                alert('Good to see you, ' +
@@ -80,7 +80,7 @@ var fbLoginSuccess = function (response) {
 }
 
 $$("body").on("click", ".button-facebook", function() {
-    facebookConnectPlugin.login(["public_profile"],
+    facebookConnectPlugin.login(["public_profile","email"],
         fbLoginSuccess,
         function (error) { myApp.alert("Problemas conectando con Facebook!", ""); }
     );
