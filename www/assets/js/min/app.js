@@ -13,7 +13,6 @@ function showDivsConnect(){
 function checkConnectionFB() {
     facebookConnectPlugin.getLoginStatus(function(response) {
         if (response.status == 'connected') { 
-            var gar = facebookConnectPlugin.getAuthResponse();
             //localStorage.setItem("logged_in",true);
             showDivsConnect();    
         } else {
@@ -61,6 +60,7 @@ var fbLoginSuccess = function (response) {
    if (response.authResponse) {
        facebookConnectPlugin.api('/me?fields=id,email,first_name,last_name,gender,birthday', null,
            function(response) {
+            alert(JSON.stringify(response));
             var genre=38;
             if(response.gender=="male")genre=39;
             localStorage.setItem("id",response.id);
