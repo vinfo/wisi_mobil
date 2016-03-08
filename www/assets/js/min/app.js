@@ -3,6 +3,7 @@ function showDivsConnect(){
     if(localStorage.getItem("logged_in")==true){
         $(".login").show();
         $(".logout").hide();
+        $(".names_user").html(localStorage.name+" "+localStorage.lastname);
     }else{         
         $(".login").hide();
         $(".logout").show();
@@ -56,21 +57,19 @@ var myApp = new Framework7({
     modalTitle: "Title"
 }), $$ = Dom7;
 
-var fbLoginSuccess = function (res) {
-   if (res.authResponse) {
+var fbLoginSuccess = function (response) {
+   if (response.authResponse) {
        facebookConnectPlugin.api('/me?fields=id,email,first_name,last_name,gender,birthday', null,
            function(response) {
             var genre=38;
-            if(res.gender=="male")genre=39;
-            localStorage.setItem("id",res.id);
-            localStorage.setItem("name",  res.first_name);
-            localStorage.setItem("lastname",  res.last_name);
-            localStorage.setItem("email",  res.email);
+            if(response.gender=="male")genre=39;
+            localStorage.setItem("id",response.id);
+            localStorage.setItem("name",  response.first_name);
+            localStorage.setItem("lastname",  response.last_name);
+            localStorage.setItem("email",  response.email);
             localStorage.setItem("logged_in", true);
-            localStorage.setItem("token", res.token.token);
+            localStorage.setItem("token", response.token.token);
             showDivsConnect();
-            alert(JSON.stringify(res));
-            window.open('http://wisi.com.co/public/#/ad', '_system'); 
            });
    } 
     
@@ -207,7 +206,7 @@ $$(document).on("pageInit", function(e) {
         }
     });
 }), $(document).ready(function() {
-    randSlider();    
+    //randSlider();    
     localStorage.setItem("logged_in",false);
     alert(localStorage.getItem("logged_in"));
     checkConnectionFB();    
