@@ -67,8 +67,9 @@ var fbLoginSuccess = function (response) {
             localStorage.setItem("name",  response.first_name);
             localStorage.setItem("lastname",  response.last_name);
             localStorage.setItem("email",  response.email);
+            localStorage.setItem("genre",  genre);
+            localStorage.setItem("birthday",  response.birthday);
             localStorage.setItem("logged_in", true);
-            localStorage.setItem("token", response.token.token);
             showDivsConnect();
            });
    } 
