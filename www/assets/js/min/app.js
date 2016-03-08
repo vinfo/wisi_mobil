@@ -17,11 +17,11 @@ function checkConnectionFB() {
             alert('You are connected to Fb');  
             var gar = facebookConnectPlugin.getAuthResponse();
             alert('varrrrrrrrrrrr: ' + JSON.stringify(gar));
-            localStorage.setItem("logged_in","FB");
+            localStorage.setItem("logged_in",true);
             showDivsConnect();    
         } else {
             alert('not connected to FB');
-            localStorage.setItem("logged_in","FB");
+            localStorage.setItem("logged_in",false);
         }
     });
 }
@@ -61,13 +61,22 @@ var myApp = new Framework7({
 }), $$ = Dom7;
 
 var fbLoginSuccess = function (userData) {
-    localStorage.setItem("logged_in","FB"); 
+    localStorage.setItem("logged_in",true);
+    alert(JSON.stringify(userData));
     showDivsConnect();
-    //window.open('http://wisi.com.co/public/#/ad', '_system'); 
+/*    $.ajax({
+      method: "POST",
+      url: "http://wisi.com.co/api/social/sigin",
+      data: { name: "John", location: "Boston" }
+    })
+    .done(function( msg ) {
+        alert( "Data Saved: " + msg );
+        //window.open('http://wisi.com.co/public/#/ad', '_system'); 
+    }); */   
+    
 }
 
 $$("body").on("click", ".button-facebook", function() {
-    //myApp.alert("Conectar FB", "");
     facebookConnectPlugin.login(["public_profile","email"],
         fbLoginSuccess,
         function (error) { myApp.alert("Problemas conectando con Facebook!", ""); }
