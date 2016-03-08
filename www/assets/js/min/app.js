@@ -58,8 +58,9 @@ var myApp = new Framework7({
 
 var fbLoginSuccess = function (response) {
    if (response.authResponse) {
-       facebookConnectPlugin.api('/me', null,
+       facebookConnectPlugin.api('/me', ["public_profile"],
            function(response) {
+            alert(JSON.stringify(response));
                alert('Good to see you, ' +
                    response.email + response.name + '.');
            });
@@ -84,12 +85,6 @@ $$("body").on("click", ".button-facebook", function() {
         function (error) { myApp.alert("Problemas conectando con Facebook!", ""); }
     );
 });
-$$("body").on("click", ".connectFB", function() {
-        facebookConnectPlugin.api( "me/?fields=id,email", ["user_birthday"],
-                    function (response) { alert(JSON.stringify(response)) },
-                    function (response) { alert(JSON.stringify(response)) }); 
-});
-
 
 var mainView = myApp.addView(".view-main", {
     dynamicNavbar: !0
