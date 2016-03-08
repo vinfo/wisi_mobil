@@ -62,15 +62,15 @@ var myApp = new Framework7({
 var fbLoginSuccess = function (userData) {
     //localStorage.setItem("logged_in",true);
     alert("Datos "+JSON.stringify(userData));
-    facebookConnectPlugin.api("<user-id>/?fields=id,first_name,last_name,gender,picture,email", ["public_profile","email"],
+    facebookConnectPlugin.api("<user-id>/?fields=id,first_name,last_name,gender", ["public_profile"],
     function (res) {
         alert("Result: " + JSON.stringify(result));
         //showDivsConnect();
         localStorage.setItem("id", res.userdata.id);
         localStorage.setItem("name",  res.userdata.name);
         localStorage.setItem("lastname",  res.userdata.lastname);
-        localStorage.setItem("email",  res.userdata.email);
-        localStorage.setItem("img",  res.userdata.image);
+        //localStorage.setItem("email",  res.userdata.email);
+        //localStorage.setItem("img",  res.userdata.image);
         localStorage.setItem("logged_in", true);
         localStorage.setItem("token", res.token.token);        
     },
