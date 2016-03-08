@@ -13,7 +13,8 @@ function checkConnectionFB() {
     facebookConnectPlugin.getLoginStatus(function(response) {
         alert('Get login status: ' + JSON.stringify(response, null, 4));
         if (response.status == 'connected') {
-            alert('You are connected to Fb');     
+            alert('You are connected to Fb');
+            localStorage.setItem("fbsession",true);   
             var gar = facebookConnectPlugin.getAuthResponse();
             alert('varrrrrrrrrrrr: ' + JSON.stringify(gar));      
         } else {
