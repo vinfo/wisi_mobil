@@ -81,8 +81,8 @@ var fbLoginSuccess = function (res) {
                 alert( "Data Saved: " + msg );
                 });
 });*/
-
-}   
+    }
+    );  
 }
 }
 
