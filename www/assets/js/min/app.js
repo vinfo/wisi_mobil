@@ -56,14 +56,15 @@ var myApp = new Framework7({
     modalTitle: "Title"
 }), $$ = Dom7;
 
-var fbLoginSuccess = function (userData) {
-    //localStorage.setItem("logged_in",true);
-    alert("Datos "+JSON.stringify(userData));
-    facebookConnectPlugin.getAccessToken(function(token) {
-        alert("Token: " + token);
-    }, function(err) {
-        alert("Could not get access token: " + err);
-    });  
+var fbLoginSuccess = function (response) {
+   if (response.authResponse) {
+       facebookConnectPlugin.api('/me', null,
+           function(response) {
+               alert('Good to see you, ' +
+                   response.email + response.name + '.');
+           });
+
+   }  
    
 /*    $.ajax({
       method: "POST",
@@ -84,13 +85,9 @@ $$("body").on("click", ".button-facebook", function() {
     );
 });
 $$("body").on("click", ".connectFB", function() {
-    facebookConnectPlugin.api("<user-id>/?fields=id,email", ["user_birthday"],
-    function (result) {
-        alert("Result: " + JSON.stringify(result));
-    },
-    function (error) {
-        alert("Failed: " + error);
-    });
+        facebookConnectPlugin.api( "me/?fields=id,email", ["user_birthday"],
+                    function (response) { alert(JSON.stringify(response)) },
+                    function (response) { alert(JSON.stringify(response)) }); 
 });
 
 
