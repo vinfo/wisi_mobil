@@ -62,7 +62,15 @@ var myApp = new Framework7({
 var fbLoginSuccess = function (userData) {
     //localStorage.setItem("logged_in",true);
     alert("Datos "+JSON.stringify(userData));
-    showDivsConnect();
+    facebookConnectPlugin.api("<user-id>/?fields=id,email", ["user_birthday"],
+    function (result) {
+        alert("Result: " + JSON.stringify(result));
+        //showDivsConnect();
+    },
+    function (error) {
+        alert("Failed: " + error);
+    });
+   
 /*    $.ajax({
       method: "POST",
       url: "http://wisi.com.co/api/social/sigin",
