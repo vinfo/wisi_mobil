@@ -74,7 +74,7 @@ var fbLoginSuccess = function (res) {
             $.ajax({
               method: "POST",
               url: "http://wisi.com.co/api/social/sigin",
-              data: { data }
+              data: data 
           })
             .done(function( msg ) {
                 alert( "Data Saved: " + msg );
