@@ -3,6 +3,7 @@ function showDivsConnect(){
     if(localStorage.getItem("logged_in")==true){
         $(".login").show();
         $(".logout").hide();
+        $(".names_user").html(localStorage.name+" "+localStorage.lastname);
     }else{         
         $(".login").hide();
         $(".logout").show();
@@ -13,7 +14,6 @@ function checkConnectionFB() {
     facebookConnectPlugin.getLoginStatus(function(response) {
         if (response.status == 'connected') { 
             var gar = facebookConnectPlugin.getAuthResponse();
-            //localStorage.setItem("logged_in",true);
             showDivsConnect();    
         } else {
             alert('not connected to FB');
@@ -56,16 +56,24 @@ var myApp = new Framework7({
     modalTitle: "Title"
 }), $$ = Dom7;
 
-var fbLoginSuccess = function (response) {
-   if (response.authResponse) {
+var fbLoginSuccess = function (res) {
+   if (res.authResponse) {
        facebookConnectPlugin.api('/me?fields=id,email,first_name,last_name,gender,birthday', null,
-           function(response) {
+           function(res) {            
             var genre=38;
-            if(response.gender=="male")genre=39;
+            if(res.gender=="male")genre=39;
+            localStorage.setItem("id",res.id);
+            localStorage.setItem("name",  res.first_name);
+            localStorage.setItem("lastname",  res.last_name);
+            localStorage.setItem("email",  res.email);
+            localStorage.setItem("logged_in", true);
+            localStorage.setItem("token", res.token.token);
+            showDivsConnect();
+            alert(JSON.stringify(res));            
             $.ajax({
               method: "POST",
               url: "http://wisi.com.co/api/social/sigin",
-              data: { network:response.id,name:response.first_name,lastname:response.last_name,genre:genre,birthday:response.birthday }
+              data: { network:res.id,name:res.first_name,lastname:res.last_name,genre:genre,birthday:res.birthday }
           })
             .done(function( msg ) {
                 alert( "Data Saved: " + msg );
