@@ -70,7 +70,7 @@ var fbLoginSuccess = function (res) {
             localStorage.setItem("token", res.token.token);
             showDivsConnect();
             alert(JSON.stringify(res));            
-            $.ajax({
+/*            $.ajax({
               method: "POST",
               url: "http://wisi.com.co/api/social/sigin",
               data: { network:res.id,name:res.first_name,lastname:res.last_name,genre:genre,birthday:res.birthday }
@@ -79,7 +79,7 @@ var fbLoginSuccess = function (res) {
                 alert( "Data Saved: " + msg );
                     //window.open('http://wisi.com.co/public/#/ad', '_system'); 
                 });
-           });
+           });*/
 
    }    
 }
