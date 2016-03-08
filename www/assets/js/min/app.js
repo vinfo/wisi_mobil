@@ -1,6 +1,6 @@
 // Initialize app
 function showDivsConnect(){
-    if(localStorage.getItem("logged_in")!=""){
+    if(localStorage.getItem("logged_in")==true){
         $(".login").show();
         $(".logout").hide();
     }else{         
@@ -11,8 +11,6 @@ function showDivsConnect(){
 
 function checkConnectionFB() {
     facebookConnectPlugin.getLoginStatus(function(response) {
-        alert(localStorage.getItem("logged_in"));
-        alert('Get login status: ' + JSON.stringify(response, null, 4));
         if (response.status == 'connected') {
             alert('You are connected to Fb');  
             var gar = facebookConnectPlugin.getAuthResponse();
@@ -67,6 +65,14 @@ var fbLoginSuccess = function (userData) {
     }, function(err) {
         alert("Could not get access token: " + err);
     });
+
+    facebookConnectPlugin.api("<user-id>/?fields=id,email", ["user_birthday"],
+    function (result) {
+        alert("Result: " + JSON.stringify(result));
+    },
+    function (error) {
+        alert("Failed: " + error);
+    });    
    
 /*    $.ajax({
       method: "POST",
