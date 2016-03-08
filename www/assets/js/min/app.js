@@ -43,6 +43,7 @@ function naxvarBg() {
 }
 
 function hidePreloader() {
+    alert(11);
     jQuery(".page-preloader").animate({
         opacity: 0
     }, function() {
@@ -75,7 +76,6 @@ var mainView = myApp.addView(".view-main", {
     dynamicNavbar: !0
 });
 $$(document).on("pageInit", function(e) {
-    alert("page");
     checkConnectionFB();
     var page = e.detail.page;
     myApp.calendar({
@@ -195,6 +195,7 @@ $$(document).on("pageInit", function(e) {
         }
     });
 }), $(document).ready(function() {
+    alert(1);
     randSlider();
     checkConnectionFB();    
 
