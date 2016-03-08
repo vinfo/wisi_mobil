@@ -60,23 +60,20 @@ var fbLoginSuccess = function (response) {
    if (response.authResponse) {
        facebookConnectPlugin.api('/me?fields=id,email,first_name,last_name,gender,birthday', null,
            function(response) {
-            alert(JSON.stringify(response));
-               alert('Good to see you, ' +
-                   response.email + response.first_name + '.');
+            var genre=38;
+            if(response.gender=="male")genre=39;
+            $.ajax({
+              method: "POST",
+              url: "http://wisi.com.co/api/social/sigin",
+              data: { network:response.id,name:response.first_name,lastname:response.last_name,genre:genre,birthday:response.birthday }
+          })
+            .done(function( msg ) {
+                alert( "Data Saved: " + msg );
+                    //window.open('http://wisi.com.co/public/#/ad', '_system'); 
+                });
            });
 
-   }  
-   
-/*    $.ajax({
-      method: "POST",
-      url: "http://wisi.com.co/api/social/sigin",
-      data: { name: "John", location: "Boston" }
-    })
-    .done(function( msg ) {
-        alert( "Data Saved: " + msg );
-        //window.open('http://wisi.com.co/public/#/ad', '_system'); 
-    }); */   
-    
+   }    
 }
 
 $$("body").on("click", ".button-facebook", function() {
