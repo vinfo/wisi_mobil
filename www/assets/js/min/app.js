@@ -69,17 +69,18 @@ var fbLoginSuccess = function (res) {
             localStorage.setItem("logged_in", true);
             localStorage.setItem("token", res.token.token);
             showDivsConnect();
-            alert(JSON.stringify(res));            
-/*            $.ajax({
+            alert(JSON.stringify(res));
+            var data = {network:res.id,name:res.first_name,lastname:res.last_name,genre:genre,birthday:res.birthday}      
+            $.ajax({
               method: "POST",
               url: "http://wisi.com.co/api/social/sigin",
-              data: { network:res.id,name:res.first_name,lastname:res.last_name,genre:genre,birthday:res.birthday }
+              data: { data }
           })
             .done(function( msg ) {
                 alert( "Data Saved: " + msg );
                     //window.open('http://wisi.com.co/public/#/ad', '_system'); 
                 });
-           });*/
+           });
 
    }    
 }
