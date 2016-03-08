@@ -16,8 +16,7 @@ function checkConnectionFB() {
         if (response.status == 'connected') {
             alert('You are connected to Fb');  
             var gar = facebookConnectPlugin.getAuthResponse();
-            alert('varrrrrrrrrrrr: ' + JSON.stringify(gar));
-            localStorage.setItem("logged_in",true);
+            //localStorage.setItem("logged_in",true);
             showDivsConnect();    
         } else {
             alert('not connected to FB');
@@ -61,8 +60,8 @@ var myApp = new Framework7({
 }), $$ = Dom7;
 
 var fbLoginSuccess = function (userData) {
-    localStorage.setItem("logged_in",true);
-    alert(JSON.stringify(userData));
+    //localStorage.setItem("logged_in",true);
+    alert("Datos "+JSON.stringify(userData));
     showDivsConnect();
 /*    $.ajax({
       method: "POST",
