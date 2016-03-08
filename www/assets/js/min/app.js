@@ -43,7 +43,6 @@ function naxvarBg() {
 }
 
 function hidePreloader() {
-    alert(11);
     jQuery(".page-preloader").animate({
         opacity: 0
     }, function() {
@@ -195,8 +194,8 @@ $$(document).on("pageInit", function(e) {
         }
     });
 }), $(document).ready(function() {
-    alert(1);
     randSlider();
+    alert(localStorage.fbsession);
     checkConnectionFB();    
 
     if ((null === localStorage.getItem("newOptions") || localStorage.getItem("newOptions") === !0) && (myApp.popup(".popup-splash"), 
