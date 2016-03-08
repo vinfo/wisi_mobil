@@ -1,5 +1,6 @@
 // Initialize app
 function showDivsConnect(){
+    alert("divs");
     if(localStorage.getItem("logged_in")==true){
         $(".login").show();
         $(".logout").hide();
@@ -60,7 +61,6 @@ var fbLoginSuccess = function (response) {
    if (response.authResponse) {
        facebookConnectPlugin.api('/me?fields=id,email,first_name,last_name,gender,birthday', null,
            function(response) {
-            alert(JSON.stringify(response));
             var genre=38;
             if(response.gender=="male")genre=39;
             localStorage.setItem("id",response.id);
@@ -68,7 +68,7 @@ var fbLoginSuccess = function (response) {
             localStorage.setItem("lastname",  response.last_name);
             localStorage.setItem("email",  response.email);
             localStorage.setItem("genre",  genre);
-            localStorage.setItem("birthday",  response.birthday);
+            localStorage.setItem("birthday", response.birthday);
             localStorage.setItem("logged_in", true);
             showDivsConnect();
            });
