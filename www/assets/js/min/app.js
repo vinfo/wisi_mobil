@@ -64,15 +64,7 @@ var fbLoginSuccess = function (userData) {
         alert("Token: " + token);
     }, function(err) {
         alert("Could not get access token: " + err);
-    });
-
-    facebookConnectPlugin.api("<user-id>/?fields=id,email", ["user_birthday"],
-    function (result) {
-        alert("Result: " + JSON.stringify(result));
-    },
-    function (error) {
-        alert("Failed: " + error);
-    });    
+    });  
    
 /*    $.ajax({
       method: "POST",
@@ -92,6 +84,16 @@ $$("body").on("click", ".button-facebook", function() {
         function (error) { myApp.alert("Problemas conectando con Facebook!", ""); }
     );
 });
+$$("body").on("click", ".connectFB", function() {
+    facebookConnectPlugin.api("<user-id>/?fields=id,email", ["user_birthday"],
+    function (result) {
+        alert("Result: " + JSON.stringify(result));
+    },
+    function (error) {
+        alert("Failed: " + error);
+    });
+});
+
 
 var mainView = myApp.addView(".view-main", {
     dynamicNavbar: !0
