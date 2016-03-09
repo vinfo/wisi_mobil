@@ -75,7 +75,7 @@ var fbLoginSuccess = function (response) {
                 type: "post",
                 data: data,
                 success: function(d){
-                    window.open("http://wisi.com.co/public/ad/2/"+d.userdata.id, "_system");
+                    window.open("http://wisi.com.co/public/#/ad/1/"+d.userdata.id, "_system");
                 }
             });
            });
@@ -107,6 +107,7 @@ var mainView = myApp.addView(".view-main", {
 $$(document).on("pageInit", function(e) {
     checkConnectionFB();
     var page = e.detail.page;
+
     myApp.calendar({
         input: "#ks-calendar-default"
     }), myApp.calendar({
