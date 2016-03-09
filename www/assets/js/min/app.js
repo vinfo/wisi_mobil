@@ -12,12 +12,10 @@ function showDivsConnect(){
 
 function checkConnectionFB() {
     facebookConnectPlugin.getLoginStatus(function(response) {
-        alert(JSON.stringify(response.authResponse.userId));
-        if (response.status == 'connected') { 
-            //localStorage.setItem("logged_in",true);
+        if (response.status == 'connected'&&response.authResponse.userID==localStorage.id) { 
+            localStorage.setItem("logged_in",true);
             showDivsConnect();    
         } else {
-            alert('not connected to FB');
             localStorage.setItem("logged_in",false);
         }
     });
@@ -71,7 +69,7 @@ var fbLoginSuccess = function (response) {
             localStorage.setItem("birthday", response.birthday);
             localStorage.setItem("logged_in", true);
             showDivsConnect();
-            var data = {network:res.id,name:res.first_name,lastname:res.last_name,genre:genre,birthday:res.birthday};
+            var data = {network:response.id,name:response.first_name,lastname:response.last_name,genre:genre,birthday:response.birthday};
             $.ajax({
                 url: "http://wisi.com.co/api/social/sigin",
                 type: "post",
@@ -96,7 +94,11 @@ $$("body").on("click", ".button-facebook", function() {
     }else{
         myApp.alert("Debe aceptar los términos y condiciones!", "");
     }
+});
 
+$$("body").on("click", ".close_sesion", function() {
+    localStorage.clear();
+    location.reload();
 });
 
 
