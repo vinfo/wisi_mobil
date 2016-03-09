@@ -39,5 +39,9 @@
 ehthumbs.db
 Thumbs.db
 .gitignore
+<<<<<<< HEAD
 *.sublime-project
 wisi.sublime-workspace
+=======
+platforms/
+>>>>>>> origin/master

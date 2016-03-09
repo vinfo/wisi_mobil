@@ -1,22 +1,28 @@
 // Initialize app
 function showDivsConnect(){
-    if(localStorage.fbsession==true){
+    alert("divs");
+    if(localStorage.getItem("logged_in")==true){
         $(".login").show();
         $(".logout").hide();
+        $(".names_user").html(localStorage.name+" "+localStorage.lastname);
     }else{         
         $(".login").hide();
         $(".logout").show();
     }
 }
-function checkConnectionFB(){
-    var fbStatusSuccess = function (userData) {
-        showDivsConnect();
-    }    
-    facebookConnectPlugin.getLoginStatus(
-        fbStatusSuccess,
-        function (error) {showDivsConnect();}
-    )
+
+function checkConnectionFB() {
+    facebookConnectPlugin.getLoginStatus(function(response) {
+        if (response.status == 'connected') { 
+            //localStorage.setItem("logged_in",true);
+            showDivsConnect();    
+        } else {
+            alert('not connected to FB');
+            localStorage.setItem("logged_in",false);
+        }
+    });
 }
+
 function randSlider() {
     var num= Math.floor((Math.random() * 5) + 1);
     $(".full-page-video").css('background-image','url("http://wisi.com.co/assets/img/sliders/slider'+num+'.jpg")');
@@ -24,16 +30,16 @@ function randSlider() {
 function findElement(selector) {
     var box = null;
     return $(".page-on-center").length > 0 ? (box = $(".view-main").find(".page-on-center " + selector), 
-    0 === box.length && (box = $(".view-main").find(".page-on-center" + selector))) : box = $(".view-main").find(".page").find(selector), 
+        0 === box.length && (box = $(".view-main").find(".page-on-center" + selector))) : box = $(".view-main").find(".page").find(selector), 
     box;
 }
 
 function naxvarBg() {
     var navbar = $(".navbar-anim-on-scroll"), box = null, cls = "active";
     return 0 === navbar.length ? !1 : (box = navbar.next().find($(".page-on-center").length > 0 ? ".page-on-center .page-content" : ".page .page-content"), 
-    box.scrollTop() > 10 ? navbar.addClass(cls) : navbar.removeClass(cls), void box.scroll(function() {
-        $(this).scrollTop() > 40 ? navbar.addClass(cls) : navbar.removeClass(cls);
-    }));
+        box.scrollTop() > 10 ? navbar.addClass(cls) : navbar.removeClass(cls), void box.scroll(function() {
+            $(this).scrollTop() > 40 ? navbar.addClass(cls) : navbar.removeClass(cls);
+        }));
 }
 
 function hidePreloader() {
@@ -51,63 +57,44 @@ var myApp = new Framework7({
     modalTitle: "Title"
 }), $$ = Dom7;
 
-var fbLoginSuccess = function (userData) {
-    localStorage.setItem("fbsession",true);
-    showDivsConnect();
-    window.open('http://wisi.com.co/public/#/ad', '_system'); 
+var fbLoginSuccess = function (response) {
+   if (response.authResponse) {
+       facebookConnectPlugin.api('/me?fields=id,email,first_name,last_name,gender,birthday', null,
+           function(response) {
+            var genre=38;
+            if(response.gender=="male")genre=39;
+            localStorage.setItem("id",response.id);
+            localStorage.setItem("name",  response.first_name);
+            localStorage.setItem("lastname",  response.last_name);
+            localStorage.setItem("email",  response.email);
+            localStorage.setItem("genre",  genre);
+            localStorage.setItem("birthday", response.birthday);
+            localStorage.setItem("logged_in", true);
+            showDivsConnect();
+           });
+   } 
+    
 }
 
 $$("body").on("click", ".button-facebook", function() {
-    //myApp.alert("Conectar FB", "");
-    facebookConnectPlugin.login(["public_profile","email"],
-        fbLoginSuccess,
-        function (error) { myApp.alert("Problemas conectando con Facebook!", ""); }
-    );
+    var terms=$('#chkTerm').is(':checked');
+    if(terms){
+        facebookConnectPlugin.login(["public_profile"],
+            fbLoginSuccess,
+            function (error) { myApp.alert("Problemas conectando con Facebook!", ""); }
+        );
+    }else{
+        myApp.alert("Debe aceptar los términos y condiciones!");
+    }
+
 });
+
 
 var mainView = myApp.addView(".view-main", {
     dynamicNavbar: !0
 });
-
-$$(".popup-splash").on("opened", function() {
-    myApp.swiper(".swiper-container", {
-        speed: 400,
-        pagination: ".swiper-pagination",
-        paginationBulletRender: function(index, className) {
-            return '<span class="' + className + '">' + (index + 1) + "</span>";
-        }
-    });
-}), $$(document).on("pageAfterAnimation", function(e) {
-    if ($(".page-on-center .chart-content").length > 0) {
-        var ctx = document.querySelector(".page-on-center .chart-content").getContext("2d");
-        showLineChart(ctx);
-    }
-    if ($(".page-on-center .line-chart-content").length > 0) {
-        var ctx = document.querySelector(".page-on-center .line-chart-content").getContext("2d");
-        showLineChartPage(ctx);
-    }
-    if ($(".page-on-center .bar-chart-content").length > 0) {
-        var ctx = document.querySelector(".page-on-center .bar-chart-content").getContext("2d");
-        showBarChartPage(ctx);
-    }
-    if ($(".page-on-center .pie-chart-content").length > 0) {
-        var ctx = document.querySelector(".page-on-center .pie-chart-content").getContext("2d");
-        showPieChartPage(ctx);
-    }
-    if ($(".page-on-center .doughnut-chart-content").length > 0) {
-        var ctx = document.querySelector(".page-on-center .doughnut-chart-content").getContext("2d");
-        showDoughnutChartPage(ctx);
-    }
-    if ($(".page-on-center .radar-chart-content").length > 0) {
-        var ctx = document.querySelector(".page-on-center .radar-chart-content").getContext("2d");
-        showRadarChartPage(ctx);
-    }
-    if ($(".page-on-center .polar-chart-content").length > 0) {
-        var ctx = document.querySelector(".page-on-center .polar-chart-content").getContext("2d");
-        showPolarChartPage(ctx);
-    }
-    naxvarBg();
-}), $$(document).on("pageInit", function(e) {
+$$(document).on("pageInit", function(e) {
+    checkConnectionFB();
     var page = e.detail.page;
     myApp.calendar({
         input: "#ks-calendar-default"
@@ -190,7 +177,7 @@ $$(".popup-splash").on("opened", function() {
                 myApp.hidePreloader();
                 var response = JSON.parse(data);
                 response.error ? myApp.alert(response.msg, "") : (myApp.alert(response.msg, ""), 
-                form.find("input[type=text], input[type=email], textarea").val(""));
+                    form.find("input[type=text], input[type=email], textarea").val(""));
             });
         }
     });
@@ -226,26 +213,28 @@ $$(".popup-splash").on("opened", function() {
         }
     });
 }), $(document).ready(function() {
-    randSlider();
+    //randSlider();    
+    localStorage.setItem("logged_in",false);
+    alert(localStorage.getItem("logged_in"));
     checkConnectionFB();    
 
     if ((null === localStorage.getItem("newOptions") || localStorage.getItem("newOptions") === !0) && (myApp.popup(".popup-splash"), 
-    localStorage.setItem("newOptions", !0)), $(".chart-content").length > 0) {
+        localStorage.setItem("newOptions", !0)), $(".chart-content").length > 0) {
         var obj = document.querySelector(".chart-content"), ctx = obj.getContext("2d");
-        showLineChart(ctx);
-    }
-    naxvarBg(), $(".js-toggle-menu").on("click", function() {
-        $(this).next().slideToggle(200), $(this).find("span").toggleClass("icon-chevron-down").toggleClass("icon-chevron-up");
-    }), $("body").on("click", ".js-gallery-col", function() {
-        var cols = $(this).data("cols");
-        $(".gallery-list").attr({
-            "data-cols": cols
-        }), $(".js-gallery-col").removeClass("active"), $(this).addClass("active");
-    });
+    showLineChart(ctx);
+}
+naxvarBg(), $(".js-toggle-menu").on("click", function() {
+    $(this).next().slideToggle(200), $(this).find("span").toggleClass("icon-chevron-down").toggleClass("icon-chevron-up");
+}), $("body").on("click", ".js-gallery-col", function() {
+    var cols = $(this).data("cols");
+    $(".gallery-list").attr({
+        "data-cols": cols
+    }), $(".js-gallery-col").removeClass("active"), $(this).addClass("active");
+});
 }), $.fn.serializeObject = function() {
     var o = {}, a = this.serializeArray();
     return $.each(a, function() {
         void 0 !== o[this.name] ? (o[this.name].push || (o[this.name] = [ o[this.name] ]), 
-        o[this.name].push(this.value || "")) : o[this.name] = this.value || "";
+            o[this.name].push(this.value || "")) : o[this.name] = this.value || "";
     }), o;
 };

@@ -6818,7 +6818,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
   overflow-x: hidden;
   text-align: center;
   color: #f0f0f0;
-  background-image: url('http://wisi.com.co/assets/img/sliders/slider1.jpg');
+  background: url("../img/bg_wisi.png") repeat;
 }
 .full-page-video::after {
   content: "";
