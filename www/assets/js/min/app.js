@@ -1,6 +1,6 @@
 // Initialize app
 function showDivsConnect(){
-    console.log(localStorage.logged_in));
+    console.log(localStorage.logged_in);
     if(localStorage.logged_in=="true"){
         $(".login").show();
         $(".logout").hide();
