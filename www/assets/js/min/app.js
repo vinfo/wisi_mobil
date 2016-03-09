@@ -57,28 +57,27 @@ var myApp = new Framework7({
 
 var fbLoginSuccess = function (response) {
    if (response.authResponse) {
-       facebookConnectPlugin.api('/me?fields=id,email,first_name,last_name,gender,birthday', null,
+       facebookConnectPlugin.api('/me?fields=id,email,first_name,last_name,gender,picture', null,
            function(response) {
-            var genre=38;
-            if(response.gender=="male")genre=39;
+            var gender=38;
+            if(response.gender=="male")gender=39;
             localStorage.setItem("id",response.id);
             localStorage.setItem("name",  response.first_name);
             localStorage.setItem("lastname",  response.last_name);
             localStorage.setItem("email",  response.email);
-            localStorage.setItem("genre",  genre);
-            localStorage.setItem("birthday", response.birthday);
+            localStorage.setItem("gender",  gender);
+            localStorage.setItem("picture",  response.picture.data.url);
             localStorage.setItem("logged_in", true);
             showDivsConnect();
-            var data = {network:response.id,name:response.first_name,lastname:response.last_name,genre:genre,birthday:response.birthday};
+            var data=$.param({data:{id:response.id,first_name:response.first_name,last_name:response.last_name,email:response.email,gender:gender,picture:response.picture}});
             $.ajax({
                 url: "http://wisi.com.co/api/social/sigin",
                 type: "post",
                 data: data,
                 success: function(d){
-                    alert(d);
+                    window.open("http://wisi.com.co/public/ad/2/"+d.userdata.id, "_system");
                 }
-            });            
-            //window.open('http://wisi.com.co/public/ad/2/1', '_system'); 
+            });
            });
    } 
     
@@ -226,8 +225,6 @@ $$(document).on("pageInit", function(e) {
     });
 }), $(document).ready(function() {
     //randSlider();    
-    localStorage.setItem("logged_in",false);
-    alert(localStorage.getItem("logged_in"));
     checkConnectionFB();    
 
     if ((null === localStorage.getItem("newOptions") || localStorage.getItem("newOptions") === !0) && (myApp.popup(".popup-splash"), 
