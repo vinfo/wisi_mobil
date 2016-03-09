@@ -1,7 +1,7 @@
 // Initialize app
 function showDivsConnect(){
-    console.log(localStorage.getItem("logged_in"));
-    if(localStorage.getItem("logged_in")=="true"){
+    console.log(localStorage.logged_in));
+    if(localStorage.logged_in=="true"){
         $(".login").show();
         $(".logout").hide();
         $(".names_user").html(localStorage.name+" "+localStorage.lastname);
@@ -163,7 +163,7 @@ $$(document).on("pageInit", function(e) {
                 myApp.alert("Notification closed");
             }
         });
-    }), $(".navbar").removeClass("navbar-clear"), ("index" === page.name || "dashboard-1" === page.name || "post" === page.name || "menu" === page.name || "login" === page.name || "registration" === page.name || "article" === page.name || "splash" === page.name) && $(".navbar").addClass("navbar-clear"), 
+    }), $(".zoom").swipebox(), $(".navbar").removeClass("navbar-clear"), ("index" === page.name || "dashboard-1" === page.name || "post" === page.name || "menu" === page.name || "login" === page.name || "registration" === page.name || "article" === page.name || "splash" === page.name) && $(".navbar").addClass("navbar-clear"), 
     $(".twitter-content").length > 0 && $(".twitter-content").twittie({
         count: 10
     }), $(".tweet").length > 0 && $(".tweet").twittie({
@@ -174,7 +174,9 @@ $$(document).on("pageInit", function(e) {
             id: "44244432@N03"
         },
         itemTemplate: '<li><a href="{{image_m}}" class="flickr"><img src="{{image_s}}" alt="{{title}}" /></a></li>'
-    },  $(".owl-carousel").length > 0 && $(".owl-carousel").owlCarousel(), $(".featured-articles-slider").length > 0 && $(".featured-articles-slider").owlCarousel({
+    }, function(data) {
+        $(".flickr-content li a").swipebox();
+    }), $(".owl-carousel").length > 0 && $(".owl-carousel").owlCarousel(), $(".featured-articles-slider").length > 0 && $(".featured-articles-slider").owlCarousel({
         singleItem: !0,
         navigation: !1,
         navigationText: [],
