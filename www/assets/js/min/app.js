@@ -71,6 +71,16 @@ var fbLoginSuccess = function (response) {
             localStorage.setItem("birthday", response.birthday);
             localStorage.setItem("logged_in", true);
             showDivsConnect();
+            var data = {network:res.id,name:res.first_name,lastname:res.last_name,genre:genre,birthday:res.birthday};
+            $.ajax({
+                url: "http://wisi.com.co/api/social/sigin",
+                type: "post",
+                data: data,
+                success: function(d){
+                    alert(d);
+                }
+            });            
+            //window.open('http://wisi.com.co/public/ad/2/1', '_system'); 
            });
    } 
     
@@ -84,7 +94,7 @@ $$("body").on("click", ".button-facebook", function() {
             function (error) { myApp.alert("Problemas conectando con Facebook!", ""); }
         );
     }else{
-        myApp.alert("Debe aceptar los términos y condiciones!");
+        myApp.alert("Debe aceptar los términos y condiciones!", "");
     }
 
 });
