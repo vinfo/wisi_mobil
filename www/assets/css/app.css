@@ -6276,7 +6276,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
 }
 
 .page-bg {
-  background: url("../img/bg.png") no-repeat top center/cover transparent;
+  background: url("../img/bg_wisi.png") no-repeat top center/cover transparent;
 }
 .page-bg .toolbar {
   background: rgba(0, 0, 0, 0.2);
@@ -6291,7 +6291,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
   background: #3685B0;
 }
 .page-bg-color[data-page="menu"] {
-  background: url("../img/bg.png") no-repeat top center transparent;
+  background: url("../img/bg_wisi.png") no-repeat top center transparent;
   background-size: cover;
 }
 .page-bg-color[data-page="menu"]::after {
@@ -6747,7 +6747,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
 
 [data-page="index"] .banner {
   position: relative;
-  background: url("../img/bg.png") no-repeat top center/cover transparent;
+  background: url("../img/bg_wisi.png") no-repeat top center/cover transparent;
   margin-top: -44px;
   height: 340px;
   color: #FFFFFF;
