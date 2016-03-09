@@ -39,3 +39,5 @@
 ehthumbs.db
 Thumbs.db
 .gitignore
+*.sublime-project
+wisi.sublime-workspace
