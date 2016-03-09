@@ -1,7 +1,6 @@
 // Initialize app
 function showDivsConnect(){
-    alert("divs");
-    if(localStorage.getItem("logged_in")==true){
+    if(localStorage.getItem("logged_in")=="true"){
         $(".login").show();
         $(".logout").hide();
         $(".names_user").html(localStorage.name+" "+localStorage.lastname);
@@ -13,6 +12,7 @@ function showDivsConnect(){
 
 function checkConnectionFB() {
     facebookConnectPlugin.getLoginStatus(function(response) {
+        alert(JSON.stringify(response.authResponse.userId));
         if (response.status == 'connected') { 
             //localStorage.setItem("logged_in",true);
             showDivsConnect();    
