@@ -12,6 +12,7 @@ function showDivsConnect(){
 }
 
 function checkConnectionFB() {
+    showDivsConnect();
     facebookConnectPlugin.getLoginStatus(function(response) {
         if (response.status == 'connected'&&response.authResponse.userID==localStorage.id) { 
             localStorage.setItem("logged_in",true);
@@ -163,7 +164,7 @@ $$(document).on("pageInit", function(e) {
                 myApp.alert("Notification closed");
             }
         });
-    }), $(".zoom").swipebox(), $(".navbar").removeClass("navbar-clear"), ("index" === page.name || "dashboard-1" === page.name || "post" === page.name || "menu" === page.name || "login" === page.name || "registration" === page.name || "article" === page.name || "splash" === page.name) && $(".navbar").addClass("navbar-clear"), 
+    }), $(".navbar").removeClass("navbar-clear"), ("index" === page.name || "dashboard-1" === page.name || "post" === page.name || "menu" === page.name || "login" === page.name || "registration" === page.name || "article" === page.name || "splash" === page.name) && $(".navbar").addClass("navbar-clear"), 
     $(".twitter-content").length > 0 && $(".twitter-content").twittie({
         count: 10
     }), $(".tweet").length > 0 && $(".tweet").twittie({
