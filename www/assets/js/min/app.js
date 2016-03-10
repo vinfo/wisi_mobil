@@ -104,23 +104,6 @@ $$("body").on("click", ".close_sesion", function() {
     location.reload();
 });
 
-$$("body").on("click", "#register-button", function() {
-    if(){
-        $.ajax({
-            url: "http://wisi.com.co/api/social/sigin",
-            type: "post",
-            data: data,
-            success: function(d){
-                var level="1";
-                if(localStorage.cont_started=="true")level="2";
-                window.open("http://wisi.com.co/public/#/ad/"+level+"/"+d.userdata.id, "_system");
-                localStorage.setItem("cont_started",true);
-            }
-        });
-    }
-});
-
-
 var mainView = myApp.addView(".view-main", {
     dynamicNavbar: !0
 });
@@ -201,7 +184,7 @@ $$(document).on("pageInit", function(e) {
         loop: !0,
         autoPlay: 3e3,
         stopOnHover: !0
-    }), $(".js-validate").length > 0 && $("body").on("click", ".js-form-submit", function() {
+    }), $(".js-validate").length > 0 && $("body").on("click", "#register-button", function() {
         var form = $(this).parents("form"), valid = form.valid();
         if ("registration" === page.name && valid) {
             var data = form.serializeObject();
