@@ -189,6 +189,7 @@ $$(document).on("pageInit", function(e) {
         if ("registration" === page.name && valid) {
             var data=$.param({data:form.serializeObject()});
             myApp.showPreloader(), $.post("http://wisi.com.co/api/register", data).done(function(data) {
+                alert(JOSN.stringify(data));
                 myApp.hidePreloader();
                 var response = JSON.parse(data);
                 response.error ? myApp.alert(response.msg, "") : (myApp.alert(response.msg, ""), 
