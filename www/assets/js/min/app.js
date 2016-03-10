@@ -28,7 +28,14 @@ function getUserData(id) {
         type: "get",
         data: data,
         success: function(d){
-           alert(JSON.stringify(d));
+           $('input[name="name"]').val(d[0].name);
+           $('input[name="last_name"]').val(d[0].lastname);
+           $('input[name="email"]').val(d[0].email);
+           $('input[name="birthday"]').val(d[0].birthday);
+           $('input[name="phone"]').val(d[0].phone);
+           $('input[name="celphone"]').val(d[0].celphone);
+           $('select[name="genre"] option[value="'+d[0].genre+'"]').prop("selected", true);
+           $('select[name="marital"] option[value="'+d[0].marital+'"]').attr("selected", "selected");
         }
     });
 }
