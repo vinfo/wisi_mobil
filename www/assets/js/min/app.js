@@ -116,12 +116,6 @@ $$(document).on("pageInit", function(e) {
     checkConnectionFB();
     var page = e.detail.page;
 
-    if(page=="chat"){
-        var name_user="Invitado";
-        if(localStorage.name!="")name_user=localStorage.name+" "+localStorage.lastname;
-        $(".message-name").html(name_user);
-    }
-
     myApp.calendar({
         input: "#ks-calendar-default"
     }), myApp.calendar({
@@ -219,6 +213,9 @@ $$(document).on("pageInit", function(e) {
     }), myMessagebar = myApp.messagebar(".messagebar");
     // Handle message
     $$(".messagebar .link").on("click", function() {
+        var name_user="Invitado";
+        if(localStorage.name!="")name_user=localStorage.name+" "+localStorage.lastname;
+        $(".message-name").html(name_user);        
         // Message text
         var messageText = myMessagebar.value().trim();
         // Exit if empy message
@@ -228,7 +225,7 @@ $$(document).on("pageInit", function(e) {
             // Random message type
             var avatar, name, messageType = [ "sent", "received" ][Math.round(Math.random())];
             "received" === messageType && (avatar = "http://lorempixel.com/output/people-q-c-100-100-9.jpg", 
-            name = "Kate"), // Add message
+            name = name_user), // Add message
             myMessages.addMessage({
                 // Message text
                 text: messageText,
