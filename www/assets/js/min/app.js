@@ -45,10 +45,10 @@ function getRechargedData(id) {
         url: "http://wisi.com.co/api/rechargeds",
         type: "get",
         data: data,
-        success: function(d){
-           for each(var dat in d){
-                console.log(d);
-           }
+        success: function(obj){
+            $.each(obj, function( key, value ) {
+              console.log( key + ": " + value );
+            });
         }
     });
 }
