@@ -6123,7 +6123,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
 .navbar.navbar-clear {
   -webkit-transition: all 400ms;
   transition: all 400ms;
-  background: transparent;
+  /*background: transparent;*/
   color: #ffffff;
 }
 .navbar-anim-on-scroll:after,
