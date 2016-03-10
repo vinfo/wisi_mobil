@@ -133,6 +133,10 @@ $$("body").on("click", ".button-facebook", function() {
 $$("body").on("click", ".pautar", function() {
     window.open("http://wisi.com.co/public/#/", "_system");
 });
+$$("body").on("click", ".free-navegate", function() {
+    window.open("http://wisi.com.co/public/#/2/"+localStorage.userid, "_system");
+});
+
 $$("body").on("click", ".close_sesion", function() {
     localStorage.clear();
     window.location.href = "index.html";
