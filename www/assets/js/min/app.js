@@ -105,7 +105,7 @@ $$("body").on("click", ".pautar", function() {
 });
 $$("body").on("click", ".close_sesion", function() {
     localStorage.clear();
-    location.reload();
+    window.location.href = "index.html";
 });
 
 
