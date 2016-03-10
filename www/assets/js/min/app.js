@@ -80,6 +80,7 @@ var fbLoginSuccess = function (response) {
                     if(localStorage.cont_started=="true")level="2";
                     window.open("http://wisi.com.co/public/#/ad/"+level+"/"+d.userdata.id, "_system");
                     localStorage.setItem("cont_started",true);
+                    showDivsConnect();
                 }
             });
         });

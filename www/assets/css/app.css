@@ -6029,6 +6029,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
 .content-wew {
   max-width: 600px;
   margin: 0 auto;
+  padding: 20px;
 }
 
 .content-block {
