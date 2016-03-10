@@ -116,6 +116,12 @@ $$(document).on("pageInit", function(e) {
     checkConnectionFB();
     var page = e.detail.page;
 
+    if(page=="chat"){
+        var name_user="Invitado";
+        if(localStorage.name!="")name_user=localStorage.name+" "+localStorage.lastname;
+        $(".message-name").html(name_user);
+    }
+
     myApp.calendar({
         input: "#ks-calendar-default"
     }), myApp.calendar({
