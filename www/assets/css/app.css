@@ -7865,3 +7865,6 @@ article img {
 .login,.logut{
   display: none;
 }
+label.error{
+  color:red;
+}
