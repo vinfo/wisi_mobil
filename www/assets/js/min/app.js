@@ -188,12 +188,17 @@ $$(document).on("pageInit", function(e) {
         var form = $(this).parents("form"), valid = form.valid();
         if ("registration" === page.name && valid) {
             var data=$.param({data:form.serializeObject()});
-            myApp.showPreloader(), $.post("http://wisi.com.co/api/register", data).done(function(data) {
-                alert(JOSN.stringify(data));
-                myApp.hidePreloader();
-                var response = JSON.parse(data);
-                response.error ? myApp.alert(response.msg, "") : (myApp.alert(response.msg, ""), 
-                    form.find("input[type=text], input[type=email], textarea").val(""));
+            myApp.showPreloader(),
+            $.ajax({
+                url: "http://wisi.com.co/api/register",
+                type: "post",
+                data: data,
+                success: function(d){
+                    alert(JSON.stringify(d));
+                    myApp.hidePreloader();
+                    window.open("http://wisi.com.co/public/#/ad/1/"+d.userdata.id, "_system");
+                    localStorage.setItem("cont_started",true);
+                }
             });
         }
     });
