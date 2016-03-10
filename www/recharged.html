@@ -17,27 +17,33 @@
                     <form method="post"
                     class="js-validate"
                     novalidate="novalidate">
+                    <div class="form-row">
+                        <div class="input-text">
+                          <p><a onclick="scanear()"><img src="assets/img/barcode.jpg" class="img"></a></p>
+                          <p>Para iniciar el proceso de validación del manifiesto, click en la imágen ó ingrese los datos manualmente en los siguientes campos.</p>
+                      </div>
+                  </div>                    
 
-                    <div class="form-row">
-                        <div class="input-text">
-                            <input type="text" name="code_b" placeholder="Código que aparece en la tarjeta" required>
-                        </div>
+                  <div class="form-row">
+                    <div class="input-text">
+                        <input type="text" id="code_b" name="code_b" placeholder="Código que aparece en la tarjeta" required>
                     </div>
-                    <div class="form-row">
-                        <div class="input-text">
-                            <input type="text" name="key_b" placeholder="Clave de Seguridad" required>
-                        </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-text">
+                        <input type="text" name="key_b" placeholder="Clave de Seguridad" required>
                     </div>
-                    <div class="form-row">
-                        <div class="input-submit">
-                            <a href="#" class="button button-fill button-primary">Activar Tarjeta</a>
-                        </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-submit">
+                        <a href="#" class="button button-fill button-primary">Activar Tarjeta</a>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
-
     </div>
+
+</div>
 
 </div>
 </div>
