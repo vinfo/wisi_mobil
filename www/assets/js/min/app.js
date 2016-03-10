@@ -57,9 +57,9 @@ var myApp = new Framework7({
 }), $$ = Dom7;
 
 var fbLoginSuccess = function (response) {
-   if (response.authResponse) {
-       facebookConnectPlugin.api('/me?fields=id,email,first_name,last_name,gender,picture', null,
-           function(response) {
+ if (response.authResponse) {
+     facebookConnectPlugin.api('/me?fields=id,email,first_name,last_name,gender,picture', null,
+         function(response) {
             var gender=38;
             if(response.gender=="male")gender=39;
             localStorage.setItem("id",response.id);
@@ -82,9 +82,9 @@ var fbLoginSuccess = function (response) {
                     localStorage.setItem("cont_started",true);
                 }
             });
-           });
-   } 
-    
+        });
+ } 
+
 }
 
 $$("body").on("click", ".button-facebook", function() {
@@ -93,7 +93,7 @@ $$("body").on("click", ".button-facebook", function() {
         facebookConnectPlugin.login(["public_profile"],
             fbLoginSuccess,
             function (error) { myApp.alert("Problemas conectando con Facebook!", ""); }
-        );
+            );
     }else{
         myApp.alert("Debe aceptar los términos y condiciones!", "");
     }
@@ -188,18 +188,18 @@ $$(document).on("pageInit", function(e) {
         var form = $(this).parents("form"), valid = form.valid();
         if ("registration" === page.name && valid) {
             var data=$.param({data:form.serializeObject()});
-            myApp.showPreloader(),
-            $.ajax({
-                url: "http://wisi.com.co/api/register",
-                type: "post",
-                data: data,
-                success: function(d){
-                    alert(JSON.stringify(d));
-                    myApp.hidePreloader();
-                    window.open("http://wisi.com.co/public/#/ad/1/"+d.userdata.id, "_system");
-                    localStorage.setItem("cont_started",true);
-                }
-            });
+            myApp.showPreloader(), $.post("http://wisi.com.co/api/register", data).done(function(data) {
+                alert(JSON.stringify());
+                myApp.hidePreloader();
+                var response = JSON.parse(data);
+            if(!response.message){
+                  window.location.href = 'login.html'; 
+            }else{
+                window.open("http://wisi.com.co/public/#/ad/1/"+response.userdata.id, "_system");
+            }
+
+            localStorage.setItem("cont_started",true);
+        });
         }
     });
     // Conversation flag
