@@ -6000,10 +6000,10 @@ html:not(.watch-active-state) .list-block .item-link:active {
 }
 .form.nice-label .form-row {
   position: relative;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #CCC;
   border-radius: 2px;
   margin-bottom: 10px;
-  background: rgba(0, 0, 0, 0.6) none repeat scroll 0 0;
+  background:#FFFFFF;
   text-align: left;
 }
 .form.nice-label .form-row label, .form.nice-label .form-row .label {
@@ -6054,7 +6054,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
 .forms .form-row {
   margin-bottom: 5px;
 }
-.forms .form-row .input-text input, .forms .form-row .input-text textarea {
+.forms .form-row .input-text input,select, .forms .form-row .input-text textarea {
   border: 1px solid #cccccc;
   color: #666666;
   padding: 5px 10px;
