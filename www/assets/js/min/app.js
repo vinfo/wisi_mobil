@@ -46,7 +46,9 @@ function getRechargedData(id) {
         type: "get",
         data: data,
         success: function(d){
-           alert(JSON.stringify(d));
+           for each(var dat in d){
+                console.log(d);
+           }
         }
     });
 }
