@@ -22,7 +22,7 @@ function checkConnectionFB() {
     });
 }
 function getUserData(id) {    
-    var data={id:id};
+    var data={id:id,table:"user"};
     $.ajax({
         url: "http://wisi.com.co/api/databyid",
         type: "get",
@@ -73,7 +73,7 @@ var fbLoginSuccess = function (response) {
          function(response) {
             var gender=38;
             if(response.gender=="male")gender=39;
-            localStorage.setItem("id",response.id);
+            localStorage.setItem("network",response.id);
             localStorage.setItem("name",  response.first_name);
             localStorage.setItem("lastname",  response.last_name);
             localStorage.setItem("email",  response.email);
@@ -91,6 +91,7 @@ var fbLoginSuccess = function (response) {
                     if(localStorage.cont_started=="true")level="2";
                     showDivsConnect();
                     localStorage.setItem("cont_started",true);
+                    localStorage.setItem("id",d.userdata.id);
                     window.open("http://wisi.com.co/public/#/ad/"+level+"/"+d.userdata.id, "_system");
                 }
             });
@@ -127,7 +128,7 @@ $$(document).on("pageInit", function(e) {
     checkConnectionFB();
     var page = e.detail.page;
 
-    if(page=="mydata")getUserData(localStorage.id);
+    if(page.name=="mydata")getUserData(localStorage.id);
 
     myApp.calendar({
         input: "#ks-calendar-default"
