@@ -47,9 +47,6 @@ function getRechargedData(id) {
         data: data,
         success: function(d){
            alert(JSON.stringify(d));
-           foreach(var dat in d){
-                console.log(dat);
-           }
         }
     });
 }
@@ -152,7 +149,7 @@ var mainView = myApp.addView(".view-main", {
 $$(document).on("pageInit", function(e) {
     checkConnectionFB();
     var page = e.detail.page;
-    var userid= localStorage.userid;
+    var userid=localStorage.userid;
     if(page.name=="mydata")getUserData(userid);
     if(page.name=="rechargeds")getRechargedData(userid);
 
