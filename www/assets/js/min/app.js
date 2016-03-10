@@ -13,7 +13,7 @@ function showDivsConnect(){
 
 function checkConnectionFB() {    
     facebookConnectPlugin.getLoginStatus(function(response) {
-        if (response.status == 'connected'&&response.authResponse.userID==localStorage.id) { 
+        if (response.status == 'connected'&&response.authResponse.userID==localStorage.network) { 
             localStorage.setItem("logged_in",true);
         } else {
             localStorage.setItem("logged_in",false);
@@ -47,6 +47,9 @@ function getRechargedData(id) {
         data: data,
         success: function(d){
            alert(JSON.stringify(d));
+           foreach(var dat in d){
+                console.log(dat);
+           }
         }
     });
 }
@@ -149,7 +152,7 @@ var mainView = myApp.addView(".view-main", {
 $$(document).on("pageInit", function(e) {
     checkConnectionFB();
     var page = e.detail.page;
-    var userid=localStorage.userid;
+    var userid= localStorage.userid;
     if(page.name=="mydata")getUserData(userid);
     if(page.name=="rechargeds")getRechargedData(userid);
 
