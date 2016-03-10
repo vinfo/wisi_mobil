@@ -39,6 +39,17 @@ function getUserData(id) {
         }
     });
 }
+function getRechargedData(id) {    
+    var data={id:id};
+    $.ajax({
+        url: "http://wisi.com.co/api/rechargeds",
+        type: "get",
+        data: data,
+        success: function(d){
+           alert(JSON.stringify(d));
+        }
+    });
+}
 
 function randSlider() {
     var num= Math.floor((Math.random() * 5) + 1);
@@ -134,8 +145,9 @@ var mainView = myApp.addView(".view-main", {
 $$(document).on("pageInit", function(e) {
     checkConnectionFB();
     var page = e.detail.page;
-
-    if(page.name=="mydata")getUserData(localStorage.userid);
+    var userid=localStorage.userid;
+    if(page.name=="mydata")getUserData(userid);
+    if(page.name=="rechargeds")getRechargedData(userid);
 
     myApp.calendar({
         input: "#ks-calendar-default"
@@ -215,7 +227,6 @@ $$(document).on("pageInit", function(e) {
         if ("registration" === page.name && valid) {
             var data=$.param({data:form.serializeObject()});
             myApp.showPreloader(), $.post("http://wisi.com.co/api/register", data).done(function(data) {
-                alert(JSON.stringify());
                 myApp.hidePreloader();
                 var response = JSON.parse(data);
             if(!response.message){
@@ -264,7 +275,8 @@ $$(document).on("pageInit", function(e) {
     });
 }), $(document).ready(function() {
     //randSlider();    
-    checkConnectionFB();    
+    checkConnectionFB();
+    showDivsConnect(); 
 
     if ((null === localStorage.getItem("newOptions") || localStorage.getItem("newOptions") === !0) && (myApp.popup(".popup-splash"), 
         localStorage.setItem("newOptions", !0)), $(".chart-content").length > 0) {
