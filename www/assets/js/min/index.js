@@ -41,6 +41,31 @@ var app = {
     }
 };
 
+var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 75000
+};
+if (navigator.geolocation) {
+  document.addEventListener("deviceready", detectGEO, false);    
+} else {
+    alert('Geolocalización no soportada');
+}
+
+function detectGEO(){
+  navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+}
+
+// onSuccess Geolocation    //
+function onSuccess(position) {
+  localStorage.removeItem("position");
+      
+  lat1= position.coords.latitude;
+  lng1= position.coords.longitude;   
+  var pos= {lat:lat1,lng:lng1};
+  localStorage.setItem("position",JSON.stringify(pos));  
+}
+
 function getDeviceProperty()
 {
      var deviceOS  = device.platform  ;  //fetch the device operating system
