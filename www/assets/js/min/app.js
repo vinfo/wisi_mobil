@@ -21,6 +21,17 @@ function checkConnectionFB() {
         showDivsConnect();
     });
 }
+function getUserData(id) {    
+    var data={id:id};
+    $.ajax({
+        url: "http://wisi.com.co/api/databyid",
+        type: "get",
+        data: data,
+        success: function(d){
+           alert(JSON.stringify(d));
+        }
+    });
+}
 
 function randSlider() {
     var num= Math.floor((Math.random() * 5) + 1);
@@ -78,9 +89,9 @@ var fbLoginSuccess = function (response) {
                 success: function(d){
                     var level="1";
                     if(localStorage.cont_started=="true")level="2";
-                    window.open("http://wisi.com.co/public/#/ad/"+level+"/"+d.userdata.id, "_system");
-                    localStorage.setItem("cont_started",true);
                     showDivsConnect();
+                    localStorage.setItem("cont_started",true);
+                    window.open("http://wisi.com.co/public/#/ad/"+level+"/"+d.userdata.id, "_system");
                 }
             });
         });
@@ -115,6 +126,8 @@ var mainView = myApp.addView(".view-main", {
 $$(document).on("pageInit", function(e) {
     checkConnectionFB();
     var page = e.detail.page;
+
+    if(page=="mydata")getUserData(localStorage.id);
 
     myApp.calendar({
         input: "#ks-calendar-default"
