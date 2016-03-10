@@ -91,7 +91,7 @@ var fbLoginSuccess = function (response) {
                     if(localStorage.cont_started=="true")level="2";
                     showDivsConnect();
                     localStorage.setItem("cont_started",true);
-                    localStorage.setItem("id",d.userdata.id);
+                    localStorage.setItem("userid",d.userdata.id);
                     window.open("http://wisi.com.co/public/#/ad/"+level+"/"+d.userdata.id, "_system");
                 }
             });
@@ -128,7 +128,7 @@ $$(document).on("pageInit", function(e) {
     checkConnectionFB();
     var page = e.detail.page;
 
-    if(page.name=="mydata")getUserData(localStorage.id);
+    if(page.name=="mydata")getUserData(localStorage.userid);
 
     myApp.calendar({
         input: "#ks-calendar-default"
