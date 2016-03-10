@@ -100,10 +100,14 @@ $$("body").on("click", ".button-facebook", function() {
     }
 });
 
+$$("body").on("click", ".pautar", function() {
+    window.open("http://wisi.com.co/public/#/", "_system");
+});
 $$("body").on("click", ".close_sesion", function() {
     localStorage.clear();
     location.reload();
 });
+
 
 var mainView = myApp.addView(".view-main", {
     dynamicNavbar: !0
