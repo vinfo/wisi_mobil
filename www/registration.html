@@ -1,9 +1,14 @@
+<style type="text/css">
+    .error{
+        color:red;
+    }
+</style>
 <div class="navbar navbar-clear">
     <div class="navbar-inner">
         <div class="center sliding"></div>
     </div>
 </div>
-
+    
 <div class="pages navbar-fixed toolbar-fixed">
     <div data-page="registration" class="page page-bg full-page-image">
         <div class="page-content">
@@ -30,11 +35,12 @@
                         </div>
                         <div class="form-row">
                             <label for="password"><span class="icon-lock"></span></label>
-                            <input type="password" id="password" name="password_register" placeholder="Contraseña">
+                            <input type="password" id="password" name="password_register" placeholder="Contraseña" required>
                         </div>
                         <div class="form-row">
                             <label for="password-2"><span class="icon-lock"></span></label>
                             <input type="password" id="password-2" name="password_register-2" placeholder="Repetir Contraseña">
+                            <input type="hidden" id="type_id" name="type_id" value="3">
                         </div>
                         <a href="#" class="button button-primary button-fill" id="register-button">Registrarse</a>
 

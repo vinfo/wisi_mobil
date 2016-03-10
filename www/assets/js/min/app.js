@@ -187,7 +187,7 @@ $$(document).on("pageInit", function(e) {
     }), $(".js-validate").length > 0 && $("body").on("click", "#register-button", function() {
         var form = $(this).parents("form"), valid = form.valid();
         if ("registration" === page.name && valid) {
-            var data = form.serializeObject();
+            var data=$.param({data:form.serializeObject()});
             myApp.showPreloader(), $.post("http://wisi.com.co/api/register", data).done(function(data) {
                 myApp.hidePreloader();
                 var response = JSON.parse(data);
