@@ -15,30 +15,28 @@
                 <div class="login-view-box mt-50">
 
                 <div class="list login-form-box">
-                    <form ng-submit="tryLogin()" class="form nice-label">
+                    <form method="post" class="form nice-label js-validate" novalidate="novalidate"> 
                         <div class="form-row">
                             <label for="name"><span class="icon-user"></span></label>
-                            <input type="text" id="name" placeholder="Nombres">
+                            <input type="text" id="name" name="name" placeholder="Nombres" required>
                         </div>
                         <div class="form-row">
                             <label for="lastname"><span class="icon-user"></span></label>
-                            <input type="text" id="lastname" placeholder="Apellidos">
+                            <input type="text" id="lastname" name="lastname" placeholder="Apellidos" required>
                         </div>                        
                         <div class="form-row">
                             <label for="email"><span class="icon-at-sign"></span></label>
-                            <input type="email" id="email" placeholder="Correo Electrónico">
+                            <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
                         </div>
                         <div class="form-row">
                             <label for="password"><span class="icon-lock"></span></label>
-                            <input type="password" id="password" placeholder="Contraseña">
+                            <input type="password" id="password" name="password_register" placeholder="Contraseña">
                         </div>
                         <div class="form-row">
                             <label for="password-2"><span class="icon-lock"></span></label>
-                            <input type="password" id="password-2" placeholder="Repetir Contraseña">
+                            <input type="password" id="password-2" name="password_register-2" placeholder="Repetir Contraseña">
                         </div>
-                        <a href="#"
-                           class="button button-primary button-fill"
-                           id="login-button">Registrarse</a>
+                        <a href="#" class="button button-primary button-fill" id="register-button">Registrarse</a>
 
                         <div class="text-center or-social">
                             o registrar usando

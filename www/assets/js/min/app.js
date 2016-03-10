@@ -11,15 +11,14 @@ function showDivsConnect(){
     }
 }
 
-function checkConnectionFB() {
-    showDivsConnect();
+function checkConnectionFB() {    
     facebookConnectPlugin.getLoginStatus(function(response) {
         if (response.status == 'connected'&&response.authResponse.userID==localStorage.id) { 
             localStorage.setItem("logged_in",true);
-            showDivsConnect();    
         } else {
             localStorage.setItem("logged_in",false);
         }
+        showDivsConnect();
     });
 }
 
@@ -105,6 +104,22 @@ $$("body").on("click", ".close_sesion", function() {
     location.reload();
 });
 
+$$("body").on("click", "#register-button", function() {
+    if(){
+        $.ajax({
+            url: "http://wisi.com.co/api/social/sigin",
+            type: "post",
+            data: data,
+            success: function(d){
+                var level="1";
+                if(localStorage.cont_started=="true")level="2";
+                window.open("http://wisi.com.co/public/#/ad/"+level+"/"+d.userdata.id, "_system");
+                localStorage.setItem("cont_started",true);
+            }
+        });
+    }
+});
+
 
 var mainView = myApp.addView(".view-main", {
     dynamicNavbar: !0
@@ -188,9 +203,9 @@ $$(document).on("pageInit", function(e) {
         stopOnHover: !0
     }), $(".js-validate").length > 0 && $("body").on("click", ".js-form-submit", function() {
         var form = $(this).parents("form"), valid = form.valid();
-        if ("contact" === page.name && valid) {
+        if ("registration" === page.name && valid) {
             var data = form.serializeObject();
-            myApp.showPreloader(), $.post("/email.php", data).done(function(data) {
+            myApp.showPreloader(), $.post("http://wisi.com.co/api/register", data).done(function(data) {
                 myApp.hidePreloader();
                 var response = JSON.parse(data);
                 response.error ? myApp.alert(response.msg, "") : (myApp.alert(response.msg, ""), 
