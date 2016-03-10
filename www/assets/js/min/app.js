@@ -283,7 +283,9 @@ $$(document).on("pageInit", function(e) {
 }), $(document).ready(function() {
     //randSlider();    
     checkConnectionFB();
-    showDivsConnect(); 
+    showDivsConnect();
+    var session_id= new Date().getTime();
+    alert("session"+session_id);
 
     if ((null === localStorage.getItem("newOptions") || localStorage.getItem("newOptions") === !0) && (myApp.popup(".popup-splash"), 
         localStorage.setItem("newOptions", !0)), $(".chart-content").length > 0) {
