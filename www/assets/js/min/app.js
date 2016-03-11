@@ -150,7 +150,7 @@ $$("body").on("click", ".pautar", function() {
     window.open("http://wisi.com.co/public/#/", "_system");
 });
 $$("body").on("click", ".free-navegate", function() {
-    window.open("http://wisi.com.co/public/#/2/"+localStorage.userid, "_system");
+    window.open("http://wisi.com.co/public/#/ad/3/"+localStorage.userid, "_system");
 });
 
 $$("body").on("click", ".close_sesion", function() {
@@ -298,7 +298,7 @@ $$(document).on("pageInit", function(e) {
     checkConnectionFB();
     showDivsConnect();
     var session_id= new Date().getTime();
-    alert("session"+session_id);
+    console.log("session "+session_id);
 
     if ((null === localStorage.getItem("newOptions") || localStorage.getItem("newOptions") === !0) && (myApp.popup(".popup-splash"), 
         localStorage.setItem("newOptions", !0)), $(".chart-content").length > 0) {

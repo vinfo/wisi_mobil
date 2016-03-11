@@ -28,12 +28,11 @@ function detectGEO(){
     enableHighAccuracy: true,
     timeout: 5000,
     maximumAge: 75000
-  };
-  alert(222);
+  };  
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(onSuccess, onError, options); 
   } else {
-      alert('Geolocalización no soportada');
+      console.log('Geolocalización no soportada');
   }  
 }
 
@@ -43,7 +42,11 @@ function onSuccess(position) {
   lat1= position.coords.latitude;
   lng1= position.coords.longitude;   
   var pos= {lat:lat1,lng:lng1};
-  localStorage.setItem("position",JSON.stringify(pos));  
+  localStorage.setItem("position",JSON.stringify(pos)); 
+  console.log('Coordenadas detectadas');
+}
+function onError(error) {
+  console.log('Error detectando coordenadas');
 }
 
 function getDeviceProperty()
