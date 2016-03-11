@@ -1,21 +1,3 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 var app = {
     // Application Constructor
     initialize: function() {
@@ -38,28 +20,26 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         getDeviceProperty();
+        detectGEO();
     }
 };
-
-var options = {
-  enableHighAccuracy: true,
-  timeout: 5000,
-  maximumAge: 75000
-};
-if (navigator.geolocation) {
-  document.addEventListener("deviceready", detectGEO, false);    
-} else {
-    alert('Geolocalización no soportada');
-}
-
 function detectGEO(){
-  navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 75000
+  };
+  alert(222);
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(onSuccess, onError, options); 
+  } else {
+      alert('Geolocalización no soportada');
+  }  
 }
 
 // onSuccess Geolocation    //
 function onSuccess(position) {
-  localStorage.removeItem("position");
-      
+  localStorage.removeItem("position");      
   lat1= position.coords.latitude;
   lng1= position.coords.longitude;   
   var pos= {lat:lat1,lng:lng1};
