@@ -7887,3 +7887,6 @@ article img {
 label.error{
   color:red;
 }
+.remember{
+  display: none;
+}

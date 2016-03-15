@@ -14,25 +14,25 @@
         <div class="page-content">
             <div class="content-wew">
                 <div class="login-view-box mt-10">
-
                     <div class="list login-form-box">
-                        <form ng-submit="tryLogin()" class="form nice-label">
-
+                        <form class="form nice-label">
                             <div class="form-row">
                                 <label for="email"><span class="icon-man"></span></label>
-                                <input type="text" id="email" placeholder="Email">
+                                <input type="text" id="email" name="email" placeholder="Email">
                             </div>
                             <div class="form-row">
                                 <label for="password"><span class="icon-lock"></span></label>
-                                <input type="password" id="password" placeholder="Contraseña">
+                                <input type="password" id="password" name="password" placeholder="Contraseña">
                             </div>
 
-                            <a href="#"
-                            class="button button-primary button-fill"
-                            id="login-button">Acceder</a>
+                            <a href="#" class="button btn-login button-primary button-fill" id="login-button" onclick="Login()">Acceder</a>
 
                             <div class="text-right forgot-password">
                                 <a href="#">Olvido su contraseña?</a>
+                                <div class="form-row remember">
+                                <input type="text" id="email_remember" name="email_remember" placeholder="Email">
+                                <a href="#" class="button btn-remember button-secundary button-fill" id="login-button" onclick="Remember()">Acceder</a>
+                                </div>
                             </div>
                             <div class="text-center or-social">
                                 o ingresar usando

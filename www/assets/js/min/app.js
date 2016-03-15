@@ -1,16 +1,38 @@
 // Initialize app
+function Login() {
+    var email=$("#email").val();   
+    var password=$("#password").val();
+    if(email!=""&&password!=""){
+        var data={email:email,password:password};
+        $.ajax({
+            url: "http://wisi.com.co/api/sigin",
+            type: "post",
+            data: data,
+            success: function(res){
+             localStorage.setItem("id", res.userdata.id);
+             localStorage.setItem("name",  res.userdata.name);
+             localStorage.setItem("lastname",  res.userdata.lastname);
+             localStorage.setItem("email",  res.userdata.email);
+             localStorage.setItem("logged_in", true);
+             localStorage.setItem("token", res.token.token);
+         }
+     });
+    }else{
+        myApp.alert("Email y Contraseña son requeridos!", "");
+    }
+}
 function scanear(){
    cordova.plugins.barcodeScanner.scan(
       function (result) {
           alert("We got a barcode\n" +
-                "Result: " + result.text + "\n" +
-                "Format: " + result.format + "\n" +
-                "Cancelled: " + result.cancelled);
+            "Result: " + result.text + "\n" +
+            "Format: " + result.format + "\n" +
+            "Cancelled: " + result.cancelled);
       }, 
       function (error) {
           alert("Scanning failed: " + error);
       }
-   ); 
+      ); 
 }
 function showDivsConnect(){
     console.log(localStorage.logged_in);
@@ -49,8 +71,8 @@ function getUserData(id) {
            $('input[name="celphone"]').val(d[0].celphone);
            $('select[name="genre"] option[value="'+d[0].genre+'"]').prop("selected", true);
            $('select[name="marital"] option[value="'+d[0].marital+'"]').attr("selected", "selected");
-        }
-    });
+       }
+   });
 }
 function getRechargedData(id) {    
     var data={id:id};
@@ -61,7 +83,7 @@ function getRechargedData(id) {
         success: function(obj){
             $.each(obj, function( key, value ) {
               console.log( key + ": " + value );
-            });
+          });
         }
     });
 }
@@ -130,8 +152,7 @@ var fbLoginSuccess = function (response) {
                 }
             });
         });
- } 
-
+ }
 }
 
 $$("body").on("click", ".button-facebook", function() {
@@ -249,9 +270,9 @@ $$(document).on("pageInit", function(e) {
             myApp.showPreloader(), $.post("http://wisi.com.co/api/register", data).done(function(data) {
                 myApp.hidePreloader();
                 var response = JSON.parse(data);
-            if(!response.message){
+                if(!response.message){
                   window.location.href = 'login.html'; 
-            }else{
+              }else{
                 window.open("http://wisi.com.co/public/#/ad/1/"+response.userdata.id, "_system");
             }
 
