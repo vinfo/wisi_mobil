@@ -189,8 +189,9 @@ $$("body").on("click", ".free-navegate", function() {
 $$("body").on("click", ".button-recharged", function() {
     var code_b=$("#code_b").val();
     var key_b=$("#key_b").val();
+    var time_b=$("#time_b").val();
     if(code_b!=""&&key_b!=""){
-        var data={userid:userid,code_b:code_b,key_b:key_b,time:time,type=59,status=50};
+        var data={userid:userid,code_b:code_b,key_b:key_b,time_b:time_b,type="59",status="50"};
         $.ajax({
             url: "http://wisi.com.co/api/setBalace",
             type: "post",
