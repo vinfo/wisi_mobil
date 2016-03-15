@@ -35,15 +35,18 @@ function scanear(){
 }
 function setCode(code){
     if(code!=""){
-        var data={code:code};
+        var data={code:code.trim()};
         $.ajax({
             url: "http://wisi.com.co/api/barcode",
             type: "get",
             data: data,
             success: function(res){
-             console.log(JSON.stringify(res));
-             $("#rechargeds").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="title-re">Código: 00022</div><div class="nice-list">Fecha/Hora: 23.03.2015 23:22<br/>Vence: 23.03.2015 23:22<br/>Tiempo: 100 mins.<br/>Estado: 100 mins.<br/></div></div></li>');
-         }
+                if(res.status){
+                    $("#time").val(res.data[0].time_b);
+                }else{
+                   myApp.alert("Código no valido!", ""); 
+                }
+            }
      });
     }
 }
@@ -192,9 +195,9 @@ $$("body").on("click", ".button-recharged", function() {
     var key_b=$("#key_b").val();
     var time_b=$("#time_b").val();
     if(code_b!=""&&key_b!=""){
-        var data={userid:userid,code_b:code_b,key_b:key_b,time_b:time_b,type:"59",status:"50"};
+        var data={userid:localStorage.userid,code:code_b,key_b:key_b,time:time_b,action=0,type:"59",status:"50"};
         $.ajax({
-            url: "http://wisi.com.co/api/setBalace",
+            url: "http://wisi.com.co/api/setBalance",
             type: "post",
             data: data,
             success: function(d){
