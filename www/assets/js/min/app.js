@@ -15,6 +15,7 @@ function Login() {
              localStorage.setItem("email",  res.userdata.email);
              localStorage.setItem("logged_in", true);
              localStorage.setItem("token", res.token.token);
+             window.location.href = "index.html";
          }
      });
     }else{
@@ -24,15 +25,27 @@ function Login() {
 function scanear(){
    cordova.plugins.barcodeScanner.scan(
       function (result) {
-          alert("We got a barcode\n" +
-            "Result: " + result.text + "\n" +
-            "Format: " + result.format + "\n" +
-            "Cancelled: " + result.cancelled);
+          $("#code_b").val(result.text);
+          setCode(result.text);
       }, 
       function (error) {
-          alert("Scanning failed: " + error);
+          alert("¨Problemas Scanneando: " + error);
       }
       ); 
+}
+function setCode(code){
+    if(code!=""){
+        var data={code:code};
+        $.ajax({
+            url: "http://wisi.com.co/api/barcode",
+            type: "post",
+            data: data,
+            success: function(res){
+             console.log(JSON.stringify(res));
+             $("#rechargeds").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="title-re">Código: 00022</div><div class="nice-list">Fecha/Hora: 23.03.2015 23:22<br/>Vence: 23.03.2015 23:22<br/>Tiempo: 100 mins.<br/>Estado: 100 mins.<br/></div></div></li>');
+         }
+     });
+    }
 }
 function showDivsConnect(){
     console.log(localStorage.logged_in);
@@ -179,6 +192,9 @@ $$("body").on("click", ".close_sesion", function() {
     window.location.href = "index.html";
 });
 
+$$("body").on("change", "#code_b", function() {
+    setCode(this.value);
+});
 
 var mainView = myApp.addView(".view-main", {
     dynamicNavbar: !0
