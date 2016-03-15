@@ -94,9 +94,10 @@ function getRechargedData(id) {
         type: "get",
         data: data,
         success: function(obj){
-            $.each(obj, function( key, value ) {
-              console.log( key + ": " + value );
-          });
+            for(var k in obj) {
+                var o = obj[k];
+                $("#rechargeds").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="title-re">Código: '+o.code_b+'</div><div class="nice-list">Fecha/Hora: '+o.datereg+'<br/>Vence: '+o.expired+'<br/>Tiempo: '+o.time_b+' mins.<br/>Estado: '+o.status+'.<br/></div></div></li>');
+            }
         }
     });
 }

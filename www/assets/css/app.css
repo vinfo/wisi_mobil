@@ -7881,6 +7881,7 @@ article img {
 }
 .title-re{
   font-weight:bold;
+  width: 20%;
 }
 label.error{
   color:red;
