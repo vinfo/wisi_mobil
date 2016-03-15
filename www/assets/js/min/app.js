@@ -38,7 +38,7 @@ function setCode(code){
         var data={code:code};
         $.ajax({
             url: "http://wisi.com.co/api/barcode",
-            type: "post",
+            type: "get",
             data: data,
             success: function(res){
              console.log(JSON.stringify(res));
@@ -185,6 +185,24 @@ $$("body").on("click", ".pautar", function() {
 });
 $$("body").on("click", ".free-navegate", function() {
     window.open("http://wisi.com.co/public/#/ad/3/"+localStorage.userid, "_system");
+});
+$$("body").on("click", ".button-recharged", function() {
+    var code_b=$("#code_b").val();
+    var key_b=$("#key_b").val();
+    if(code_b!=""&&key_b!=""){
+        var data={userid:userid,code_b:code_b,key_b:key_b,time:time,type=59,status=50};
+        $.ajax({
+            url: "http://wisi.com.co/api/setBalace",
+            type: "post",
+            data: data,
+            success: function(d){
+               myApp.alert("Datos cargados exitosamente!", "");
+               window.location.href = "rechargeds.html";
+           }
+       });
+    }else{
+       myApp.alert("Código y Clave son requeridos!", ""); 
+    }
 });
 
 $$("body").on("click", ".close_sesion", function() {
