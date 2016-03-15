@@ -50,7 +50,7 @@
     android:xlargeScreens="true"
     android:largeScreens="true"
     android:smallScreens="true" />        
-    <application android:debuggable="true" android:hardwareAccelerated="true" android:theme="@android:style/Theme.NoTitleBar" >
+    <application android:debuggable="false" android:hardwareAccelerated="true" android:theme="@android:style/Theme.NoTitleBar" >
       <activity android:theme="@android:style/Theme.NoTitleBar" >
       </activity>
     </application>
