@@ -79,6 +79,7 @@ function getUserData(id) {
         type: "get",
         data: data,
         success: function(d){
+           $('input[name="id"]').val(d[0].id);
            $('input[name="name"]').val(d[0].name);
            $('input[name="last_name"]').val(d[0].lastname);
            $('input[name="email"]').val(d[0].email);
