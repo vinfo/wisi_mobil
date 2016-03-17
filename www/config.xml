@@ -17,7 +17,7 @@
 
 <preference name="phonegap-version" value="cli-5.2.0" />
 <preference name="permissions" value="none" />
-<preference name="orientation" value="portrait" />
+<preference name="orientation" value="default" />
 <preference name="target-device" value="universal" />
 <preference name="fullscreen" value="false" />
 <preference name="webviewbounce" value="true" />
