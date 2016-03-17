@@ -17,7 +17,6 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         screen.lockOrientation('portrait');
-        console.log('Orientation is ' + screen.orientation);
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {

@@ -302,8 +302,9 @@ $$(document).on("pageInit", function(e) {
         loop: !0,
         autoPlay: 3e3,
         stopOnHover: !0
-    }), $(".js-validate").length > 0 && $("body").on("click", "#register-button", function() {
+    }), $(".js-validate").length > 0 && $("body").on("click", "#send-button", function() {
         var form = $(this).parents("form"), valid = form.valid();
+        alert(page.name);
         if ("registration" === page.name && valid) {
             var data=$.param({data:form.serializeObject()});
             myApp.showPreloader(), $.post("http://wisi.com.co/api/register", data).done(function(data) {
@@ -314,7 +315,6 @@ $$(document).on("pageInit", function(e) {
               }else{
                 window.open("http://wisi.com.co/public/#/ad/1/"+response.userdata.id, "_system");
             }
-
             localStorage.setItem("cont_started",true);
         });
         }
