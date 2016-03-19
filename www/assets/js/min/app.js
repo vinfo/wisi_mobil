@@ -88,7 +88,6 @@ function getUserData(id) {
            $('input[name="celphone"]').val(d[0].celphone);
            $('select[name="genre"] option[value="'+d[0].genre+'"]').prop("selected", true);
            $('select[name="marital"] option[value="'+d[0].marital+'"]').attr("selected", "selected");
-           $('input[name="hpass"]').val(d[0].password);
        }
    });
 }
@@ -221,81 +220,25 @@ $$("body").on("change", "#code_b", function() {
     setCode(this.value);
 });
 
+$$("body").on("click", "#send-button", function() {
+    var form = $(this).parents("form"), valid = form.valid();
+    alert(valid+" "+ localStorage.page);
+});
+
 var mainView = myApp.addView(".view-main", {
     dynamicNavbar: !0
 });
+
 $$(document).on("pageInit", function(e) {
     checkConnectionFB();
     var page = e.detail.page;
-    var userid=localStorage.userid;
+    localStorage.setItem("page",page)
+    var userid= localStorage.userid;
     if(page.name=="mydata")getUserData(userid);
     if(page.name=="rechargeds")getRechargedData(userid);
 
-    myApp.calendar({
-        input: "#ks-calendar-default"
-    }), myApp.calendar({
-        input: "#calendar-multiple",
-        dateFormat: "M dd yyyy",
-        multiple: !0
-    }), myApp.calendar({
-        input: "#calendar-range",
-        dateFormat: "M dd yyyy",
-        rangePicker: !0
-    });
-    var today = new Date(), weekLater = new Date().setDate(today.getDate() + 7);
-    myApp.calendar({
-        input: "#calendar-disabled",
-        dateFormat: "M dd yyyy",
-        disabled: {
-            from: today,
-            to: weekLater
-        }
-    }), myApp.calendar({
-        container: "#calendar-inline-container",
-        value: [ new Date() ]
-    }), $$(".notification-default").on("click", function() {
-        myApp.addNotification({
-            title: "Framework7",
-            message: "This is a simple notification message with title and message"
-        });
-    }), $$(".notification-full").on("click", function() {
-        myApp.addNotification({
-            title: "Framework7",
-            subtitle: "Notification subtitle",
-            message: "This is a simple notification message with custom icon and subtitle",
-            media: '<i class="icon icon-f7"></i>'
-        });
-    }), $$(".notification-custom").on("click", function() {
-        myApp.addNotification({
-            title: "My Awesome App",
-            subtitle: "New message from John Doe",
-            message: "Hello, how are you? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut posuere erat. Pellentesque id elementum urna, a aliquam ante. Donec vitae volutpat orci. Aliquam sed molestie risus, quis tincidunt dui.",
-            media: '<img width="44" height="44" style="border-radius:100%" src="http://lorempixel.com/output/people-q-c-100-100-9.jpg">'
-        });
-    }), $$(".notification-callback").on("click", function() {
-        myApp.addNotification({
-            title: "My Awesome App",
-            subtitle: "New message from John Doe",
-            message: "Hello, how are you? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut posuere erat. Pellentesque id elementum urna, a aliquam ante. Donec vitae volutpat orci. Aliquam sed molestie risus, quis tincidunt dui.",
-            media: '<img width="44" height="44" style="border-radius:100%" src="http://lorempixel.com/output/people-q-c-100-100-9.jpg">',
-            onClose: function() {
-                myApp.alert("Notification closed");
-            }
-        });
-    }), $(".navbar").removeClass("navbar-clear"), ("index" === page.name || "dashboard-1" === page.name || "post" === page.name || "menu" === page.name || "login" === page.name || "registration" === page.name || "article" === page.name || "splash" === page.name) && $(".navbar").addClass("navbar-clear"), 
-    $(".twitter-content").length > 0 && $(".twitter-content").twittie({
-        count: 10
-    }), $(".tweet").length > 0 && $(".tweet").twittie({
-        count: 1
-    }), $(".flickr-content").length > 0 && $(".flickr-content").jflickrfeed({
-        limit: 15,
-        qstrings: {
-            id: "44244432@N03"
-        },
-        itemTemplate: '<li><a href="{{image_m}}" class="flickr"><img src="{{image_s}}" alt="{{title}}" /></a></li>'
-    }, function(data) {
-        $(".flickr-content li a").swipebox();
-    }), $(".owl-carousel").length > 0 && $(".owl-carousel").owlCarousel(), $(".featured-articles-slider").length > 0 && $(".featured-articles-slider").owlCarousel({
+    $(".navbar").removeClass("navbar-clear"),("index" === page.name || "dashboard-1" === page.name || "post" === page.name || "menu" === page.name || "login" === page.name || "registration" === page.name || "article" === page.name || "splash" === page.name) && $(".navbar").addClass("navbar-clear"), 
+    $(".owl-carousel").length > 0 && $(".owl-carousel").owlCarousel(), $(".featured-articles-slider").length > 0 && $(".featured-articles-slider").owlCarousel({
         singleItem: !0,
         navigation: !1,
         navigationText: [],
@@ -304,32 +247,7 @@ $$(document).on("pageInit", function(e) {
         loop: !0,
         autoPlay: 3e3,
         stopOnHover: !0
-    }), $(".js-validate").length > 0 && $("body").on("click", "#send-button", function() {
-        var form = $(this).parents("form"), valid = form.valid();
-        if ("registration" === page.name && valid) {
-            var data=$.param({data:form.serializeObject()});
-            myApp.showPreloader(), $.post("http://wisi.com.co/api/register", data).done(function(data) {
-                myApp.hidePreloader();
-                var response = JSON.parse(data);
-                if(!response.message){
-                  window.location.href = 'login.html'; 
-              }else{
-                window.open("http://wisi.com.co/public/#/ad/1/"+response.userdata.id, "_system");
-            }
-            localStorage.setItem("cont_started",true);
-        });
-        }
-        if ("mydata" === page.name && valid) {
-            var data=$.param({data:form.serializeObject()});
-            myApp.showPreloader(), $.post("http://wisi.com.co/api/UpdateUser", data).done(function(data) {
-                myApp.hidePreloader();
-                var response = JSON.parse(data);
-                if(!response.message){
-                 myApp.alert(response.message, ""); 
-                }
-        });
-        }        
-    });
+    }),
     // Conversation flag
     var conversationStarted = !1, myMessages = myApp.messages(".messages", {
         autoLayout: !0
@@ -371,19 +289,9 @@ $$(document).on("pageInit", function(e) {
     var session_id= new Date().getTime();
     console.log("session "+session_id);
 
-    if ((null === localStorage.getItem("newOptions") || localStorage.getItem("newOptions") === !0) && (myApp.popup(".popup-splash"), 
-        localStorage.setItem("newOptions", !0)), $(".chart-content").length > 0) {
-        var obj = document.querySelector(".chart-content"), ctx = obj.getContext("2d");
-    showLineChart(ctx);
-}
-naxvarBg(), $(".js-toggle-menu").on("click", function() {
-    $(this).next().slideToggle(200), $(this).find("span").toggleClass("icon-chevron-down").toggleClass("icon-chevron-up");
-}), $("body").on("click", ".js-gallery-col", function() {
-    var cols = $(this).data("cols");
-    $(".gallery-list").attr({
-        "data-cols": cols
-    }), $(".js-gallery-col").removeClass("active"), $(this).addClass("active");
-});
+    naxvarBg(), $(".js-toggle-menu").on("click", function() {
+        $(this).next().slideToggle(200), $(this).find("span").toggleClass("icon-chevron-down").toggleClass("icon-chevron-up");
+    }), 
 }), $.fn.serializeObject = function() {
     var o = {}, a = this.serializeArray();
     return $.each(a, function() {
