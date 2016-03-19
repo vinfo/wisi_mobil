@@ -88,6 +88,7 @@ function getUserData(id) {
            $('input[name="celphone"]').val(d[0].celphone);
            $('select[name="genre"] option[value="'+d[0].genre+'"]').prop("selected", true);
            $('select[name="marital"] option[value="'+d[0].marital+'"]').attr("selected", "selected");
+           $('input[name="hpass"]').val(d[0].password);
        }
    });
 }
@@ -220,24 +221,17 @@ $$("body").on("change", "#code_b", function() {
     setCode(this.value);
 });
 
-$$("body").on("click", "#send-button", function() {
-    var form = $(this).parents("form"), valid = form.valid();
-    alert(valid+" "+ localStorage.page);
-});
-
 var mainView = myApp.addView(".view-main", {
     dynamicNavbar: !0
 });
-
 $$(document).on("pageInit", function(e) {
     checkConnectionFB();
     var page = e.detail.page;
-    localStorage.setItem("page",page)
-    var userid= localStorage.userid;
+    var userid=localStorage.userid;
     if(page.name=="mydata")getUserData(userid);
     if(page.name=="rechargeds")getRechargedData(userid);
 
-    $(".navbar").removeClass("navbar-clear"),("index" === page.name || "dashboard-1" === page.name || "post" === page.name || "menu" === page.name || "login" === page.name || "registration" === page.name || "article" === page.name || "splash" === page.name) && $(".navbar").addClass("navbar-clear"), 
+    $(".navbar").removeClass("navbar-clear"), ("index" === page.name || "dashboard-1" === page.name || "post" === page.name || "menu" === page.name || "login" === page.name || "registration" === page.name || "article" === page.name || "splash" === page.name) && $(".navbar").addClass("navbar-clear"), 
     $(".owl-carousel").length > 0 && $(".owl-carousel").owlCarousel(), $(".featured-articles-slider").length > 0 && $(".featured-articles-slider").owlCarousel({
         singleItem: !0,
         navigation: !1,
@@ -247,7 +241,32 @@ $$(document).on("pageInit", function(e) {
         loop: !0,
         autoPlay: 3e3,
         stopOnHover: !0
-    }),
+    }), $(".js-validate").length > 0 && $("body").on("click", "#send-button", function() {
+        var form = $(this).parents("form"), valid = form.valid();
+        if ("registration" === page.name && valid) {
+            var data=$.param({data:form.serializeObject()});
+            myApp.showPreloader(), $.post("http://wisi.com.co/api/register", data).done(function(data) {
+                myApp.hidePreloader();
+                var response = JSON.parse(data);
+                if(!response.message){
+                  window.location.href = 'login.html'; 
+              }else{
+                window.open("http://wisi.com.co/public/#/ad/1/"+response.userdata.id, "_system");
+            }
+            localStorage.setItem("cont_started",true);
+        });
+        }
+        if ("mydata" === page.name && valid) {
+            var data=$.param({data:form.serializeObject()});
+            myApp.showPreloader(), $.post("http://wisi.com.co/api/UpdateUser", data).done(function(data) {
+                myApp.hidePreloader();
+                var response = JSON.parse(data);
+                if(!response.message){
+                 myApp.alert(response.message, ""); 
+                }
+        });
+        }        
+    });
     // Conversation flag
     var conversationStarted = !1, myMessages = myApp.messages(".messages", {
         autoLayout: !0
@@ -289,9 +308,19 @@ $$(document).on("pageInit", function(e) {
     var session_id= new Date().getTime();
     console.log("session "+session_id);
 
-    naxvarBg(), $(".js-toggle-menu").on("click", function() {
-        $(this).next().slideToggle(200), $(this).find("span").toggleClass("icon-chevron-down").toggleClass("icon-chevron-up");
-    }), 
+    if ((null === localStorage.getItem("newOptions") || localStorage.getItem("newOptions") === !0) && (myApp.popup(".popup-splash"), 
+        localStorage.setItem("newOptions", !0)), $(".chart-content").length > 0) {
+        var obj = document.querySelector(".chart-content"), ctx = obj.getContext("2d");
+    showLineChart(ctx);
+}
+naxvarBg(), $(".js-toggle-menu").on("click", function() {
+    $(this).next().slideToggle(200), $(this).find("span").toggleClass("icon-chevron-down").toggleClass("icon-chevron-up");
+}), $("body").on("click", ".js-gallery-col", function() {
+    var cols = $(this).data("cols");
+    $(".gallery-list").attr({
+        "data-cols": cols
+    }), $(".js-gallery-col").removeClass("active"), $(this).addClass("active");
+});
 }), $.fn.serializeObject = function() {
     var o = {}, a = this.serializeArray();
     return $.each(a, function() {
