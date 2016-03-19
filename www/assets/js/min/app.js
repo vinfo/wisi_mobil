@@ -9,29 +9,29 @@ function Login() {
             type: "post",
             data: data,
             success: function(res){
-             localStorage.setItem("id", res.userdata.id);
-             localStorage.setItem("name",  res.userdata.name);
-             localStorage.setItem("lastname",  res.userdata.lastname);
-             localStorage.setItem("email",  res.userdata.email);
-             localStorage.setItem("logged_in", true);
-             localStorage.setItem("token", res.token.token);
-             window.location.href = "index.html";
-         }
-     });
+               localStorage.setItem("id", res.userdata.id);
+               localStorage.setItem("name",  res.userdata.name);
+               localStorage.setItem("lastname",  res.userdata.lastname);
+               localStorage.setItem("email",  res.userdata.email);
+               localStorage.setItem("logged_in", true);
+               localStorage.setItem("token", res.token.token);
+               window.location.href = "index.html";
+           }
+       });
     }else{
         myApp.alert("Email y Contraseña son requeridos!", "");
     }
 }
 function scanear(){
-   cordova.plugins.barcodeScanner.scan(
-      function (result) {
-          $("#code_b").val(result.text);
-          setCode(result.text);
-      }, 
-      function (error) {
-          alert("¨Problemas Scanneando: " + error);
-      }
-      ); 
+ cordova.plugins.barcodeScanner.scan(
+  function (result) {
+      $("#code_b").val(result.text);
+      setCode(result.text);
+  }, 
+  function (error) {
+      alert("¨Problemas Scanneando: " + error);
+  }
+  ); 
 }
 function setCode(code){
     if(code!=""){
@@ -44,9 +44,9 @@ function setCode(code){
                 if(res.status){
                     $("#time").val(res.data[0].time_b);
                 }else{
-                   myApp.alert("Código no valido!", ""); 
-                }
-            }
+                 myApp.alert("Código no valido!", ""); 
+             }
+         }
      });
     }
 }
@@ -79,18 +79,18 @@ function getUserData(id) {
         type: "get",
         data: data,
         success: function(d){
-           $('input[name="id"]').val(d[0].id);
-           $('input[name="name"]').val(d[0].name);
-           $('input[name="lastname"]').val(d[0].lastname);
-           $('input[name="email"]').val(d[0].email);
-           $('input[name="birthday"]').val(d[0].birthday);
-           $('input[name="phone"]').val(d[0].phone);
-           $('input[name="celphone"]').val(d[0].celphone);
-           $('select[name="genre"] option[value="'+d[0].genre+'"]').prop("selected", true);
-           $('select[name="marital"] option[value="'+d[0].marital+'"]').attr("selected", "selected");
-           $('input[name="hpass"]').val(d[0].password);
-       }
-   });
+         $('input[name="id"]').val(d[0].id);
+         $('input[name="name"]').val(d[0].name);
+         $('input[name="lastname"]').val(d[0].lastname);
+         $('input[name="email"]').val(d[0].email);
+         $('input[name="birthday"]').val(d[0].birthday);
+         $('input[name="phone"]').val(d[0].phone);
+         $('input[name="celphone"]').val(d[0].celphone);
+         $('select[name="genre"] option[value="'+d[0].genre+'"]').prop("selected", true);
+         $('select[name="marital"] option[value="'+d[0].marital+'"]').attr("selected", "selected");
+         $('input[name="hpass"]').val(d[0].password);
+     }
+ });
 }
 function getRechargedData(id) {    
     var data={id:id};
@@ -142,9 +142,9 @@ var myApp = new Framework7({
 }), $$ = Dom7;
 
 var fbLoginSuccess = function (response) {
- if (response.authResponse) {
-     facebookConnectPlugin.api('/me?fields=id,email,first_name,last_name,gender,picture', null,
-         function(response) {
+   if (response.authResponse) {
+       facebookConnectPlugin.api('/me?fields=id,email,first_name,last_name,gender,picture', null,
+           function(response) {
             var gender=38;
             if(response.gender=="male")gender=39;
             localStorage.setItem("network",response.id);
@@ -171,7 +171,7 @@ var fbLoginSuccess = function (response) {
                 }
             });
         });
- }
+   }
 }
 
 $$("body").on("click", ".button-facebook", function() {
@@ -203,13 +203,13 @@ $$("body").on("click", ".button-recharged", function() {
             type: "post",
             data: data,
             success: function(d){
-               myApp.alert("Datos cargados exitosamente!", "");
-               window.location.href = "rechargeds.html";
-           }
-       });
+             myApp.alert("Datos cargados exitosamente!", "");
+             window.location.href = "rechargeds.html";
+         }
+     });
     }else{
-       myApp.alert("Código y Clave son requeridos!", ""); 
-    }
+     myApp.alert("Código y Clave son requeridos!", ""); 
+ }
 });
 
 $$("body").on("click", ".close_sesion", function() {
@@ -222,7 +222,17 @@ $$("body").on("change", "#code_b", function() {
 });
 
 $$("body").on("click", "#send-button", function() {
-    alert(localStorage.page);
+    var form = $(this).parents("form"), valid = form.valid();
+    alert(valid);    
+    if ("mydata" === localStorage.page && valid) {
+        var data=$.param({data:form.serializeObject()});
+        myApp.showPreloader(), $.post("http://wisi.com.co/api/UpdateUser", data).done(function(data) {
+            myApp.hidePreloader();
+            if(data.status){
+               myApp.alert(data.message, ""); 
+           }
+       });
+    }
 });
 
 var mainView = myApp.addView(".view-main", {
@@ -231,7 +241,7 @@ var mainView = myApp.addView(".view-main", {
 $$(document).on("pageInit", function(e) {
     checkConnectionFB();
     var page = e.detail.page;
-    localStorage.setItem("page",page);
+    localStorage.setItem("page",page.name);
     var userid=localStorage.userid;
     if(page.name=="mydata")getUserData(userid);
     if(page.name=="rechargeds")getRechargedData(userid);
