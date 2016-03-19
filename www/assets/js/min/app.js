@@ -283,19 +283,9 @@ $$(document).on("pageInit", function(e) {
     var session_id= new Date().getTime();
     console.log("session "+session_id);
 
-    if ((null === localStorage.getItem("newOptions") || localStorage.getItem("newOptions") === !0) && (myApp.popup(".popup-splash"), 
-        localStorage.setItem("newOptions", !0)), $(".chart-content").length > 0) {
-        var obj = document.querySelector(".chart-content"), ctx = obj.getContext("2d");
-    showLineChart(ctx);
-}
-naxvarBg(), $(".js-toggle-menu").on("click", function() {
-    $(this).next().slideToggle(200), $(this).find("span").toggleClass("icon-chevron-down").toggleClass("icon-chevron-up");
-}), $("body").on("click", ".js-gallery-col", function() {
-    var cols = $(this).data("cols");
-    $(".gallery-list").attr({
-        "data-cols": cols
-    }), $(".js-gallery-col").removeClass("active"), $(this).addClass("active");
-});
+    naxvarBg(), $(".js-toggle-menu").on("click", function() {
+        $(this).next().slideToggle(200), $(this).find("span").toggleClass("icon-chevron-down").toggleClass("icon-chevron-up");
+    });
 }), $.fn.serializeObject = function() {
     var o = {}, a = this.serializeArray();
     return $.each(a, function() {
