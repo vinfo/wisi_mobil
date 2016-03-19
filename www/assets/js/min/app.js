@@ -241,31 +241,6 @@ $$(document).on("pageInit", function(e) {
         loop: !0,
         autoPlay: 3e3,
         stopOnHover: !0
-    }), $(".js-validate").length > 0 && $("body").on("click", "#send-button", function() {
-        var form = $(this).parents("form"), valid = form.valid();
-        if ("registration" === page.name && valid) {
-            var data=$.param({data:form.serializeObject()});
-            myApp.showPreloader(), $.post("http://wisi.com.co/api/register", data).done(function(data) {
-                myApp.hidePreloader();
-                var response = JSON.parse(data);
-                if(!response.message){
-                  window.location.href = 'login.html'; 
-              }else{
-                window.open("http://wisi.com.co/public/#/ad/1/"+response.userdata.id, "_system");
-            }
-            localStorage.setItem("cont_started",true);
-        });
-        }
-        if ("mydata" === page.name && valid) {
-            var data=$.param({data:form.serializeObject()});
-            myApp.showPreloader(), $.post("http://wisi.com.co/api/UpdateUser", data).done(function(data) {
-                myApp.hidePreloader();
-                var response = JSON.parse(data);
-                if(!response.message){
-                 myApp.alert(response.message, ""); 
-                }
-        });
-        }        
     });
     // Conversation flag
     var conversationStarted = !1, myMessages = myApp.messages(".messages", {
