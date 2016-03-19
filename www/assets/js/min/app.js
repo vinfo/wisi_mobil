@@ -221,6 +221,10 @@ $$("body").on("change", "#code_b", function() {
     setCode(this.value);
 });
 
+$$("body").on("click", "#send-button", function() {
+    alert(localStorage.page);
+});
+
 var mainView = myApp.addView(".view-main", {
     dynamicNavbar: !0
 });
@@ -232,17 +236,6 @@ $$(document).on("pageInit", function(e) {
     if(page.name=="mydata")getUserData(userid);
     if(page.name=="rechargeds")getRechargedData(userid);
 
-    $(".navbar").removeClass("navbar-clear"), ("index" === page.name || "dashboard-1" === page.name || "post" === page.name || "menu" === page.name || "login" === page.name || "registration" === page.name || "article" === page.name || "splash" === page.name) && $(".navbar").addClass("navbar-clear"), 
-    $(".owl-carousel").length > 0 && $(".owl-carousel").owlCarousel(), $(".featured-articles-slider").length > 0 && $(".featured-articles-slider").owlCarousel({
-        singleItem: !0,
-        navigation: !1,
-        navigationText: [],
-        pagination: !1,
-        uniqueHistory: !0,
-        loop: !0,
-        autoPlay: 3e3,
-        stopOnHover: !0
-    });
     // Conversation flag
     var conversationStarted = !1, myMessages = myApp.messages(".messages", {
         autoLayout: !0
