@@ -7889,3 +7889,6 @@ label.error{
 .remember{
   display: none;
 }
+#genre{
+  width: 200px;
+}

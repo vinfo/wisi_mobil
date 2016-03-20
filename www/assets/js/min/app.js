@@ -1,4 +1,8 @@
 // Initialize app
+function referByEmail(){
+    $("#email").val();
+    $(".forms").slideToggle( "slow" );
+}
 function Login() {
     var email=$("#email").val();   
     var password=$("#password").val();
@@ -220,7 +224,7 @@ $$("body").on("change", "#code_b", function() {
 });
 
 $$("body").on("click", "#send-button", function() {
-    var form = $(this).parents("form"), valid = form.valid();
+    var form = $(this).parents("form"), valid = form.valid();  
     if ("registration" === localStorage.page && valid) {
         var data=$.param({data:form.serializeObject()});
         myApp.showPreloader(), $.post("http://wisi.com.co/api/register", data).done(function(data) {
@@ -252,7 +256,17 @@ $$("body").on("click", "#send-button", function() {
              myApp.alert(data.message, ""); 
          }
      });
-    }    
+    }
+    if ("referrals" === localStorage.page && valid) {
+        var data=$.param({data:form.serializeObject()});
+        $('input[name="id"]').val(localStorage.userid);
+        myApp.showPreloader(), $.post("http://wisi.com.co/api/RefererUser", data).done(function(data) {
+            myApp.hidePreloader();
+        if(data.status){
+             myApp.alert(data.message, ""); 
+         }
+     });
+    }       
 });
 
 var mainView = myApp.addView(".view-main", {
