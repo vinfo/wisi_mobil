@@ -14,34 +14,24 @@
         <div class="page-content">
             <div class="content-wew">
                 <div class="list-block">
-                <a href="#" class="button button-fill button-secundary" onclick="window.plugins.socialsharing.shareViaWhatsApp('Hola, te recomiendo registrarte y descargar la aplicación de conectividad a internet WISI. http://wisi.com.co/public/#/', null /* img */, null /* url */, function() {console.log('share ok')}, function(errormsg){console.log(errormsg)})">Referido via WhatsApp</a>
-                <a href="#" class="button button-fill button-secundary" onclick="referByEmail();">Referido via E-mail</a>
-                <div class="forms" style="display: none;">
-                    <div class="form-row">
-                        <div class="input-text">
-                            <input type="email" name="email" placeholder="E-Mail" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="input-submit">
-                            <a href="#" class="button button-primary button-fill" id="send-button">Referir Aplicación</a>
-                            <input type="hidden" name="id" value="">
-                        </div>
-                    </div>                    
-                    </div>                
-                    <ul>
-                        <li class="list-re mt-0 mb-0 nice-list">
-                                <div class="item-inner">
-                                    <div class="title-re">
-                                        E-mail: 00022
-                                    </div>
-                                    <div class="nice-list">
-                                        Fecha/Hora: 23.03.2015 23:22<br/>
-                                        Estado: 23.03.2015 23:22<br/>
-                                    </div>
+                    <a href="#" class="button button-fill button-secundary" onclick="window.plugins.socialsharing.shareViaWhatsApp('Hola, te recomiendo registrarte y descargar la aplicación de conectividad a internet WISI. http://wisi.com.co/public/#/', null /* img */, null /* url */, function() {console.log('share ok')}, function(errormsg){console.log(errormsg)})">Referido via WhatsApp</a>
+                    <a href="#" class="button button-fill button-secundary" onclick="referByEmail();">Referido via E-mail</a>
+                    <form method="post" class="js-validate" novalidate="novalidate">
+                        <div class="forms" style="display: none;">
+                            <div class="form-row">
+                                <div class="input-text">
+                                    <input type="email" name="email" placeholder="E-Mail" required>
                                 </div>
-                        </li>
-                    </ul>
+                            </div>
+                            <div class="form-row">
+                                <div class="input-submit">
+                                    <a href="#" class="button button-primary button-fill" id="send-button">Referir Aplicación</a>
+                                    <input type="hidden" name="id" value="">
+                                </div>
+                            </div>                    
+                        </div> 
+                    </form>
+                    <ul class="referidos"></ul>
                 </div>
 
             </div>
