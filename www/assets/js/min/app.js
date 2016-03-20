@@ -1,4 +1,20 @@
 // Initialize app
+function setSaldo(){
+      var data={id:localStorage.userid};
+      $.ajax({
+          url: "http://wisi.com.co/api/getBalanceUser",
+          type: "get",
+          data: data,
+          success: function(d){
+              var saldo=0;
+              if(d.status){
+                  alert(d.data[0].cargado);
+                  saldo=d.data[0].cargado - d.data[0].gastado;
+              }               
+              $(".saldo_actual").html(saldo+' mins.'); 
+         }
+     });  
+}
 function referByEmail(){
     $("#email").val();
     $(".forms").slideToggle( "slow" );
@@ -255,6 +271,7 @@ $$("body").on("click", "#send-button", function() {
         }
 
         if($("#time").val()!=""&&flag){
+          $("#id").val(localStorage.userid);
           var data=$.param({data:form.serializeObject()});
           myApp.showPreloader(), $.post("http://wisi.com.co/api/setBalance", data).done(function(data) {
               myApp.hidePreloader();
@@ -278,22 +295,7 @@ $$(document).on("pageInit", function(e) {
     if(page.name=="mydata")getUserData(userid);
     if(page.name=="rechargeds")getRechargedData(userid);
 
-    if(page.name=="index"){
-      var data={id:localStorage.userid};
-      $.ajax({
-          url: "http://wisi.com.co/api/getBalanceUser",
-          type: "get",
-          data: data,
-          success: function(d){
-              var saldo=0;
-              if(d.status){
-                  alert(d.data[0].cargado);
-                  saldo=d.data[0].cargado - d.data[0].gastado;
-              }               
-              $(".saldo_actual").html(saldo+' mins.'); 
-         }
-     });       
-    } 
+    if(page.name=="index")setSaldo();
 
     // Conversation flag
     var conversationStarted = !1, myMessages = myApp.messages(".messages", {
@@ -330,7 +332,8 @@ $$(document).on("pageInit", function(e) {
         }
     });
 }), $(document).ready(function() {
-    if(!localStorage.userid)localStorage.setItem("logged_in",false); 
+    if(!localStorage.userid)localStorage.setItem("logged_in",false);
+    setSaldo(); 
     checkConnectionFB();
     showDivsConnect();
     var session_id= new Date().getTime();
