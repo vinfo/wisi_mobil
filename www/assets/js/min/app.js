@@ -276,8 +276,8 @@ $$("body").on("click", "#send-button", function() {
               myApp.hidePreloader();
               if(data.status){
                  myApp.alert("Datos cargados exitosamente!", "");
-                 window.location.href = "rechargeds.html";
-           }
+                 $("input").val('');
+              }
           });
         }
     }
