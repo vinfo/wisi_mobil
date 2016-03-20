@@ -11,7 +11,7 @@ function getReferrals(){
           data: data,
           success: function(d){
             $.each(d.data, function (index, value) {
-              $(".referidos").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="title-re">E-mail: '+value.email+'</div><div class="nice-list">Fecha/Hora: '+value.datereg+'<br/>Estado: '+value.status+'<br/></div></div></li>'); 
+              $(".referidos").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="nice-list">E-mail: '+value.email+'<br/>Fecha/Hora: '+value.datereg+'<br/>Estado: '+value.status+'<br/></div></div></li>'); 
             });            
          }
      });
@@ -276,7 +276,7 @@ $$("body").on("click", "#send-button", function() {
         if(data.status){
              myApp.alert(data.message, "");
              $('input[name="email"]').val('');
-             $(".referidos").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="title-re">E-mail: '+data.email+'</div><div class="nice-list">Fecha/Hora: '+data.datereg+'<br/>Estado: '+data.status+'<br/></div></div></li>');
+             $(".referidos").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="nice-list">E-mail: '+data.email+'<br/>Fecha/Hora: '+data.datereg+'<br/>Estado: '+data.status+'<br/></div></div></li>');
          }
      });
     }
