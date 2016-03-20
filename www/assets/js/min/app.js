@@ -10,12 +10,16 @@ function getReferrals(){
           type: "get",
           data: data,
           success: function(d){
-              if(d.status){
-                foreach(var item in d.data){
-                  alert(JSON.stringify(item));
-                  $(".referidos").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="title-re">E-mail: '+data.email+'</div><div class="nice-list">Fecha/Hora: '+data.datereg+'<br/>Estado: '+data.status+'<br/></div></div></li>'); 
-                }
-              }              
+            alert(JSON.stringify(item));
+/*            $.each(obj, function (index, value) {
+              console.log(value);
+            }); */           
+              // if(d.status){
+              //   foreach(var item in d.data){
+              //     alert(JSON.stringify(item));
+              //     $(".referidos").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="title-re">E-mail: '+data.email+'</div><div class="nice-list">Fecha/Hora: '+data.datereg+'<br/>Estado: '+data.status+'<br/></div></div></li>'); 
+              //   }
+              // }              
          }
      });
 }
