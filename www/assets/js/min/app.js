@@ -103,7 +103,7 @@ function getRechargedData(id) {
         success: function(obj){
             for(var k in obj) {
                 var o = obj[k];
-                $("#rechargeds").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="title-re">Código: '+o.code_b+'</div><div class="nice-list">Fecha/Hora: '+o.datereg+'<br/>Vence: '+o.expired+'<br/>Tiempo: '+o.time_b+' mins.<br/>Estado: '+o.status+'.<br/></div></div></li>');
+                $("#rechargeds").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="title-re">Código: '+o.code_b+'</div><div class="nice-list">Fecha/Hora: '+o.datereg+'<br/>Vence: '+o.expired+'<br/>Tiempo: '+o.time_b+' mins.<br/>Gastado: '+o.time_spend+' mins.<br/>Estado: '+o.status+'.<br/></div></div></li>');
             }
         }
     });
@@ -190,25 +190,6 @@ $$("body").on("click", ".pautar", function() {
 $$("body").on("click", ".free-navegate", function() {
     window.open("http://wisi.com.co/public/#/ad/3/"+localStorage.userid, "_system");
 });
-$$("body").on("click", ".button-recharged", function() {
-    var code_b=$("#code_b").val();
-    var key_b=$("#key_b").val();
-    var time_b=$("#time_b").val();
-    if(code_b!=""&&key_b!=""){
-        var data={userid:localStorage.userid,code:code_b,key_b:key_b,time:time_b,action:"0",type:"59",status:"50"};
-        $.ajax({
-            url: "http://wisi.com.co/api/setBalance",
-            type: "post",
-            data: data,
-            success: function(d){
-               myApp.alert("Datos cargados exitosamente!", "");
-               window.location.href = "rechargeds.html";
-           }
-       });
-    }else{
-       myApp.alert("Código y Clave son requeridos!", ""); 
-   }
-});
 
 $$("body").on("click", ".close_sesion", function() {
     localStorage.clear();
@@ -264,7 +245,17 @@ $$("body").on("click", "#send-button", function() {
              $(".referidos").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="title-re">E-mail: '+data.email+'</div><div class="nice-list">Fecha/Hora: '+data.datereg+'<br/>Estado: '+data.status+'<br/></div></div></li>');
          }
      });
-    }       
+    }
+    if ("recharged" === localStorage.page && valid) {
+        var data=$.param({data:form.serializeObject()});
+        myApp.showPreloader(), $.post("http://wisi.com.co/api/setBalance", data).done(function(data) {
+            myApp.hidePreloader();
+            if(data.status){
+               myApp.alert("Datos cargados exitosamente!", "");
+               window.location.href = "rechargeds.html";
+         }
+     });
+    }
 });
 
 var mainView = myApp.addView(".view-main", {
@@ -278,12 +269,22 @@ $$(document).on("pageInit", function(e) {
     if(page.name=="mydata")getUserData(userid);
     if(page.name=="rechargeds")getRechargedData(userid);
 
-    $.post("http://wisi.com.co/api/getBalanceUser", data).done(function(data) {
-        if(data.status){
-             var saldo=data.cargado - data.gastado;
-             $(".saldo_actual").html(saldo+' mins.');
+    if(page.name=="index"){
+      var data={id:localStorage.userid};
+      $.ajax({
+          url: "http://wisi.com.co/api/getBalanceUser",
+          type: "get",
+          data: data,
+          success: function(d){
+              var saldo=0;
+              if(d.status){
+                  alert(d.data[0].cargado);
+                  saldo=d.data[0].cargado - d.data[0].gastado;
+              }               
+              $(".saldo_actual").html(saldo+' mins.'); 
          }
-     });    
+     });       
+    } 
 
     // Conversation flag
     var conversationStarted = !1, myMessages = myApp.messages(".messages", {
