@@ -10,7 +10,7 @@ function getReferrals(){
           type: "get",
           data: data,
           success: function(d){
-            alert(JSON.stringify(item));
+            alert(JSON.stringify(d));
 /*            $.each(obj, function (index, value) {
               console.log(value);
             }); */           
