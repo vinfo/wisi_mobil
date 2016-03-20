@@ -8,7 +8,6 @@ function setSaldo(){
           success: function(d){
               var saldo=0;
               if(d.status){
-                  alert(d.data[0].cargado);
                   saldo=d.data[0].cargado - d.data[0].gastado;
               }               
               $(".saldo_actual").html(saldo+' mins.'); 
@@ -49,7 +48,7 @@ function scanear(){
           setCode(result.text);
       }, 
       function (error) {
-          alert("¨Problemas Scanneando: " + error);
+          myApp.alert("Problemas Scanneando: "+error, "");
       }
       ); 
 }
