@@ -14,8 +14,7 @@ var app = {
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        localStorage.setItem("logged_in",false);
+    onDeviceReady: function() {        
         app.receivedEvent('deviceready');
         screen.lockOrientation('portrait');
     },

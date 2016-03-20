@@ -109,10 +109,6 @@ function getRechargedData(id) {
     });
 }
 
-function randSlider() {
-    var num= Math.floor((Math.random() * 5) + 1);
-    $(".full-page-video").css('background-image','url("http://wisi.com.co/assets/img/sliders/slider'+num+'.jpg")');
-}
 function findElement(selector) {
     var box = null;
     return $(".page-on-center").length > 0 ? (box = $(".view-main").find(".page-on-center " + selector), 
@@ -258,12 +254,14 @@ $$("body").on("click", "#send-button", function() {
      });
     }
     if ("referrals" === localStorage.page && valid) {
-        var data=$.param({data:form.serializeObject()});
         $('input[name="id"]').val(localStorage.userid);
+        var data=$.param({data:form.serializeObject()});        
         myApp.showPreloader(), $.post("http://wisi.com.co/api/RefererUser", data).done(function(data) {
             myApp.hidePreloader();
         if(data.status){
-             myApp.alert(data.message, ""); 
+             myApp.alert(data.message, "");
+             $('input[name="email"]').val('');
+             $(".referidos").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="title-re">E-mail: '+data.email+'</div><div class="nice-list">Fecha/Hora: '+data.datereg+'<br/>Estado: '+data.status+'<br/></div></div></li>');
          }
      });
     }       
@@ -279,6 +277,13 @@ $$(document).on("pageInit", function(e) {
     var userid=localStorage.userid;
     if(page.name=="mydata")getUserData(userid);
     if(page.name=="rechargeds")getRechargedData(userid);
+
+    $.post("http://wisi.com.co/api/getBalanceUser", data).done(function(data) {
+        if(data.status){
+             var saldo=data.cargado - data.gastado;
+             $(".saldo_actual").html(saldo+' mins.');
+         }
+     });    
 
     // Conversation flag
     var conversationStarted = !1, myMessages = myApp.messages(".messages", {
@@ -315,7 +320,7 @@ $$(document).on("pageInit", function(e) {
         }
     });
 }), $(document).ready(function() {
-    //randSlider();    
+    if(!localStorage.userid)localStorage.setItem("logged_in",false); 
     checkConnectionFB();
     showDivsConnect();
     var session_id= new Date().getTime();
