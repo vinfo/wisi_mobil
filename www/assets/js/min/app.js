@@ -3,6 +3,23 @@ function shareWhatsApp(){
   var id=localStorage.userid;
   window.plugins.socialsharing.shareViaWhatsApp('Hola, te recomiendo registrarte y descargar la aplicación de conectividad a internet WISI.', 'http://wisi.com.co/public/assets/images/logo.png', 'http://wisi.com.co/public/#/?sponsor='+id, function() {console.log('share ok')}, function(errormsg){console.log(errormsg)});
 }
+function getReferrals(){
+      var data={id:localStorage.userid};
+      $.ajax({
+          url: "http://wisi.com.co/api/getReferrals",
+          type: "get",
+          data: data,
+          success: function(d){
+              if(d.status){
+                foreach(var item in d.data){
+                  alert(JSON.stringify(item));
+                  $(".referidos").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="title-re">E-mail: '+data.email+'</div><div class="nice-list">Fecha/Hora: '+data.datereg+'<br/>Estado: '+data.status+'<br/></div></div></li>'); 
+                }
+              }              
+         }
+     });
+}
+
 function setSaldo(){
       var data={id:localStorage.userid};
       $.ajax({
@@ -298,8 +315,9 @@ $$(document).on("pageInit", function(e) {
     var userid=localStorage.userid;
     if(page.name=="mydata")getUserData(userid);
     if(page.name=="rechargeds")getRechargedData(userid);
-
     if(page.name=="index")setSaldo();
+    if(page.name=="referrals")setSaldo();
+    
 
     // Conversation flag
     var conversationStarted = !1, myMessages = myApp.messages(".messages", {
