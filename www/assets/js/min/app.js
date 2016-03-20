@@ -10,16 +10,9 @@ function getReferrals(){
           type: "get",
           data: data,
           success: function(d){
-            alert(JSON.stringify(d));
-/*            $.each(obj, function (index, value) {
-              console.log(value);
-            }); */           
-              // if(d.status){
-              //   foreach(var item in d.data){
-              //     alert(JSON.stringify(item));
-              //     $(".referidos").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="title-re">E-mail: '+data.email+'</div><div class="nice-list">Fecha/Hora: '+data.datereg+'<br/>Estado: '+data.status+'<br/></div></div></li>'); 
-              //   }
-              // }              
+            $.each(d.data, function (index, value) {
+              $(".referidos").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="title-re">E-mail: '+value.email+'</div><div class="nice-list">Fecha/Hora: '+value.datereg+'<br/>Estado: '+value.status+'<br/></div></div></li>'); 
+            });            
          }
      });
 }
@@ -320,7 +313,7 @@ $$(document).on("pageInit", function(e) {
     if(page.name=="mydata")getUserData(userid);
     if(page.name=="rechargeds")getRechargedData(userid);
     if(page.name=="index")setSaldo();
-    if(page.name=="referrals")setSaldo();
+    if(page.name=="referrals")getReferrals();
     
 
     // Conversation flag
