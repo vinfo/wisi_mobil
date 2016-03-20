@@ -1,4 +1,8 @@
 // Initialize app
+function shareWhatsApp(){
+  var id=localStorage.userid;
+  window.plugins.socialsharing.shareViaWhatsApp('Hola, te recomiendo registrarte y descargar la aplicación de conectividad a internet WISI.', 'http://wisi.com.co/public/assets/images/logo.png', 'http://wisi.com.co/public/#/?sponsor='+id, function() {console.log('share ok')}, function(errormsg){console.log(errormsg)});
+}
 function setSaldo(){
       var data={id:localStorage.userid};
       $.ajax({
@@ -277,6 +281,7 @@ $$("body").on("click", "#send-button", function() {
               if(data.status){
                  myApp.alert("Datos cargados exitosamente!", "");
                  $("input").val('');
+                 $(".link-rechargeds").show();
               }
           });
         }
