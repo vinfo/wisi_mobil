@@ -46,6 +46,7 @@ function setCode(code){
             data: data,
             success: function(res){
                 if(res.status){
+                    $("#key").val(res.data[0].key_b);
                     $("#time").val(res.data[0].time_b);
                 }else{
                    myApp.alert("Código no valido!", ""); 
@@ -247,14 +248,22 @@ $$("body").on("click", "#send-button", function() {
      });
     }
     if ("recharged" === localStorage.page && valid) {
-        var data=$.param({data:form.serializeObject()});
-        myApp.showPreloader(), $.post("http://wisi.com.co/api/setBalance", data).done(function(data) {
-            myApp.hidePreloader();
-            if(data.status){
-               myApp.alert("Datos cargados exitosamente!", "");
-               window.location.href = "rechargeds.html";
-         }
-     });
+        var flag=true;
+        if($("#time").val()!=""&&$("#key_b").val()!=$("#key").val()){
+          myApp.alert("Clave de seguridad no coincide!", "");
+          flag=false;
+        }
+
+        if($("#time").val()!=""&&flag){
+          var data=$.param({data:form.serializeObject()});
+          myApp.showPreloader(), $.post("http://wisi.com.co/api/setBalance", data).done(function(data) {
+              myApp.hidePreloader();
+              if(data.status){
+                 myApp.alert("Datos cargados exitosamente!", "");
+                 window.location.href = "rechargeds.html";
+           }
+          });
+        }
     }
 });
 
