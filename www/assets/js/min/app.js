@@ -148,10 +148,12 @@ function getRewardsData(id) {
         url: "http://wisi.com.co/api/rewards",
         type: "get",
         data: data,
-        success: function(obj){
-            for(var k in obj) {
-                var o = obj[k];
-                $("#rewards").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="title-re">Tipo: Descarga APP</div><div class="nice-list">Fecha/Hora: 23.03.2015 23:22<br/>Vence: 23.03.2015 23:22<br/>Tiempo: 100 mins.<br/></div></div></li>');
+        success: function(obj){            
+            if(obj.status){
+              for(var k in obj.data) {
+                  var o = obj.data[k];      
+                  $("#rewards").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="title-re">Tipo: '+o.type+'</div><div class="nice-list">Fecha/Hora: '+o.datereg+'<br/>Vence: '+o.expired+'<br/>Tiempo: '+o.time+' mins.<br/>Gastado: '+o.time_spend+' mins.<br/>Estado: '+o.status+'.<br/></div></div></li>');
+              }
             }
         }
     });
@@ -237,6 +239,15 @@ $$("body").on("click", ".pautar", function() {
 });
 $$("body").on("click", ".free-navegate", function() {
     window.open("http://wisi.com.co/public/#/ad/3/"+localStorage.userid, "_system");
+});
+$$("body").on("click", ".pay-navegate", function() {
+    var saldo=$(".saldo_premios").html();
+    alert(saldo);
+    if(saldo>0){
+      window.open("http://wisi.com.co/public/#/ad/3/"+localStorage.userid, "_system");
+    }else{
+      window.location.href = "#!/recharged.html";
+    }    
 });
 
 $$("body").on("click", ".close_sesion", function() {
