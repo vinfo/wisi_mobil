@@ -328,6 +328,7 @@ $$(document).on("pageInit", function(e) {
     if(page.name=="rechargeds")getRechargedData(userid);
     if(page.name=="index")setSaldo();
     if(page.name=="referrals")getReferrals();
+    if(page.name=="rewards")getRewardsData(userid);
     
 
     // Conversation flag
