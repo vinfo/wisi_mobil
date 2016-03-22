@@ -17,6 +17,7 @@ var app = {
     onDeviceReady: function() {        
         app.receivedEvent('deviceready');
         screen.lockOrientation('portrait');
+        localStorage.setItem("saldo_actual",0);
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {

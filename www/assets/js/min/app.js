@@ -28,7 +28,8 @@ function setSaldo(){
               if(d.status){
                   saldo=d.data[0].cargado - d.data[0].gastado;
               }               
-              $(".saldo_actual").html(saldo+' mins.'); 
+              $(".saldo_actual").html(saldo+' mins.');
+              localStorage.setItem("saldo_actual",saldo);
          }
      });  
 }
@@ -241,12 +242,12 @@ $$("body").on("click", ".free-navegate", function() {
     window.open("http://wisi.com.co/public/#/ad/3/"+localStorage.userid, "_system");
 });
 $$("body").on("click", ".pay-navegate", function() {
-    var saldo=$(".saldo_premios").html();
+    var saldo=localStorage.saldo_actual;
     alert(saldo);
     if(saldo>0){
       window.open("http://wisi.com.co/public/#/ad/3/"+localStorage.userid, "_system");
     }else{
-      window.location.href = "#!/recharged.html";
+      window.location.href = "index.html#!/recharged.html";
     }    
 });
 
