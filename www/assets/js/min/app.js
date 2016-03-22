@@ -30,7 +30,14 @@ function setSaldo(){
               }               
               localStorage.setItem("saldo_actual",saldo);
               $(".saldo_actual").html(saldo+' mins.');
-              if(saldo=0)$(".pay-navegate").attr("href","recharged.html");
+              console.log(saldo);
+              if(saldo==0){
+                alert("rechar");
+                $(".pay-navegate").attr("href","recharged.html");
+              }else{
+                alert("sup");
+                $(".pay-navegate").attr("href","http://wisi.com.co/public/#/ad/3/"+localStorage.userid).attr("target","_system");
+              }
          }
      });  
 }
@@ -243,7 +250,7 @@ $$("body").on("click", ".free-navegate", function() {
     window.open("http://wisi.com.co/public/#/ad/3/"+localStorage.userid, "_system");
 });
 $$("body").on("click", ".pay-navegate", function() {
-    if(localStorage.saldo_actual>0)window.open("http://wisi.com.co/public/#/ad/3/"+localStorage.userid, "_system");
+    window.open(this.href, "_system");
 });
 
 $$("body").on("click", ".close_sesion", function() {
