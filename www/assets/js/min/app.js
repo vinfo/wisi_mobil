@@ -142,6 +142,20 @@ function getRechargedData(id) {
         }
     });
 }
+function getRewardsData(id) {    
+    var data={id:id};
+    $.ajax({
+        url: "http://wisi.com.co/api/rewards",
+        type: "get",
+        data: data,
+        success: function(obj){
+            for(var k in obj) {
+                var o = obj[k];
+                $("#rewards").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="title-re">Tipo: Descarga APP</div><div class="nice-list">Fecha/Hora: 23.03.2015 23:22<br/>Vence: 23.03.2015 23:22<br/>Tiempo: 100 mins.<br/></div></div></li>');
+            }
+        }
+    });
+}
 
 function findElement(selector) {
     var box = null;
