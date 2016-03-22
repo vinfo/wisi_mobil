@@ -333,9 +333,9 @@ $$(document).on("pageInit", function(e) {
       setSaldo();
       var saldo= localStorage.saldo_actual;
       if(saldo>0){
-            window.open("http://wisi.com.co/public/#/ad/3/"+localStorage.userid, "_system");
+           $(".pay-navegate").attr("href","http://wisi.com.co/public/#/ad/3/"+localStorage.userid).attr("target","_system");
       }else{
-           $(".pay-navegate").atrr("href","recharged.html");
+           $(".pay-navegate").attr("href","recharged.html");
       }
     }
     if(page.name=="referrals")getReferrals();
