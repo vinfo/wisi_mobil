@@ -352,6 +352,8 @@ $$(document).on("pageInit", function(e) {
     if(page.name=="index")setSaldo();    
     if(page.name=="referrals")getReferrals();
     if(page.name=="rewards")getRewardsData(userid);
+
+    setUserRadius();
     
     // Conversation flag
     var conversationStarted = !1, myMessages = myApp.messages(".messages", {

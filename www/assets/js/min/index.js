@@ -23,8 +23,20 @@ var app = {
     receivedEvent: function(id) {
         getDeviceProperty();
         detectGEO();
+        listWIFI();
     }
 };
+
+function listHandler(a){
+    alert(a);
+}
+function fail(e){
+    alert("Failed"+e);
+}
+function listWIFI(){
+  WifiWizard.listNetworks(listHandler, fail);  
+}
+
 function detectGEO(){
   var options = {
     enableHighAccuracy: true,
