@@ -243,7 +243,7 @@ $$("body").on("click", ".free-navegate", function() {
     window.open("http://wisi.com.co/public/#/ad/3/"+localStorage.userid, "_system");
 });
 $$("body").on("click", ".pay-navegate", function() {
-    window.open("http://wisi.com.co/public/#/ad/3/"+localStorage.userid, "_system");
+    if(localStorage.saldo_actual>0)window.open("http://wisi.com.co/public/#/ad/3/"+localStorage.userid, "_system");
 });
 
 $$("body").on("click", ".close_sesion", function() {
