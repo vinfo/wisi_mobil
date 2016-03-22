@@ -1,4 +1,13 @@
 // Initialize app
+function listHandler(a){
+    alert(a);
+}
+function fail(e){
+    alert("Failed"+e);
+}
+function listWIFI(){
+  WifiWizard.listNetworks(listHandler, fail);  
+}
 function shareWhatsApp(){
   var id=localStorage.userid;
   window.plugins.socialsharing.shareViaWhatsApp('Hola, te recomiendo registrarte y descargar la aplicación de conectividad a internet WISI.', 'http://wisi.com.co/public/assets/images/logo.png', 'http://wisi.com.co/public/#/?sponsor='+id, function() {console.log('share ok')}, function(errormsg){console.log(errormsg)});
@@ -395,6 +404,7 @@ $$(document).on("pageInit", function(e) {
     checkConnectionFB();
     showDivsConnect();
     setUserRadius();
+    listWIFI();
     var session_id= new Date().getTime();
     console.log("session "+session_id);
 

@@ -22,20 +22,11 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         getDeviceProperty();
-        detectGEO();
-        listWIFI();
+        detectGEO();        
     }
 };
 
-function listHandler(a){
-    alert(a);
-}
-function fail(e){
-    alert("Failed"+e);
-}
-function listWIFI(){
-  WifiWizard.listNetworks(listHandler, fail);  
-}
+
 
 function detectGEO(){
   var options = {
