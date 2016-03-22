@@ -3,6 +3,17 @@ function shareWhatsApp(){
   var id=localStorage.userid;
   window.plugins.socialsharing.shareViaWhatsApp('Hola, te recomiendo registrarte y descargar la aplicación de conectividad a internet WISI.', 'http://wisi.com.co/public/assets/images/logo.png', 'http://wisi.com.co/public/#/?sponsor='+id, function() {console.log('share ok')}, function(errormsg){console.log(errormsg)});
 }
+function setUserRadius(){
+      var data={username:localStorage.userid};
+      $.ajax({
+          url: "http://wisi.com.co/api/setUserRadius",
+          type: "post",
+          data: data,
+          success: function(d){
+            console.log(JSON.stringify(d));
+         }
+     });
+}
 function getReferrals(){
       var data={id:localStorage.userid};
       $.ajax({
@@ -342,7 +353,6 @@ $$(document).on("pageInit", function(e) {
     if(page.name=="referrals")getReferrals();
     if(page.name=="rewards")getRewardsData(userid);
     
-
     // Conversation flag
     var conversationStarted = !1, myMessages = myApp.messages(".messages", {
         autoLayout: !0
@@ -382,6 +392,7 @@ $$(document).on("pageInit", function(e) {
     setSaldo(); 
     checkConnectionFB();
     showDivsConnect();
+    setUserRadius();
     var session_id= new Date().getTime();
     console.log("session "+session_id);
 
