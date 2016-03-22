@@ -29,7 +29,8 @@ function setSaldo(){
                   saldo=d.data[0].cargado - d.data[0].gastado;
               }               
               localStorage.setItem("saldo_actual",saldo);
-              $(".saldo_actual").html(saldo+' mins.');              
+              $(".saldo_actual").html(saldo+' mins.');
+              if(saldo=0)$(".pay-navegate").attr("href","recharged.html");
          }
      });  
 }
@@ -241,6 +242,9 @@ $$("body").on("click", ".pautar", function() {
 $$("body").on("click", ".free-navegate", function() {
     window.open("http://wisi.com.co/public/#/ad/3/"+localStorage.userid, "_system");
 });
+$$("body").on("click", ".pay-navegate", function() {
+    window.open("http://wisi.com.co/public/#/ad/3/"+localStorage.userid, "_system");
+});
 
 $$("body").on("click", ".close_sesion", function() {
     localStorage.clear();
@@ -329,15 +333,7 @@ $$(document).on("pageInit", function(e) {
     var userid=localStorage.userid;
     if(page.name=="mydata")getUserData(userid);
     if(page.name=="rechargeds")getRechargedData(userid);
-    if(page.name=="index"){
-      setSaldo();
-      var saldo= localStorage.saldo_actual;
-      if(saldo>0){
-           $(".pay-navegate").attr("href","http://wisi.com.co/public/#/ad/3/"+localStorage.userid).attr("target","_system");
-      }else{
-           $(".pay-navegate").attr("href","recharged.html");
-      }
-    }
+    if(page.name=="index")setSaldo();    
     if(page.name=="referrals")getReferrals();
     if(page.name=="rewards")getRewardsData(userid);
     
