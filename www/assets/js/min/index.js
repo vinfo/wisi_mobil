@@ -77,10 +77,10 @@ function checkConnection() {
 
     if(states[networkState]=='No network connection'){
         navigator.vibrate(1000);
-        alert('No esta conectado a una red WIFI');
+        alert('WIFI no activado!');
         state=false;                            
     }else{
-        alert('WIFI disponible!');
+        alert('WIFI activado!');
         window.setTimeout(function(){
             WifiWizard.listNetworks(listHandler, fail);
         }, 1000);        
