@@ -13,9 +13,11 @@
  *  limitations under the License.
  */
 
+
 /*
  * This is the interface for the WifiWizard Phonegap plugin.
  */
+
 
 var WifiWizard = {
 
@@ -50,7 +52,7 @@ var WifiWizard = {
             };
         }
         else {
-            console.log("Algorithm incorrect")
+            console.log("Algorithm incorrect.")
             return false;
         }
         return wifiConfig;
