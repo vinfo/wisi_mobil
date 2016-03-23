@@ -102,12 +102,12 @@ function fail(e){
 function listHandler(a){
   console.log("listar "+localStorage.wisi);
   if(localStorage.wisi=="false"){
-    console.log("eNTRA");
     for(var i=0; i<a.length; i++){
         if(a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0){          
             navigator.vibrate(2000);         
             myApp.alert("Red WISI detectada", "");
             localStorage.setItem("wisi","true");
+            return false;
         }
     }
   }
