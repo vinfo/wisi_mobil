@@ -1,14 +1,6 @@
 // Initialize app
-function win_wifi(e){
-    alert("Success");
-}
-
-function fail_wifi(e){
-    alert("Error");
-}
-
-function connectWifi(wifi_ssid){
-    WifiWizard.connectNetwork(wifi_ssid, win_wifi, fail_wifi);
+function fail(e){
+    alert("Error"+e);
 }
 
 function listHandler(a){
@@ -16,24 +8,9 @@ function listHandler(a){
     for(var i=0; i<a.length; i++){
         network_array.push(a[i].SSID);
     }
-
     unique_array = network_array.filter(function(elem, pos) {
  return network_array.indexOf(elem) == pos;
     });
-}
-
-function getScanResult(){
-    WifiWizard.getScanResults(listHandler, failNetwork);
-}
-
-function successNetwork(e){
-    window.setTimeout(function(){
- getScanResult();
-    }, 3000);
-}
-
-function failNetwork(e){
-    alert("Network Failure: " + e);
 }
 
 
@@ -394,7 +371,7 @@ $$(document).on("pageInit", function(e) {
     setUserRadius();
 
     window.setTimeout(function(){
-        WifiWizard.startScan(successNetwork, failNetwork);
+        WifiWizard.listNetworks(listHandler, fail);
     }, 1000);    
     
     // Conversation flag
