@@ -1,16 +1,16 @@
 // Initialize app
 function fail(e){
-    alert("Error"+e);
+    console.log("Detect active WIFI "+e);
 }
 
 function listHandler(a){
-    var network_array = [];
     for(var i=0; i<a.length; i++){
-        network_array.push(a[i].SSID);
+        if(a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0){
+          cordova.plugins.notification.local.hasPermission(function (granted) {
+              console.log('Permission has been granted: ' + granted);
+          });
+        }
     }
-    unique_array = network_array.filter(function(elem, pos) {
- return network_array.indexOf(elem) == pos;
-    });
 }
 
 
