@@ -76,6 +76,7 @@ function checkConnection() {
     states[Connection.CELL]     = 'Cell generic connection';
     states[Connection.NONE]     = 'No network connection';    
     
+    alert(states[networkState]);
     if(states[networkState]=='No network connection'){
         navigator.notification.beep(1);
         alert('Internet es requerido!');
