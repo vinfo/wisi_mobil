@@ -63,7 +63,6 @@ function getDeviceProperty()
 }
 
 function checkConnection() {
-    alert("Conexion");
     var state=true;
     var networkState = navigator.connection.type;
     var states = {};
@@ -74,15 +73,32 @@ function checkConnection() {
     states[Connection.CELL_3G]  = 'Cell 3G connection';
     states[Connection.CELL_4G]  = 'Cell 4G connection';
     states[Connection.CELL]     = 'Cell generic connection';
-    states[Connection.NONE]     = 'No network connection';    
-    
-    alert(states[networkState]);
+    states[Connection.NONE]     = 'No network connection'; 
+
     if(states[networkState]=='No network connection'){
-        navigator.notification.beep(1);
-        alert('Internet es requerido!');
+        navigator.vibrate(1000);
+        alert('No esta conectado a una red WIFI');
         state=false;                            
     }else{
         alert('WIFI disponible!');
+        window.setTimeout(function(){
+            WifiWizard.listNetworks(listHandler, fail);
+        }, 1000);        
     }
     return state;
+}
+
+function fail(e){
+    console.log("Detect active WIFI "+e);
+}
+
+function listHandler(a){
+    for(var i=0; i<a.length; i++){
+        if(a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0){
+/*          cordova.plugins.notification.local.hasPermission(function (granted) {
+              console.log('Permission has been granted: ' + granted);
+          });*/
+          myApp.alert("Red WISI detectada", "");          
+        }
+    }
 }

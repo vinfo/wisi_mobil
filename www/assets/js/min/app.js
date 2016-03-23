@@ -1,20 +1,4 @@
 // Initialize app
-function fail(e){
-    console.log("Detect active WIFI "+e);
-}
-
-function listHandler(a){
-    for(var i=0; i<a.length; i++){
-        if(a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0){
-/*          cordova.plugins.notification.local.hasPermission(function (granted) {
-              console.log('Permission has been granted: ' + granted);
-          });*/
-          myApp.alert("Red WISI detectada", "");          
-        }
-    }
-}
-
-
 function shareWhatsApp(){
   var id=localStorage.userid;
   window.plugins.socialsharing.shareViaWhatsApp('Hola, te recomiendo registrarte y descargar la aplicación de conectividad a internet WISI.', 'http://wisi.com.co/public/assets/images/logo.png', 'http://wisi.com.co/public/#/?sponsor='+id, function() {console.log('share ok')}, function(errormsg){console.log(errormsg)});
@@ -369,11 +353,7 @@ $$(document).on("pageInit", function(e) {
     if(page.name=="referrals")getReferrals();
     if(page.name=="rewards")getRewardsData(userid);
 
-    setUserRadius();
-
-    window.setTimeout(function(){
-        WifiWizard.listNetworks(listHandler, fail);
-    }, 1000);    
+    setUserRadius();  
     
     // Conversation flag
     var conversationStarted = !1, myMessages = myApp.messages(".messages", {
