@@ -21,7 +21,6 @@ function getReferrals(){
           type: "get",
           data: data,
           success: function(d){
-            alert(JSON.stringify(d));
             $.each(d.data, function (index, value) {
               $(".referidos").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="nice-list">E-mail: '+value.email+'<br/>Fecha/Hora: '+value.datereg+'<br/>Estado: '+value.status+'<br/></div></div></li>'); 
             });            
@@ -307,11 +306,12 @@ $$("body").on("click", "#send-button", function() {
         myApp.showPreloader(), $.post("http://wisi.com.co/api/RefererUser", data).done(function(data) {
             myApp.hidePreloader();
         if(data.status){
-             myApp.alert(data.message, "");
-             alert(JSON.stringify(data));
-             $('input[name="email"]').val('');
-             $(".referidos").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="nice-list">E-mail: '+data.email+'<br/>Fecha/Hora: '+data.datereg+'<br/>Estado: '+data.status+'<br/></div></div></li>');
+             myApp.alert(data.message, "");             
+             $(".referidos").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="nice-list">E-mail: '+data.data.email+'<br/>Fecha/Hora: '+data.data.datereg+'<br/>Estado: '+data.data.status+'<br/></div></div></li>');
+         }else{
+            myApp.alert("Referido ya ha sido registrado antes!", "");
          }
+         $('input[name="email"]').val('');
      });
     }
     if ("recharged" === localStorage.page && valid) {
