@@ -11,6 +11,7 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         document.addEventListener("offline", checkConnection, false);
         document.addEventListener("pause", onPause, false);
+        document.addEventListener("resume", onResume, false);
     },
     // deviceready Event Handler
     //
@@ -20,6 +21,7 @@ var app = {
         app.receivedEvent('deviceready');
         screen.lockOrientation('portrait');
         localStorage.setItem("saldo_actual",0);
+        localStorage.setItem("wisi",false);
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -69,6 +71,12 @@ function onPause() {
   }, 5000);      
 }
 
+function onResume() {
+  window.setTimeout(function(){
+    WifiWizard.listNetworks(listHandler, fail);
+  }, 1000);      
+}
+
 function checkConnection() {
     var state=true;
     var networkState = navigator.connection.type;
@@ -82,17 +90,10 @@ function checkConnection() {
     states[Connection.CELL]     = 'Cell generic connection';
     states[Connection.NONE]     = 'No network connection'; 
 
-    alert(states[networkState]);
     if(states[networkState]=='No network connection'){
         navigator.vibrate(1000);
         alert('WIFI no activado!');
         state=false;                            
-    }else{
-        navigator.vibrate(1000);
-        alert('WIFI activado!');
-        window.setTimeout(function(){
-            WifiWizard.listNetworks(listHandler, fail);
-        }, 1000);        
     }
     return state;
 }
@@ -104,11 +105,11 @@ function fail(e){
 function listHandler(a){
     for(var i=0; i<a.length; i++){
         if(a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0){
-/*          cordova.plugins.notification.local.hasPermission(function (granted) {
-              console.log('Permission has been granted: ' + granted);
-          });*/
-          navigator.vibrate(2000);
-          myApp.alert("Red WISI detectada", "");          
+          if(!localStorage.wisi){
+            navigator.vibrate(2000);
+            myApp.alert("Red WISI detectada", "");
+            localStorage.setItem("wisi",true);
+          }
         }
     }
 }
