@@ -72,9 +72,7 @@ function onPause() {
 }
 
 function onResume() {
-  window.setTimeout(function(){
-    WifiWizard.listNetworks(listHandler, fail);
-  }, 1000);      
+  localStorage.setItem("wisi",false);      
 }
 
 function checkConnection() {
