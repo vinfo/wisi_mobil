@@ -21,6 +21,7 @@ function getReferrals(){
           type: "get",
           data: data,
           success: function(d){
+            alert(JSON.stringify(d));
             $.each(d.data, function (index, value) {
               $(".referidos").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="nice-list">E-mail: '+value.email+'<br/>Fecha/Hora: '+value.datereg+'<br/>Estado: '+value.status+'<br/></div></div></li>'); 
             });            
@@ -42,11 +43,6 @@ function setSaldo(){
               localStorage.setItem("saldo_actual",saldo);
               $(".saldo_actual").html(saldo+' mins.');
               console.log(saldo);
-              if(saldo==0){
-                $(".pay-navegate").attr("href","recharged.html");
-              }else{
-                $(".pay-navegate").attr("href","http://wisi.com.co/public/#/ad/3/"+localStorage.userid).attr("target","_system");
-              }
          }
      });  
 }
@@ -256,10 +252,10 @@ $$("body").on("click", ".pautar", function() {
     window.open("http://wisi.com.co/public/#/", "_system");
 });
 $$("body").on("click", ".free-navegate", function() {
-    window.open("http://wisi.com.co/public/#/ad/3/"+localStorage.userid, "_system");
+    window.open("http://wisi.com.co/public/#/ad/1/"+localStorage.userid+"?navegate=free", "_system");
 });
 $$("body").on("click", ".pay-navegate", function() {
-    if(localStorage.saldo_actual!="0")window.open(this.href, "_system");
+    window.open("http://wisi.com.co/public/#/ad/1/"+localStorage.userid+"?navegate=pay", "_system");
 });
 
 $$("body").on("click", ".close_sesion", function() {
@@ -312,6 +308,7 @@ $$("body").on("click", "#send-button", function() {
             myApp.hidePreloader();
         if(data.status){
              myApp.alert(data.message, "");
+             alert(JSON.stringify(data));
              $('input[name="email"]').val('');
              $(".referidos").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="nice-list">E-mail: '+data.email+'<br/>Fecha/Hora: '+data.datereg+'<br/>Estado: '+data.status+'<br/></div></div></li>');
          }
@@ -332,6 +329,7 @@ $$("body").on("click", "#send-button", function() {
               if(data.status){
                  myApp.alert("Datos cargados exitosamente!", "");
                  $("input").val('');
+                 setSaldo();
                  $(".link-rechargeds").show();
               }
           });

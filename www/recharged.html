@@ -17,8 +17,8 @@
                     <form method="post" class="js-validate" novalidate="novalidate">
                     <div class="form-row">
                         <div class="input-text">
-                        <p>Para iniciar el proceso de validación de la recarga, click en la siguiente imágen y scanee el código de barras de su tarjeta.</p>
-                          <p><a onclick="scanear()"><img src="assets/img/barcode.jpg" class="img"></a></p>
+                        <p>Escanear tarjeta prepago</p>
+                          <p><a href="#" class="button button-fill button-secundary" onclick="scanear();">Escanear Tarjeta</a></p>
                           <p>Ó ingrese los datos manualmente en los siguientes campos.</p>
                       </div>
                   </div>                    
@@ -43,7 +43,8 @@
                     </div>
                 </div>
                 <div class="form-row link-rechargeds" style="display: none;">
-                    <a href="rechargeds.html" class="button button-recharged button-fill button-primary" id="send-button">Regresar a Bolsa de recargas</a>
+                    <div class="mt-5 text-bg saldo_actual"></div>
+                    <a href="#" class="button pay-navegate button-recharged button-fill button-primary">Navegar ahora</a>
                 </div>                
             </form>
         </div>

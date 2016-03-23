@@ -104,9 +104,9 @@ function listHandler(a){
   if(localStorage.wisi=="false"){
     for(var i=0; i<a.length; i++){
         if(a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0){          
-            navigator.vibrate(2000);         
-            myApp.alert("Red WISI detectada", "");
             localStorage.setItem("wisi","true");
+            navigator.vibrate(2000);         
+            myApp.alert("Red WISI detectada", "");            
             return false;
         }
     }
