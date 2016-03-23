@@ -29,9 +29,6 @@ var app = {
         detectGEO();        
     }
 };
-
-
-
 function detectGEO(){
   var options = {
     enableHighAccuracy: true,
@@ -65,10 +62,10 @@ function getDeviceProperty()
      localStorage.setItem("OS",deviceOS);
 }
 
-function onPause() {
-  window.setInterval(function(){
-    WifiWizard.listNetworks(listHandler, fail);
-  }, 5000);      
+function onPause() {  
+    window.setInterval(function(){
+      WifiWizard.listNetworks(listHandler, fail);
+    }, 5000);
 }
 
 function onResume() {
@@ -101,18 +98,13 @@ function fail(e){
 }
 
 function listHandler(a){
+  if(localStorage.wisi===false){
     for(var i=0; i<a.length; i++){
-        if(a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0){
-          if(localStorage.wisi==false){
-            navigator.vibrate(2000);            
-            navigator.notification.alert(
-                'You are the winner!',  // message
-                'Game Over',            // title
-                'Done'                  // buttonName
-            );            
+        if(a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0){          
+            navigator.vibrate(2000);         
             myApp.alert("Red WISI detectada", "");
             localStorage.setItem("wisi",true);
-          }
         }
     }
+  }
 }
