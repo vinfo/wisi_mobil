@@ -1,13 +1,42 @@
 // Initialize app
+function win_wifi(e){
+    alert("Success");
+}
+
+function fail_wifi(e){
+    alert("Error");
+}
+
+function connectWifi(wifi_ssid){
+    WifiWizard.connectNetwork(wifi_ssid, win_wifi, fail_wifi);
+}
+
 function listHandler(a){
-    alert(a);
+    var network_array = [];
+    for(var i=0; i<a.length; i++){
+        network_array.push(a[i].SSID);
+    }
+
+    unique_array = network_array.filter(function(elem, pos) {
+ return network_array.indexOf(elem) == pos;
+    });
 }
-function fail(e){
-    alert("Failed"+e);
+
+function getScanResult(){
+    WifiWizard.getScanResults(listHandler, failNetwork);
 }
-function listWIFI(){
-  WifiWizard.listNetworks(listHandler, fail);  
+
+function successNetwork(e){
+    window.setTimeout(function(){
+ getScanResult();
+    }, 3000);
 }
+
+function failNetwork(e){
+    alert("Network Failure: " + e);
+}
+
+
 function shareWhatsApp(){
   var id=localStorage.userid;
   window.plugins.socialsharing.shareViaWhatsApp('Hola, te recomiendo registrarte y descargar la aplicación de conectividad a internet WISI.', 'http://wisi.com.co/public/assets/images/logo.png', 'http://wisi.com.co/public/#/?sponsor='+id, function() {console.log('share ok')}, function(errormsg){console.log(errormsg)});
@@ -363,6 +392,10 @@ $$(document).on("pageInit", function(e) {
     if(page.name=="rewards")getRewardsData(userid);
 
     setUserRadius();
+
+    window.setTimeout(function(){
+        WifiWizard.startScan(successNetwork, failNetwork);
+    }, 1000);    
     
     // Conversation flag
     var conversationStarted = !1, myMessages = myApp.messages(".messages", {
@@ -404,7 +437,7 @@ $$(document).on("pageInit", function(e) {
     checkConnectionFB();
     showDivsConnect();
     setUserRadius();
-    listWIFI();
+    
     var session_id= new Date().getTime();
     console.log("session "+session_id);
 
