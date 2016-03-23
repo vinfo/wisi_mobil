@@ -103,8 +103,8 @@ function fail(e){
 function listHandler(a){
     for(var i=0; i<a.length; i++){
         if(a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0){
-          if(!localStorage.wisi){
-            navigator.vibrate(2000);
+          if(localStorage.wisi==false){
+            navigator.vibrate(2000);            
             navigator.notification.alert(
                 'You are the winner!',  // message
                 'Game Over',            // title
