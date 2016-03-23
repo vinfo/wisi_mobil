@@ -62,14 +62,16 @@ function getDeviceProperty()
      localStorage.setItem("OS",deviceOS);
 }
 
-function onPause() {  
+function onPause() {
+    console.log("paused");
     window.setInterval(function(){
       WifiWizard.listNetworks(listHandler, fail);
     }, 5000);
 }
 
 function onResume() {
-  localStorage.setItem("wisi",false);      
+  console.log("resume");
+  localStorage.setItem("wisi","false");      
 }
 
 function checkConnection() {
@@ -98,12 +100,14 @@ function fail(e){
 }
 
 function listHandler(a){
-  if(localStorage.wisi===false){
+  console.log("listar "+localStorage.wisi);
+  if(localStorage.wisi=="false"){
+    console.log("eNTRA");
     for(var i=0; i<a.length; i++){
         if(a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0){          
             navigator.vibrate(2000);         
             myApp.alert("Red WISI detectada", "");
-            localStorage.setItem("wisi",true);
+            localStorage.setItem("wisi","true");
         }
     }
   }
