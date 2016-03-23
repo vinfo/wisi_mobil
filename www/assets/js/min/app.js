@@ -6,9 +6,10 @@ function fail(e){
 function listHandler(a){
     for(var i=0; i<a.length; i++){
         if(a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0){
-          cordova.plugins.notification.local.hasPermission(function (granted) {
+/*          cordova.plugins.notification.local.hasPermission(function (granted) {
               console.log('Permission has been granted: ' + granted);
-          });
+          });*/
+          myApp.alert("Código no valido!", "");          
         }
     }
 }
