@@ -107,6 +107,7 @@ function listHandler(a){
 /*          cordova.plugins.notification.local.hasPermission(function (granted) {
               console.log('Permission has been granted: ' + granted);
           });*/
+          navigator.vibrate(2000);
           myApp.alert("Red WISI detectada", "");          
         }
     }
