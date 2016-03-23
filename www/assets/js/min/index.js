@@ -10,6 +10,7 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         document.addEventListener("offline", checkConnection, false);
+        document.addEventListener("pause", onPause, false);
     },
     // deviceready Event Handler
     //
@@ -60,6 +61,12 @@ function getDeviceProperty()
      var deviceOS  = device.platform  ;  //fetch the device operating system
      var deviceOSVersion = device.version ;  //fetch the device OS version
      localStorage.setItem("OS",deviceOS);
+}
+
+function onPause() {
+  window.setInterval(function(){
+    WifiWizard.listNetworks(listHandler, fail);
+  }, 5000);      
 }
 
 function checkConnection() {
