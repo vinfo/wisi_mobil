@@ -351,7 +351,8 @@ $$(document).on("pageInit", function(e) {
     if(page.name=="referrals")getReferrals();
     if(page.name=="rewards")getRewardsData(userid);
 
-    setUserRadius();  
+    setUserRadius();
+    cordova.plugins.notification.local.schedule({ message:"Hello World" }); 
     
     // Conversation flag
     var conversationStarted = !1, myMessages = myApp.messages(".messages", {
