@@ -56,7 +56,7 @@
     </application>
   </gap:config-file>
   
-  <gap:plugin name="de.appplant.cordova.plugin.local-notification" />
+  <gap:plugin name="trunk.plugin.local-notification" version="0.8.2" />
 
   <gap:config-file platform="ios" parent="UIStatusBarHidden">
     <false/>
