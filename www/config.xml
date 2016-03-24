@@ -75,7 +75,11 @@
   <gap:plugin name="com.phonegap.plugin.statusbar" />
   <gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" />  
   <gap:plugin name="net.roughshod.plugins.barcodescanner" version="3.0.0" />
-  <gap:plugin name="com.pylonproducts.wifiwizard" version="0.1.0"/>  
+  <gap:plugin name="com.pylonproducts.wifiwizard" version="0.1.0"/>
+  <plugin name="com.phonegap.plugins.facebookconnect" spec="0.9.0"> source="pgb">
+      <param name="APP_ID" value="1691694321105222" />
+      <param name="APP_NAME" value="wisi_movil" />
+  </gap:plugin>  
 
   <gap:config-file platform="ios" parent="UIStatusBarHidden">
     <false/>
