@@ -206,9 +206,10 @@ var fbLoginSuccess = function (response) {
  if (response.authResponse) {
      facebookConnectPlugin.api('/me?fields=id,email,first_name,last_name,gender,picture', null,
          function(response) {
-            var gender=38;
+            var gender="38";
             alert(response.gender);
-            if(response.gender=="male")gender=39;
+            if(response.gender=="male")gender="39";
+            alert(gender);
             localStorage.setItem("network",response.id);
             localStorage.setItem("name",  response.first_name);
             localStorage.setItem("lastname",  response.last_name);
