@@ -65,11 +65,11 @@ function getDeviceProperty()
 function onPause() {
     console.log("paused");
     localStorage.setItem("wisi","false");
+}
+function searchWISI(){
     window.setTimeout(function(){
-      window.setInterval(function(){
         WifiWizard.listNetworks(listHandler, fail);
-      }, 5000);
-    },20000);
+    },5000);  
 }
 
 function onResume() {
