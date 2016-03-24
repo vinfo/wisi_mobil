@@ -55,8 +55,12 @@
       </activity>
     </application>
   </gap:config-file>
+
+  <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
+    <param name="APP_ID" value="1691694321105222" />
+    <param name="APP_NAME" value="wisi_movil" />
+  </gap:plugin>  
   
-  <gap:plugin name="trunk.plugin.local-notification" version="0.8.2" />
   <gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8"  />
   <gap:plugin name="org.apache.cordova.media" version="0.2.13" />
   <gap:plugin name="org.apache.cordova.console" version="0.2.11" />
@@ -74,10 +78,8 @@
   <gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" />  
   <gap:plugin name="net.roughshod.plugins.barcodescanner" version="3.0.0" />
   <gap:plugin name="com.pylonproducts.wifiwizard" version="0.1.0"/>
-  <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
-    <param name="APP_ID" value="1691694321105222" />
-    <param name="APP_NAME" value="wisi_movil" />
-  </gap:plugin> 
+  <gap:plugin name="trunk.plugin.local-notification" version="0.8.2" />
+
   <gap:config-file platform="ios" parent="UIStatusBarHidden">
     <false/>
   </gap:config-file>
