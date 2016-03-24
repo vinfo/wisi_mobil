@@ -64,13 +64,17 @@ function getDeviceProperty()
 
 function onPause() {
     console.log("paused");
-    window.setInterval(function(){
-      WifiWizard.listNetworks(listHandler, fail);
-    }, 5000);
+    localStorage.setItem("wisi","false");
+    window.setTimeout(function(){
+      window.setInterval(function(){
+        WifiWizard.listNetworks(listHandler, fail);
+      }, 5000);
+    },20000);
 }
 
 function onResume() {
-  console.log("resume");     
+  console.log("resume");
+  localStorage.setItem("wisi","true");   
 }
 
 function checkConnection() {
