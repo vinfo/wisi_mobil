@@ -88,8 +88,8 @@ function checkConnection() {
     states[Connection.NONE]     = 'No network connection'; 
 
     if(states[networkState]=='No network connection'){
-        navigator.vibrate(1000);
-        alert('WIFI no activado!');
+        //navigator.vibrate(1000);
+        //alert('Internet no disponible!');
         state=false;                            
     }
     return state;
@@ -102,11 +102,13 @@ function fail(e){
 function listHandler(a){
   console.log("listar "+localStorage.wisi);
   if(localStorage.wisi=="false"){
+    var exists=0;
     for(var i=0; i<a.length; i++){
-        if(a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0){          
-            localStorage.setItem("wisi","true");
-            navigator.vibrate(2000);         
-            myApp.alert("Red WISI detectada", "");            
+        if((a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0)&&exists==0){          
+            exists++;
+            navigator.vibrate(1000);         
+            myApp.alert("Red WISI detectada", ""); 
+            localStorage.setItem("wisi","true");          
             return false;
         }
     }
