@@ -70,8 +70,7 @@ function onPause() {
 }
 
 function onResume() {
-  console.log("resume");
-  localStorage.setItem("wisi","false");      
+  console.log("resume");     
 }
 
 function checkConnection() {
@@ -100,7 +99,7 @@ function fail(e){
 }
 
 function listHandler(a){
-  console.log("listar "+localStorage.wisi);
+  //console.log("listar "+localStorage.wisi);
   if(localStorage.wisi=="false"){
     var exists=0;
     for(var i=0; i<a.length; i++){
