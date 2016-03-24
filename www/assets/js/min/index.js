@@ -108,7 +108,7 @@ function listHandler(a){
     var exists=0;
     for(var i=0; i<a.length; i++){
         if((a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0)&&exists==0){
-            cordova.plugins.notification.local.schedule({ message:"Red WISI detectada" });
+            //cordova.plugins.notification.local.schedule({ message:"Red WISI detectada" });
             localStorage.setItem("wisi","true");          
             exists++;
         }
