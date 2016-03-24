@@ -4,10 +4,10 @@ This is the official plugin for Facebook in Apache Cordova/PhoneGap!
 
 The Facebook plugin for [Apache Cordova](http://incubator.apache.org/cordova/) allows you to use the same JavaScript code in your Cordova application as you use in your web application. However, unlike in the browser, the Cordova application will use the native Facebook app to perform Single Sign On for the user.  If this is not possible then the sign on will degrade gracefully using the standard dialog based authentication.
 
-* Supported on PhoneGap (Cordova) v3.3.0 and above.
+* Supported on PhoneGap (Cordova) v3.5.0 and above.
 * This plugin is built for
-	* iOS FacebookSDK 3.16.1
-	* Android FacebookSDK 3.16.0
+	* iOS FacebookSDK 3.21.1
+	* Android FacebookSDK 3.21.1
 * GitHub URL : [https://github.com/Wizcorp/phonegap-facebook-plugin/](https://github.com/Wizcorp/phonegap-facebook-plugin/)
 
 ## << --- Cordova Registry Warning [iOS]
@@ -28,9 +28,12 @@ To use this plugin you will need to make sure you've registered your Facebook ap
 
 - [Android Guide](platforms/android/README.md)
 
-- [Web App Guide](platforms/web/README.md)
+- [Browser Guide](platforms/browser/README.md)
 
-- [PhoneGap Build](platforms/pg-build/README.md)
+- [PhoneGap Build Guide](platforms/pg-build/README.md)
+
+- [Troubleshooting Guide | F.A.Q.](TROUBLESHOOTING.md)
+
 
 #### Example Apps
 
@@ -42,14 +45,20 @@ To use this plugin you will need to make sure you've registered your Facebook ap
 
 `facebookConnectPlugin.login(Array strings of permissions, Function success, Function failure)`
 
-**NOTE** : Developers should call `facebookConnectPlugin.browserInit(<appId>)` before login - **Web App ONLY** (see [Web App Guide](platforms/web/README.md))
+**NOTE** : Developers should call `facebookConnectPlugin.browserInit(<appId>)` before login - **Web App ONLY** (see [Web App Guide](platforms/browser/README.md))
 
-Success function returns an Object like;
+Success function returns an Object like:
 
 	{
-		id: "634565435",
-		lastName: "bob"
-		...
+		status: "connected",
+		authResponse: {
+			session_key: true,
+			accessToken: "<long string>",
+			expiresIn: 5183979,
+			sig: "...",
+			secret: "...",
+			userID: "634565435"
+		}
 	}
 
 Failure function returns an error String.
@@ -62,7 +71,7 @@ Failure function returns an error String.
 
 `facebookConnectPlugin.getLoginStatus(Function success, Function failure)`
 
-Success function returns a status Object. Example:
+Success function returns an Object like:
 
 ```
 {
@@ -207,7 +216,7 @@ For a more instructive example change the above `fbLoginSuccess` to;
 
 ### Getting a User's Birthday
 
-Using the graph api this is a very simple task: [currently iOS only!]
+Using the graph api this is a very simple task:
 
 	facebookConnectPlugin.api("<user-id>/?fields=id,email", ["user_birthday"],
 		function (result) {
@@ -222,3 +231,21 @@ Using the graph api this is a very simple task: [currently iOS only!]
 		function (error) {
 			alert("Failed: " + error);
 		});
+
+### Publish a Photo
+
+Send a photo to a user's feed
+
+```
+facebookConnectPlugin.showDialog( 
+    {
+        method: "feed",
+        picture:'https://www.google.co.jp/logos/doodles/2014/doodle-4-google-2014-japan-winner-5109465267306496.2-hp.png',
+        name:'Test Post',
+        message:'First photo post',    
+        caption: 'Testing using phonegap plugin',
+        description: 'Posting photo using phonegap facebook plugin'
+    }, 
+    function (response) { alert(JSON.stringify(response)) },
+    function (response) { alert(JSON.stringify(response)) });
+```

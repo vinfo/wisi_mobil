@@ -1,8 +1,8 @@
 {
-    "com.phonegap.plugins.facebookconnect": {
+    "phonegap-facebook-plugin": {
         "source": {
-            "type": "local",
-            "path": "D:\\Movilidad\\myApp\\plugins\\phonegap-facebook-plugin"
+            "type": "registry",
+            "id": "phonegap-facebook-plugin"
         },
         "is_top_level": true,
         "variables": {
