@@ -89,7 +89,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <plugin name="phonegap-facebook-plugin" spec="~0.12.0">
-        <variable name="APP_ID" value="1691694321105222" />
-        <variable name="APP_NAME" value="wisi_movil" />
+        <param name="APP_ID" value="1691694321105222" />
+        <param name="APP_NAME" value="wisi_movil" />
     </plugin>
 </widget>
