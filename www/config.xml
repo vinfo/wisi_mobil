@@ -67,7 +67,12 @@
   <gap:plugin name="org.apache.cordova.globalization" version="0.3.4" />
   <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
   <gap:plugin name="org.apache.cordova.vibration" version="0.3.11" />
-  <gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />  
+  <gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />
+
+  <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
+      <param name="APP_ID" value="1691694321105222" />
+      <param name="APP_NAME" value="wisi_movil" />
+  </gap:plugin>  
 
   <gap:config-file platform="ios" parent="UIStatusBarHidden">
     <false/>
