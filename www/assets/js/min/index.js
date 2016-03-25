@@ -70,7 +70,7 @@ function onPause() {
 function searchWISI(){
     window.setTimeout(function(){
         WifiWizard.listNetworks(listHandler, fail);
-    },30000);  
+    },60000);  
 }
 
 function onResume() {
@@ -109,11 +109,13 @@ function listHandler(a){
     var exists=0;
     for(var i=0; i<a.length; i++){
         if((a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0)&&exists==0){
+          if(localStorage.wisi=="false")
             //cordova.plugins.notification.local.schedule({ message:"Red WISI detectada" });
             myApp.alert("Red WISI detectada", "");
             localStorage.setItem("wisi","true"); 
             navigator.vibrate(1000);
             exists++;
+          }
         }
     }
   }
