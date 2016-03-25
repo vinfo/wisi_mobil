@@ -62,9 +62,9 @@ function getDeviceProperty()
      localStorage.setItem("OS",deviceOS);
 }
 
-function onPause() {
-    console.log("paused");
+function onPause() {    
     localStorage.setItem("wisi","false");
+    console.log("paused");
     searchWISI();
 }
 function searchWISI(){
@@ -73,9 +73,9 @@ function searchWISI(){
     },60000);  
 }
 
-function onResume() {
-  console.log("resume");
-  localStorage.setItem("wisi","true");   
+function onResume() {  
+  localStorage.setItem("wisi","true"); 
+  console.log("resume"); 
 }
 
 function checkConnection() {
