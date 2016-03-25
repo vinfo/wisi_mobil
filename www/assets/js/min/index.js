@@ -111,9 +111,10 @@ function listHandler(a){
             //cordova.plugins.notification.local.schedule({ message:"Red WISI detectada" });
             navigator.vibrate(1000);
             myApp.alert("Red WISI detectada", "");
-            localStorage.setItem("wisi","true");          
+            localStorage.setItem("wisi","true");       
             exists++;
         }
     }
   }
+  searchWISI();
 }
