@@ -117,7 +117,7 @@ function listHandler(a){
             exists++;
           }
         }
-    }
-    searchWISI();
+        searchWISI();
+    }    
   }  
 }
