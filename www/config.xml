@@ -58,7 +58,6 @@
     <gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" />
     <gap:plugin name="net.roughshod.plugins.barcodescanner" version="3.0.0" />
     <gap:plugin name="com.pylonproducts.wifiwizard" version="0.1.0" />
-    <!-- <gap:plugin name="trunk.plugin.local-notification" version="0.8.2" /> -->
     <gap:config-file parent="UIStatusBarHidden" platform="ios">
         <false />
     </gap:config-file>
