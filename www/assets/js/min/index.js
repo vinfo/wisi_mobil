@@ -65,6 +65,7 @@ function getDeviceProperty()
 function onPause() {
     console.log("paused");
     localStorage.setItem("wisi","false");
+    searchWISI();
 }
 function searchWISI(){
     window.setTimeout(function(){
