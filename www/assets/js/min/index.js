@@ -22,7 +22,6 @@ var app = {
         screen.lockOrientation('portrait');
         localStorage.setItem("saldo_actual",0);
         localStorage.setItem("wisi","false");
-        alert("start");
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -64,9 +63,8 @@ function getDeviceProperty()
 }
 
 function onPause() {    
-    console.log("paused");
-    alert(2);
-    localStorage.setItem("wisi","false");    
+    localStorage.setItem("wisi","false"); 
+    console.log("paused");  
     searchWISI();
 }
 function searchWISI(){
@@ -120,6 +118,6 @@ function listHandler(a){
           }
         }
     }
-  }
-  searchWISI();
+    searchWISI();
+  }  
 }
