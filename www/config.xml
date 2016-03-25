@@ -58,6 +58,12 @@
     <gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" />
     <gap:plugin name="net.roughshod.plugins.barcodescanner" version="3.0.0" />
     <gap:plugin name="com.pylonproducts.wifiwizard" version="0.1.0" />
+    <!-- <gap:plugin name="trunk.plugin.local-notification" version="0.8.2" /> -->
+    <gap:plugin name="com.phonegap.plugins.facebookconnect" source="pgb" version="0.9.0">
+        <param name="APP_ID" value="1691694321105222" />
+        <param name="APP_NAME" value="wisi_movil" />
+    </gap:plugin>
+
     <gap:config-file parent="UIStatusBarHidden" platform="ios">
         <false />
     </gap:config-file>
@@ -87,8 +93,4 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <plugin name="phonegap-facebook-plugin" spec="~0.12.0">
-        <param name="APP_ID" value="1691694321105222" />
-        <param name="APP_NAME" value="wisi_movil" />
-    </plugin>
 </widget>
