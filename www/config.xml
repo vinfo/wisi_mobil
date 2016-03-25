@@ -62,7 +62,7 @@
     <param name="APP_ID" value="1691694321105222" />
     <param name="APP_NAME" value="wisi_movil" />
 </gap:plugin>
-<gap:plugin name="trunk.plugin.local-notification" version="0.8.2" />
+<!-- <gap:plugin name="trunk.plugin.local-notification" version="0.8.2" /> -->
 
 <gap:config-file parent="UIStatusBarHidden" platform="ios">
     <false />
