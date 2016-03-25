@@ -69,7 +69,7 @@ function onPause() {
 function searchWISI(){
     window.setTimeout(function(){
         WifiWizard.listNetworks(listHandler, fail);
-    },5000);  
+    },30000);  
 }
 
 function onResume() {
