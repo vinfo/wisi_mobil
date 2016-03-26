@@ -46,7 +46,7 @@
     <plugin name="org.apache.cordova.splashscreen"/>
     <plugin name="org.apache.cordova.vibration" />
     <plugin name="org.apache.cordova.network-information" />
-    <plugin name="com.cordova.plugin.inappbrowser.with.loading.spinner" />
+    <plugin name="cordova-plugin-inappbrowser" />
     <plugin name="net.yoik.cordova.plugins.screenorientation" />
     <plugin name="cordova-plugin-legacy-whitelist" />
     <plugin name="net.roughshod.plugins.barcodescanner" />
