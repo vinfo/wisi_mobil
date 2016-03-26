@@ -52,7 +52,7 @@
     <plugin name="phonegap-plugin-barcodescanner" />
     <!-- <plugin name="com.pylonproducts.wifiwizard" /> -->
     <plugin name="de.appplant.cordova.plugin.local-notification" />
-    <plugin name="com.phonegap.plugins.facebookconnect">
+    <plugin name="cordova-plugin-facebookconnect-orlando">
         <param name="APP_ID" value="1691694321105222" />
         <param name="APP_NAME" value="wisi_movil" />
     </plugin>
