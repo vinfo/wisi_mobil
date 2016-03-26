@@ -50,8 +50,8 @@
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <gap:plugin name="net.roughshod.plugins.barcodescanner" version="3.0.0" />
     <gap:plugin name="com.pylonproducts.wifiwizard" version="0.1.0" />
-    <gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.1" />
-    <gap:plugin name="cordova-plugin-facebookconnect-orlando" source="npm">
+    <!-- <gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.1" /> -->
+    <gap:plugin name="com.phonegap.plugins.facebookconnect">
         <param name="APP_ID" value="1691694321105222" />
         <param name="APP_NAME" value="wisi_movil" />
     </gap:plugin>
