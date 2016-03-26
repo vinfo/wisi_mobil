@@ -50,7 +50,7 @@
     <plugin name="net.yoik.cordova.plugins.screenorientation" />
     <plugin name="cordova-plugin-legacy-whitelist" />
     <plugin name="phonegap-plugin-barcodescanner" />
-    <plugin name="com.pylonproducts.wifiwizard" source="pgp" />
+    <!-- <plugin name="com.pylonproducts.wifiwizard" /> -->
     <plugin name="de.appplant.cordova.plugin.local-notification" />
     <plugin name="com.phonegap.plugins.facebookconnect">
         <param name="APP_ID" value="1691694321105222" />
