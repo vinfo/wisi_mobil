@@ -8,6 +8,7 @@
       Asesores en Internet
   </author>
     <preference name="phonegap-version" value="cli-5.2.0" />
+    <preference name="android-build-tool" value="gradle" />
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
@@ -37,24 +38,24 @@
             </activity>
         </application>
     </gap:config-file>
-    <gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8" />
-    <gap:plugin name="org.apache.cordova.console" version="0.2.11" />
-    <gap:plugin name="org.apache.cordova.device-orientation" version="0.3.11" />
-    <gap:plugin name="org.apache.cordova.geolocation" version="0.3.12" />
-    <gap:plugin name="org.apache.cordova.globalization" version="0.3.4" />
-    <gap:plugin name="org.apache.cordova.splashscreen" version="1.0.0" />
-    <gap:plugin name="org.apache.cordova.vibration" version="0.3.13" />
-    <gap:plugin name="org.apache.cordova.network-information" version="0.2.15" />
-    <gap:plugin name="com.cordova.plugin.inappbrowser.with.loading.spinner" version="1.0.13" />
-    <gap:plugin name="net.yoik.cordova.plugins.screenorientation" version="1.3.1" />
-    <gap:plugin name="cordova-plugin-whitelist" source="npm" />
-    <gap:plugin name="net.roughshod.plugins.barcodescanner" version="3.0.0" />
-    <gap:plugin name="com.pylonproducts.wifiwizard" version="0.1.0" />
-    <!-- <gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.1" /> -->
-    <gap:plugin name="com.phonegap.plugins.facebookconnect">
+    <plugin name="cordova-plugin-x-socialsharing" />
+    <plugin name="org.apache.cordova.console" />
+    <plugin name="org.apache.cordova.device-orientation" />
+    <plugin name="org.apache.cordova.geolocation" />
+    <plugin name="org.apache.cordova.globalization" />
+    <plugin name="org.apache.cordova.splashscreen"/>
+    <plugin name="org.apache.cordova.vibration" />
+    <plugin name="org.apache.cordova.network-information" />
+    <plugin name="com.cordova.plugin.inappbrowser.with.loading.spinner" />
+    <plugin name="net.yoik.cordova.plugins.screenorientation" />
+    <plugin name="cordova-plugin-legacy-whitelist" />
+    <plugin name="net.roughshod.plugins.barcodescanner" />
+    <plugin name="com.pylonproducts.wifiwizard" />
+    <!-- <plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.1" /> -->
+    <plugin name="com.phonegap.plugins.facebookconnect">
         <param name="APP_ID" value="1691694321105222" />
         <param name="APP_NAME" value="wisi_movil" />
-    </gap:plugin>
+    </plugin>
 
     <gap:config-file parent="UIStatusBarHidden" platform="ios">
         <false />
