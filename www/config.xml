@@ -54,7 +54,7 @@
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <gap:plugin name="net.roughshod.plugins.barcodescanner" version="3.0.0" />
     <gap:plugin name="com.pylonproducts.wifiwizard" version="0.1.0" />
-    <!-- <gap:plugin name="trunk.plugin.local-notification" version="0.8.2" /> -->
+    <gap:plugin name="trunk.plugin.local-notification" version="0.8.2" />
     <gap:plugin name="com.phonegap.plugins.facebookconnect">
         <param name="APP_ID" value="1691694321105222" />
         <param name="APP_NAME" value="wisi_movil" />
@@ -64,8 +64,6 @@
         <false />
     </gap:config-file>
     <icon src="icon.png" />
-
-    
     <icon gap:platform="android" gap:qualifier="ldpi" src="res/icon/android/icon-36-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="res/icon/android/icon-48-mdpi.png" />
     <icon gap:platform="android" gap:qualifier="hdpi" src="res/icon/android/icon-72-hdpi.png" />
