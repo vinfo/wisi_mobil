@@ -49,7 +49,7 @@
     <plugin name="cordova-plugin-inappbrowser" />
     <plugin name="net.yoik.cordova.plugins.screenorientation" />
     <plugin name="cordova-plugin-legacy-whitelist" />
-    <plugin name="net.roughshod.plugins.barcodescanner" />
+    <plugin name="phonegap-plugin-barcodescanner" />
     <plugin name="com.pylonproducts.wifiwizard" />
     <plugin name="de.appplant.cordova.plugin.local-notification" />
     <plugin name="com.phonegap.plugins.facebookconnect">
