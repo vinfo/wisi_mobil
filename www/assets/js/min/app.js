@@ -73,6 +73,7 @@ function Login() {
     }
 }
 function scanear(){
+   localStorage.setItem("scanner","true");
    cordova.plugins.barcodeScanner.scan(
       function (result) {
           $("#code_b").val(result.text);

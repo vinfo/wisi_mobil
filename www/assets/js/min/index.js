@@ -67,7 +67,7 @@ function getDeviceProperty()
    function onPause() {    
     localStorage.setItem("wisi","false"); 
     console.log("paused");  
-    searchWISI();
+    if(!localStorage.scanear)searchWISI();
   }
 
   function searchWISI(){
@@ -78,6 +78,7 @@ function getDeviceProperty()
 
   function onResume() {  
     localStorage.setItem("wisi","true");
+    localStorage.setItem("scanner","false");
     console.log("resume"); 
   }
 
