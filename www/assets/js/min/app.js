@@ -37,12 +37,12 @@ function setSaldo(){
           success: function(d){
               var saldo=0;
               if(d.status){
-                  saldo=d.data[0].cargado - d.data[0].gastado;
-              }               
+                  var total=d.data[0].cargado - d.data[0].gastado;
+                  if(total>0)saldo=total;
+              }
               localStorage.setItem("saldo_actual",saldo);
               $(".saldo_actual").html(saldo+' mins.');
               if(saldo==0)$(".navegate_pay").hide();
-              console.log(saldo);
          }
      });  
 }
