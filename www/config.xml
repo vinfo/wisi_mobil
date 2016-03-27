@@ -53,7 +53,7 @@
     <plugin name="cordova-plugin-screen-orientation" />
     <plugin name="wifiwizard" />
     
-    <gap:plugin name="com.phonegap.plugins.facebookconnect">
+    <gap:plugin name="pgb-facebook-connect">
         <param name="APP_ID" value="1691694321105222" />
         <param name="APP_NAME" value="wisi_movil" />
     </gap:plugin>
