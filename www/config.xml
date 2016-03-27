@@ -52,6 +52,7 @@
     <plugin name="cordova-plugin-screen-orientation" version="1.4.0" />
     <plugin name="wifiwizard" version="0.2.11" />
     <plugin name="cordova-plugin-local-notifications-san" version="0.8.2-rc.1" />
+    <plugin name="cordova-plugin-appavailability" version="0.4.2" />
     
     <plugin name="cordova-plugin-facebookconnect-orlando" version="0.11.0">
         <param name="APP_ID" value="1691694321105222" />

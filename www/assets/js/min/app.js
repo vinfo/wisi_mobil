@@ -370,7 +370,20 @@ $$(document).on("pageInit", function(e) {
     if(page.name=="mydata")getUserData(userid);
     if(page.name=="rechargeds")getRechargedData(userid);
     if(page.name=="index")setSaldo();    
-    if(page.name=="referrals")getReferrals();
+    if(page.name=="referrals"){
+      whatsapp
+      appAvailability.check(
+          'com.whatsapp', // Package Name 
+          function() {// Success callback 
+              alert('whatsapp is available');
+          },
+          function() {// Error callback 
+              alert('whatsapp is not available');
+              $(".whatsapp").hide();
+          }
+      );      
+      getReferrals();
+    }
     if(page.name=="rewards")getRewardsData(userid);       
     
     // Conversation flag
