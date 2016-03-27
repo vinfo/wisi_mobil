@@ -8,6 +8,7 @@
       Asesores en Internet
   </author>
     <preference name="phonegap-version" value="cli-5.2.0" />
+    <preference name="android-build-tool" value="gradle" />
     <preference name="orientation" value="portrait" />
     <preference name="fullscreen" value="false" />
     <preference name="permissions" value="none" />    
