@@ -72,6 +72,24 @@ function Login() {
         myApp.alert("Email y Contraseña son requeridos!", "");
     }
 }
+function Remember() {
+    var email=$("#email").val();
+    if(email!=""){
+        var data={email:email};
+        $.ajax({
+            url: "http://wisi.com.co/api/remember",
+            type: "post",
+            data: data,
+            success: function(res){
+              alert(JSON.stringify(res));
+             myApp.alert("Contraseña enviada exitosamente!", ""); 
+             window.location.href = "index.html";
+         }
+     });
+    }else{
+        myApp.alert("Email requerido!", "");
+    }
+}
 function scanear(){
    localStorage.setItem("scanner","true");
    cordova.plugins.barcodeScanner.scan(
