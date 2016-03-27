@@ -51,17 +51,12 @@
     <plugin name="phonegap-plugin-barcodescanner" />    
     <plugin name="cordova-plugin-screen-orientation" />
     <plugin name="wifiwizard" />
-    <!-- <plugin name="cordova-plugin-mm-local-notifications" /> -->
+    <plugin name="cordova-plugin-local-notifications" />
     
     <plugin name="cordova-plugin-facebookconnect-orlando">
         <param name="APP_ID" value="1691694321105222" />
         <param name="APP_NAME" value="wisi_movil" />
-    </plugin>
-
-<!--     <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
-        <param name="APP_ID" value="1691694321105222" />
-        <param name="APP_NAME" value="wisi_movil" />
-    </gap:plugin>  -->   
+    </plugin> 
 
     <gap:config-file parent="UIStatusBarHidden" platform="ios">
         <false />
