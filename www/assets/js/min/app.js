@@ -60,7 +60,6 @@ function Login() {
             type: "post",
             data: data,
             success: function(res){
-              alert(JSON.stringify(res));
              localStorage.setItem("id", res.userdata.id);
              localStorage.setItem("name",  res.userdata.name);
              localStorage.setItem("lastname",  res.userdata.lastname);
@@ -76,7 +75,6 @@ function Login() {
 }
 function Remember() {
     var email=$("#email2").val();
-    alert(email);
     if(email!=""){
         var data={email:email};
         $.ajax({
