@@ -65,7 +65,7 @@ function Login() {
              localStorage.setItem("name",  res.userdata.name);
              localStorage.setItem("lastname",  res.userdata.lastname);
              localStorage.setItem("email",  res.userdata.email);
-             localStorage.setItem("logged_in", true);
+             localStorage.setItem("logged_in", "true");
              localStorage.setItem("token", res.token.token);
              window.location.href = "index.html";
          }
@@ -76,6 +76,7 @@ function Login() {
 }
 function Remember() {
     var email=$("#email").val();
+    alert(email);
     if(email!=""){
         var data={email:email};
         $.ajax({
@@ -137,7 +138,7 @@ function showDivsConnect(){
 function checkConnectionFB() {    
     facebookConnectPlugin.getLoginStatus(function(response) {
         if (response.status == 'connected'&&response.authResponse.userID==localStorage.network) { 
-            localStorage.setItem("logged_in",true);
+            localStorage.setItem("logged_in","true");
         }
         showDivsConnect();
     });
@@ -235,7 +236,7 @@ var fbLoginSuccess = function (response) {
             localStorage.setItem("email",  response.email);
             localStorage.setItem("gender",  gender);
             localStorage.setItem("picture",  response.picture.data.url);
-            localStorage.setItem("logged_in", true);
+            localStorage.setItem("logged_in", "true");
             showDivsConnect();
             var data=$.param({data:{id:response.id,first_name:response.first_name,last_name:response.last_name,email:response.email,gender:gender,picture:response.picture}});
             $.ajax({
@@ -272,9 +273,11 @@ $$("body").on("click", ".pautar", function() {
     window.open("http://wisi.com.co/public/#/", "_system");
 });
 $$("body").on("click", ".free-navegate", function() {
+    setUserRadius();
     window.open("http://wisi.com.co/public/#/ad/1/"+localStorage.userid+"?navegate=free", "_system");
 });
 $$("body").on("click", ".pay-navegate", function() {
+    setUserRadius();
     window.open("http://wisi.com.co/public/#/ad/1/"+localStorage.userid+"?navegate=pay", "_system");
 });
 
@@ -296,7 +299,7 @@ $$("body").on("click", "#send-button", function() {
         if(data.status){
             var gender=38;
             if(data.userdata.gender=="male")gender=39;
-            localStorage.setItem("logged_in", true);
+            localStorage.setItem("logged_in", "true");
             localStorage.setItem("userid",  data.id);
             localStorage.setItem("name",  data.userdata.name);
             localStorage.setItem("lastname",  data.userdata.lastname);
@@ -370,9 +373,7 @@ $$(document).on("pageInit", function(e) {
     if(page.name=="rechargeds")getRechargedData(userid);
     if(page.name=="index")setSaldo();    
     if(page.name=="referrals")getReferrals();
-    if(page.name=="rewards")getRewardsData(userid);
-
-    setUserRadius();    
+    if(page.name=="rewards")getRewardsData(userid);       
     
     // Conversation flag
     var conversationStarted = !1, myMessages = myApp.messages(".messages", {
@@ -408,8 +409,7 @@ $$(document).on("pageInit", function(e) {
             conversationStarted = !0;
         }
     });
-}), $(document).ready(function() {
-    if(!localStorage.userid)localStorage.setItem("logged_in",false);
+}), $(document).ready(function() {    
     setSaldo(); 
     checkConnectionFB();
     showDivsConnect();
