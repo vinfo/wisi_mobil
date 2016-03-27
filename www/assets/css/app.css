@@ -7903,3 +7903,7 @@ label.error{
 .navegate_pay{
   padding-bottom: 20px;
 }
+.footer > .mt-5{
+  min-height: 28px;
+  padding: 4px 10px;
+}
