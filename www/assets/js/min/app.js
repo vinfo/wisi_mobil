@@ -75,7 +75,7 @@ function Login() {
     }
 }
 function Remember() {
-    var email=$("#email").val();
+    var email=$("#email2").val();
     alert(email);
     if(email!=""){
         var data={email:email};
