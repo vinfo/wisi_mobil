@@ -73,7 +73,7 @@ function getDeviceProperty()
   function searchWISI(){
     window.setTimeout(function(){
       WifiWizard.listNetworks(listHandler, fail);
-    },60000);  
+    },120000);  
   }
 
   function onResume() {  

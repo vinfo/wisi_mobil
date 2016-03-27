@@ -53,7 +53,7 @@
     <plugin name="cordova-plugin-screen-orientation" />
     <plugin name="wifiwizard" />
     
-    <plugin name="cordova-plugin-pros-facebook">
+    <plugin name="pgb-facebook-connect">
         <param name="APP_ID" value="1691694321105222" />
         <param name="APP_NAME" value="wisi_movil" />
     </plugin>
