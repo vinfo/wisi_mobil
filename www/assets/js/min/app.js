@@ -378,10 +378,10 @@ $$(document).on("pageInit", function(e) {
       appAvailability.check(
             tipo, // Package Name or URI Scheme 
             function() {// Success callback 
-              alert('whatsapp is available');
+              console.log('whatsapp is available');
             },
             function() {// Error callback 
-              alert('whatsapp is not available');
+              console.log('whatsapp is not available');
               $(".whatsapp").hide();
             }
             );
