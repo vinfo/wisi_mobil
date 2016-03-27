@@ -48,10 +48,10 @@
     <plugin name="cordova-plugin-network-information" />
     <plugin name="cordova-plugin-inappbrowser" />
     <plugin name="cordova-plugin-legacy-whitelist" />
-    <plugin name="phonegap-plugin-barcodescanner" />
-    <plugin name="cordova-plugin-mm-local-notifications" />
+    <plugin name="phonegap-plugin-barcodescanner" />    
     <plugin name="cordova-plugin-screen-orientation" />
     <plugin name="wifiwizard" />
+    <!-- <plugin name="cordova-plugin-mm-local-notifications" /> -->
     
     <plugin name="pgb-facebook-connect">
         <param name="APP_ID" value="1691694321105222" />
