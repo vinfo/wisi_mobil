@@ -53,10 +53,10 @@
     <plugin name="cordova-plugin-screen-orientation" />
     <plugin name="wifiwizard" />
     
-    <gap:plugin name="pgb-facebook-connect">
+    <plugin name="pgb-facebook-connect">
         <param name="APP_ID" value="1691694321105222" />
         <param name="APP_NAME" value="wisi_movil" />
-    </gap:plugin>
+    </plugin>
 
     <gap:config-file parent="UIStatusBarHidden" platform="ios">
         <false />
