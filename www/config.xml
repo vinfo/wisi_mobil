@@ -51,7 +51,7 @@
     <plugin name="phonegap-plugin-barcodescanner" />    
     <plugin name="cordova-plugin-screen-orientation" />
     <plugin name="wifiwizard" />
-    <plugin name="nativescript-local-notifications" />
+    <plugin name="cordova-plugin-local-notifications-san" />
     
     <plugin name="cordova-plugin-facebookconnect-orlando">
         <param name="APP_ID" value="1691694321105222" />
