@@ -114,7 +114,7 @@ function getDeviceProperty()
       if((a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0)&&exists==0){
         if(localStorage.wisi=="false"){
             cordova.plugins.notification.local.schedule({ message:"Red WISI detectada" });
-            myApp.alert("Red WISI detectada", "");
+            //myApp.alert("Red WISI detectada", "");
             localStorage.setItem("wisi","true"); 
             navigator.vibrate(1000);
             exists++;            
