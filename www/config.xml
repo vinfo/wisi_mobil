@@ -48,7 +48,7 @@
     <plugin name="cordova-plugin-network-information" />
     <plugin name="cordova-plugin-inappbrowser" />
     <plugin name="cordova-plugin-legacy-whitelist" />
-    <plugin name="phonegap-plugin-portrait-barcodescanner" />
+    <plugin name="phonegap-plugin-barcodescanner" />
     <plugin name="cordova-plugin-mm-local-notifications" />
     <plugin name="cordova-plugin-screen-orientation" />
     <plugin name="wifiwizard" />

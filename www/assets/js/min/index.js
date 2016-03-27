@@ -116,7 +116,7 @@ function getDeviceProperty()
             cordova.plugins.notification.local.schedule({ message:"Red WISI detectada" });
             //myApp.alert("Red WISI detectada", "");
             localStorage.setItem("wisi","true"); 
-            navigator.vibrate(1000);
+            //navigator.vibrate(1000);
             exists++;            
           }
         }
