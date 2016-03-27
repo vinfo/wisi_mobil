@@ -6841,7 +6841,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
   width: 110px;
 }
 .full-page-video .desc {
-  margin: 35px 0 60px;
+  margin: 35px 0;
 }
 .full-page-video .desc > div {
   color: #f4d48c;
@@ -7898,4 +7898,7 @@ label.error{
   border: 1px solid #ccc;
   text-align: center;
   font-weight: bold;
+}
+.navegate_pay{
+  padding-bottom: 20px;
 }
