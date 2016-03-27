@@ -9,7 +9,7 @@
   </author>
     <preference name="phonegap-version" value="cli-5.2.0" />
     <preference name="android-build-tool" value="gradle" />
-    <preference name="android-minSdkVersion" value="24" />
+    <preference name="android-minSdkVersion" value="23" />
     <preference name="orientation" value="portrait" />
     <preference name="fullscreen" value="false" />
     <preference name="permissions" value="none" />    
