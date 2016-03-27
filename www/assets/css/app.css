@@ -7633,10 +7633,10 @@ article img {
 /*    14. LOGIN                                */
 /* =========================================== */
 .login-view-box .forgot-password {
-  margin-top: 5px;
+  margin-top: 15px;
 }
 .login-view-box .forgot-password a {
-  font-size: 12px;
+  font-size: 14px;
 }
 .login-view-box .or-social {
   font-size: 12px;
