@@ -371,17 +371,20 @@ $$(document).on("pageInit", function(e) {
     if(page.name=="rechargeds")getRechargedData(userid);
     if(page.name=="index")setSaldo();    
     if(page.name=="referrals"){
-      whatsapp
+      var tipo='whatsapp://';
+      if(localStorage.OS=="Android"){
+        var tipo='com.whatsapp';
+      }
       appAvailability.check(
-          'com.whatsapp', // Package Name 
-          function() {// Success callback 
+            tipo, // Package Name or URI Scheme 
+            function() {// Success callback 
               alert('whatsapp is available');
-          },
-          function() {// Error callback 
+            },
+            function() {// Error callback 
               alert('whatsapp is not available');
               $(".whatsapp").hide();
-          }
-      );      
+            }
+            );
       getReferrals();
     }
     if(page.name=="rewards")getRewardsData(userid);       
