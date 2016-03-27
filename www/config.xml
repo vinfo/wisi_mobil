@@ -46,9 +46,10 @@
     <plugin name="cordova-plugin-vibration" />
     <plugin name="cordova-plugin-network-information" />
     <plugin name="cordova-plugin-inappbrowser" />
-    <gap:plugin name="net.yoik.cordova.plugins.screenorientation" version="1.3.1" />
-    <gap:plugin name="cordova-plugin-whitelist" source="npm" />
-    <gap:plugin name="net.roughshod.plugins.barcodescanner" version="3.0.0" />
+    <plugin name="cordova-plugin-legacy-whitelist" />
+    <plugin name="phonegap-plugin-portrait-barcodescanner" />
+
+    <gap:plugin name="net.yoik.cordova.plugins.screenorientation" version="1.3.1" />       
     <gap:plugin name="com.pylonproducts.wifiwizard" version="0.1.0" />
     <!-- <gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.1" /> -->
     <gap:plugin name="com.phonegap.plugins.facebookconnect">
