@@ -38,7 +38,7 @@
             </activity>
         </application>
     </gap:config-file>
-    <plugin name="cordova-plugin-x-socialsharing" version="" />
+    <plugin name="cordova-plugin-x-socialsharing" version="5.0.11" />
     <plugin name="cordova-plugin-console" version="1.0.2" />
     <plugin name="cordova-plugin-device-orientation" version="1.0.2" />
     <plugin name="cordova-plugin-geolocation" version="2.1.0" />
