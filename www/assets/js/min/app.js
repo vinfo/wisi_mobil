@@ -41,6 +41,7 @@ function setSaldo(){
               }               
               localStorage.setItem("saldo_actual",saldo);
               $(".saldo_actual").html(saldo+' mins.');
+              if(saldo==0)$(".navegate_pay").hide();
               console.log(saldo);
          }
      });  
@@ -59,6 +60,7 @@ function Login() {
             type: "post",
             data: data,
             success: function(res){
+              alert(JSON.stringify(res));
              localStorage.setItem("id", res.userdata.id);
              localStorage.setItem("name",  res.userdata.name);
              localStorage.setItem("lastname",  res.userdata.lastname);
