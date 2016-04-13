@@ -185,7 +185,7 @@ function getRewardsData(id) {
             if(obj.status){
               for(var k in obj.data) {
                   var o = obj.data[k];      
-                  $("#rewards").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="title-re">Tipo: '+o.type+'</div><div class="nice-list">Fecha/Hora: '+o.datereg+'<br/>Vence: '+o.expired+'<br/>Tiempo: '+o.time+' mins.<br/>Gastado: '+o.time_spend+' mins.<br/>Estado: '+o.status+'.<br/></div></div></li>');
+                  $("#rewards").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="nice-list">Tipo: '+o.type+'<br/>Fecha/Hora: '+o.datereg+'<br/>Vence: '+o.expired+'<br/>Tiempo: '+o.time+' mins.<br/>Gastado: '+o.time_spend+' mins.<br/>Estado: '+o.status+'.<br/></div></div></li>');
               }
             }
         }
