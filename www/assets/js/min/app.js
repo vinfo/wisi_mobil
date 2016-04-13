@@ -170,7 +170,7 @@ function getRechargedData(id) {
         success: function(obj){
             for(var k in obj) {
                 var o = obj[k];
-                $("#rechargeds").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="title-re">Código: '+o.code_b+'</div><div class="nice-list">Fecha/Hora: '+o.datereg+'<br/>Vence: '+o.expired+'<br/>Tiempo: '+o.time_b+' mins.<br/>Gastado: '+o.time_spend+' mins.<br/>Estado: '+o.status+'.<br/></div></div></li>');
+                $("#rechargeds").prepend('<li class="list-re mt-0 mb-0 nice-list"><div class="item-inner"><div class="nice-list">Código: '+o.code_b+'<br/>Fecha/Hora: '+o.datereg+'<br/>Vence: '+o.expired+'<br/>Tiempo: '+o.time_b+' mins.<br/>Gastado: '+o.time_spend+' mins.<br/>Estado: '+o.status+'.<br/></div></div></li>');
             }
         }
     });
