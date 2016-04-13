@@ -268,14 +268,17 @@ $$("body").on("click", ".button-facebook", function() {
 });
 
 $$("body").on("click", ".pautar", function() {
+    localStorage.setItem("app","mobil");
     window.open("http://wisi.com.co/public/#/", "_system");
 });
 $$("body").on("click", ".free-navegate", function() {
     setUserRadius();
+    localStorage.setItem("app","mobil");
     window.open("http://wisi.com.co/public/#/ad/1/"+localStorage.userid+"?navegate=free", "_system");
 });
 $$("body").on("click", ".pay-navegate", function() {
     setUserRadius();
+    localStorage.setItem("app","mobil");
     window.open("http://wisi.com.co/public/#/ad/1/"+localStorage.userid+"?navegate=pay", "_system");
 });
 
