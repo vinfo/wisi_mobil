@@ -271,11 +271,11 @@ $$("body").on("click", ".pautar", function() {
     window.open("http://wisi.com.co/public/#/", "_system");
 });
 $$("body").on("click", ".free-navegate", function() {
-    setUserRadius();
+    //setUserRadius();
     window.open("http://wisi.com.co/public/#/ad/1/"+localStorage.userid+"?navegate=free&app=mobil", "_system");
 });
 $$("body").on("click", ".pay-navegate", function() {
-    setUserRadius();
+    //setUserRadius();
     window.open("http://wisi.com.co/public/#/ad/1/"+localStorage.userid+"?navegate=pay&app=mobil", "_system");
 });
 
@@ -427,7 +427,7 @@ $$(document).on("pageInit", function(e) {
     setSaldo(); 
     checkConnectionFB();
     showDivsConnect();
-    setUserRadius();
+    //setUserRadius();
     
     var session_id= new Date().getTime();
     console.log("session "+session_id);
