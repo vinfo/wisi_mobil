@@ -274,13 +274,12 @@ $$("body").on("click", ".pautar", function() {
     window.open("http://wisi.com.co/public/#/", "_system");
 });
 $$("body").on("click", ".free-navegate", function() {
-    //setUserRadius();
     window.open("http://wisi.com.co/public/#/ad/1/"+localStorage.userid+"?navegate=free&app=mobil", "_system");
 });
 $$("body").on("click", ".pay-navegate", function() {
   localStorage.setItem("conexion",true);
   if(setUserRadius()){
-    window.open("http://www.google.com/", "_tag");
+    window.open("http://www.google.com/", "_system");
   }
   return false;    
 });
