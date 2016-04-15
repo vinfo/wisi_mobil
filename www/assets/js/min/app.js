@@ -4,15 +4,18 @@ function shareWhatsApp(){
   window.plugins.socialsharing.shareViaWhatsApp('Hola, te recomiendo registrarte y descargar la aplicación de conectividad a internet WISI.', 'http://wisi.com.co/public/assets/images/logo.png', 'http://wisi.com.co/public/#/?sponsor='+id, function() {console.log('share ok')}, function(errormsg){console.log(errormsg)});
 }
 function setUserRadius(){
-      var data={username:localStorage.userid};
-      $.ajax({
-          url: "http://wisi.com.co/api/setUserRadius",
-          type: "post",
-          data: data,
-          success: function(d){
-            console.log(JSON.stringify(d));
-         }
-     });
+  var result="";
+  var data={username:localStorage.email};
+  $.ajax({
+    url: "http://wisi.com.co/api/setUserRadius",
+    type: "post",
+    async: false,
+    data: data,
+    success: function(d){
+      result= d.status;
+    }
+  });
+  return result;
 }
 function getReferrals(){
       var data={id:localStorage.userid};
@@ -275,8 +278,11 @@ $$("body").on("click", ".free-navegate", function() {
     window.open("http://wisi.com.co/public/#/ad/1/"+localStorage.userid+"?navegate=free&app=mobil", "_system");
 });
 $$("body").on("click", ".pay-navegate", function() {
-    //setUserRadius();
-    window.open("http://wisi.com.co/public/#/ad/1/"+localStorage.userid+"?navegate=pay&app=mobil", "_system");
+  localStorage.setItem("conexion",true);
+  if(setUserRadius()){
+    window.open("http://www.google.com/", "_tag");
+  }
+  return false;    
 });
 
 $$("body").on("click", ".close_sesion", function() {
