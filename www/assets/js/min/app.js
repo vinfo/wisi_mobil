@@ -46,7 +46,10 @@ function setSaldo(){
               localStorage.setItem("saldo_actual",saldo);
               $(".saldo_actual").html(saldo+' mins.');
               if(saldo==0)$(".navegate_pay").hide();
-         }
+         },
+          error: function (request, status, error) {
+              console.log(request.responseText);
+          }
      });  
 }
 function referByEmail(){

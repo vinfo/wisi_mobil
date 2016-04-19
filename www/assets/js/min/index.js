@@ -73,7 +73,7 @@ function getDeviceProperty()
   function searchWISI(){
     window.setTimeout(function(){
       WifiWizard.listNetworks(listHandler, fail);
-      alert(22);
+      console.log("Check available WIFIs");
     },50000);  
   }
 
