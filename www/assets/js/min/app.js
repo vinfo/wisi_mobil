@@ -48,7 +48,8 @@ function setSaldo(){
               if(saldo==0)$(".navegate_pay").hide();
          },
           error: function (request, status, error) {
-              console.log(request.responseText);
+              localStorage.setItem("saldo_actual","0");
+              console.log("Error conectividad");
           }
      });  
 }
