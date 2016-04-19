@@ -114,7 +114,7 @@ function getDeviceProperty()
     for(var i=0; i<a.length; i++){
       if((a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0)&&exists==0){
         if(localStorage.wisi=="false"){
-            cordova.plugins.notification.local.schedule({ message:"Red WISI detectada" });
+            cordova.plugins.notification.local.schedule({ message:"Red WISI detectada",sound: "file://sounds/HTC Happy.mp3" });
             //myApp.alert("Red WISI detectada", "");
             localStorage.setItem("wisi","true"); 
             //navigator.vibrate(1000);
