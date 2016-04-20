@@ -71,15 +71,17 @@ function getDeviceProperty()
   }
 
   function searchWISI(){
+    var win= false;
     var statusWIFI=WifiWizard.isWifiEnabled(win, fail);
-    console.log("Estado WIFI: "+statusWIFI);
+    
     window.setTimeout(function(){
-      WifiWizard.listNetworks(listHandler, fail);
+      WifiWizard.getScanResults(listHandler, fail);
+      //WifiWizard.listNetworks(listHandler, fail);
       console.log("Check available WIFIs");
     },60000);//1 minuto
   }
   function win(obj){
-    alert("WIN "+JSON.stringify(obj));
+    console.log("Estado WIFI: "+obj);
   }
 
   function onResume() {  
