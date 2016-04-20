@@ -78,6 +78,9 @@ function getDeviceProperty()
       console.log("Check available WIFIs");
     },60000);//1 minuto
   }
+  function win(obj){
+    alert("WIN "+JSON.stringify(obj));
+  }
 
   function onResume() {  
     localStorage.setItem("wisi","true");
