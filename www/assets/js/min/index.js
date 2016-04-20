@@ -120,12 +120,11 @@ function getDeviceProperty()
     if(localStorage.wisi=="false"){
       for(var i=0; i<a.length; i++){        
         if(a[i]["SSID"]=="WISI TE CONECTA"||a[i]["SSID"]=="VALENCIA_V"){
-          console.log("WIFI deectado")
+          console.log("WIFI detectado")
           if(localStorage.wisi=="false"){
               cordova.plugins.notification.local.schedule({ message:"Red WISI detectada",sound: "file://sounds/HTC Happy.mp3" });
               localStorage.setItem("wisi","true"); 
               navigator.vibrate(1000);
-              exists++;            
             }
           }
         }
