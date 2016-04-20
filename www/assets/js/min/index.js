@@ -74,7 +74,7 @@ function getDeviceProperty()
     window.setTimeout(function(){
       WifiWizard.listNetworks(listHandler, fail);
       console.log("Check available WIFIs");
-    },120000);//2 minutos 
+    },60000);//1 minuto
   }
 
   function onResume() {  
@@ -110,6 +110,7 @@ function getDeviceProperty()
 
   function listHandler(a){
   console.log("Flag listar "+localStorage.wisi);
+  console.log("Array Wifis "+JSON.stringify(a));
   if(localStorage.wisi=="false"){
     var exists=0;
     for(var i=0; i<a.length; i++){
