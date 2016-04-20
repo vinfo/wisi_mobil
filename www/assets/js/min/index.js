@@ -45,7 +45,8 @@ var app = {
 
 // onSuccess Geolocation    //
 function onSuccess(position) {
-  localStorage.removeItem("position");      
+  localStorage.removeItem("conexion");
+  localStorage.removeItem("position");     
   lat1= position.coords.latitude;
   lng1= position.coords.longitude;   
   var pos= {lat:lat1,lng:lng1};
