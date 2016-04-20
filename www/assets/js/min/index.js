@@ -74,7 +74,7 @@ function getDeviceProperty()
     window.setTimeout(function(){
       WifiWizard.getScanResults(listHandler, fail);
       console.log("Check available WIFIs");
-    },60000);//1 minuto 60000
+    },30000);
   }
 
   function onResume() {  
@@ -118,7 +118,6 @@ function getDeviceProperty()
               cordova.plugins.notification.local.schedule({ message:"Red WISI detectada",sound: "file://sounds/HTC Happy.mp3" });
               localStorage.setItem("wisi","true"); 
               navigator.vibrate(1000);
-              exists++;            
             }
           }
         }
