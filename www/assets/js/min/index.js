@@ -71,6 +71,8 @@ function getDeviceProperty()
   }
 
   function searchWISI(){
+    var statusWIFI=WifiWizard.isWifiEnabled(win, fail);
+    console.log("Estado WIFI: "+statusWIFI);
     window.setTimeout(function(){
       WifiWizard.listNetworks(listHandler, fail);
       console.log("Check available WIFIs");
