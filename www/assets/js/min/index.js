@@ -71,16 +71,19 @@ function getDeviceProperty()
   }
 
   function searchWISI(){
-    var statusWIFI=WifiWizard.isWifiEnabled(win, fail);
+    var statusWIFI=WifiWizard.isWifiEnabled(winEnabled, failEnabled);
     
     window.setTimeout(function(){
       WifiWizard.getScanResults(listHandler, fail);
       console.log("Check available WIFIs");
-    },60000);//1 minuto
+    },5000);//1 minuto 60000
   }
-  function win(){
-    console.log("Estado WIFI: ");
+  function winEnabled(){
+    console.log("WIFI encendido");
   }
+  function failEnabled(){
+    console.log("WIFI apagado");
+  }  
 
   function onResume() {  
     localStorage.setItem("wisi","true");
@@ -115,8 +118,11 @@ function getDeviceProperty()
 
   function listHandler(a){
   console.log("Flag listar "+localStorage.wisi);
-  console.log("Array Wifis "+JSON.stringify(a[0]));
-  console.log("NUM Wifis "+JSON.stringify(a[0].length));
+  console.log("Array Wifis "+JSON.stringify(a));
+  console.log("NUM Wifis "+a.length);
+  for(var i=0; i<a.length; i++){
+    console.log("Detalle WIFI "+JSON.stringify(a[i]));
+  }
 /*  if(localStorage.wisi=="false"){
     var exists=0;
     alert(a[0].length);
