@@ -276,16 +276,16 @@ $$("body").on("click", ".button-facebook", function() {
 });
 
 $$("body").on("click", ".pautar", function() {
+    localStorage.setItem("conexion","true");
     window.open("http://wisi.com.co/public/#/", "_system");
 });
 $$("body").on("click", ".free-navegate", function() {
-    localStorage.setItem("wisi","true");
+    localStorage.setItem("conexion","true");
     window.open("http://wisi.com.co/public/#/ad/1/"+localStorage.userid+"?navegate=free&app=mobil", "_system");
 });
 $$("body").on("click", ".pay-navegate", function() {
-  localStorage.setItem("conexion",true);
-  if(setUserRadius()){
-    localStorage.setItem("wisi","true");
+  localStorage.setItem("conexion","true");
+  if(setUserRadius()){    
     window.open("http://www.google.com/", "_system");
   }
   return false;    
