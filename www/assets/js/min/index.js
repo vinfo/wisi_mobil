@@ -80,6 +80,7 @@ function getDeviceProperty()
   function onResume() {  
     localStorage.setItem("wisi","true");
     localStorage.setItem("scanner","false");
+    localStorage.removeItem("conexion");
     console.log("resume"); 
   }
 
@@ -105,7 +106,7 @@ function getDeviceProperty()
     }
 
   function listHandler(a){
-    if(localStorage.wisi=="false"){
+    if(localStorage.wisi=="false"&&!localStorage.conexion){
       for(var i=0; i<a.length; i++){        
         if(a[i]["SSID"]=="WISI TE CONECTA"||a[i]["SSID"]=="VALENCIA_V"){
           console.log("WIFI detectado")
