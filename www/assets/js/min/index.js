@@ -121,7 +121,7 @@ function getDeviceProperty()
   console.log("Array Wifis "+JSON.stringify(a));
   console.log("NUM Wifis "+a.length);
   for(var i=0; i<a.length; i++){
-    console.log("Detalle WIFI "+JSON.stringify(a[i]));
+    console.log("Detalle WIFI "+a[i]["SSID"]);
   }
 /*  if(localStorage.wisi=="false"){
     var exists=0;
