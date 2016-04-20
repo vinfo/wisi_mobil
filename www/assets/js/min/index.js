@@ -70,20 +70,12 @@ function getDeviceProperty()
     if(!localStorage.scanear)searchWISI();
   }
 
-  function searchWISI(){
-    WifiWizard.isWifiEnabled(winEnabled, failEnabled);
-  }
-  function winEnabled(){
-    console.log("WIFI encendido");
+  function searchWISI(){    
     window.setTimeout(function(){
       WifiWizard.getScanResults(listHandler, fail);
       console.log("Check available WIFIs");
-    },60000);//1 minuto 60000    
+    },60000);//1 minuto 60000
   }
-  function failEnabled(){
-    console.log("WIFI apagado");
-    myApp.alert("Debe encender su WIFI para continuar", "");
-  }  
 
   function onResume() {  
     localStorage.setItem("wisi","true");
@@ -113,7 +105,8 @@ function getDeviceProperty()
     }
 
     function fail(e){
-      console.log("Detect active "+e);
+      console.log("Detect active WIFI "+e);
+      myApp.alert("Debe tener el WIFI encendido para continuar", ""); 
     }
 
   function listHandler(a){
@@ -125,6 +118,7 @@ function getDeviceProperty()
               cordova.plugins.notification.local.schedule({ message:"Red WISI detectada",sound: "file://sounds/HTC Happy.mp3" });
               localStorage.setItem("wisi","true"); 
               navigator.vibrate(1000);
+              exists++;            
             }
           }
         }
