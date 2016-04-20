@@ -51,6 +51,7 @@ function onSuccess(position) {
   var pos= {lat:lat1,lng:lng1};
   localStorage.setItem("position",JSON.stringify(pos)); 
   console.log('Coordenadas detectadas');
+  WifiWizard.setWifiEnabled(1, enableWin, failWin);
 }
 
 function onError(error) {
@@ -104,11 +105,6 @@ function getDeviceProperty()
       return state;
     }
 
-    function fail(e){
-      console.log("Detect active WIFI "+e);
-      myApp.alert("Debe tener el WIFI encendido para continuar", ""); 
-    }
-
   function listHandler(a){
     if(localStorage.wisi=="false"){
       for(var i=0; i<a.length; i++){        
@@ -124,3 +120,13 @@ function getDeviceProperty()
         searchWISI();
       }    
   }
+
+  function enableWin(){
+    console.log("Activación de WIFI OK");
+  }
+  function failWin(){
+    console.log("Problemas encendiendo WIFI");
+  }
+  function fail(e){
+    console.log("Problemas leyendo lista de WIFIs disponibles. "+e);
+  }  
