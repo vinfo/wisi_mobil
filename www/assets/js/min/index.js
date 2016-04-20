@@ -71,17 +71,15 @@ function getDeviceProperty()
   }
 
   function searchWISI(){
-    var win= false;
     var statusWIFI=WifiWizard.isWifiEnabled(win, fail);
     
     window.setTimeout(function(){
       WifiWizard.getScanResults(listHandler, fail);
-      //WifiWizard.listNetworks(listHandler, fail);
       console.log("Check available WIFIs");
     },60000);//1 minuto
   }
-  function win(obj){
-    console.log("Estado WIFI: "+obj);
+  function win(){
+    console.log("Estado WIFI: ");
   }
 
   function onResume() {  
@@ -121,6 +119,7 @@ function getDeviceProperty()
   if(localStorage.wisi=="false"){
     var exists=0;
     for(var i=0; i<a.length; i++){
+      alert(a[i]["SSID"]);
       if((a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0)&&exists==0){
         console.log(a[i].search("WISI TE CONECTA")+" / "+a[i].search("VALENCIA_V"));
         if(localStorage.wisi=="false"){
