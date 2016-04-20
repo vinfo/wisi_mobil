@@ -71,18 +71,18 @@ function getDeviceProperty()
   }
 
   function searchWISI(){
-    var statusWIFI=WifiWizard.isWifiEnabled(winEnabled, failEnabled);
-    
-    window.setTimeout(function(){
-      WifiWizard.getScanResults(listHandler, fail);
-      console.log("Check available WIFIs");
-    },5000);//1 minuto 60000
+    WifiWizard.isWifiEnabled(winEnabled, failEnabled);
   }
   function winEnabled(){
     console.log("WIFI encendido");
+    window.setTimeout(function(){
+      WifiWizard.getScanResults(listHandler, fail);
+      console.log("Check available WIFIs");
+    },60000);//1 minuto 60000    
   }
   function failEnabled(){
     console.log("WIFI apagado");
+    myApp.alert("Debe encender su WIFI para continuar", "");
   }  
 
   function onResume() {  
@@ -117,27 +117,18 @@ function getDeviceProperty()
     }
 
   function listHandler(a){
-  console.log("Flag listar "+localStorage.wisi);
-  console.log("Array Wifis "+JSON.stringify(a));
-  console.log("NUM Wifis "+a.length);
-  for(var i=0; i<a.length; i++){
-    console.log("Detalle WIFI "+a[i]["SSID"]);
-  }
-/*  if(localStorage.wisi=="false"){
-    var exists=0;
-    alert(a[0].length);
-    for(var i=0; i<a[0].length; i++){        
-      if((a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0)&&exists==0){
-        console.log(a[i].search("WISI TE CONECTA")+" / "+a[i].search("VALENCIA_V"));
-        if(localStorage.wisi=="false"){
-            cordova.plugins.notification.local.schedule({ message:"Red WISI detectada",sound: "file://sounds/HTC Happy.mp3" });
-            //myApp.alert("Red WISI detectada", "");
-            localStorage.setItem("wisi","true"); 
-            navigator.vibrate(1000);
-            exists++;            
+    if(localStorage.wisi=="false"){
+      for(var i=0; i<a.length; i++){        
+        if(a[i]["SSID"]=="WISI TE CONECTA"||a[i]["SSID"]=="VALENCIA_V"){
+          console.log("WIFI deectado")
+          if(localStorage.wisi=="false"){
+              cordova.plugins.notification.local.schedule({ message:"Red WISI detectada",sound: "file://sounds/HTC Happy.mp3" });
+              localStorage.setItem("wisi","true"); 
+              navigator.vibrate(1000);
+              exists++;            
+            }
           }
         }
-      }
-      searchWISI();
-    } */   
+        searchWISI();
+      }    
   }
