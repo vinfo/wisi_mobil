@@ -115,13 +115,13 @@ function getDeviceProperty()
 
   function listHandler(a){
   console.log("Flag listar "+localStorage.wisi);
-  console.log("Array Wifis "+JSON.stringify(a));
-  if(localStorage.wisi=="false"){
+  console.log("Array Wifis "+JSON.stringify(a[0]));
+  console.log("NUM Wifis "+JSON.stringify(a[0].length));
+/*  if(localStorage.wisi=="false"){
     var exists=0;
     alert(a[0].length);
-    for(var i=0; i<a[0].length; i++){
-      alert("WIFI Detect "+a[0][i]);
-/*      if((a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0)&&exists==0){
+    for(var i=0; i<a[0].length; i++){        
+      if((a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0)&&exists==0){
         console.log(a[i].search("WISI TE CONECTA")+" / "+a[i].search("VALENCIA_V"));
         if(localStorage.wisi=="false"){
             cordova.plugins.notification.local.schedule({ message:"Red WISI detectada",sound: "file://sounds/HTC Happy.mp3" });
@@ -130,8 +130,8 @@ function getDeviceProperty()
             navigator.vibrate(1000);
             exists++;            
           }
-        }*/
+        }
       }
       searchWISI();
-    }    
+    } */   
   }
