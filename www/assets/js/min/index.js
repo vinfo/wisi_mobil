@@ -52,6 +52,7 @@ function onSuccess(position) {
   var pos= {lat:lat1,lng:lng1};
   localStorage.setItem("position",JSON.stringify(pos)); 
   console.log('Coordenadas detectadas');
+  WifiWizard.setWifiEnabled(true, function(){console.log("Activando WIFI");}, function(){console.log("No se pudo encender el WIFI");});  
 }
 
 function onError(error) {
@@ -82,7 +83,8 @@ function getDeviceProperty()
     localStorage.setItem("wisi","true");
     localStorage.setItem("scanner","false");
     localStorage.removeItem("conexion");
-    console.log("resume"); 
+    console.log("resume");
+    WifiWizard.setWifiEnabled(true, function(){console.log("Activando WIFI");}, function(){console.log("No se pudo encender el WIFI");});  
   }
 
   function checkConnection() {
