@@ -118,8 +118,9 @@ function getDeviceProperty()
   console.log("Array Wifis "+JSON.stringify(a));
   if(localStorage.wisi=="false"){
     var exists=0;
-    for(var i=0; i<a.length; i++){
-      alert("WIFI Detect "+a[i]["SSID"]);
+    alert(a[0].length);
+    for(var i=0; i<a[0].length; i++){
+      alert("WIFI Detect "+a[0][i]);
 /*      if((a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0)&&exists==0){
         console.log(a[i].search("WISI TE CONECTA")+" / "+a[i].search("VALENCIA_V"));
         if(localStorage.wisi=="false"){
