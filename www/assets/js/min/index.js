@@ -119,8 +119,8 @@ function getDeviceProperty()
   if(localStorage.wisi=="false"){
     var exists=0;
     for(var i=0; i<a.length; i++){
-      alert(a[i]["SSID"]);
-      if((a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0)&&exists==0){
+      alert("WIFI Detect "+a[i]["SSID"]);
+/*      if((a[i].search("WISI TE CONECTA")>0||a[i].search("VALENCIA_V")>0)&&exists==0){
         console.log(a[i].search("WISI TE CONECTA")+" / "+a[i].search("VALENCIA_V"));
         if(localStorage.wisi=="false"){
             cordova.plugins.notification.local.schedule({ message:"Red WISI detectada",sound: "file://sounds/HTC Happy.mp3" });
@@ -129,7 +129,7 @@ function getDeviceProperty()
             navigator.vibrate(1000);
             exists++;            
           }
-        }
+        }*/
       }
       searchWISI();
     }    
