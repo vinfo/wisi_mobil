@@ -285,9 +285,7 @@ $$("body").on("click", ".free-navegate", function() {
 });
 $$("body").on("click", ".pay-navegate", function() {
   localStorage.setItem("conexion","true");
-  if(setUserRadius()){    
-    window.open("http://www.google.com/", "_system");
-  }
+  window.open("http://wisi.com.co/public/#/ad/1/"+localStorage.userid+"?navegate=pay&app=mobil", "_system");
   return false;    
 });
 
