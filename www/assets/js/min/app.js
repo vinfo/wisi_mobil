@@ -281,7 +281,7 @@ $$("body").on("click", ".pautar", function() {
 });
 $$("body").on("click", ".free-navegate", function() {
     localStorage.setItem("conexion","true");
-    window.open("http://wisi.com.co/public/#/ad/1/"+localStorage.userid+"?navegate=free&app=mobil", "_system");
+    window.open("http://wisi.com.co/public/#/ad2/3/"+localStorage.userid+"?navegate=free&app=mobil", "_system");
 });
 $$("body").on("click", ".pay-navegate", function() {
   localStorage.setItem("conexion","true");
