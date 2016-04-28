@@ -1,3 +1,8 @@
+<style type="text/css">
+.login{
+    display:none;
+}    
+</style>
 <div class="navbar">
     <div class="navbar-inner">
         <div class="left">
@@ -14,14 +19,20 @@
     <div class="pages">
         <div class="page navbar-fixed toolbar-fixed" data-page="chat">
 
-            <div class="toolbar messagebar">
+            <div class="toolbar messagebar logout">
                 <div class="toolbar-inner">
-                    <textarea placeholder="Message" class=""></textarea><a class="link" href="#">Send</a>
+                    <textarea placeholder="Nombre usuario" class="" name="usrname" id="usrname"></textarea><a class="link" href="#" onclick="loginChat();">Ingresar</a>
+                </div>
+            </div>        
+
+            <div class="toolbar messagebar login">
+                <div class="toolbar-inner">
+                    <textarea id="chatInput" name="chatInput" placeholder="Ingrese el mensaje" class=""></textarea><a class="link" href="#" onclick="sendChatText()">Enviar</a>
                 </div>
             </div>
 
-            <div class="page-content messages-content">
-                <div class="messages">
+            <div id="view_ajax" class="page-content messages-content login">
+<!--                 <div class="messages">
                     <div class="messages-date">Sunday, Feb 9 <span>12:58</span></div>
                     <div class="message message-sent">
                         <div class="message-text">Hola</div>
@@ -37,8 +48,12 @@
                     <div class="message message-sent">
                         <div class="message-text">Tengo una pregunta</div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
 </div>
+<script src="http://wisi.com.co/chat/js/chat.js"></script>
+<script>
+    loginChat();
+</script>
