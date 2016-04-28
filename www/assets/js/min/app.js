@@ -333,7 +333,7 @@ $$("body").on("click", ".close_sesion", function() {
     window.location.href = "index.html";
 });
 
-$$("body").on("change", "#code_b", function() {
+$$("body").on("change", "#code_b,#key_b", function() {
     setCode(this.value);
 });
 
