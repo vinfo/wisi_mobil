@@ -279,7 +279,7 @@ $$("body").on("click", ".button-facebook", function() {
 
 $$("body").on("click", ".pautar", function() {
     localStorage.setItem("conexion","true");
-    window.open("http://wisi.com.co/public/#/", "_system");
+    window.open("http://wisi.com.co/login/", "_system");
 });
 $$("body").on("click", ".free-navegate", function() {
     localStorage.setItem("conexion","true");
@@ -402,13 +402,17 @@ $$(document).on("pageInit", function(e) {
       getReferrals();
     }
     if(page.name=="rewards")getRewardsData(userid);       
+    if(page.name=="chat"){
+      var names=localStorage.name+" "+localStorage.lastname;
+      $("#usrname").val(names);
+    }  
     
     // Conversation flag
-    var conversationStarted = !1, myMessages = myApp.messages(".messages", {
+/*    var conversationStarted = !1, myMessages = myApp.messages(".messages", {
         autoLayout: !0
-    }), myMessagebar = myApp.messagebar(".messagebar");
+    }), myMessagebar = myApp.messagebar(".messagebar");*/
     // Handle message
-    $$(".messagebar .link").on("click", function() {
+    /*$$(".messagebar .link").on("click", function() {
         var name_user="Invitado";
         if(localStorage.name!="")name_user=localStorage.name+" "+localStorage.lastname;
         $(".message-name").html(name_user);        
@@ -436,7 +440,7 @@ $$(document).on("pageInit", function(e) {
             }), // Update conversation flag
             conversationStarted = !0;
         }
-    });
+    });*/
 }), $(document).ready(function() {    
     setSaldo(); 
     checkConnectionFB();
