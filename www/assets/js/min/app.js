@@ -115,7 +115,7 @@ function scanear(){
 }
 
 function setCode(code,key){
-  if(code!=""){
+  if(code!=""&&key!=""){
     var data={code:code.trim()};
     $.ajax({
       url: "http://wisi.com.co/api/barcode",
@@ -386,11 +386,8 @@ $$("body").on("click", "#send-button", function() {
      });
     }
     if ("rechargeds" === localStorage.page && valid) {
-        var flag=true;
-        if($("#time").val()!=""&&$("#key_b").val()!=$("#key").val()){
-          myApp.alert("Clave de seguridad no coincide!", "");
-          flag=false;
-        }
+      alert(2);
+        setCode($("#code_b").val(),$("#key_b").val());
     }
 });
 
