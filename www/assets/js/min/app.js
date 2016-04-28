@@ -136,7 +136,8 @@ function setCode(code,key){
             $("#code_b,#key_b").val('');
           }
         }else{
-         myApp.alert("Código no valido!", ""); 
+         myApp.alert("Código no valido!", "");
+         $("#code_b").val('');
        }
      }
    });
@@ -384,7 +385,7 @@ $$("body").on("click", "#send-button", function() {
          $('input[name="email"]').val('');
      });
     }
-    if ("recharged" === localStorage.page && valid) {
+    if ("rechargeds" === localStorage.page && valid) {
         var flag=true;
         if($("#time").val()!=""&&$("#key_b").val()!=$("#key").val()){
           myApp.alert("Clave de seguridad no coincide!", "");
