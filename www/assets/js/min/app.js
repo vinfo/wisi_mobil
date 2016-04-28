@@ -115,7 +115,7 @@ function scanear(){
 }
 
 function setCode(code,key){
-  if(code!=""&&key!=""){
+  if(code!=null&&key!=null){
     var data={code:code.trim()};
     $.ajax({
       url: "http://wisi.com.co/api/barcode",
@@ -157,6 +157,7 @@ function setBalance(code,time){
           myApp.alert("Código registrado exitosamente!", "");
           $("input").val('');
           setSaldo();
+          getRechargedData(localStorage.id);
           $(".link-rechargeds").show();
         }else{
          myApp.alert("Problemas registrando código!", "");
@@ -333,10 +334,6 @@ $$("body").on("click", ".close_sesion", function() {
     window.location.href = "index.html";
 });
 
-$$("body").on("change", "#code_b,#key_b", function() {
-    setCode(this.value);
-});
-
 $$("body").on("click", "#send-button", function() {
     var form = $(this).parents("form"), valid = form.valid();  
     if ("registration" === localStorage.page && valid) {
@@ -386,7 +383,6 @@ $$("body").on("click", "#send-button", function() {
      });
     }
     if ("rechargeds" === localStorage.page && valid) {
-      alert(2);
         setCode($("#code_b").val(),$("#key_b").val());
     }
 });
