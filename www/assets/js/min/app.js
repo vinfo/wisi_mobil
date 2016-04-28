@@ -113,24 +113,36 @@ function scanear(){
       }
       ); 
 }
-function setCode(code){
-    if(code!=""){
-        var data={code:code.trim()};
-        $.ajax({
-            url: "http://wisi.com.co/api/barcode",
-            type: "get",
-            data: data,
-            success: function(res){
-                if(res.status){
-                    $("#key").val(res.data[0].key_b);
-                    $("#time").val(res.data[0].time_b);
-                }else{
-                   myApp.alert("Código no valido!", ""); 
-               }
-           }
-       });
-    }
+
+function setCode(code,key){
+  if(code!=""){
+    var data={code:code.trim()};
+    $.ajax({
+      url: "http://wisi.com.co/api/barcode",
+      type: "get",
+      data: data,
+      success: function(res){
+        if(res.status){
+          if(res.data[0].status_b=="1"){
+            if(key==res.data[0].key_b){
+              $("#time").val(res.data[0].time_b);
+              setBalance(code.trim(),res.data[0].time_b);
+            }else{
+              myApp.alert("Clave de seguridad no valida!", "");
+              $("#key_b").val('');
+            }
+          }else{
+            myApp.alert("Código ya ha sido registrado antes!", "");
+            $("#code_b,#key_b").val('');
+          }
+        }else{
+         myApp.alert("Código no valido!", ""); 
+       }
+     }
+   });
+  }
 }
+
 function showDivsConnect(){
     console.log(localStorage.logged_in);
     if(localStorage.logged_in=="true"){
