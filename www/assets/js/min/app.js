@@ -143,6 +143,28 @@ function setCode(code,key){
   }
 }
 
+/* Establecer código en la base de datos */
+function setBalance(code,time){
+  if(code!=""){
+    var data={data:{code_b:code.trim(),id:localStorage.id,time:time}};
+    $.ajax({
+      url: "http://wisi.com.co/api/setBalance",
+      type: "post",
+      data: data,
+      success: function(res){
+        if(res.status){
+          myApp.alert("Código registrado exitosamente!", "");
+          $("input").val('');
+          setSaldo();
+          $(".link-rechargeds").show();
+        }else{
+         myApp.alert("Problemas registrando código!", "");
+       }
+     }
+   });
+  }
+}
+
 function showDivsConnect(){
     console.log(localStorage.logged_in);
     if(localStorage.logged_in=="true"){
@@ -367,20 +389,6 @@ $$("body").on("click", "#send-button", function() {
         if($("#time").val()!=""&&$("#key_b").val()!=$("#key").val()){
           myApp.alert("Clave de seguridad no coincide!", "");
           flag=false;
-        }
-
-        if($("#time").val()!=""&&flag){
-          $("#id").val(localStorage.userid);
-          var data=$.param({data:form.serializeObject()});
-          myApp.showPreloader(), $.post("http://wisi.com.co/api/setBalance", data).done(function(data) {
-              myApp.hidePreloader();
-              if(data.status){
-                 myApp.alert("Datos cargados exitosamente!", "");
-                 $("input").val('');
-                 setSaldo();
-                 $(".link-rechargeds").show();
-              }
-          });
         }
     }
 });
