@@ -6024,6 +6024,7 @@ html:not(.watch-active-state) .list-block .item-link:active {
   line-height: 40px;
   vertical-align: top;
   padding: 0 10px;
+  width: 75%;
 }
 
 .content-wew {
