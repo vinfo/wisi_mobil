@@ -32,6 +32,7 @@ function getReferrals(){
 }
 
 function setSaldo(){
+  if(localStorage.userid){
       var data={id:localStorage.userid};
       $.ajax({
           url: "http://wisi.com.co/api/getBalanceUser",
@@ -52,7 +53,8 @@ function setSaldo(){
               myApp.alert("Problemas de conectividad en este momento!", "");
               console.log("Error conectividad");
           }
-     });  
+     });    
+    }  
 }
 function referByEmail(){
     $("#email").val();
@@ -436,7 +438,7 @@ $$(document).on("pageInit", function(e) {
         }
     });
 }), $(document).ready(function() {    
-    if(localStorage.userid)setSaldo(); 
+    setSaldo(); 
     checkConnectionFB();
     showDivsConnect();
     //setUserRadius();
