@@ -56,6 +56,21 @@ function setSaldo(){
      });    
     }  
 }
+/* Obtener valor sistema */
+function getConfiguration(code){
+    var result="";
+    var data="code="+code.trim();
+    $.ajax({
+      url: "http://wisi.com.co/api/getConfiguration",
+      type: "post",
+      async: false,
+      data: data,
+      success: function(d){
+        result= d.data;
+      }
+    });
+    return result;
+}
 function referByEmail(){
     $("#email").val();
     $(".forms").slideToggle( "slow" );
@@ -398,6 +413,11 @@ $$(document).on("pageInit", function(e) {
     if(page.name=="mydata")getUserData(userid);
     if(page.name=="rechargeds")getRechargedData(userid);
     if(page.name=="index")setSaldo();    
+    if(page.name=="terms"){
+      var cont= getConfiguration(79);
+      alert(2);
+      $(".content_terms").html(cont[0].description);
+    }
     if(page.name=="referrals"){
       var tipo='whatsapp://';
       if(localStorage.OS=="Android"){
