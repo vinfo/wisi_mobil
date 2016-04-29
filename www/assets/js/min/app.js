@@ -59,7 +59,7 @@ function setSaldo(){
 /* Obtener valor sistema */
 function getConfiguration(code){
     var result="";
-    var data="code="+code.trim();
+    var data="code="+code;
     $.ajax({
       url: "http://wisi.com.co/api/getConfiguration",
       type: "post",
