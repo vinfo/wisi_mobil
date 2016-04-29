@@ -107,7 +107,6 @@ function Remember() {
             type: "post",
             data: data,
             success: function(res){
-              alert(JSON.stringify(res));
              myApp.alert("Contraseña enviada exitosamente!", ""); 
              window.location.href = "index.html";
          }
@@ -415,7 +414,6 @@ $$(document).on("pageInit", function(e) {
     if(page.name=="index")setSaldo();    
     if(page.name=="terms"){
       var cont= getConfiguration(79);
-      alert(2);
       $(".content_terms").html(cont[0].description);
     }
     if(page.name=="referrals"){
@@ -437,8 +435,12 @@ $$(document).on("pageInit", function(e) {
     }
     if(page.name=="rewards")getRewardsData(userid);       
     if(page.name=="chat"){
-      var names=localStorage.name+" "+localStorage.lastname;
+      var names='';
+      if(localStorage.email){
+        names=localStorage.email;
+      }
       $("#usrname").val(names);
+      if(names!="")loginChat();
     }  
     
     // Conversation flag

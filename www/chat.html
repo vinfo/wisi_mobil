@@ -1,7 +1,13 @@
 <style type="text/css">
 .login{
     display:none;
-}    
+}
+.message{
+    width: 98%;
+}
+br{
+    display: none;
+} 
 </style>
 <div class="navbar">
     <div class="navbar-inner">
@@ -30,26 +36,7 @@
                     <textarea id="chatInput" name="chatInput" placeholder="Ingrese el mensaje" class=""></textarea><a class="link" href="#" onclick="sendChatText()">Enviar</a>
                 </div>
             </div>
-
-            <div id="view_ajax" class="page-content messages-content login">
-<!--                 <div class="messages">
-                    <div class="messages-date">Sunday, Feb 9 <span>12:58</span></div>
-                    <div class="message message-sent">
-                        <div class="message-text">Hola</div>
-                    </div>
-                    <div class="message message-sent message-last">
-                        <div class="message-text">Bienvenido a nuestro sistema de ayuda</div>
-                    </div>
-                    <div class="message message-with-avatar message-last message-received">
-                        <div class="message-name"></div>
-                        <div class="message-text">Gracias</div>
-                    </div>
-                    <div class="messages-date">Sunday, Feb 3 <span>11:58</span></div>
-                    <div class="message message-sent">
-                        <div class="message-text">Tengo una pregunta</div>
-                    </div>
-                </div> -->
-            </div>
+            <div id="view_ajax" class="page-content messages-content login"></div>
         </div>
     </div>
 </div>
