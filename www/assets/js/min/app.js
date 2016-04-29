@@ -315,7 +315,7 @@ $$("body").on("click", ".button-facebook", function() {
 
 $$("body").on("click", ".pautar", function() {
     localStorage.setItem("conexion","true");
-    window.open("http://wisi.com.co/login/", "_system");
+    window.open("http://wisi.com.co/register/", "_system");
 });
 $$("body").on("click", ".free-navegate", function() {
     localStorage.setItem("conexion","true");
