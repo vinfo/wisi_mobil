@@ -320,7 +320,7 @@ $$("body").on("click", ".button-facebook", function() {
     if(terms){
         facebookConnectPlugin.login(["public_profile"],
             fbLoginSuccess,
-            function (error) { myApp.alert("Problemas conectando con Facebook!", ""); }
+            function (error) { myApp.alert("Debes tener el APP de Facebook instalada!", ""); }
             );
     }else{
         myApp.alert("Debe aceptar los términos y condiciones!", "");
