@@ -44,7 +44,7 @@ function setSaldo(){
                   var total=d.data[0].cargado - d.data[0].gastado;
                   if(total>0)saldo=total;
                   var vistas= getConfiguration("66");
-                  alert("VConfig"+vistas[0].value+ " Vdata"+d.data[0].vistas);
+                  console.log("VConfig"+vistas[0].value+ " Vdata"+d.data[0].vistas);
                   if(d.data[0].vistas>=vistas[0].value)$(".row_gratis").remove();
               }
               localStorage.setItem("saldo_actual",saldo);
