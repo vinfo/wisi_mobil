@@ -43,6 +43,8 @@ function setSaldo(){
               if(d.status){
                   var total=d.data[0].cargado - d.data[0].gastado;
                   if(total>0)saldo=total;
+                  var vistas= getConfiguration("66");
+                  if(d.data[0].vistas==vistas[0].value)$(".row_gratis").remove();
               }
               localStorage.setItem("saldo_actual",saldo);
               $(".saldo_actual").html(saldo+' mins.');
@@ -411,7 +413,9 @@ $$(document).on("pageInit", function(e) {
     var userid=localStorage.userid;
     if(page.name=="mydata")getUserData(userid);
     if(page.name=="rechargeds")getRechargedData(userid);
-    if(page.name=="index")setSaldo();    
+    if(page.name=="index"){
+      setSaldo();     
+    }   
     if(page.name=="terms"){
       var cont= getConfiguration(79);
       $(".content_terms").html(cont[0].description);
