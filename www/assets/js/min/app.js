@@ -337,7 +337,14 @@ $$("body").on("click", ".pautar", function() {
 $$("body").on("click", ".free-navegate", function() {
     localStorage.setItem("conexion","true");
     localStorage.setItem("id",localStorage.userid);
-    window.open("http://wisi.com.co/public/#/ad2/3/"+localStorage.userid+"?navegate=free&app=mobil", "_system");
+    alert("Open window");
+    var win = window.open("http://wisi.com.co/public/#/ad2/3/"+localStorage.userid+"?navegate=free&app=mobil", "_blank", "EnableViewPortScale=yes" );
+    win.addEventListener( "loadstop", function() {
+        setTimeout(function() {
+            alert("Close window");
+            win.close();
+        }, 5000 );
+    });    
 });
 $$("body").on("click", ".pay-navegate", function() {
   localStorage.setItem("conexion","true");
@@ -446,42 +453,7 @@ $$(document).on("pageInit", function(e) {
       }
       $("#usrname").val(names);
       if(names!="")loginChat();
-    }  
-    
-    // Conversation flag
-/*    var conversationStarted = !1, myMessages = myApp.messages(".messages", {
-        autoLayout: !0
-    }), myMessagebar = myApp.messagebar(".messagebar");*/
-    // Handle message
-    /*$$(".messagebar .link").on("click", function() {
-        var name_user="Invitado";
-        if(localStorage.name!="")name_user=localStorage.name+" "+localStorage.lastname;
-        $(".message-name").html(name_user);        
-        // Message text
-        var messageText = myMessagebar.value().trim();
-        // Exit if empy message
-        if (0 !== messageText.length) {
-            // Empty messagebar
-            myMessagebar.clear();
-            // Random message type
-            var avatar, name, messageType = [ "sent", "received" ][Math.round(Math.random())];
-            "received" === messageType && (avatar = "http://lorempixel.com/output/people-q-c-100-100-9.jpg", 
-            name = name_user), // Add message
-            myMessages.addMessage({
-                // Message text
-                text: messageText,
-                // Random message type
-                type: messageType,
-                // Avatar and name:
-                avatar: avatar,
-                name: name,
-                // Day
-                day: conversationStarted ? !1 : "Today",
-                time: conversationStarted ? !1 : new Date().getHours() + ":" + new Date().getMinutes()
-            }), // Update conversation flag
-            conversationStarted = !0;
-        }
-    });*/
+    }    
 }), $(document).ready(function() {    
     setSaldo(); 
     checkConnectionFB();
