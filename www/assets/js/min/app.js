@@ -101,7 +101,7 @@ function Login() {
                localStorage.setItem("token", res.token.token);
                window.location.href = "index.html";
              }else{
-               myApp.alert("Email o Contraseña no validos!", "");
+               myApp.alert("Emailllllllllllll o Contraseña no validos!", "");
              }
             }
      });
@@ -212,8 +212,8 @@ function checkConnectionFB() {
         showDivsConnect();
     });
 }
-function getUserData(id) {    
-    var data={id:id,table:"user"};
+function getUserData() {
+    var data={id:localStorage.userid,table:"user"};
     $.ajax({
         url: "http://wisi.com.co/api/databyid",
         type: "get",
@@ -447,7 +447,10 @@ $$(document).on("pageInit", function(e) {
     var page = e.detail.page;
     localStorage.setItem("page",page.name);
     var userid=localStorage.userid;
-    if(page.name=="mydata")getUserData(userid);
+    if(page.name=="mydata"){
+      getUserData();
+    }
+
     if(page.name=="rechargeds")getRechargedData(userid);
     if(page.name=="index"){
       setSaldo();     
