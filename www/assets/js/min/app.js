@@ -1,6 +1,6 @@
 // Initialize app
 function shareWhatsApp(){
-  var id=localStorage.userid;
+  var id=localStorage.id;
   window.plugins.socialsharing.shareViaWhatsApp('Hola, te recomiendo registrarte y descargar la aplicación de conectividad a internet WISI.', 'http://wisi.com.co/public/assets/images/logo.png', 'http://wisi.com.co/public/#/?sponsor='+id, function() {console.log('share ok')}, function(errormsg){console.log(errormsg)});
 }
 function setUserRadius(){
@@ -18,7 +18,7 @@ function setUserRadius(){
   return result;
 }
 function getReferrals(){
-      var data={id:localStorage.userid};
+      var data={id:localStorage.id};
       $.ajax({
           url: "http://wisi.com.co/api/getReferrals",
           type: "get",
@@ -32,8 +32,8 @@ function getReferrals(){
 }
 
 function setSaldo(){
-  if(localStorage.userid){
-      var data={id:localStorage.userid};
+  if(localStorage.id){
+      var data={id:localStorage.id};
       $.ajax({
           url: "http://wisi.com.co/api/getBalanceUser",
           type: "get",
@@ -43,8 +43,8 @@ function setSaldo(){
               var cargado=0;
               var gastado=0;
               if(d.status){
-                  if(d.data[0].cargado)cargado=parsetInt(d.data[0].cargado);
-                  if(d.data[0].gastado)gastado=parsetInt(d.data[0].gastado);
+                  if(d.data[0].cargado)cargado=parseInt(d.data[0].cargado);
+                  if(d.data[0].gastado)gastado=parseInt(d.data[0].gastado);
                   var total=  cargado - gastado;
                   if(total>0)saldo=total;
                   var vistas= getConfiguration("66");
@@ -85,25 +85,27 @@ function Login() {
     var email=$("#email").val();   
     var password=$("#password").val();
     if(email!=""&&password!=""){
-      alert(email);
         var data={email:email,password:password};
-        var dat= $.ajax({
+        $.ajax({
             url: "http://wisi.com.co/api/sigin",
             type: "post",
             data: data,
             success: function(res){
-              alert(JSON.stringify(res));
-             localStorage.setItem("id", res.userdata.id);
-             localStorage.setItem("name",  res.userdata.name);
-             localStorage.setItem("lastname",  res.userdata.lastname);
-             localStorage.setItem("email",  res.userdata.email);
-             localStorage.setItem("logged_in", "true");
-             localStorage.setItem("token", res.token.token);
-             window.location.href = "index.html";
+             if(res.status){
+               localStorage.setItem("id", res.encript);
+               localStorage.setItem("name",  res.userdata.name);
+               localStorage.setItem("lastname",  res.userdata.lastname);
+               localStorage.setItem("email",  res.userdata.email);
+               localStorage.setItem("logged_in", "true");
+               localStorage.setItem("token", res.token.token);
+               window.location.href = "index.html";
+             }else{
+               myApp.alert("Email o Contraseña no validos!", "");
+             }
             }
      });
     }else{
-        myApp.alert("Email y Contraseña sonnnn requeridos!", "");
+        myApp.alert("Email y Contraseña son requeridos!", "");
     }
 }
 function Remember() {
@@ -299,13 +301,13 @@ function goNavegate(time){
 function openUrl(url){
   var newWin = window.open(url, "_blank", "EnableViewPortScale=yes" );
   if(!newWin || newWin.closed || typeof newWin.closed=='undefined'){ 
-     alert("Su navegador bloquea ventanas emergentes.\nPor favor habilitar el uso de estas para este sitio Web");
+     myApp.alert("Su navegador bloquea ventanas emergentes.\nPor favor habilitar el uso de estas para este sitio Web", "");
   }else{
     setInterval(function(){
      if(parseInt($("#saldo_actual").html())>0){
        lessBalanceUser(localStorage.id);
        if(localStorage.saldo_actual<=0){
-        alert("Saldo agotado.\nGracias por utilizar nuestros servicios.");
+        myApp.alert("Saldo agotado.\nGracias por utilizar nuestros servicios.", "");
         $(".row_disponible").remove();
         newWin.close();
        }
@@ -345,7 +347,7 @@ var fbLoginSuccess = function (response) {
                     if(localStorage.cont_started=="true")level="2";
                     showDivsConnect();
                     localStorage.setItem("cont_started",true);
-                    localStorage.setItem("userid",d.userdata.id);
+                    localStorage.setItem("id",d.encript);
                     window.location.href = "index.html";
                     //window.open("http://wisi.com.co/public/#/ad/"+level+"/"+d.userdata.id, "_system");
                 }
@@ -371,8 +373,7 @@ $$("body").on("click", ".pautar", function() {
     window.open("http://wisi.com.co/register/", "_system");
 });
 $$("body").on("click", ".free-navegate", function() {
-    localStorage.setItem("conexion","true");
-    localStorage.setItem("id",localStorage.userid);    
+    localStorage.setItem("conexion","true");    
 });
 $$("body").on("click", ".pay-navegate", function() {
   var saldo_actual=$(".saldo_actual").html();
@@ -394,7 +395,7 @@ $$("body").on("click", "#send-button", function() {
             var gender=38;
             if(data.userdata.gender=="male")gender=39;
             localStorage.setItem("logged_in", "true");
-            localStorage.setItem("userid",  data.id);
+            localStorage.setItem("id",  data.encript);
             localStorage.setItem("name",  data.userdata.name);
             localStorage.setItem("lastname",  data.userdata.lastname);
             localStorage.setItem("email",  data.userdata.email);
@@ -419,7 +420,7 @@ $$("body").on("click", "#send-button", function() {
      });
     }
     if ("referrals" === localStorage.page && valid) {
-        $('input[name="id"]').val(localStorage.userid);
+        $('input[name="id"]').val(localStorage.id);
         var data=$.param({data:form.serializeObject()});        
         myApp.showPreloader(), $.post("http://wisi.com.co/api/RefererUser", data).done(function(data) {
             myApp.hidePreloader();
@@ -444,7 +445,7 @@ $$(document).on("pageInit", function(e) {
     checkConnectionFB();
     var page = e.detail.page;
     localStorage.setItem("page",page.name);
-    var userid=localStorage.userid;
+    var userid=localStorage.id;
     if(page.name=="mydata")getUserData(userid);
     if(page.name=="rechargeds")getRechargedData(userid);
     if(page.name=="index"){
