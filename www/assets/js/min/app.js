@@ -93,6 +93,7 @@ function Login() {
             success: function(res){
              if(res.status){
                localStorage.setItem("id", res.encript);
+               localStorage.setItem("userid", res.userdata.id);
                localStorage.setItem("name",  res.userdata.name);
                localStorage.setItem("lastname",  res.userdata.lastname);
                localStorage.setItem("email",  res.userdata.email);
@@ -445,7 +446,7 @@ $$(document).on("pageInit", function(e) {
     checkConnectionFB();
     var page = e.detail.page;
     localStorage.setItem("page",page.name);
-    var userid=localStorage.id;
+    var userid=localStorage.userid;
     if(page.name=="mydata")getUserData(userid);
     if(page.name=="rechargeds")getRechargedData(userid);
     if(page.name=="index"){
