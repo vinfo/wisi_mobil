@@ -40,11 +40,14 @@ function setSaldo(){
           data: data,
           success: function(d){
               var saldo=0;
+              var cargado=0;
+              var gastado=0;
               if(d.status){
-                  var total=d.data[0].cargado - d.data[0].gastado;
+                  if(d.data[0].cargado)cargado=parsetInt(d.data[0].cargado);
+                  if(d.data[0].gastado)gastado=parsetInt(d.data[0].gastado);
+                  var total=  cargado - gastado;
                   if(total>0)saldo=total;
                   var vistas= getConfiguration("66");
-                  console.log("VConfig"+vistas[0].value+ " Vdata"+d.data[0].vistas);
                   if(d.data[0].vistas>=vistas[0].value)$(".row_gratis").remove();
               }
               localStorage.setItem("saldo_actual",saldo);
@@ -82,12 +85,14 @@ function Login() {
     var email=$("#email").val();   
     var password=$("#password").val();
     if(email!=""&&password!=""){
+      alert(email);
         var data={email:email,password:password};
-        $.ajax({
+        var dat= $.ajax({
             url: "http://wisi.com.co/api/sigin",
             type: "post",
             data: data,
             success: function(res){
+              alert(JSON.stringify(res));
              localStorage.setItem("id", res.userdata.id);
              localStorage.setItem("name",  res.userdata.name);
              localStorage.setItem("lastname",  res.userdata.lastname);
@@ -95,10 +100,10 @@ function Login() {
              localStorage.setItem("logged_in", "true");
              localStorage.setItem("token", res.token.token);
              window.location.href = "index.html";
-         }
+            }
      });
     }else{
-        myApp.alert("Email y Contraseña son requeridos!", "");
+        myApp.alert("Email y Contraseña sonnnn requeridos!", "");
     }
 }
 function Remember() {
@@ -278,6 +283,37 @@ function hidePreloader() {
     });
 }
 
+/* Ir a navegar */
+function goNavegate(time){
+  localStorage.setItem("alerta",true);
+  localStorage.setItem("conexion",true);
+  var radius= setUserRadius(time);
+  if(radius){
+    openUrl("http://www.google.com/");    
+    window.location.href = 'http://wisi.com.co/public/#/ad/1/'+encodeURIComponent(localStorage.id);
+    localStorage.setItem("redirect",true);    
+  }  
+  return false;
+}
+
+function openUrl(url){
+  var newWin = window.open(url, "_blank", "EnableViewPortScale=yes" );
+  if(!newWin || newWin.closed || typeof newWin.closed=='undefined'){ 
+     alert("Su navegador bloquea ventanas emergentes.\nPor favor habilitar el uso de estas para este sitio Web");
+  }else{
+    setInterval(function(){
+     if(parseInt($("#saldo_actual").html())>0){
+       lessBalanceUser(localStorage.id);
+       if(localStorage.saldo_actual<=0){
+        alert("Saldo agotado.\nGracias por utilizar nuestros servicios.");
+        $(".row_disponible").remove();
+        newWin.close();
+       }
+     }
+    }, 60000);    
+  }
+}
+
 var myApp = new Framework7({
     swipeBackPage: !1,
     pushState: !0,
@@ -336,21 +372,11 @@ $$("body").on("click", ".pautar", function() {
 });
 $$("body").on("click", ".free-navegate", function() {
     localStorage.setItem("conexion","true");
-    localStorage.setItem("id",localStorage.userid);
-    alert("Open window");
-    var win = window.open("http://wisi.com.co/public/#/ad2/3/"+localStorage.userid+"?navegate=free&app=mobil", "_blank", "EnableViewPortScale=yes" );
-    win.addEventListener( "loadstop", function() {
-        setTimeout(function() {
-            alert("Close window");
-            win.close();
-        }, 5000 );
-    });    
+    localStorage.setItem("id",localStorage.userid);    
 });
 $$("body").on("click", ".pay-navegate", function() {
-  localStorage.setItem("conexion","true");
-  localStorage.setItem("id",localStorage.userid);
-  window.open("http://wisi.com.co/public/#/ad/1/"+localStorage.userid+"?navegate=pay&app=mobil", "_system");
-  return false;    
+  var saldo_actual=$(".saldo_actual").html();
+  return goNavegate(saldo_actual);   
 });
 
 $$("body").on("click", ".close_sesion", function() {
