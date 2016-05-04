@@ -315,11 +315,22 @@ function lessBalanceUser(idUser){
 }
 
 function openUrl(url){  
-var ref = window.open('http://www.google.com', '_blank');
-ref.addEventListener('loadstart', function(event) { alert(event.type + ' - ' + event.url); } );
-ref.addEventListener('loadstop', function(event) { alert(event.type + ' - ' + event.url); } );
-ref.addEventListener('loaderror', function(event) { alert(event.type + ' - ' + event.url + ' - ' + event.code + ' - ' + event.message); } );
-ref.addEventListener('exit', function(event) { alert(event.type); } );
+  var newWin = window.open('http://www.google.com', '_blank');
+  newWin.addEventListener('exit', function(event) { localStorage.removeItem("redirect");console.log(event.type); } );
+  var intervalID =setInterval(function(){
+    var saldo= $("#saldo_actual").html();
+    console.log(saldo);
+    if(parseInt(saldo)>0){
+     if(localStorage.redirect)lessBalanceUser(localStorage.id);
+     if(localStorage.saldo_actual<=0){
+      myApp.alert("Saldo agotado.\nGracias por utilizar nuestros servicios.", "");
+      $(".row_disponible").hide();       
+      newWin.close();
+    }
+  }else{
+   $(".row_disponible").hide();
+  }
+  }, 60000);
 }
 
 var myApp = new Framework7({
