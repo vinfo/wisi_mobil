@@ -293,19 +293,33 @@ function goNavegate(time){
   var radius= setUserRadius(time);
   if(radius){
     openUrl("http://www.google.com/");    
-    window.location.href = 'http://wisi.com.co/public/#/ad/1/'+encodeURIComponent(localStorage.id);
+    //window.location.href = 'http://wisi.com.co/public/#/ad/1/'+encodeURIComponent(localStorage.id);
     localStorage.setItem("redirect",true);    
   }  
   return false;
 }
-
+/* Descontar tiempo saldo */
+function lessBalanceUser(idUser){
+    var data="id_user="+idUser;
+    $.ajax({
+      url: "http://wisi.com.co/api/lessBalanceUser",
+      type: "post",
+      async: false,
+      data: data,
+      success: function(d){
+        var saldo=$("#saldo_actual").html();
+        $("#saldo_actual").html( parseInt(saldo) - 1);
+      }
+    });
+    return false;
+}
 function openUrl(url){
-  var newWin = window.open(url, "_blank", "EnableViewPortScale=yes" );
-  if(!newWin || newWin.closed || typeof newWin.closed=='undefined'){ 
-     myApp.alert("Su navegador bloquea ventanas emergentes.\nPor favor habilitar el uso de estas para este sitio Web", "");
-  }else{
+  //var newWin = window.open(url, "_blank", "EnableViewPortScale=yes" );
+  var newWin = window.open(url, "_blank");
     setInterval(function(){
-     if(parseInt($("#saldo_actual").html())>0){
+      var saldo=$("#saldo_actual").html();
+      alert(saldo);
+     if(parseInt(saldo)>0){
        lessBalanceUser(localStorage.id);
        if(localStorage.saldo_actual<=0){
         myApp.alert("Saldo agotado.\nGracias por utilizar nuestros servicios.", "");
@@ -313,7 +327,9 @@ function openUrl(url){
         newWin.close();
        }
      }
-    }, 60000);    
+    }, 60000);  
+  if(!newWin || newWin.closed || typeof newWin.closed=='undefined'){ 
+     //myApp.alert("Su navegador bloquea ventanas emergentes.\nPor favor habilitar el uso de estas para este sitio Web", "");
   }
 }
 
@@ -374,7 +390,7 @@ $$("body").on("click", ".pautar", function() {
     window.open("http://wisi.com.co/register/", "_system");
 });
 $$("body").on("click", ".free-navegate", function() {
-    localStorage.setItem("conexion","true");    
+  window.open("http://wisi.com.co/public/#/ad2/3/"+encodeURIComponent(localStorage.id)+"?navegate=free&app=mobil", "_blank");
 });
 $$("body").on("click", ".pay-navegate", function() {
   var saldo_actual=$(".saldo_actual").html();
