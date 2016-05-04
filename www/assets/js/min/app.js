@@ -290,7 +290,6 @@ function hidePreloader() {
 function goNavegate(url){
   localStorage.setItem("alerta",true);
   localStorage.setItem("conexion",true);
-  setSaldo();
   var saldo_actual= $("#saldo_actual").html();
   var radius= setUserRadius(saldo_actual);
   if(radius){
@@ -466,6 +465,9 @@ var mainView = myApp.addView(".view-main", {
 });
 $$(document).on("pageInit", function(e) {
     checkConnectionFB();
+    var saldo= setInterval(function(){
+        setSaldo();
+      }, 60000);    
     var page = e.detail.page;
     localStorage.removeItem("redirect");
     localStorage.setItem("page",page.name);
@@ -475,9 +477,7 @@ $$(document).on("pageInit", function(e) {
     }
 
     if(page.name=="rechargeds")getRechargedData(userid);
-    if(page.name=="index"){
-      setSaldo();     
-    }   
+    //if(page.name=="index")setSaldo();   
     if(page.name=="terms"){
       var cont= getConfiguration(79);
       $(".content_terms").html(cont[0].description);
