@@ -307,14 +307,17 @@ function lessBalanceUser(idUser){
       async: false,
       data: data,
       success: function(d){
-        var saldo=$("#saldo_actual").html();
-        $("#saldo_actual").html( parseInt(saldo) - 1);
+        var saldo= $("#saldo_actual").html();
+        var fSaldo= parseInt(saldo) - 1;
+        $("#saldo_actual").html(fSaldo);
+        localStorage.setItem("saldo_actual",fSaldo);
       }
     });
     return false;
 }
 
 function openUrl(url){  
+  //var newWin = window.open(url, "_blank", "EnableViewPortScale=yes" );
   var newWin = window.open('http://www.google.com', '_blank');
   newWin.addEventListener('exit', function(event) { localStorage.removeItem("redirect");console.log("Cerrando browser"); } );
   var intervalID =setInterval(function(){
@@ -322,7 +325,7 @@ function openUrl(url){
     console.log(saldo);
     if(parseInt(saldo)>0){
      if(localStorage.redirect)lessBalanceUser(localStorage.id);
-     if(localStorage.saldo_actual<=0){
+     if(saldo<=0){
       myApp.alert("Saldo agotado.\nGracias por utilizar nuestros servicios.", "");
       $(".row_disponible").hide();       
       newWin.close();
@@ -493,7 +496,7 @@ $$(document).on("pageInit", function(e) {
             );
       getReferrals();
     }
-    if(page.name=="rewards")getRewardsData(userid);       
+    if(page.name=="rewards")getRewardsData(localStorage.id);       
     if(page.name=="chat"){
       var names='';
       if(localStorage.email){
