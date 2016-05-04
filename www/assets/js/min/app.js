@@ -356,7 +356,7 @@ var fbLoginSuccess = function (response) {
                     showDivsConnect();
                     localStorage.setItem("cont_started",true);
                     localStorage.setItem("id",d.encript);
-                    localStorage.setItem("userid",d.id);
+                    localStorage.setItem("userid",d.userdata.id);
                     window.location.href = "index.html";
                     //window.open("http://wisi.com.co/public/#/ad/"+level+"/"+d.userdata.id, "_system");
                 }
