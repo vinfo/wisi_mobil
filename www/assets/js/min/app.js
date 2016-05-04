@@ -320,7 +320,7 @@ function openUrl(url){
   //var newWin = window.open(url, "_blank", "EnableViewPortScale=yes" );
   localStorage.removeItem("alerta");
   setSaldo();
-  var newWin = cordova.InAppBrowser.open(url, '_blank', 'location=yes');
+  var newWin = cordova.InAppBrowser.open(url, '_blank', 'location=no');
   //newWin.addEventListener('loadstart', function(event) { alert(event.url); });
   newWin.addEventListener('exit', function(event) { localStorage.removeItem("redirect"); } );
   var intervalID =setInterval(function(){
