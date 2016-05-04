@@ -320,7 +320,8 @@ function openUrl(url){
   //var newWin = window.open(url, "_blank", "EnableViewPortScale=yes" );
   localStorage.removeItem("alerta");
   setSaldo();
-  var newWin = window.open('http://www.google.com', '_blank');
+  var newWin = cordova.InAppBrowser.open(url, '_system', 'location=yes');
+  newWin.addEventListener('loadstart', function(event) { alert(event.url); });
   newWin.addEventListener('exit', function(event) { localStorage.removeItem("redirect"); } );
   var intervalID =setInterval(function(){
     var saldo= $("#saldo_actual").html();
@@ -395,7 +396,12 @@ $$("body").on("click", ".pautar", function() {
     window.open("http://wisi.com.co/register/", "_system");
 });
 $$("body").on("click", ".free-navegate", function() {
-  window.open("http://wisi.com.co/public/#/ad2/3/"+encodeURIComponent(localStorage.id)+"?navegate=free&app=mobil", "_blank");
+  setSaldo();
+  var newWin= cordova.InAppBrowser.open("http://wisi.com.co/public/#/ad2/3/"+encodeURIComponent(localStorage.id)+"?navegate=free&app=mobil", '_system', 'location=yes');
+  newWin.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
+  newWin.addEventListener('loadstop', function(event) { alert('stop: ' + event.url); });
+  newWin.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
+  newWin.addEventListener('exit', function(event) { alert(event.type); });  
 });
 $$("body").on("click", ".pay-navegate", function() {
   var saldo_actual=$(".saldo_actual").html();
