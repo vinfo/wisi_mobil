@@ -321,7 +321,7 @@ function openUrl(url){
   localStorage.removeItem("alerta");
   setSaldo();
   var newWin = cordova.InAppBrowser.open(url, '_blank', 'location=yes');
-  newWin.addEventListener('loadstart', function(event) { alert(event.url); });
+  //newWin.addEventListener('loadstart', function(event) { alert(event.url); });
   newWin.addEventListener('exit', function(event) { localStorage.removeItem("redirect"); } );
   var intervalID =setInterval(function(){
     var saldo= $("#saldo_actual").html();
