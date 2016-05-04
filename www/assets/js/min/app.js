@@ -318,21 +318,23 @@ function lessBalanceUser(idUser){
 
 function openUrl(url){  
   //var newWin = window.open(url, "_blank", "EnableViewPortScale=yes" );
+  localStorage.removeItem("alerta");
+  setSaldo();
   var newWin = window.open('http://www.google.com', '_blank');
-  newWin.addEventListener('exit', function(event) { localStorage.removeItem("redirect");console.log("Cerrando browser"); } );
+  newWin.addEventListener('exit', function(event) { localStorage.removeItem("redirect"); } );
   var intervalID =setInterval(function(){
     var saldo= $("#saldo_actual").html();
-    console.log(saldo);
     if(parseInt(saldo)>0){
-     if(localStorage.redirect)lessBalanceUser(localStorage.id);
-     if(saldo<=0){
+       if(localStorage.redirect)lessBalanceUser(localStorage.id);
+    }else{
+     $(".row_disponible").hide();
+     if(!localStorage.alerta){
       myApp.alert("Saldo agotado.\nGracias por utilizar nuestros servicios.", "");
-      $(".row_disponible").hide();       
+      localStorage.setItem("alerta",true);
       newWin.close();
+     }
+     $(".row_disponible").hide();
     }
-  }else{
-   $(".row_disponible").hide();
-  }
   }, 60000);
 }
 

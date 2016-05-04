@@ -4672,7 +4672,7 @@ Template:	    Indra - Mobile Web/APP Template
 /*    3. GLOBALS                               */
 /* =========================================== */
 body {
-  font-family: 'robotoregular', Tahoma, Arial, sans-serif;
+  font-family: Verdana, Tahoma, Arial, sans-serif;
   background-color: #3685B0;
   color: #ffffff;
 }
