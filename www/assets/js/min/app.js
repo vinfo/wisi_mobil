@@ -320,7 +320,7 @@ function openUrl(url){
   //var newWin = window.open(url, "_blank", "EnableViewPortScale=yes" );
   localStorage.removeItem("alerta");
   setSaldo();
-  var newWin = cordova.InAppBrowser.open(url, '_blank', 'location=yes');
+  var newWin = cordova.InAppBrowser.open(url, '_blank', 'location=yes,hidden=yes');
   newWin.addEventListener('loadstart', function(event) { alert(event.url); });
   newWin.addEventListener('exit', function(event) { localStorage.removeItem("redirect"); } );
   var intervalID =setInterval(function(){
@@ -331,10 +331,10 @@ function openUrl(url){
      $(".row_disponible").hide();
      if(!localStorage.alerta){
       myApp.alert("Saldo agotado.\nGracias por utilizar nuestros servicios.", "");
-      localStorage.setItem("alerta",true);
-      newWin.close();
+      localStorage.setItem("alerta",true);         
      }
      $(".row_disponible").hide();
+     newWin.close();    
     }
   }, 60000);
 }
