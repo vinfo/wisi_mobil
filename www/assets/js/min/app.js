@@ -316,7 +316,7 @@ function lessBalanceUser(idUser){
 
 function openUrl(url){  
   var newWin = window.open('http://www.google.com', '_blank');
-  newWin.addEventListener('exit', function(event) { localStorage.removeItem("redirect");console.log(event.type); } );
+  newWin.addEventListener('exit', function(event) { localStorage.removeItem("redirect");console.log("Cerrando browser"); } );
   var intervalID =setInterval(function(){
     var saldo= $("#saldo_actual").html();
     console.log(saldo);
