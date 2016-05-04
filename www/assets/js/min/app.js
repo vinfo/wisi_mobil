@@ -3,20 +3,7 @@ function shareWhatsApp(){
   var id=localStorage.id;
   window.plugins.socialsharing.shareViaWhatsApp('Hola, te recomiendo registrarte y descargar la aplicación de conectividad a internet WISI.', 'http://wisi.com.co/public/assets/images/logo.png', 'http://wisi.com.co/public/#/?sponsor='+id, function() {console.log('share ok')}, function(errormsg){console.log(errormsg)});
 }
-function setUserRadius(){
-  var result="";
-  var data={username:localStorage.email};
-  $.ajax({
-    url: "http://wisi.com.co/api/setUserRadius",
-    type: "post",
-    async: false,
-    data: data,
-    success: function(d){
-      result= d.status;
-    }
-  });
-  return result;
-}
+
 function getReferrals(){
       var data={id:localStorage.id};
       $.ajax({
@@ -213,6 +200,7 @@ function checkConnectionFB() {
     });
 }
 function getUserData() {
+  alert(localStorage.userid);
     var data={id:localStorage.userid,table:"user"};
     $.ajax({
         url: "http://wisi.com.co/api/databyid",
@@ -291,11 +279,8 @@ function goNavegate(url){
   localStorage.setItem("alerta",true);
   localStorage.setItem("conexion",true);
   var saldo_actual= $("#saldo_actual").html();
-  var radius= setUserRadius(saldo_actual);
-  if(radius){
-    openUrl(url); 
-    localStorage.setItem("redirect",true);    
-  }  
+  openUrl(url); 
+  localStorage.setItem("redirect",true);
   return false;
 }
 /* Descontar tiempo saldo */
@@ -399,7 +384,7 @@ $$("body").on("click", ".free-navegate", function() {
   goNavegate("http://wisi.com.co/public/#/ad2/3/"+encodeURIComponent(localStorage.id)+"?navegate=free&app=mobil");  
 });
 $$("body").on("click", ".pay-navegate", function() {  
-  return goNavegate("http://www.google.com");   
+  return goNavegate("http://wisi.com.co/public/#/conexion");   
 });
 
 $$("body").on("click", ".close_sesion", function() {
@@ -512,7 +497,6 @@ $$(document).on("pageInit", function(e) {
     setSaldo(); 
     checkConnectionFB();
     showDivsConnect();
-    //setUserRadius();
     
     var session_id= new Date().getTime();
     console.log("session "+session_id);
