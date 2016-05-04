@@ -51,7 +51,7 @@ function setSaldo(){
                   if(d.data[0].vistas>=vistas[0].value)$(".row_gratis").remove();
               }
               localStorage.setItem("saldo_actual",saldo);
-              $(".saldo_actual").html(saldo+' mins.');
+              $("#saldo_actual").html(saldo);
               if(saldo==0)$(".navegate_pay").hide();
          },
           error: function (request, status, error) {
@@ -313,14 +313,22 @@ function lessBalanceUser(idUser){
     });
     return false;
 }
-function openUrl(url){
+
+
+function openUrl(url){  
   //var newWin = window.open(url, "_blank", "EnableViewPortScale=yes" );
-  var newWin = window.open(url, "_blank");
-    setInterval(function(){
-      var saldo=$("#saldo_actual").html();
-      alert(saldo);
+  var intervalID, newWin;
+  newWin = window.open(url, "_blank");  
+  var intervalID =setInterval(function(){
+    var saldo=$("#saldo_actual").html();
+    if (newWin && newWin.closed) {
+        window.clearInterval(intervalID);
+        localStorage.removeItem("redirect");
+        alert('closed');
+    }
+
      if(parseInt(saldo)>0){
-       lessBalanceUser(localStorage.id);
+       if(localStorage.redirect)lessBalanceUser(localStorage.id);
        if(localStorage.saldo_actual<=0){
         myApp.alert("Saldo agotado.\nGracias por utilizar nuestros servicios.", "");
         $(".row_disponible").remove();
