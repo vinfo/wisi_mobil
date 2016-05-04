@@ -200,7 +200,6 @@ function checkConnectionFB() {
     });
 }
 function getUserData() {
-  alert(localStorage.userid);
     var data={id:localStorage.userid,table:"user"};
     $.ajax({
         url: "http://wisi.com.co/api/databyid",
