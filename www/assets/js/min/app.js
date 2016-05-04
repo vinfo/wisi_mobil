@@ -351,6 +351,7 @@ var fbLoginSuccess = function (response) {
                 type: "post",
                 data: data,
                 success: function(d){
+                    alert(JSON.stringify(d));
                     var level="1";
                     if(localStorage.cont_started=="true")level="2";
                     showDivsConnect();
