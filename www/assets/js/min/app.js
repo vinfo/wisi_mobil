@@ -287,13 +287,14 @@ function hidePreloader() {
 }
 
 /* Ir a navegar */
-function goNavegate(time){
+function goNavegate(url){
   localStorage.setItem("alerta",true);
   localStorage.setItem("conexion",true);
-  var radius= setUserRadius(time);
+  setSaldo();
+  var saldo_actual= $("#saldo_actual").html();
+  var radius= setUserRadius(saldo_actual);
   if(radius){
-    openUrl("http://www.google.com/");    
-    //window.location.href = 'http://wisi.com.co/public/#/ad/1/'+encodeURIComponent(localStorage.id);
+    openUrl(url); 
     localStorage.setItem("redirect",true);    
   }  
   return false;
@@ -395,17 +396,11 @@ $$("body").on("click", ".pautar", function() {
     localStorage.setItem("conexion","true");
     window.open("http://wisi.com.co/register/", "_system");
 });
-$$("body").on("click", ".free-navegate", function() {
-  setSaldo();
-  var newWin= cordova.InAppBrowser.open("http://wisi.com.co/public/#/ad2/3/"+encodeURIComponent(localStorage.id)+"?navegate=free&app=mobil", '_system', 'location=yes');
-  newWin.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
-  newWin.addEventListener('loadstop', function(event) { alert('stop: ' + event.url); });
-  newWin.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
-  newWin.addEventListener('exit', function(event) { alert(event.type); });  
+$$("body").on("click", ".free-navegate", function() {  
+  goNavegate("http://wisi.com.co/public/#/ad2/3/"+encodeURIComponent(localStorage.id)+"?navegate=free&app=mobil");  
 });
-$$("body").on("click", ".pay-navegate", function() {
-  var saldo_actual=$(".saldo_actual").html();
-  return goNavegate(saldo_actual);   
+$$("body").on("click", ".pay-navegate", function() {  
+  return goNavegate("http://www.google.com");   
 });
 
 $$("body").on("click", ".close_sesion", function() {
