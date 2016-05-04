@@ -305,7 +305,7 @@ function openUrl(url){
   //var newWin = window.open(url, "_blank", "EnableViewPortScale=yes" );
   localStorage.removeItem("alerta");
   setSaldo();
-  var newWin = cordova.InAppBrowser.open(url, '_blank', 'location=no');
+  var newWin = cordova.InAppBrowser.open(url, '_blank', 'location=yes');
   //newWin.addEventListener('loadstart', function(event) { alert(event.url); });
   newWin.addEventListener('exit', function(event) { localStorage.removeItem("redirect"); } );
   var intervalID =setInterval(function(){
@@ -384,7 +384,7 @@ $$("body").on("click", ".pautar", function() {
 $$("body").on("click", ".free-navegate", function() {  
   goNavegate("http://wisi.com.co/public/#/ad2/3/"+encodeURIComponent(localStorage.id)+"?navegate=free&app=mobil");  
 });
-$$("body").on("click", ".pay-navegate", function() {  
+$$("body").on("click", ".pay-navegate", function() {
   return goNavegate("http://wisi.com.co/public/#/conexion");   
 });
 
