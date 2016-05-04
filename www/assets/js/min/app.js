@@ -314,31 +314,12 @@ function lessBalanceUser(idUser){
     return false;
 }
 
-
 function openUrl(url){  
-  //var newWin = window.open(url, "_blank", "EnableViewPortScale=yes" );
-  var intervalID, newWin;
-  newWin = window.open(url, "_blank");  
-  var intervalID =setInterval(function(){
-    var saldo=$("#saldo_actual").html();
-    if (newWin && newWin.closed) {
-        window.clearInterval(intervalID);
-        localStorage.removeItem("redirect");
-        alert('closed');
-    }
-
-     if(parseInt(saldo)>0){
-       if(localStorage.redirect)lessBalanceUser(localStorage.id);
-       if(localStorage.saldo_actual<=0){
-        myApp.alert("Saldo agotado.\nGracias por utilizar nuestros servicios.", "");
-        $(".row_disponible").remove();
-        newWin.close();
-       }
-     }
-    }, 60000);  
-  if(!newWin || newWin.closed || typeof newWin.closed=='undefined'){ 
-     //myApp.alert("Su navegador bloquea ventanas emergentes.\nPor favor habilitar el uso de estas para este sitio Web", "");
-  }
+var ref = window.open('http://www.google.com', '_blank');
+ref.addEventListener('loadstart', function(event) { alert(event.type + ' - ' + event.url); } );
+ref.addEventListener('loadstop', function(event) { alert(event.type + ' - ' + event.url); } );
+ref.addEventListener('loaderror', function(event) { alert(event.type + ' - ' + event.url + ' - ' + event.code + ' - ' + event.message); } );
+ref.addEventListener('exit', function(event) { alert(event.type); } );
 }
 
 var myApp = new Framework7({
@@ -469,6 +450,7 @@ var mainView = myApp.addView(".view-main", {
 $$(document).on("pageInit", function(e) {
     checkConnectionFB();
     var page = e.detail.page;
+    localStorage.removeItem("redirect");
     localStorage.setItem("page",page.name);
     var userid=localStorage.userid;
     if(page.name=="mydata"){
