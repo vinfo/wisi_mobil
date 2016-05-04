@@ -351,12 +351,12 @@ var fbLoginSuccess = function (response) {
                 type: "post",
                 data: data,
                 success: function(d){
-                    alert(JSON.stringify(d));
                     var level="1";
                     if(localStorage.cont_started=="true")level="2";
                     showDivsConnect();
                     localStorage.setItem("cont_started",true);
                     localStorage.setItem("id",d.encript);
+                    localStorage.setItem("userid",d.id);
                     window.location.href = "index.html";
                     //window.open("http://wisi.com.co/public/#/ad/"+level+"/"+d.userdata.id, "_system");
                 }
