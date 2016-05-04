@@ -101,7 +101,7 @@ function Login() {
                localStorage.setItem("token", res.token.token);
                window.location.href = "index.html";
              }else{
-               myApp.alert("Emailllllllllllll o Contraseña no validos!", "");
+               myApp.alert("Email o Contraseña no validos!", "");
              }
             }
      });
