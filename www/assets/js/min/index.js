@@ -47,6 +47,7 @@ var app = {
 function onSuccess(position) {
   localStorage.removeItem("conexion");
   localStorage.removeItem("position");     
+  localStorage.removeItem("chat");
   lat1= position.coords.latitude;
   lng1= position.coords.longitude;   
   var pos= {lat:lat1,lng:lng1};
@@ -80,7 +81,7 @@ function getDeviceProperty()
   }
 
   function onResume() {  
-    localStorage.setItem("wisi","true");
+    //localStorage.setItem("wisi","true");
     localStorage.setItem("scanner","false");
     localStorage.removeItem("conexion");
     console.log("resume");
@@ -102,7 +103,8 @@ function getDeviceProperty()
 
     if(states[networkState]=='No network connection'){
         //navigator.vibrate(1000);
-        //alert('Internet no disponible!');
+        alert('Internet no disponible!');
+        localStorage.setItem("wisi","false");
         state=false;                            
       }
       return state;
