@@ -303,7 +303,7 @@ function openUrl(url){
   //var newWin = window.open(url, "_blank", "EnableViewPortScale=yes" );
   localStorage.removeItem("alerta");
   setSaldo();
-  var newWin = cordova.InAppBrowser.open(url, '_system', 'location=yes');
+  var newWin = cordova.InAppBrowser.open(url, '_blank', 'location=yes,clearcache:yes');
   //newWin.addEventListener('loadstart', function(event) { alert(event.url); });
   newWin.addEventListener('exit', function(event) { localStorage.removeItem("redirect"); } );
   var intervalID =setInterval(function(){
@@ -313,7 +313,7 @@ function openUrl(url){
     }else{
      $(".row_disponible").hide();
      if(!localStorage.alerta){
-      myApp.alert("Saldo agotado.\nGracias por utilizar nuestros servicios.", "");
+      //myApp.alert("Saldo agotado.\nGracias por utilizar nuestros servicios.", "");
       localStorage.setItem("alerta",true);         
      }
      $(".row_disponible").hide();
@@ -461,7 +461,6 @@ $$(document).on("pageInit", function(e) {
     if(page.name=="mydata"){
       getUserData();
     }
-    alert(page.name);
     if(page.name=="rechargeds")getRechargedData(userid);
     if(page.name=="index")setSaldo();   
     if(page.name=="terms"){

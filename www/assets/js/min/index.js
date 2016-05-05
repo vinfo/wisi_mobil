@@ -78,7 +78,7 @@ function getDeviceProperty()
     window.setTimeout(function(){
       WifiWizard.getScanResults(listHandler, fail);
       console.log("Check available WIFIs");
-    },10000);
+    },8000);
   }
 
   function onResume() {  
