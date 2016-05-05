@@ -22,6 +22,7 @@ var app = {
       screen.lockOrientation('portrait');
       localStorage.setItem("saldo_actual",0);
       localStorage.setItem("wisi","false");
+      localStorage.removeItem("page");
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -46,8 +47,7 @@ var app = {
 // onSuccess Geolocation    //
 function onSuccess(position) {
   localStorage.removeItem("conexion");
-  localStorage.removeItem("position");     
-  localStorage.removeItem("chat");
+  localStorage.removeItem("position"); 
   lat1= position.coords.latitude;
   lng1= position.coords.longitude;   
   var pos= {lat:lat1,lng:lng1};
