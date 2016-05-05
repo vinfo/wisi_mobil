@@ -383,8 +383,7 @@ $$("body").on("click", ".free-navegate", function() {
   goNavegate("http://wisi.com.co/public/#/ad2/3/"+encodeURIComponent(localStorage.id)+"?navegate=free&app=mobil");  
 });
 $$("body").on("click", ".pay-navegate", function() {
-  var url="http://wisi.com.co/public/#/conexion?id="+localStorage.id+"|"+localStorage.userid+"|"+localStorage.email;
-  alert(url);
+  var url="http://wisi.com.co/public/#/conexion?id="+encodeURIComponent(localStorage.id)+"|"+localStorage.userid+"|"+localStorage.email;
   return goNavegate(url);   
 });
 
