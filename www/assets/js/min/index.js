@@ -22,6 +22,7 @@ var app = {
       screen.lockOrientation('portrait');
       localStorage.setItem("saldo_actual",0);
       localStorage.removeItem("page");
+      localStorage.setItem("wisi","true");
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -50,7 +51,8 @@ function onSuccess(position) {
   lat1= position.coords.latitude;
   lng1= position.coords.longitude;   
   var pos= {lat:lat1,lng:lng1};
-  localStorage.setItem("position",JSON.stringify(pos)); 
+  localStorage.setItem("position",JSON.stringify(pos));
+  localStorage.setItem("wisi","true");
   console.log('Coordenadas detectadas');
   WifiWizard.setWifiEnabled(true, function(){console.log("Success Position Activando WIFI");}, function(){console.log("No se pudo encender el WIFI");});  
 }
