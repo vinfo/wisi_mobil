@@ -21,7 +21,6 @@ var app = {
       app.receivedEvent('deviceready');
       screen.lockOrientation('portrait');
       localStorage.setItem("saldo_actual",0);
-      localStorage.setItem("wisi","false");
       localStorage.removeItem("page");
     },
     // Update DOM on a Received Event
@@ -119,8 +118,6 @@ function getDeviceProperty()
               cordova.plugins.notification.local.schedule({ message:"Red WISI detectada",sound: "file://sounds/wisi.mp3" });              
               navigator.vibrate(1000);
             }
-          }else{
-            localStorage.setItem("wisi","false"); 
           }
         }
         searchWISI();

@@ -43,7 +43,6 @@ function setSaldo(){
          },
           error: function (request, status, error) {
               localStorage.setItem("saldo_actual","0");
-              myApp.alert("Problemas de conectividad en este momento!", "");
               console.log("Error conectividad");
           }
      });    
