@@ -452,7 +452,7 @@ $$(document).on("pageInit", function(e) {
     checkConnectionFB();
     var saldo= setInterval(function(){
         setSaldo();
-      }, 60000);    
+      }, 10000);    
     var page = e.detail.page;
     console.log("Page: "+page.name);
     localStorage.removeItem("redirect");
