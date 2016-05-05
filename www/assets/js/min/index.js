@@ -81,7 +81,7 @@ function getDeviceProperty()
   }
 
   function onResume() {  
-    //localStorage.setItem("wisi","true");
+    localStorage.setItem("wisi","true");
     localStorage.setItem("scanner","false");
     localStorage.removeItem("conexion");
     console.log("resume");
@@ -103,7 +103,7 @@ function getDeviceProperty()
 
     if(states[networkState]=='No network connection'){
         //navigator.vibrate(1000);
-        alert('Internet no disponible!');
+        myApp.alert("Internet no disponible!", "");
         localStorage.setItem("wisi","false");
         state=false;                            
       }
@@ -116,8 +116,7 @@ function getDeviceProperty()
         if(a[i]["SSID"]=="WISI TE CONECTA"||a[i]["SSID"]=="VALENCIA_V"){
             console.log("WIFI detectado");
             if(localStorage.wisi=="false"){
-              cordova.plugins.notification.local.schedule({ message:"Red WISI detectada",sound: "file://sounds/wisi.mp3" });
-              localStorage.setItem("wisi","true"); 
+              cordova.plugins.notification.local.schedule({ message:"Red WISI detectada",sound: "file://sounds/wisi.mp3" });              
               navigator.vibrate(1000);
             }
           }else{

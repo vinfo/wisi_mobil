@@ -487,6 +487,7 @@ $$(document).on("pageInit", function(e) {
     }
     if(page.name=="rewards")getRewardsData(localStorage.id);       
     if(page.name=="chat"){
+      localStorage.setItem("rol","cliente");
       var names='';
       if(localStorage.email){
         names=localStorage.email;
