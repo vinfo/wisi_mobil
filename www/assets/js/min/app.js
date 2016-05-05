@@ -454,6 +454,7 @@ $$(document).on("pageInit", function(e) {
         setSaldo();
       }, 60000);    
     var page = e.detail.page;
+    console.log("Page: "+page.name);
     localStorage.removeItem("redirect");
     localStorage.setItem("page",page.name);
     var userid=localStorage.userid;
