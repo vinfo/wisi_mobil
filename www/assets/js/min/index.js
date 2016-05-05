@@ -80,11 +80,10 @@ function getDeviceProperty()
   }
 
   function onResume() {  
+    console.log("Resume APP");
     localStorage.setItem("wisi","true");
     localStorage.setItem("scanner","false");
     localStorage.removeItem("conexion");
-    console.log("resume");
-    WifiWizard.setWifiEnabled(true, function(){console.log("Resume APP Active WIFI");}, function(){console.log("No se pudo encender el WIFI");});  
   }
 
   function checkConnection() {
