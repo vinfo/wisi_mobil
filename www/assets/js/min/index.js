@@ -103,7 +103,7 @@ function getDeviceProperty()
 
     if(states[networkState]=='No network connection'){
         //navigator.vibrate(1000);
-        myApp.alert("Internet no disponible!", "");
+        if(localStorage.wisi)myApp.alert("Internet no disponible!", "");
         localStorage.setItem("wisi","false");
         state=false;                            
       }
