@@ -46,7 +46,6 @@
     <plugin name="cordova-plugin-globalization" spec="1.0.3" />
     <plugin name="cordova-plugin-inappbrowser" spec="1.4.0" />
     <plugin name="cordova-plugin-legacy-whitelist" spec="1.1.1" />
-    <plugin name="cordova-plugin-local-notifications-san" spec="0.8.2-rc.1" />
     <plugin name="cordova-plugin-network-information" spec="1.2.0" />
     <plugin name="cordova-plugin-screen-orientation" spec="1.4.0" />
     <plugin name="cordova-plugin-splashscreen" spec="3.2.1" />
@@ -62,7 +61,7 @@
     <plugin name="cordova-plugin-media" />
     
     <gap:plugin name="com.danielcwilson.plugins.googleanalytics" version="0.6.1" /> 
-    
+
 
     <gap:config-file parent="UIStatusBarHidden" platform="ios">
         <false />
