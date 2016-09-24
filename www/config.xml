@@ -61,16 +61,10 @@
     <plugin name="cordova-plugin-media" />
     <plugin name="cordova-plugin-media" />
     
-    <plugin name="com.danielcwilson.plugins.googleanalytics" version="0.6.1" /> 
-    <plugin name="com.pushwoosh.plugins.pushwoosh" version="3.4.2" />
+    <gap:plugin name="com.danielcwilson.plugins.googleanalytics" version="0.6.1" /> 
+    <gap:plugin name="com.pushwoosh.plugins.pushwoosh" version="3.4.2" />
     <plugin name="phonegap-plugin-barcodescanner" version="4.1.0" />
-    <plugin name="info.ivanezko.phonegap.smsplugin" version="0.2.1" />
-
-    
-    <plugin name="cordova-plugin-facebookconnect-orlando" version="0.11.0">
-        <param name="APP_ID" value="1691694321105222" />
-        <param name="APP_NAME" value="wisi_movil" />
-    </plugin> 
+    <plugin name="info.ivanezko.phonegap.smsplugin" spec="0.2.1" source="pgb" />
 
     <gap:config-file parent="UIStatusBarHidden" platform="ios">
         <false />
