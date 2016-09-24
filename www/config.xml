@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.vinfo.wisi"
  version="1.1"
- versionCode="3"
+ versionCode="4"
  versionName="V1.0"
  xmlns="http://www.w3.org/ns/widgets"
  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:gap="http://phonegap.com/ns/1.0">
@@ -57,7 +57,7 @@
     android:xlargeScreens="true"
     android:largeScreens="true"
     android:smallScreens="true" />        
-    <application android:debuggable="true" android:hardwareAccelerated="true" android:theme="@android:style/Theme.NoTitleBar" >
+    <application android:debuggable="false" android:hardwareAccelerated="true" android:theme="@android:style/Theme.NoTitleBar" >
       <activity android:theme="@android:style/Theme.NoTitleBar" >
       </activity>
   </application>
