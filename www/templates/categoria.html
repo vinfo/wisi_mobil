@@ -1,0 +1,234 @@
+<!-- Cotenido buffet -->
+<div class="msg"></div>
+<div class="menuplatolist">
+  <div class="col-md-12" ng-repeat="dish in dishes">
+<div id="contenedor_{{dish.id}}">
+   <div class="title"><img ng-src="images/{{imageCat}}.png" alt="..." title=".." /><span>{{dish.name}}</span></div>
+   <div class="btnts">
+     <div id="detalle_{{dish.id}}" class="detalle">
+      <h1>{{dish.fullname}}
+       <span class="audio_play" title="{{dish.code}}" ng-if="dish.audio != null"></span>
+       <audio id="audio_{{dish.code}}" src="http://buffetexpress.com.co/REST/resources/audio/default.mp3"></audio>
+       </h1>
+      <p>{{dish.description}}</p>
+      <div class="vene" ng-click="detailDish(dish)">
+        <div class="col-xs-6 col-md-6">
+          <label>Grasas <span>{{dish.grease}}</span></label>
+          <label>Proteina <span>{{dish.proteins}}</span></label>
+        </div>
+        <div class="col-xs-6 col-md-6" style="padding:0;text-align:left;">
+          <label>Carbohidratos <span>{{dish.carbohydrates}}</span></label>
+          <label>Calorias <span>{{dish.calories}}</span></label>
+        </div>
+      </div>
+    </div>
+    <br>
+    <img src="images/menu-menos.png" alt="..." title="..." class="masdetalle btns" ng-click="setDish(dish,'less')" />
+    <img src="images/lupamenu.png" alt="..." title="..." class="masdetalle btns" ng-click="detailDish(dish)" />
+    <img src="images/masmenu.png" alt="..." title="..." class="vermasplato btns" ng-click="setDish(dish,'add')" />
+    <input id="code_{{dish.code}}" name="code_{{dish.code}}" type="hidden" value="{{dish.id}}|{{dish.code}}|{{dish.idCat}}|{{dish.fullname}}|{{dish.price}}" />
+    <input id="cantidad_{{dish.code}}" name="cantidad_{{dish.code}}" type="hidden" value="{{dish.cantidad}}" />
+  </div>
+  <div class="contimg"><div id="numb_{{dish.code}}" class="numb">0</div><img id="image_{{dish.code}}" ng-src="{{dish.images}}" /></div>
+  <div id="agotado_{{dish.id}}" ng-if="dish.cantidad == 0" class="agotado">Agotado</div>
+  </div>
+</div>
+
+
+</div>
+<div class="verplato">
+  <img src="images/cerr_vpla.png" alt="..." class="cerrves" ng-click="closeDish()">
+  <div class="padre">
+
+   <div class = "derrap">
+
+     <div class="contenedor">
+
+       <div class="sopa">
+        <img src="images/plato_2.png" style="width:100%;" border="0" margin="0"/>
+
+        <div class="sopacont">
+          <img ng-src="{{sopa}}" style="width:100%;" border="0" margin="0"/>
+        </div>
+
+      </div>
+
+      <div class="vaso">
+        <img src="images/plato_3.png" style="width:100%;" border="0" margin="0"/>
+
+        <div class="jugo">
+         <img ng-src="{{bebidas}}" style="width:100%;" border="0" margin="0"/>
+       </div>
+
+     </div>
+
+     <div class="plato">
+       <img src="images/plato.png" style="width:100%;" border="0" margin="0"/>
+
+       <div class="arroz">
+        <img ng-src="{{arroz}}" style="width:100%;" border="0" margin="0"/>
+      </div>
+
+      <div class="guarnicion">
+        <img ng-src="{{guarnicion}}" style="width:100%;" border="0" margin="0"/>
+      </div>
+
+      <div class="carne">
+        <img ng-src="{{carnes}}" style="width:100%;" border="0" margin="0"/>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+</div>
+</div>
+<div class="costoad">
+  <div class="cont">
+    <img src="images/cerr_vpla.png" alt="..." class="cerrvess" ng-click="close('costoad')">
+    <h1>Costo de adición <span>${{precio}}</span></h1>
+    <p>Esta adición elevara el valor del plato por encima de los ${{precio_plato}}</p>
+    <div class="ck">
+      <span><img src="images/checkbox.png" alt="..." ng-click="stop('costoad')"></span> <label for="ck">No volver a ver este mensaje</label> 
+    </div>  
+  </div>
+</div>
+<div class="verplatoico" ng-click="viewDish()"><img src="images/ver_plato.png" alt="..." title="..." class="img1" ng-click="fullDish('buffet')" /></div>
+<input id="plato" name="plato" type="hidden" value="{{plato}}" />
+<input id="datos" name="datos" type="hidden" value="" />
+<!-- fin contenido buffet -->
+<script>
+  $.fn.isOnScreen = function(){    
+    var win = $(window);    
+    var viewport = {
+      top : win.scrollTop(),
+      left : win.scrollLeft()
+    };
+    viewport.right = viewport.left + win.width();
+    viewport.bottom = viewport.top + win.height();
+    
+    var bounds = this.offset();
+    bounds.right = bounds.left + this.outerWidth();
+    bounds.bottom = bounds.top + this.outerHeight();
+    
+    return (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+    
+  };
+  function checkLoad(image){
+    var dimension=localStorage.dimension;
+  var carg= $('#image_'+image).attr('src');
+  var rand= Math.floor((Math.random() * 999) + 1); 
+    var img= 'http://buffetexpress.com.co/REST/resources/images/dish/'+image+'_1.jpg?rand='+rand;
+  if(dimension<=450)img= 'http://buffetexpress.com.co/REST/resources/images/dish/thumbs/'+image+'_1.jpg?rand='+rand;
+    if(carg.length < img.length){
+        //console.log(img);
+        $('#image_'+image).fadeOut(50, function(){
+          $(this).attr('src',img).bind('onreadystatechange load', function(){
+            if (this.complete) $(this).fadeIn(300);
+          });
+        });
+      }
+    }
+
+    $( document ).ready(function() {
+      $(".detalle").hide();
+      setDisplayMenu();
+
+      var lastScrollTop = 0;            
+      $(".container").scroll(function(){   
+       var url= window.location.href;
+       
+       var st = $(this).scrollTop();
+       var mHeight= $("li.carrito a img").height();
+       if (st > lastScrollTop){
+                //console.log("bajando");        
+                $('.menupie').stop(true, true).animate({ bottom: "-12%" }, 3000);
+                $('.verplatoico').stop(true, true).animate({ bottom: "0%" }, 3000);
+              } else {
+                 //console.log("subiendo");
+                 $('.menupie').stop(true, true).animate({ bottom: "0%" }, 3000);
+                 $('.verplatoico').stop(true, true).animate({ bottom: (mHeight-1)+"px" }, 3000);
+               }
+               lastScrollTop = st;
+
+               var datos= $("#datos").val();    
+               if($('#datos').length>0){               
+                //console.log(str);
+                if(url.indexOf("categoria/")>0){
+                  if ($(this).scrollTop() > 150) {
+                    var data;
+                    try {
+                      data= jQuery.parseJSON(datos);
+                      $.each(data, function(idx, obj) {
+                        if($('#image_'+obj.code).isOnScreen()){          
+                          checkLoad(obj.code);
+                        }        
+                      });                        
+                    } catch (e) {
+                      return;
+                    }  
+                  }
+                }
+              } 
+              return false;
+            });
+//setTimeout(function(){$(".btns").fadeIn();}, 1500);
+});
+</script>
+<script type="text/javascript">
+$(function(){
+  accionA();   
+})
+function openQtip(hidde,msg){
+  if(hidde!="")$("."+hidde).qtip('hide');
+  var autom=true;
+  if(localStorage.paso3)autom=false;  
+  $('.msg').qtip({
+    content: {
+      text: function(event, api) { 
+        var con = msg;                      
+        return con;
+      },
+      button: true
+    },      
+        show: {
+      event: 'click',
+            when: false, // Don't specify a show event
+            ready: autom // Show the tooltip when ready
+        },    
+    hide: {
+      event: false
+    },
+    events: {
+      hidden : function(event, api) {
+        localStorage.setItem("paso3",1);
+      },
+    },
+    style: {
+      classes: '', // No additional classes added to .qtip element
+      widget: false, // Not a jQuery UI widget
+      width:'80%', // No set width
+      height: false, // No set height
+      tip: { // Requires Tips plugin
+        corner: false, // Use position.my by default
+        mimic: false, // Don't mimic a particular corner
+        width: 20, 
+        height: 20,
+        border: true, // Detect border from tooltip style
+        offset: 0 // Do not apply an offset from corner
+      }
+    }   
+  });
+}
+function closeQtip(div){
+  $(".msg").qtip('hide');
+}
+function accionA(){
+  $(".msg").css({"position": "absolute","top": "30%","left": "10%"});   
+  openQtip('','Para conocer los ingredientes de cada preparación y sus contenidos nutricionales haz clic en el botón del medio <strong>info</strong>. <div class="btons right"> <button class="btn" onclick="accionB();">Siguiente</button></div>');  
+}
+function accionB(){
+  $(".msg").css({"position": "absolute","top": "30%","left": "10%"});   
+  openQtip('msg','Para agregar una preparación a tu plato haz clic en el botón derecho <strong class="mas">+</strong>.  <div class="btons right"><button class="btn" onclick="accionA();">Anterior</button> <button class="btn" onclick="closeQtip();">Entendido</button></div>');  
+}
+</script>

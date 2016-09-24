@@ -1,0 +1,156 @@
+<!-- Contenido slider buffet -->
+<div class="msg"></div>
+<div class="cart_shop"><a href="internal.html#/compras" ng-click="addDish('end','B')" onClick="ga('send', 'pageview', '/confirmacion_pedido');"><img src="images/img_carrito.png" alt="..." /></a></div>
+<img id="imgloading" src="images/sopas_load.png"/>
+<div class="menuplato">
+	<a href="#categoria/ins/1/sopas y cremas" class="col-xs-6 col-md-6"><img id="ancla" src="images/sopas.png"/></a>
+	<a href="#categoria/ins/2/arroz" class="col-xs-6 col-md-6"><img src="images/arroz.png"/></a>
+	<a href="#categoria/ins/3/carnes" class="col-xs-6 col-md-6"><img src="images/carnes.png"/></a>
+	<a href="#categoria/ins/4/guarnición" class="col-xs-6 col-md-6"><img src="images/guarnicion.png"/></a>
+	<a href="#categoria/ins/5/bebidas" class="col-xs-6 col-md-6" style="float:right;"><img src="images/bebidas.png"/></a>
+	<div class="col-xs-6 col-md-6">
+		<div class="padre">
+
+			<div class = "derrap">
+
+				<div class="contenedor">
+
+					<div class="sopa">
+						<img src="images/plato_2.png" style="width:100%;" border="0" margin="0"/>
+
+						<div class="sopacont">
+							<img ng-src="{{sopa}}" style="width:100%;" border="0" margin="0"/>
+						</div>
+
+					</div>
+
+					<div class="vaso">
+						<img src="images/plato_3.png" style="width:100%;" border="0" margin="0"/>
+
+						<div class="jugo">
+							<img ng-src="{{bebidas}}" style="width:100%;" border="0" margin="0"/>
+						</div>
+
+					</div>
+
+					<div class="plato">
+						<img src="images/plato.png" style="width:100%;" border="0" margin="0"/>
+
+						<div class="arroz">
+							<img ng-src="{{arroz}}" style="width:100%;" border="0" margin="0"/>
+						</div>
+
+						<div class="guarnicion">
+							<img ng-src="{{guarnicion}}" style="width:100%;" border="0" margin="0"/>
+						</div>
+
+						<div class="carne">
+							<img ng-src="{{carnes}}" style="width:100%;" border="0" margin="0"/>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="botones">
+<!-- 	<div class="btn1">
+		<a href="" ng-click="addDish('end','B')" onClick="trackevent('Click','Finalizar orden');">    
+			<img src="images/check_bu.png">
+			<p>Finalizar orden</p>
+		</a>
+	</div> -->
+	<div class="btn3">
+		<span id="num_dish">{{num_dish}}</span>
+	</div>	
+	<div class="btn2" style="border-radius: 0px 20px 0px 0px;">
+		<a href="" ng-click="addDish('add','B')" onClick="trackevent('Click','Agregar plato');" >			
+			<p>Agregar plato</p>
+			<img src="images/plus_bu.png">           
+		</a>
+	</div>
+</div>
+<script>
+	$( document ).ready(function() {
+		var lastScrollTop = 0;
+        var mHeight= $("li.carrito a img").height();
+        $(".container").scroll(function(){ 
+         var st = $(this).scrollTop();
+         if (st > lastScrollTop){
+        //console.log("bajando");        
+        $('.menupie').stop(true, true).animate({ bottom: "-12%" }, 3000);
+        $('.botones').stop(true, true).animate({ bottom: "0" }, 3000);
+    } else {
+         //console.log("subiendo");
+         $('.menupie').stop(true, true).animate({ bottom: "0%" }, 3000);
+         $('.botones').stop(true, true).animate({ bottom: (mHeight-1)+"px" }, 3000);
+     }
+     lastScrollTop = st;
+     return false;
+ });
+    });
+</script>
+<script type="text/javascript">
+$(function(){
+	if(!localStorage.bebida)accionA();
+	if(localStorage.bebida&&!localStorage.carta){accionB();localStorage.setItem("carta",1);}
+})
+function openQtip(hidde,msg){
+	if(hidde!="")$("."+hidde).qtip('hide');
+	var autom=true;
+	if(localStorage.paso2)autom=false;	
+	$('.msg').qtip({
+		content: {
+			text: function(event, api) { 
+			  var con = msg;                      
+			  return con;
+			},
+			button: true
+		},							
+        show: {
+			event: 'click',
+            when: false, // Don't specify a show event
+            ready: autom // Show the tooltip when ready
+        },	
+	  hide: {
+	  	event: false
+	  },
+	  events: {
+		  hidden : function(event, api) {
+			  localStorage.setItem("paso2",1);
+		  },
+	  },
+		style: {
+			classes: '', // No additional classes added to .qtip element
+			widget: false, // Not a jQuery UI widget
+			width:'80%', // No set width
+			height: false, // No set height
+			tip: { // Requires Tips plugin
+				corner: false, // Use position.my by default
+				mimic: false, // Don't mimic a particular corner
+				width: 20, 
+				height: 20,
+				border: true, // Detect border from tooltip style
+				offset: 0 // Do not apply an offset from corner
+			}
+		}		
+	});
+}
+function closeQtip(div){
+	$(".msg").qtip('hide');	
+}
+function accionA(){
+	$(".msg").css({"position": "absolute","top": "30%","left": "10%"});	
+	openQtip('','Empieza a armar tu plato con las preparaciones que más te gusten de cada categoría, <strong>haz clic en sopas</strong>. <div class="btons right"> <button class="btn" onclick="closeQtip();">Entendido</button></div>'); 	
+}
+function accionB(){
+	$(".msg").css({"position": "absolute","top": "30%","left": "10%"});	
+	openQtip('','Si al finalizar tu plato deseas agregar y armar uno diferente haz clic en el botón <strong>agregar plato</strong>. <div class="btons right"> <button class="btn" onclick="accionC();">Siguiente</button></div>'); 	
+}
+function accionC(){
+	$(".msg").css({"position": "absolute","top": "30%","left": "10%"});	
+	openQtip('msg','Para continuar con tu pedido haz clic en botón <strong>finalizar orden</strong>.  <div class="btons right"><button class="btn" onclick="accionB();">Anterior</button> <button class="btn" onclick="closeQtip();">Entendido</button></div>');	
+}
+</script>

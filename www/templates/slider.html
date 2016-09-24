@@ -1,0 +1,18 @@
+<!-- Contenido slider  -->
+<div class="buffet contenidogeneral">
+ <wrap-owlcarousel id="owl-demo" class="owl-carousel owl-theme" 
+ data-options="{autoPlay: 5000,stopOnHover: true,slideSpeed : 300,paginationSpeed : 400, singleItem : true}">
+ <div class="item"><a href="#menu" ng-click="goMenu();"><img id="img1" src="http://buffetexpress.com.co/imagenes/recomendado/imagen1/buffet1295.jpg" alt="..." title="..." /></a></div>
+ <div class="item"><a href="" ng-click="recomendado()"><img id="img2" src="http://buffetexpress.com.co/imagenes/recomendado/imagen1/recomendado-del-dia1296.jpg" alt="..." title="..." /></a></div>
+</wrap-owlcarousel>	
+<div class="imgcodigo Cbuffet">
+ <a href="" ng-click="open('costoad')"><div ng-bind-html="image_banner"></div></a>
+</div> 
+<div class="costoad">
+  <div class="cont">
+    <img src="images/cerr_vpla.png" alt="..." class="cerrvess" ng-click="close('costoad')">
+	<div ng-bind-html="info_banner"></div> 
+  </div>
+</div>
+</div>
+<!-- fin contenido slider  --> 

@@ -1,0 +1,82 @@
+<!-- Capa de contenido recomendar -->
+<style>
+  .login,.logout,.disponibles{
+    display: none;
+  }
+  .time{
+    display: none;
+    font-size: 10px;
+  }
+  .validar{
+    display: none;
+    padding: 10px;
+  }
+  button{
+    background:#DDD;
+  }
+</style>
+<div class="nosotros">
+  <div class="col-md-12 facturavir showqr">
+    <h1>Comparte y Gana</h1>
+    <div class="col-md-12 facturavir logout" style="padding:10px;">
+      <div class="vrdirc register" style="marging-top:0; padding-top:0;">
+        <span>Registrate para obtener tu código QR y así ganar tus bonos de descuento</span>
+        <label class="titleQR">Datos de registro</label>
+        <input type="text" class="form-control" id="name" maxlength="35" placeholder="Nombre" />
+        <input id="lastname" name="lastname" type="hidden" value="" />
+        <input id="password" name="password" type="hidden" value=""/>
+        <input id="password2" name="password2" type="hidden" value="" />      
+        <input type="text" class="form-control" id="cellPhone" maxlength="15" placeholder="Celular (Contraseña temporal)" onblur="fMatch2(this);" onkeyup="fMatch2(this);"/>
+        <input type="email" class="form-control email" id="email" maxlength="45" placeholder="Correo electrónico" onblur="checkEmail(this.value);" />
+        <div style="float:left;width:20px;margin-right:6px;">
+          <input id="chk_terminos" name="chk_terminos" type="checkbox" value="1" checked="checked" />
+        </div>
+        <div style="float:left;"><a href="login.html#/terminos">Términos</a> y <a href="login.html#/politicas">Políticas de Privacidad</a><br/><br/><button class="btn" onclick="registrarUser();">Registrarse</button></div>
+      </div>  
+    </div> 
+    <div class="col-md-12 facturavir sms" style="marging-top:0;padding-top:0;display:none;">    
+      <div class="vrdirc">
+        <label class="titleQR">Ingresar código SMS de verificación</label>
+        <input type="text" class="form-control" id="code" name="code" maxlength="35" placeholder="Código SMS" />
+        <div style="float:center;"><span class="time">Esperando mensaje SMS para validar tú cuenta. <i id="time">60</i></span><br/><button class="btn" onclick="registrarSMS();">Validar</button></div>
+      </div> 
+    </div>
+    <div class="col-md-12 facturavir validar">
+      <div class="vrdirc">
+        <p>Debes validar tu cuenta con tu número celular para generar tu código QR</p>
+        <p><input type="text" class="form-control" id="celular" maxlength="15" placeholder="Celular (Contraseña temporal)" onblur="fMatch2(this);" onkeyup="fMatch2(this);"/></p>
+        <p><button class="btn" onclick="validarCuenta();">Validar Cuenta</button></p>
+      </div>
+    </div>
+    <div style="text-align:center" class="login"><img src="{{qr}}" style="width:60%;" id="img_qr"></div>
+
+    <div class="col-md-12 facturavir">
+      <p>Dile a tus amigos que descarguen Buffet Express, escaneen tu código QR y obtendrán <b>$ <span id="descuento_bono">{{descuento}}</span></b> en su primera orden <b>(plato a $ <span id="precio_bono">{{precio}}</span>)</b> y tu recibirás un bono igual para tu siguiente orden.</p>    
+
+
+      <p class="comparte login"><button class="btn" onclick="scanear();">Escanear</button>&nbsp;<button class="btn" onclick="shareBono();">Comparte</button></p>
+      <div class="bondesc login"> Ingresar código de tu amigo <br>
+        <input id="bono" name="bono" value="" type="text" maxlength="25">
+        <button class="btn" onclick="registerBono();">Registrar</button></div>
+
+        <div class="disponibles">
+          <b>Bonos disponibles</b>
+          <ul id="bonos" style="text-align:left;width:95%;"></ul>
+        </div>
+
+        <p><b>*Condiciones:</b>
+          <ul style="text-align:left;width:95%;">
+            <li>Tu bono se te entregara cuando tu amigo realice su primera orden (notificaremos a tu celular).</li>
+            <li>Se puede utilizar un solo bono por orden.</li>
+            <li>Bonos no acumulables.</li>
+            <li>No acumulable con otras promociones.</li>
+            <li>Tus bonos expiraran en 6 meses a partir de su fecha de creación.</li>
+          </ul>
+
+          <span id="codigo" style="display:none"></span>     
+        </p>
+        <p>&nbsp;</p>
+      </div>
+    </div>
+  </div>
+<!-- Fin capa de contenido nosotros sesión -->

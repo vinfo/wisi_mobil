@@ -1,0 +1,70 @@
+<!-- Ordenes -->
+<div class="pagosdiv panels" style="display:list-item;">
+    <div class="facturavir">
+        <div class="contf">
+            <label class="ttfac">ORDENES POR ENTREGAR</label>
+            <div id="contenedor"><img src="images/loading.gif" alt="..." title="..." /> Procesando ordenes por entregar...</div>        
+    </div>
+</div>   
+<div style="min-height:80px;"></div> 
+</div>
+
+<!-- Rutas -->
+<div class="vermapa panels" style="min-height:500px">
+	<div id="gmap-route" class="gmap"></div>	
+    <div class="pedidotar">
+        <div class="cont"><span id="min"></span> Min. de la ruta</div>
+    </div>
+</div>
+
+<!-- Detalles -->
+<div class="detalles panels">
+  <div class="norecords" style="marging-top:60px;"></div>
+	<div class="reds">
+		<div id="route"></div>
+	</div>
+</div>
+
+<!-- Notificaciones -->
+<div class="notificaciones panels">
+  <div class="felicitation">
+    <h1>Notificaciones</h1>
+    <div class="feli_re">
+      <h3>¿A quien deseas notificar?</h3>
+      </br>
+      <div class="checkbox">
+        <label><input type="checkbox" name="notiCocina" id="notiCocina" class="noti" /> Cocina</label>
+      </div>
+      <div class="checkbox cliente">
+        <label><input type="checkbox" name="notiCliente" id="notiCliente" class="noti" /> Cliente</label>
+      </div>      
+      <div class="checkbox cliente">
+        <label><input type="checkbox" name="notiClientes" id="notiClientes" class="noti" /> Todos los clientes</label>
+      </div>                   
+      <div class="text cliente">
+        <input type="text" name="cliente" id="cliente" value="" placeholder="Cliente" readonly="readonly" />
+        <input type="hidden" name="h_cliente" id="h_cliente" value="" />        
+      </div> 
+      <div>
+        <textarea id="comentarios" name="comentarios" rows="5" cols="50" placeholder="Comentarios"></textarea>
+      </div>
+      <div class="form-group">
+      	<h3 class="green">Datos enviados exitosamente!</h3>
+        <button class="btn btn-info" style="display:none">Timbrar</button>
+        <input type="hidden" name="h_pushtoken" id="h_pushtoken" value="" />
+        <button class="btn btn-success">Enviar</button>
+      </div> 
+    </div> 
+  </div>
+</div>
+
+<!-- Liquidador -->
+<div class="liquidardiv panels" style="margin-top:40px">
+    <div class="facturavir">
+        <div class="contf">
+            <label class="ttfac">LIQUIDACIÓN DE RUTAS</label>
+            <div id="contenedor_pays"><img src="images/loading.gif" alt="..." title="..." /> Procesando rutas...</div>        
+    </div>
+</div>   
+<div style="min-height:80px;"></div> 
+</div>

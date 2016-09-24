@@ -1,0 +1,24 @@
+<!-- Capa de contenido felicitaciones sesión -->
+<div class="buffet contenidogeneral">
+  <div class="felicitation">
+    <h1>Contáctenos</h1>
+    <div class="feli_re">
+      <h3>Registrar información</h3>
+      </br>
+      <div class="text">
+        <input id="nombres" name="nombres" type="text" maxlength="55" value="{{nombres}}" placeholder="Nombre Completo">
+      </div>
+      <div class="text">
+      <input id="email" name="email" type="text" maxlength="55" value="{{email}}" placeholder="email@email.com">
+      </div> 
+      <div>
+        <textarea id="comentarios" name="comentarios" rows="5" cols="50" placeholder="Comentarios">{{comentarios}}</textarea>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success" ng-click="sendContact('contacto')">Enviar</button>
+        <input id="desde" name="desde" type="hidden" value="" />
+      </div> 
+    </div> 
+  </div>
+</div>         
+<!-- Fin capa de contenido felicitaciones sesión -->

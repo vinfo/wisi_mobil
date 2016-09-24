@@ -1,0 +1,32 @@
+<!-- Capa de contenido ayuda sesión -->
+<style>
+h1, .h1 {
+    font-size:22px;
+}
+#accordion h3{
+    background-color: #ccc;
+    border-bottom: 1px solid #666;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    height:50px;
+    margin: 1px;
+    padding: 10px 6px;
+}
+#accordion div{
+    display:none;
+}
+#accordion div p{
+    padding:2px;
+}
+.nosotros{
+    margin-bottom:120px;
+}
+</style>
+<div class="nosotros">
+  <div class="col-md-12" style="padding:6px 6px 20px 6px;">
+    <h1>{{titulo}}</h1>
+    <div id="accordion" ng-bind-html="info_ayuda"></div>
+  </div>
+</div>
+<!-- Fin capa de contenido ayuda sesión -->

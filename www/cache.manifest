@@ -1,0 +1,31 @@
+CACHE MANIFEST
+# 2014-12-11:v2
+
+# Explicitly cached 'master entries'.
+CACHE:
+images/fondo.jpg
+images/logo.png
+images/titleptu.png
+images/arroz_mini.png
+images/bebidas_mini.png
+images/carnes_mini.png
+images/guarnicion_mini.png
+images/sopas_mini.png
+images/arroz_mini_ok.png
+images/bebidas_mini_ok.png
+images/carnes_mini_ok.png
+images/guarnicion_mini_ok.png
+images/sopas_mini_ok.png
+
+index.html
+stylesheet.css
+
+# Resources that require the user to be online.
+NETWORK:
+*
+
+# static.html will be served if main.py is inaccessible
+# offline.jpg will be served in place of all images in images/large/
+# offline.html will be served in place of all other .html files
+FALLBACK:
+/html/ /offline.html

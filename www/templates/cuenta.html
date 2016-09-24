@@ -1,0 +1,33 @@
+<!-- Cama de contenido inicio sesión -->
+
+<div class="sesion" style="padding-bottom:120px;">
+  <form role="form">
+    <div class="form-group"> <span class="ico-usua"></span>
+      <input type="email" class="form-control email" id="email" maxlength="45" placeholder="@ Ingresar email" />
+    </div>
+    <div class="form-group"> <span class="ico-nombre_apellido"></span>
+      <input type="text" class="form-control" id="name" maxlength="35" placeholder="Nombres" />
+    </div>
+    <div class="form-group"> <span class="ico-nombre_apellido"></span>
+      <input type="text" class="form-control" id="lastname" maxlength="35" placeholder="Apellidos" />
+    </div>
+    <div class="form-group"> <span class="ico-num_celular"></span>
+      <input type="text" class="form-control" id="cellPhone" maxlength="15" placeholder="Num. Celular" onblur="fMatch2(this);" onkeyup="fMatch2(this);" />
+    </div>
+    <div class="form-group"> <span class="ico-contra"></span>
+      <input type="password" class="form-control" id="password" maxlength="15" placeholder="Contraseña" />
+    </div>
+    <div class="form-group"> <span class="ico-contra"></span>
+      <input type="password" class="form-control" id="password2" maxlength="15" placeholder="Confirmar Contraseña" />
+    </div>
+    <div class="terminos">
+      <input id="chk_terminos" name="chk_terminos" type="checkbox" value="1" />
+      <a href="login.html#/terminos">Terminos</a> y <a href="login.html#/politicas">Politicas de Privacidad</a> </div>
+    <div class="form-group">
+      <button id="sesion" type="reset" class="btn btn-default" ng-click="doView('login')">Iniciar sesión</button>
+      <button id="login" type="submit" class="btn btn-default" ng-click="setAccount('add')" onClick="trackevent('Click','Registrarse');">Registrarse</button>      
+    </div>
+    <img src="{{logo}}" class="img1" alt="..." title="..."/>
+  </form>
+</div>
+<!-- Fin capa de contenido inicio sesión -->

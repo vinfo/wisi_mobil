@@ -1,0 +1,49 @@
+body{
+    padding:0;
+    margin:0;
+    background-color:#dd0616;
+}
+a img
+{
+    border:0px;
+}
+.container:after{
+   /*content: url(../images/fondo.jpg) display:none;*/
+}
+.container
+{
+    /*max-width: 640px;
+    min-width: 600px;*/
+    width: 100%;
+    height: 100%;
+    margin: auto;
+/*    background: url(../images/fondo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;*/
+    position: fixed;
+    padding: 0px;
+    padding-bottom: 150px;
+    top: 0px;
+    left: 0px;
+    padding: 0px;
+    margin: 0px;
+    overflow: auto;
+    min-width: 317px;
+}
+.inicio
+{
+    margin-top: 20%;
+    text-align: center;
+}
+.img1
+{
+    width: 100%;
+    max-width: 526px;
+    top: 25%;
+}
+.inicio .img2
+{
+    width: 100%;
+    max-width: 604px;
+    margin-top: 3%;
+}

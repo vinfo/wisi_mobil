@@ -1,0 +1,23 @@
+    <!-- Capa de contenido inicio sesión -->
+    <div class="sesion" style="padding-bottom:120px;">
+      <img src="{{logo}}" class="img1" alt="..." title="..." />
+      <form role="form" class="formse">
+        <div class="form-group">
+          <span class="ico-usua"></span>
+          <input id="email" type="email" class="form-control" placeholder="Ingresar email" value="{{email}}" />
+        </div>
+        <div class="form-group">
+          <span class="ico-contra"></span>
+          <input id="pass" type="password" class="form-control" placeholder="Ingresar clave" />
+        </div>
+        <div class="form-group">
+          <button type="reset" class="btn btn-default" ng-click="doView('cuenta')" >Crear cuenta</button> 
+          <button type="submit" class="btn btn-default" ng-click="doLogin()" onClick="trackevent('Click','Iniciar sesión');">Iniciar sesión</button>         
+        </div>
+        <a href="login.html#/clave" class="reccontra">¿ Recuperar contraseña ?</a>
+        <div class="terminos">
+          ver <a href="login.html#/terminos">Terminos</a> y <a href="login.html#/politicas">Politicas de Privacidad</a>
+        </div>
+      </form>
+    </div>
+    <!-- Fin capa de contenido inicio sesión -->

@@ -1,0 +1,178 @@
+<div class="msg"></div>
+<div class="div_loading">
+  <div class="msg_div_loading"><img src="images/loading.gif" width="41" height="39" /><span class="texto_load">Verificando inventario...</span></div>
+</div>
+<div id="ancla" class="pagosdiv">
+  <div class="facturavir">
+    <div class="contf">
+      <label class="ttfac">FACTURA VIRTUAL</label>
+      <div class="tr" ng-bind-html="platos"> </div>
+      <div class="tr brdto">
+        <div class="td">
+          <label>Valor domicilio</label>
+        </div>
+        <div class="td">
+          <label>${{domicilio}}</label>
+        </div>
+      </div>
+      <div class="tr brdto bono" style="display:none">
+        <div class="td">
+          <label>Valor bono (-) <span id="porc_bono"></span></label>
+        </div>
+        <div class="td">
+          <label>$<span id="valor_bono"></span></label>
+        </div>
+      </div>
+      <div class="tr ttl">
+        <div class="td">
+          <label>TOTAL</label>
+        </div>
+        <div class="td">
+          <label>$<span id="total"></span></label>
+        </div>
+      </div>
+    </div>
+    <div class="confirmacion">
+      <label class="ttfac">CONFIRMACIÓN DE PEDIDO</label>
+      <div class="tr">
+        <p>Tu orden ha sido procesada exitosamente, en breve podras rastrear tu orden en el mapa.</p>
+        <p>Fue un placer servirte <b>{{nombre_cliente}}</b>.</p>
+        <div id="encuesta">
+          <p>Ayudanos a crecer queremos conocer un poco más de tí. Completa tus datos en la web.</p>
+          <div class="form-group"> <a href="internal.html#/menu" class="btn btn-reset">En otra ocasión</a> <a href="#" onclick="openBrowser('http://buffetexpress.com.co/nuevo/?user=','Encuesta');" class="btn btn-default">Si, Gracias</a> </div>
+        </div>
+      </div>
+    </div>
+    <div class="bondesc"> Ingresar bono de descuento <br>
+      <input id="bono" name="bono" value="" type="text" maxlength="25" ng-model="bono" onblur="angular.element(this).scope().bonoChanged()">
+      <input id="hbono" name="hbono" type="hidden" value="" />
+      <input id="Gtotal" name="Gtotal" type="hidden" value="" />
+      <input id="tDomicilio" name="tDomicilio" type="hidden" value="" />
+      <input id="tipoPago" name="tipoPago" type="hidden" value="efectivo" />
+      <a name="register" id="register"></a> </div>
+    <div class="horario">
+      <p>Nuestro horario de atención es:<br/>
+        De <span id="desde">&nbsp;</span> a <span id="hasta">&nbsp;</span>.<br />
+        No podemos registra su pedido.<br/>
+        Gracias por visitarnos</p>
+    </div>
+    <div class="vrdirc register">
+      <label>Datos de registro</label>
+      <input type="text" class="form-control" id="name" maxlength="35" placeholder="Nombre" />
+      <input id="lastname" name="lastname" type="hidden" value="" />
+      <input id="password" name="password" type="hidden" value=""/>
+      <input id="password2" name="password2" type="hidden" value="" />
+      <input type="text" class="form-control" id="cellPhone" maxlength="15" placeholder="Celular (Contraseña temporal)" onblur="fMatch2(this);" onkeyup="fMatch2(this);"/>
+      <input type="email" class="form-control" id="email" maxlength="45" placeholder="Correo electrónico" />
+      <div style="float:left;width:20px;margin-right:6px;">
+        <input id="chk_terminos" name="chk_terminos" type="checkbox" value="1" checked="checked" />
+      </div>
+      <div style="float:left;"><a href="login.html#/terminos">Términos</a> y <a href="login.html#/politicas">Políticas de Privacidad</a> </div>
+    </div>
+    <div class="vrdirc">
+      <label>Datos de envío</label>
+      <select id="dir1" name="dir1" class="form-control" style="width:25%;float:left;padding:6px 0;" >
+        <option value="Calle">Calle</option>
+        <option value="Carrera">Carrera</option>
+        <option value="Avenida">Avenida</option>
+        <option value="Avenida Carrera">Avenida Carrera</option>
+        <option value="Avenida Calle">Avenida Calle</option>
+        <option value="Circular">Circular</option>
+        <option value="Circunvalar">Circunvalar</option>
+        <option value="Diagonal">Diagonal</option>
+        <option value="Manzana">Manzana</option>
+        <option value="Transversal">Transversal</option>
+        <option value="Vía">Vía</option>
+      </select>
+      <input type="text" value="" id="dir2" class="form-control" name="dir2" style="width:20%;float:left;padding:6px 4px;">
+      <label style="width:5%;float:left;margin:0 2px;">#</label>
+      <input type="text" value="" id="dir3" class="form-control" name="dir3" style="width:20%;float:left;padding:6px 4px;">
+      <label style="width:5%;float:left;margin:0 2px;">-</label>
+      <input type="text" value="" id="dir4" class="form-control" name="dir4" style="width:20%;float:left;padding:6px 4px;">
+      <!--<input id="direccion" name="direccion" value="" ng-model="direccion" type="text" placeholder="Dirección" maxlength="100" class="address">-->
+      <input id="numero" name="numero" value="" ng-model="numero" type="text" placeholder="N° Apt/Ofic" maxlength="10" class="address">
+      <input id="referencia" name="referencia" value="" ng-model="referencia" type="text" placeholder="Punto de referencia/Edificio" maxlength="55" class="address">
+      <div class="direcciones">
+        <label>Direcciones frecuentes</label>
+        <ul class="listdirecc" ng-bind-html="direcciones_frecuentes">
+        </ul>
+      </div>
+      <div>
+            <label>¿Para que hora quieres tu pedido?</label>
+      <p>
+        <select id="reservacion" name="reservacion"></select>
+      </p>
+      </div>
+      <div class="medipa">
+        <div class="col-xs-6 col-md-6">
+          <div class="col-xs-6 col-md-6 un"> Forma de pago </div>
+          <div class="col-xs-6 col-md-6 ds">
+            <div class="formpago">
+              <ul>
+                <li id="efectivo" ng-click="setTypePay('efectivo')"><img src="images/pago_efectivo.png" alt="..." title="..."> Efectivo <img src="images/pagoho.png" alt="..." title="..." class="icobie"></li>
+                <li id="datafono" ng-click="setTypePay('datafono')"><img src="images/pago_datafono.png" alt="..." title="..."> Datáfono <img src="images/pagoho.png" alt="..." title="..." class="icobie"></li>
+                <!--<li id="online" ng-click="setTypePay('online')"><img src="images/pago_online.png" alt="..." title="..."> Online <img src="images/pagoho.png" alt="..." title="..." class="icobie"></li>-->
+              </ul>
+            </div>
+            <div class="sombra"></div>
+            <img id="img_pago" src="images/boton_efectivo.png" alt="..." title="..." ng-click="viewTypePay()"> </div>
+        </div>
+        <div class="col-xs-6 col-md-6">
+          <div class="col-xs-6 col-md-6 ds"> <a onClick="trackevent('Click','Pagar');"><img src="images/boton_pagar.png" alt="..." title="..." ng-click="SendPay()" id="SendPay"></a> </div>
+          <div class="col-xs-6 col-md-6 un"> Enviar orden </div>
+        </div>
+        <div class="col-xs-12 col-md-12" style="text-align:center"><img src="images/loading.gif" alt="..." title="..." class="loading" style="display:none"></div>
+      </div>
+    </div>
+  </div>
+  <div style="height:100px;"></div>
+</div>
+<script type="text/javascript">
+$(function(){
+    accionA();
+})
+function openQtip(hidde,msg){
+    if(hidde!="")$("."+hidde).qtip('hide');
+    var autom=true;
+    if(localStorage.paso5)autom=false;  
+    $('.msg').qtip({
+        content: {
+            text: function(event, api) { 
+              var con = msg;                      
+              return con;
+            },
+            button: true
+        },          
+        show: {
+            event: 'click',
+            when: false, // Don't specify a show event
+            ready: autom // Show the tooltip when ready
+        },
+      hide: {
+        event: false
+      },
+      events: {
+          hidden : function(event, api) {
+              localStorage.setItem("paso5",1);
+          },
+      },
+        style: {
+            classes: '', // No additional classes added to .qtip element
+            widget: false, // Not a jQuery UI widget
+            width:'80%', // No set width
+            height: false, // No set height
+            tip: { // Requires Tips plugin
+                corner: false, // Use position.my by default
+                mimic: false, // Don't mimic a particular corner
+                width: 20, 
+                height: 20,
+                border: true, // Detect border from tooltip style
+                offset: 0 // Do not apply an offset from corner
+            }
+        }       
+    });
+}
+function closeQtip(div){
+    $(".msg").qtip('hide');
+}
+</script>

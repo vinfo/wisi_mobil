@@ -1,0 +1,92 @@
+<!-- Contenido  buffet -->
+<div class="msg"></div>
+<div id="miscompras" class="miscompras"></div>
+<div class="costoad">
+  <div class="cont">    
+    <h1>Detalle carro de compras</h1>
+    <p class="sesion">No existen productos seleccionados</p>   
+</div>
+</div>
+</div>		
+<!-- fin contenido slider buffet -->
+<script>
+	$( document ).ready(function() {
+		var lastScrollTop = 0;
+        var mHeight= $("li.carrito a img").height();
+        $(".container").scroll(function(){ 
+         var st = $(this).scrollTop();
+         if (st > lastScrollTop){
+            //console.log("bajando");        
+            $('.menupie').stop(true, true).animate({ bottom: "-12%" }, 3000);
+            $('.contpag').stop(true, true).animate({ bottom: "0" }, 3000);
+        } else {
+             //console.log("subiendo");
+             $('.menupie').stop(true, true).animate({ bottom: "0%" }, 3000);
+             $('.contpag').stop(true, true).animate({ bottom: (mHeight-1)+"px" }, 3000);
+         }
+         lastScrollTop = st;
+         return false;
+     });
+    });
+</script>
+<script type="text/javascript">
+$(function(){
+    if(getNumDish("B")>0)accionA();   
+})
+function openQtip(hidde,msg){
+    if(hidde!="")$("."+hidde).qtip('hide');
+    var autom=true;
+    if(localStorage.paso4)autom=false;  
+    $('.msg').qtip({
+        content: {
+            text: function(event, api) { 
+              var con = msg;                      
+              return con;
+            },
+            button: true
+        },          
+        show: {
+            event: 'click',
+            when: false, // Don't specify a show event
+            ready: autom // Show the tooltip when ready
+        },
+      hide: {
+        event: false
+      },
+      events: {
+          hidden : function(event, api) {
+              localStorage.setItem("paso4",1);
+          },
+      },
+        style: {
+            classes: '', // No additional classes added to .qtip element
+            widget: false, // Not a jQuery UI widget
+            width:'80%', // No set width
+            height: false, // No set height
+            tip: { // Requires Tips plugin
+                corner: false, // Use position.my by default
+                mimic: false, // Don't mimic a particular corner
+                width: 20, 
+                height: 20,
+                border: true, // Detect border from tooltip style
+                offset: 0 // Do not apply an offset from corner
+            }
+        }       
+    });
+}
+function closeQtip(div){
+    $(".msg").qtip('hide');
+}
+function accionA(){
+    $(".msg").css({"position": "absolute","top": "30%","left": "10%"}); 
+    openQtip('','Si deseas remplazar una de las preparación de tu plato haz clic en uno de los iconos de las categorías ubicados debajo de la imagen de tu plato. <div class="btons right"> <button class="btn" onclick="accionB();">Siguiente</button></div>');    
+}
+function accionB(){
+    $(".msg").css({"position": "absolute","top": "30%","left": "10%"}); 
+    openQtip('msg','si deseas replicar un plato para ordenar dos o más unidades del mismo haz clic en el <strong class="mas">+</strong>.  <div class="btons right"><button class="btn" onclick="accionA();">Anterior</button> <button class="btn" onclick="accionC();">Siguiente</button></div>');
+}
+function accionC(){
+    $(".msg").css({"position": "absolute","top": "30%","left": "10%"}); 
+    openQtip('msg','Para continuar con tu pedido haz clic en el botón inferior <strong>Confirmar pedido</strong>.  <div class="btons right"><button class="btn" onclick="accionB();">Anterior</button> <button class="btn" onclick="closeQtip();">Entendido</button></div>');
+}
+</script>

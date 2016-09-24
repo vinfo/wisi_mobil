@@ -1,0 +1,73 @@
+<!-- Capa de contenido carta -->
+<style>
+h1, .h1 {
+	font-size: 22px;
+}
+</style>
+<div class="msg"></div>
+<div class="carta">
+  <div class="col-md-12" style="padding:60px 6px 20px 6px; text-align:center">
+    <div class="col-md-12" id="img_buffet"><a href="internal.html#/menu" onClick="trackevent('Click','Buffet');"><img id="ancla" src="images/buffet.png" width="95%" alt="..." title="..."  /></a></div>  
+	<div class="col-md-12" id="img_express"><a href="internal.html#/recomendado" onClick="trackevent('Click','Recomendado');"><img src="images/tipico.png" width="95%" alt="..." title="..." /></a></div>    
+	     <div class="col-md-12" id="img_cazuelas"><a href="internal.html#/tipicos" onClick="trackevent('Click','Cazuelas');"><img src="images/cazuelas.png" width="95%" alt="..." title="..." /></a></div>
+    <div class="col-md-12" id="img_desayunos"><a href="internal.html#/premium" onClick="trackevent('Click','Desayunos');"><img src="images/desayunos.png" width="95%" alt="..." title="..." /></a></div>   
+  </div>
+</div>
+<!-- Fin capa de contenido ayuda sesión --> 
+<script type="text/javascript">
+$(function(){
+	accionA();   
+})
+function openQtip(hidde,msg){
+	if(hidde!="")$("."+hidde).qtip('hide');
+	var autom=true;
+	if(localStorage.paso1)autom=false;	
+	$('.msg').qtip({
+		content: {
+			text: function(event, api) { 
+			  var con = msg;                      
+			  return con;
+			},
+			button: true
+		},			
+        show: {
+			event: 'click',
+            when: false, // Don't specify a show event
+            ready: autom // Show the tooltip when ready
+        },	
+	  hide: {
+	  	event: false
+	  },
+	  events: {
+		  hidden : function(event, api) {
+			  localStorage.setItem("paso1",1);
+		  },
+	  },
+		style: {
+			classes: '', // No additional classes added to .qtip element
+			widget: false, // Not a jQuery UI widget
+			width:'80%', // No set width
+			height: false, // No set height
+			tip: { // Requires Tips plugin
+				corner: false, // Use position.my by default
+				mimic: false, // Don't mimic a particular corner
+				width: 20, 
+				height: 20,
+				border: true, // Detect border from tooltip style
+				offset: 0 // Do not apply an offset from corner
+			}
+		}		
+	});
+}
+function closeQtip(div){
+	$(".msg").qtip('hide');
+}
+function accionA(){
+	$(".msg").css({"position": "absolute","top": "30%","left": "10%"});	
+	openQtip('','Bienvenid@ a <strong>BUFFET EXPRESS</strong> un escape de tu rutina diaria a una experiencia llena de <strong>bienestar</strong>.<br/><br/>Te invitamos a realizar tus ordenes en la mañana y tener algo menos de que preocuparte en tu día. <div class="btons right"> <button class="btn" onclick="accionB();">Siguiente</button></div>'); 	
+}
+function accionB(){	
+	$(".msg").css({"position": "absolute","top": "30%","left": "10%"});
+	openQtip('msg','En nuestra <strong>Carta</strong> encontrarás la opción que mejor se adapte a tus hábitos alimenticios.<br/>Haz clic en la opción de tu preferencia!  <div class="btons right"><button class="btn" onclick="accionA();">Anterior</button> <button class="btn" onclick="closeQtip();">Entendido</button></div>');	
+}
+</script>

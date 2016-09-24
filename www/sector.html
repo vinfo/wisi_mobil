@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest">
+<head>
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <style type="text/css">
+select{
+    width: 300px;
+    height: 50px;
+    font-size: 18px;
+    padding: 4px;
+    background-color:#CC181E;
+    color: #fff;
+    -webkit-border-radius: 15px;
+    -moz-border: 15px;
+    border-radius: 15px;
+}
+</style>
+</head>
+<body style="" background="">
+    <div class="container">
+        <div class="inicio" style="margin-top:15%;color:white;font-size:15px;padding:10px">
+            <h3>Indicanos en que sector te encuentras</h3>
+            <p>
+            <select id="zonas" name="zonas">
+                <option value="cam002|0" id="cam002">Seleccione un sector</option>
+            </select>
+            </p>
+            <p>No logramos ubicar tu posición</p>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://buffetexpress.com.co/REST/resources/js/functions.js"></script>
+    <script type="text/javascript" src="phonegap.js"></script>
+    <script type="text/javascript" src="js/device.js"></script>
+    <script type="text/javascript" src="js/sector.js"></script>
+</body>
+</html>

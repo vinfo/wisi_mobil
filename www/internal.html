@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest" ng-app="angularRoutingApp">
+<head>
+  <meta charset="utf-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buffet Express - Un sano y delicioso click</title>
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="owl-carousel/owl.carousel.css">
+  <link rel="stylesheet" type="text/css" href="css/jquery.qtip.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body ng-controller='mainController'>
+  <div class="container">
+    <!-- Menu -->
+    <div class="menusup">
+      <button class="verlatermenu ico-menu" id="ico_menu"><span></span></button>
+      <div class="title">Buffet Express</div>
+      <button onclick="window.plugins.socialsharing.share('Hola,\r\nAcabo de descargar la aplicación Buffet Express en mi celular.\r\nDescárgala es un restaurante online tipo buffet que te permite armar tu combinación favorita y recibir tu plato a domicilio.\r\nEs que poder elegir; también es rico!.', null, 'http://buffetexpress.com.co/REST/resources/images/descargala_ya.jpg', 'http://buffetexpress.com.co/')" class="ico-lupa"><span></span></button>
+    </div>
+    <!-- Fin menu -->
+    
+    <!-- Menu lateral -->
+    <div class="latermenu">
+      <div class="tr">
+        <div class="td"> <a href="internal.html#recomendar"><img src="images/comparte_y_gana.png" alt="..." title="..." /></a> </div>      
+        <div class="td">
+          <a ng-href="{{mi_cuenta}}" class="mi_cuenta"><img src="images/mi_cuenta.png" alt="..." title="..." /></a>
+        </div>
+      </div>
+      <div class="tr">
+        <div class="td">
+          <a href="#" ng-click="goTo('slider')"><img src="images/ordenar.png" alt="..." title="..." /></a>
+        </div>      
+        <div class="td">
+          <a href="internal.html#/nosotros"><img src="images/nosotros.png" alt="..." title="..." /></a>
+        </div> 
+
+      </div>
+      <div class="tr">
+        <div class="td">
+          <a href="internal.html#felicitaciones"><img src="images/felicitaciones_reclamos.png" alt="..." title="..." /></a>
+        </div>      
+        <div class="td">
+          <a href="" onclick="goStore()"><img src="images/califiquenos.png" alt="..." title="..." /></a>
+        </div>
+      </div>
+      <div class="tr">
+        <div class="td">
+          <a href="internal.html#contactenos"><img src="images/contactenos.png" alt="..." title="..." /></a>
+        </div>      
+        <div class="td"> <a href="internal.html#ayuda"><img src="images/ayuda.png" alt="..." title="..." /></a> </div>        
+      </div>            
+      <div class="tr">
+        <div class="td">
+          <a href="internal.html#redes"><img src="images/redes_sociales.png" alt="..." title="..." /></a>
+        </div> 
+        <div class="td">
+          <a href="internal.html#guia"><img src="images/guia_rapida.png" alt="..." title="..." /></a>
+        </div>
+      </div>
+    </div>
+    <!-- fin menu lateral -->
+    <!-- Aquí inyectamos las vistas -->
+    <a name="topmobil" id="topmobil"></a>        
+    <div ng-view ng-mouseover="hiddeMenu()"></div>       
+
+    <!-- Menu pie -->
+    <div class="menupie">
+      <ul>
+        <li class="active"><a href="#carta"><img src="images/carta.png" alt="..." title="..." /></a></li>
+        <li><a href="#menu" ng-click="goMenu()"><img src="images/menu.png" alt="..." title="..." /></a></li>
+        <li class="carrito menu"><a href="#compras" onClick="trackevent('Click','Finalizar orden');"><img src="images/mis_compras.png" alt="..." title="..." /></a><span id="totalDish">0</span></li>
+        <li class="menu"><a href="#mapa"><img src="images/rastrea_tu_orden.png" alt="..." title="..." /></a></li>
+      </ul>
+    </div>
+    <!-- fin Menu pie --> 
+  </div>
+  <input id="page" name="page" type="hidden" value="{{page}}" />
+
+  <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="owl-carousel/owl.carousel.min.js"></script>
+  <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry&sensor=false"></script>
+  <script src="http://buffetexpress.com.co/REST/resources/js/functions.js"></script>
+  <script src="js/angular.min.js"></script>
+  <script src="js/angular-route.js"></script>
+  <script src="js/angular-sanitize.min.js"></script>
+  <!-- <script type="text/javascript" src="js/inappbrowser.js"></script> -->
+  <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
+
+  <script src="js/main.js"></script>
+  <script type="text/javascript" src="phonegap.js"></script>
+  <script type="text/javascript" src="js/PushwooshAndroid.js"></script>
+  <script type="text/javascript" src="js/PushwooshiOS.js"></script>   
+  <script type="text/javascript" src="js/device.js"></script>
+  <script type="text/javascript" src="js/internal.js"></script>
+  <script type="text/javascript" src="js/jquery.qtip.min.js"></script>
+  <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
+
+    // Get tracker.
+    Tracker t = ((GoogleAnalyticsObject) getActivity().getApplication()).getTracker(
+        TrackerName.APP_TRACKER);
+
+    // Enable Advertising Features.
+    t.enableAdvertisingIdCollection(true); 
+    
+    id tracker = [[GoogleAnalyticsObject] defaultTracker];
+
+    // Habilitar la recopilación del IDFA.
+    tracker.allowIDFACollection = YES;
+
+    ga('create', 'UA-62791308-1', 'auto');
+    ga('send', 'pageview');    
+  </script>    
+</body>
+</html>

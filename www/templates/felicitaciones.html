@@ -1,0 +1,31 @@
+<!-- Capa de contenido felicitaciones sesión -->
+<div class="buffet contenidogeneral">
+  <div class="felicitation">
+    <h1>Felicitaciones y reclamos</h1>
+    <div class="feli_re">
+      <h3>Que quieres hacer?</h3>
+      <div class="checkbox">
+        <label>
+          <img id="chk_Felicitaciones" src="images/checkbox_ok.png" alt="..." ng-click="setTipo('Felicitaciones')"> Felicitaciones
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <img id="chk_Reclamo" src="images/checkbox.png" alt="..." ng-click="setTipo('Reclamo')"> Reclamos
+        </label>
+      </div>
+      <div class="text">
+      <input id="email" name="email" type="text" maxlength="55" value="{{email}}" placeholder="email@email.com">
+      <input type="hidden" name="tipo" id="tipo" value="Felicitaciones" />
+      </div>       
+      <div>
+        <textarea id="comentarios" name="comentarios" rows="5" cols="50" placeholder="Comentarios">{{comentarios}}</textarea>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success" ng-click="sendContact('felicitaciones')">Enviar</button>
+        <input id="desde" name="desde" type="hidden" value="" />
+      </div>  
+    </div>
+  </div>
+</div>         
+<!-- Fin capa de contenido felicitaciones sesión -->

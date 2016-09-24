@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest">
+<head>
+  <meta charset="utf-8" >
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buffet Express - Un sano y delicioso click</title>
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body style="background-color:#dd0616;">
+  <div class="loading_container">
+    <!-- Menu -->
+    <div class="menusup">            
+      <div class="title">Buffet Express</div>
+    </div>
+    <!-- Fin menu -->      
+    
+    <!-- Aquí inyectamos las vistas -->       
+    <div class="loading">
+      <img src="images/ajax-loader.gif" id="img_load" /><br/>
+      <div class="loading_msg">Cargando productos disponibles</div>
+    </div>
+
+  </div>
+  <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry&sensor=false"></script>
+  <script src="http://buffetexpress.com.co/REST/resources/js/functions.js"></script>
+  <script type="text/javascript" src="js/load.js"></script>
+  <script>
+    cleanSession();  
+  </script>    
+</body>
+</html>

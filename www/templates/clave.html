@@ -1,0 +1,15 @@
+        <!-- Capa de contenido inicio sesión -->
+    <div class="sesion" style="padding-top:30px;padding-bottom:220px;"> 
+      <img src="images/logo.png" class="img1" alt="..." title="..." />
+      <form role="frmlogin" class="formse">
+        <div class="form-group">
+          <span class="ico-usua"></span>
+          <input id="email" name="email" type="email" class="form-control" maxlength="45" placeholder="Ingresar email" value="{{email}}" required ng-model="email" />
+        </div>
+        <div class="form-group">
+          <button type="reset" id="cerrar" class="btn btn-default" ng-click="doView('login')">Cerrar</button>
+          <button type="submit" id="recupera" class="btn btn-default" ng-click="getPass()">Recuperar contraseña</button>          
+        </div>
+      </form>
+    </div>
+    <!-- Fin capa de contenido inicio sesión -->

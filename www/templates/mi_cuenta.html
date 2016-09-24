@@ -1,0 +1,41 @@
+<!-- Cama de contenido inicio sesión -->
+<div class="buffet contenidogeneral">
+<!--        <span class="flechaiz"></span>
+  <span class="fledere"></span> -->
+  <div class="datos_perfil">
+    <h1>Mi informaci&oacute;n</h1>
+    <div class="detallesitos">
+      <div class="gro"> 
+        <img src="images/nombre.png">
+        <p><input type="text" class="form-control" id="name" name="name" placeholder="Nombres" value="" ng-model="name" maxlength="35"/></p>
+      </div> 
+      <div class="gro"> 
+        <img src="images/apellido.png">
+        <p><input type="text" class="form-control" id="lastname" name="lastname" placeholder="Apellidos" maxlength="35" value="" ng-model="lastname" /></p>
+      </div>  
+      <div class="gro"> 
+        <img src="images/correo.png">
+        <p><input type="text" class="form-control" id="email" name="email" placeholder="@ E-mail" maxlength="15" value=""  ng-model="email" readonly="readonly" /></p>        
+      </div>
+      <div class="gro">
+        <img src="images/telefono.png">
+        <p><input type="text" class="form-control" id="cellPhone" name="cellPhone" placeholder="Num. Celular" maxlength="15" value="" ng-model="cellPhone" /></p>
+      </div>
+      <div class="gro">
+        <img src="images/block.png">
+        <p><input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" maxlength="15" value="" ng-model="password" /></p>
+      </div>
+      <div class="gro">
+        <img src="images/block.png">
+        <p><input type="password" class="form-control" id="password2" name="password2" placeholder="Confirmar Contraseña" maxlength="15" value="" /></p>
+      </div>      
+      <div class="form-group">
+      <input id="chk_terminos" name="chk_terminos" type="checkbox" value="1" checked="checked" style="visibility:hidden" />
+        <button class="btn" ng-click="setAccount('edit')">Guardar</button>
+        <button class="btn btn-danger" ng-click="closeSession()">Cerrar Sesi&oacute;n</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Fin capa de contenido inicio sesión -->

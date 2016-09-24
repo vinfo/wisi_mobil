@@ -1,53 +1,108 @@
-<div class="navbar navbar-clear navbar-anim-on-scroll">
-    <div class="navbar-inner">
-        <div class="left">
-            <a href="#" class="link icon-only open-panel">
-                <span class="kkicon icon-menu"></span>
-            </a>
+ <!DOCTYPE html>
+ <html ng-app='angularRoutingApp'>
+ <head>
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Buffet Express - Un sano y delicioso click</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body ng-controller='loginController' style="background-color:#dd0616;">
+    <div class="container" style="background:none;">
+        <!-- Menu -->
+        <div class="menusup">
+            <button class="verlatermenu ico-menu" id="ico_menu"><span></span></button>
+            <div class="title">Buffet Express</div>
+            <button onclick="window.plugins.socialsharing.share('¡Sabías que...? Se acabaron los tiempos donde comías lo que los restaurantes te quieren vender, ahora comerás lo que tu desees no lo que ellos tengan para ofrecerte.\r\n\r\nBuffet Express Online es el primer restaurante virtual tipo buffet del mundo, en esta APP podrás armar tu plato con las preparaciones que más te gusten desde tu lugar de trabajo u hogar, tiene cinco categorías (sopas, arroces, carnes, guarniciones y bebidas) en las cuales encontrarás una variedad de preparaciones para elegir las que más se adapten a tus gustos o estilo de vida.\r\n\r\nDescargala aqui! http://buffetexpress.co/nuevo/descarga/', 'Descarga Buffetexpress', 'http://buffetexpress.com.co/REST/resources/images/logo.png', 'http://buffetexpress.com.co')" class="ico-lupa"><span></span></button>
         </div>
-        <div class="center sliding simple-title">Acceder</div>
-    </div>
-</div>
-
-<div class="pages">
-    <div data-page="login" class="page ">
-        <div class="page-content">
-            <div class="content-wew">
-                <div class="login-view-box mt-10">
-                    <div class="list login-form-box">
-                        <form class="form nice-label">
-                            <div class="form-row">
-                                <label for="email"><span class="icon-man"></span></label>
-                                <input type="email" id="email" name="email" placeholder="Email">
-                            </div>
-                            <div class="form-row">
-                                <label for="password"><span class="icon-lock"></span></label>
-                                <input type="password" id="password" name="password" placeholder="Contraseña">
-                            </div>
-                            <a href="#" class="button btn-login button-primary button-fill" id="login-button" onclick="Login()">Acceder</a>
-
-                            <div class="text-right forgot-password">
-                                <a href="remember.html">Olvido su contraseña?</a>
-                            </div>
-                            <div class="text-center or-social">
-                                o ingresar usando
-                            </div>
-
-                            <div class="buttons-row">
-                                <a href="#" class="button button-facebook button-fill">Facebook</a>
-                            </div>
-                            <div class="desc content-padding">
-                                <div class="mt-5 text-bg">
-                                    <input id="chkTerm" name="chkTerm" type="checkbox" value="1" checked="checked" /> <a href="terms.html">Términos y Condiciones</a>
-                                </div>                               
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-
+        <!-- Fin menu --> 
+        <!-- Menu lateral -->
+   <div class="latermenu">
+      <div class="tr">
+        <div class="td"> <a href="internal.html#recomendar"><img src="images/comparte_y_gana.png" alt="..." title="..." /></a> </div>      
+        <div class="td">
+          <a ng-href="{{mi_cuenta}}" class="mi_cuenta"><img src="images/mi_cuenta.png" alt="..." title="..." /></a>
         </div>
+      </div>
+      <div class="tr">
+        <div class="td">
+          <a href="#" ng-click="goTo('slider')"><img src="images/ordenar.png" alt="..." title="..." /></a>
+        </div>      
+        <div class="td">
+          <a href="internal.html#/nosotros"><img src="images/nosotros.png" alt="..." title="..." /></a>
+        </div> 
 
+      </div>
+      <div class="tr">
+        <div class="td">
+          <a href="internal.html#felicitaciones"><img src="images/felicitaciones_reclamos.png" alt="..." title="..." /></a>
+        </div>      
+        <div class="td">
+          <a href="" onclick="goStore()"><img src="images/califiquenos.png" alt="..." title="..." /></a>
+        </div>
+      </div>
+      <div class="tr">
+        <div class="td">
+          <a href="internal.html#contactenos"><img src="images/contactenos.png" alt="..." title="..." /></a>
+        </div>      
+        <div class="td"> <a href="internal.html#ayuda"><img src="images/ayuda.png" alt="..." title="..." /></a> </div>        
+      </div>            
+      <div class="tr">
+        <div class="td">
+          <a href="internal.html#redes"><img src="images/redes_sociales.png" alt="..." title="..." /></a>
+        </div> 
+        <div class="td">
+          <a href="internal.html#guia"><img src="images/guia_rapida.png" alt="..." title="..." /></a>
+        </div>
+      </div>
     </div>
-</div>
+        <!-- fin menu lateral -->          
+        <div ng-view ng-mouseover="hiddeMenu()"></div>     
+    </div>    
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="http://buffetexpress.com.co/REST/resources/js/functions.js"></script>
+    <script src="http://buffetexpress.com.co/REST/resources/js/md5.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="phonegap.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+
+    <script type="text/javascript">
+     $(function(){
+        $(".container").css({"height":$(document).height()});
+        $(".container").css("padding-top","10px");
+        $(".latermenu").css("padding-top","30px");          
+        $(".verlatermenu").click(function(event){
+            event.preventDefault();
+            var position = $(".latermenu").position();
+            if(position.left==0){
+                $(".latermenu").animate({"left":-412},200);
+            }else{
+                $(".latermenu").animate({"left":0},400);           
+            }
+            $(".container").animate({
+             scrollTop:0
+         },"slow"); 
+        });
+        $(".sesion").click(function(){
+            $(".latermenu").animate({"left":-412},200);
+        });        
+    });
+     function hiddeMenu(){
+        $(".latermenu").animate({"left":-412},200);
+    }       
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-62791308-1', 'auto');
+  ga('send', 'pageview');
+  
+</script>   
+</body>
+</html>
