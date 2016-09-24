@@ -33,7 +33,7 @@
     <access origin="https://connect.facebook.net/" subdomains="true" />
     <gap:config-file parent="/manifest" platform="android">
         <supports-screens android:largeScreens="true" android:smallScreens="true" android:xlargeScreens="true" />
-        <application android:debuggable="true" android:hardwareAccelerated="true" android:theme="@android:style/Theme.NoTitleBar">
+        <application android:debuggable="false" android:hardwareAccelerated="true" android:theme="@android:style/Theme.NoTitleBar">
             <activity android:theme="@android:style/Theme.NoTitleBar">
             </activity>
         </application>
