@@ -58,8 +58,6 @@
     <plugin name="cordova-plugin-vibration" spec="2.1.0" />
     <plugin name="cordova-plugin-x-socialsharing" spec="5.0.11" />
 
-    
-    <gap:plugin name="com.pushwoosh.plugins.pushwoosh" version="3.4.2" />
     <plugin name="phonegap-plugin-barcodescanner" version="4.1.0" />
 
     <gap:config-file parent="UIStatusBarHidden" platform="ios">
