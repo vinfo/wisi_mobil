@@ -12,7 +12,7 @@
 <author email="victor.valencia@gmail.com" href="http://vinfoweb.com">
   Asesores en Internet
 </author>
-<preference name="phonegap-version" value="cli-6.0.3" />
+<preference name="phonegap-version" value="cli-6.3.0" />
 <preference name="permissions" value="none" />
 <preference name="orientation" value="portrait" />
 <preference name="target-device" value="universal" />
