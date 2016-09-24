@@ -62,7 +62,7 @@
     <plugin name="cordova-plugin-media" />
     
     <gap:plugin name="com.danielcwilson.plugins.googleanalytics" version="0.6.1" /> 
-    <gap:plugin name="com.pushwoosh.plugins.pushwoosh" version="3.4.2" />
+    
 
     <gap:config-file parent="UIStatusBarHidden" platform="ios">
         <false />
