@@ -12,7 +12,7 @@
 <author email="victor.valencia@gmail.com" href="http://vinfoweb.com">
   Asesores en Internet
 </author>
-<preference name="phonegap-version" value="3.7.0" />
+<preference name="phonegap-version" value="cli-6.0.3" />
 <preference name="permissions" value="none" />
 <preference name="orientation" value="portrait" />
 <preference name="target-device" value="universal" />
@@ -72,7 +72,7 @@
 <plugin name="cordova-plugin-geolocation" spec="2.1.0" />
 <plugin name="cordova-plugin-globalization" spec="1.0.3" />
 <plugin name="cordova-plugin-inappbrowser" spec="1.4.0" />
-<plugin name="cordova-plugin-legacy-whitelist" spec="1.1.1" />
+<plugin name="cordova-plugin-whitelist" />
 <plugin name="cordova-plugin-media" spec="2.4.0" />
 <plugin name="cordova-plugin-network-information" spec="1.2.0" />
 <plugin name="cordova-plugin-screen-orientation" spec="1.4.0" />
