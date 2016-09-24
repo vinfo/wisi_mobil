@@ -33,6 +33,7 @@
 <preference name="show-splash-screen-spinner" value="false" />
 <preference name="auto-hide-splash-screen" value="false" />
 <preference name="StatusBarOverlaysWebView" value="false" />
+<preference name="android-build-tool" value="gradle" />
 
 <feature name="http://api.phonegap.com/1.0/device" />
 <feature name="Geolocation">
